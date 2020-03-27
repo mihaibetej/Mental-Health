@@ -8,20 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0C3242E4790009A80D7 /* AppDelegate.swift */; };
-		27A2F0C8242E4790009A80D7 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0C7242E4790009A80D7 /* ViewController.swift */; };
 		27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0C9242E4790009A80D7 /* Main.storyboard */; };
 		27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0CC242E4791009A80D7 /* Assets.xcassets */; };
 		27A2F0D0242E4791009A80D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0CE242E4791009A80D7 /* LaunchScreen.storyboard */; };
+		27A2F0E1242E5909009A80D7 /* Feed.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0E0242E5909009A80D7 /* Feed.storyboard */; };
+		27A2F0E3242E591B009A80D7 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0E2242E591B009A80D7 /* Personal.storyboard */; };
+		27A2F0E5242E592D009A80D7 /* Questionnaire.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0E4242E592D009A80D7 /* Questionnaire.storyboard */; };
+		27A2F0E7242E5940009A80D7 /* More.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0E6242E5940009A80D7 /* More.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		27A2F0C0242E4790009A80D7 /* Mental Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mental Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A2F0C3242E4790009A80D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		27A2F0C7242E4790009A80D7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		27A2F0CA242E4790009A80D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27A2F0CC242E4791009A80D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		27A2F0CF242E4791009A80D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		27A2F0D1242E4791009A80D7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		27A2F0E0242E5909009A80D7 /* Feed.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Feed.storyboard; sourceTree = "<group>"; };
+		27A2F0E2242E591B009A80D7 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
+		27A2F0E4242E592D009A80D7 /* Questionnaire.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Questionnaire.storyboard; sourceTree = "<group>"; };
+		27A2F0E6242E5940009A80D7 /* More.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = More.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,14 +60,73 @@
 		27A2F0C2242E4790009A80D7 /* Mental Health */ = {
 			isa = PBXGroup;
 			children = (
-				27A2F0C3242E4790009A80D7 /* AppDelegate.swift */,
-				27A2F0C7242E4790009A80D7 /* ViewController.swift */,
-				27A2F0C9242E4790009A80D7 /* Main.storyboard */,
-				27A2F0CC242E4791009A80D7 /* Assets.xcassets */,
-				27A2F0CE242E4791009A80D7 /* LaunchScreen.storyboard */,
+				27A2F0D7242E5807009A80D7 /* Classes */,
+				27A2F0DF242E58DB009A80D7 /* Resources */,
 				27A2F0D1242E4791009A80D7 /* Info.plist */,
 			);
 			path = "Mental Health";
+			sourceTree = "<group>";
+		};
+		27A2F0D7242E5807009A80D7 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				27A2F0DD242E5876009A80D7 /* More */,
+				27A2F0DC242E585C009A80D7 /* Questionnaire */,
+				27A2F0DB242E5853009A80D7 /* Personal */,
+				27A2F0DA242E5833009A80D7 /* Feed */,
+				27A2F0D8242E5817009A80D7 /* Authentication */,
+				27A2F0C3242E4790009A80D7 /* AppDelegate.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		27A2F0D8242E5817009A80D7 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		27A2F0DA242E5833009A80D7 /* Feed */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Feed;
+			sourceTree = "<group>";
+		};
+		27A2F0DB242E5853009A80D7 /* Personal */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Personal;
+			sourceTree = "<group>";
+		};
+		27A2F0DC242E585C009A80D7 /* Questionnaire */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Questionnaire;
+			sourceTree = "<group>";
+		};
+		27A2F0DD242E5876009A80D7 /* More */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = More;
+			sourceTree = "<group>";
+		};
+		27A2F0DF242E58DB009A80D7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				27A2F0C9242E4790009A80D7 /* Main.storyboard */,
+				27A2F0E0242E5909009A80D7 /* Feed.storyboard */,
+				27A2F0E2242E591B009A80D7 /* Personal.storyboard */,
+				27A2F0E4242E592D009A80D7 /* Questionnaire.storyboard */,
+				27A2F0E6242E5940009A80D7 /* More.storyboard */,
+				27A2F0CC242E4791009A80D7 /* Assets.xcassets */,
+				27A2F0CE242E4791009A80D7 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -123,7 +188,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				27A2F0D0242E4791009A80D7 /* LaunchScreen.storyboard in Resources */,
+				27A2F0E3242E591B009A80D7 /* Personal.storyboard in Resources */,
+				27A2F0E7242E5940009A80D7 /* More.storyboard in Resources */,
+				27A2F0E5242E592D009A80D7 /* Questionnaire.storyboard in Resources */,
 				27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */,
+				27A2F0E1242E5909009A80D7 /* Feed.storyboard in Resources */,
 				27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -135,7 +204,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				27A2F0C8242E4790009A80D7 /* ViewController.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
