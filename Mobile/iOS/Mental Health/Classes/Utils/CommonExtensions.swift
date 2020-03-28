@@ -12,19 +12,30 @@ import UIKit
 
 extension UIImage {
     
+    
+    /// Creates a rounded corner gradient image
+    /// - Parameter bounds: Used to determine image size
+    /// - Parameter colors: The gradients
+    /// - Parameter offset: image width offset
     convenience init?(bounds: CGRect, colors: [CGColor], offset: CGFloat = 0.0) {
+        // Create gradient layer
         let layer = CAGradientLayer()
-        layer.cornerRadius = bounds.height/2.0
-        layer.frame = CGRect(x: bounds.minX, y: bounds.minY, width: bounds.width - offset, height: bounds.height)
+        layer.cornerRadius = bounds.height / 2.0
+        layer.frame = CGRect(x: bounds.minX,
+                             y: bounds.minY,
+                             width: bounds.width - offset,
+                             height: bounds.height)
         layer.colors = colors
         layer.endPoint = CGPoint(x: 1.0, y:  1.0)
         layer.startPoint = CGPoint(x: 0.0, y:  1.0)
 
+        // Draw layer in current context
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0.0)
         layer.render(in: UIGraphicsGetCurrentContext()!)
         let layerImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        // Extract image
         guard let cgImage = layerImage?.resizableImage(withCapInsets: .zero).cgImage else {
             return nil
         }

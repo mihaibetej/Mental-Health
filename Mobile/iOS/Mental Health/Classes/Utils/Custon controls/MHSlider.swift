@@ -12,10 +12,24 @@ import UIKit
 
 class MHSlider: UISlider {
     
+    // Bar thickness
     @IBInspectable open var trackHeight: CGFloat = 2 {
         didSet {
             customizeAppearance()
             setNeedsDisplay()
+        }
+    }
+    
+    // If number of steps is not 0, our slider becomes a stepper
+    @IBInspectable open var numberOfSteps: CGFloat = 0 {
+        didSet {
+            if numberOfSteps == 0 {
+                isContinuous = true
+                removeTarget(self, action: #selector(valueDidChange(for:)), for: UIControl.Event.valueChanged)
+            } else {
+                isContinuous = false
+                addTarget(self, action: #selector(valueDidChange(for:)), for: UIControl.Event.valueChanged)
+            }
         }
     }
     
@@ -50,6 +64,17 @@ private extension MHSlider {
         maximumTrackTintColor = .clear
         setMaximumTrackImage(UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor]), for: .normal)
         setMinimumTrackImage(UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor]), for: .normal)
+    }
+    
+    @objc func valueDidChange(for slider: UISlider) {
+        guard numberOfSteps > 1 else {
+            return
+        }
+        
+        let interval = Float(1.0) / Float(numberOfSteps - 1)
+        let step = slider.value / interval
+        let wholeStep = roundf(step)
+        slider.value = wholeStep * interval
     }
     
 }
