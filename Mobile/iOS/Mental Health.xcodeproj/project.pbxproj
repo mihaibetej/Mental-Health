@@ -19,6 +19,7 @@
 		27A2F0EB242E9BF4009A80D7 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0EA242E9BF4009A80D7 /* PersonalViewController.swift */; };
 		27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0EC242E9C0F009A80D7 /* FeedViewController.swift */; };
 		27A2F0EF242E9C1D009A80D7 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0EE242E9C1D009A80D7 /* MoreViewController.swift */; };
+		27A2F0F2242F92BB009A80D7 /* QuestionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0F1242F92BB009A80D7 /* QuestionTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -36,6 +37,7 @@
 		27A2F0EA242E9BF4009A80D7 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		27A2F0EC242E9C0F009A80D7 /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
 		27A2F0EE242E9C1D009A80D7 /* MoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
+		27A2F0F1242F92BB009A80D7 /* QuestionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 		27A2F0DC242E585C009A80D7 /* Questionnaire */ = {
 			isa = PBXGroup;
 			children = (
+				27A2F0F0242F929E009A80D7 /* Views */,
 				27A2F0E8242E9820009A80D7 /* QuestionnaireViewController.swift */,
 			);
 			path = Questionnaire;
@@ -139,6 +142,14 @@
 				27A2F0CE242E4791009A80D7 /* LaunchScreen.storyboard */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		27A2F0F0242F929E009A80D7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27A2F0F1242F92BB009A80D7 /* QuestionTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,6 +230,7 @@
 				27A2F0EF242E9C1D009A80D7 /* MoreViewController.swift in Sources */,
 				27A2F0E9242E9820009A80D7 /* QuestionnaireViewController.swift in Sources */,
 				27A2F0EB242E9BF4009A80D7 /* PersonalViewController.swift in Sources */,
+				27A2F0F2242F92BB009A80D7 /* QuestionTableViewCell.swift in Sources */,
 				27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 			);
