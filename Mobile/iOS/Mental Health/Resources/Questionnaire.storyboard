@@ -37,7 +37,7 @@
                                                     <rect key="frame" x="30" y="72" width="354" height="31"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
-                                                            <real key="value" value="5"/>
+                                                            <real key="value" value="6"/>
                                                         </userDefinedRuntimeAttribute>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
                                                             <real key="value" value="5"/>

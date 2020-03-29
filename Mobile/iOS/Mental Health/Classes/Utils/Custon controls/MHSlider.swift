@@ -21,7 +21,7 @@ class MHSlider: UISlider {
     }
     
     // If number of steps is not 0, our slider becomes a stepper
-    @IBInspectable open var numberOfSteps: CGFloat = 0 {
+    @IBInspectable open var numberOfSteps: Int = 0 {
         didSet {
             if numberOfSteps == 0 {
                 isContinuous = true
@@ -31,6 +31,15 @@ class MHSlider: UISlider {
                 addTarget(self, action: #selector(valueDidChange(for:)), for: UIControl.Event.valueChanged)
             }
         }
+    }
+    
+    private var segmentMarkers: Int {
+        return numberOfSteps > 2 ? numberOfSteps - 2 : 0
+    }
+    
+    private struct Constants {
+        static let segmentMarkerHeight: Int = 5
+        static let segmentMarkerLineWidth: CGFloat = 1
     }
     
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
@@ -55,6 +64,29 @@ class MHSlider: UISlider {
         
 }
 
+// MARK: - MHSlider(Draw)
+
+extension MHSlider {
+    
+    override func draw(_ rect: CGRect) {
+        let y = Int((rect.height - trackHeight) / 2) + 1
+        for i in 1...segmentMarkers {
+            let x = Int(CGFloat(i) * (rect.width / CGFloat(numberOfSteps - 1)))
+            let path = UIBezierPath()
+            path.lineWidth = Constants.segmentMarkerLineWidth
+            path.move(to: CGPoint(x: x, y: y))
+            path.addLine(to: CGPoint(x: x, y: y - Constants.segmentMarkerHeight))
+            path.close()
+            
+            UIColor.black.set()
+            path.stroke()
+            
+            print("segment \(i) start point: \(CGPoint(x: x, y: y)) \n rect width: \(rect.width) \n bounds width: \(bounds.width)")
+        }
+    }
+    
+}
+
 // MARK: - MHSlider(private API)
 
 private extension MHSlider {
@@ -71,10 +103,11 @@ private extension MHSlider {
             return
         }
         
-        let interval = Float(1.0) / Float(numberOfSteps - 1)
-        let step = slider.value / interval
+        let stepSegment = Float(1.0) / Float(numberOfSteps - 1)
+        let step = slider.value / stepSegment
         let wholeStep = roundf(step)
-        slider.value = wholeStep * interval
+        slider.value = wholeStep * stepSegment
+        print("slider value: \(slider.value)")
     }
     
 }
