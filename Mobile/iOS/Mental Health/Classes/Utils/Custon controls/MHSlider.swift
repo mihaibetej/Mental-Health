@@ -33,6 +33,10 @@ class MHSlider: UISlider {
         }
     }
     
+    var segmentWidth: CGFloat {
+        return numberOfSteps > 1 ? bounds.width / CGFloat(numberOfSteps - 1) : bounds.width
+    }
+        
     private var segmentMarkers: Int {
         return numberOfSteps > 2 ? numberOfSteps - 2 : 0
     }
@@ -69,6 +73,11 @@ class MHSlider: UISlider {
 extension MHSlider {
     
     override func draw(_ rect: CGRect) {
+        // Check if we have any markers to draw
+        guard segmentMarkers > 0 else {
+            return
+        }
+        
         let y = Int((rect.height - trackHeight) / 2) + 1
         for i in 1...segmentMarkers {
             let x = Int(CGFloat(i) * (rect.width / CGFloat(numberOfSteps - 1)))
@@ -80,8 +89,6 @@ extension MHSlider {
             
             UIColor.black.set()
             path.stroke()
-            
-            print("segment \(i) start point: \(CGPoint(x: x, y: y)) \n rect width: \(rect.width) \n bounds width: \(bounds.width)")
         }
     }
     
@@ -94,8 +101,10 @@ private extension MHSlider {
     func customizeAppearance() {
         minimumTrackTintColor = .clear
         maximumTrackTintColor = .clear
-        setMaximumTrackImage(UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor]), for: .normal)
-        setMinimumTrackImage(UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor]), for: .normal)
+        
+        let sliderGradientImage = UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor])
+        setMaximumTrackImage(sliderGradientImage, for: .normal)
+        setMinimumTrackImage(sliderGradientImage, for: .normal)
     }
     
     @objc func valueDidChange(for slider: UISlider) {
@@ -107,7 +116,6 @@ private extension MHSlider {
         let step = slider.value / stepSegment
         let wholeStep = roundf(step)
         slider.value = wholeStep * stepSegment
-        print("slider value: \(slider.value)")
     }
     
 }

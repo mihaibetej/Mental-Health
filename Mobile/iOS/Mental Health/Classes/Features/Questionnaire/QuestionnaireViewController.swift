@@ -39,8 +39,19 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "QuestionTableViewCell", for: indexPath) as! QuestionTableViewCell
+        cell.configure(delegate: self)
         
         return cell
+    }
+    
+}
+
+// MARK: - QuestionnaireViewController (AnswerDelegate)
+
+extension QuestionnaireViewController: AnswerDelegate {
+    
+    func answerUpdated(for cell: QuestionTableViewCell) {
+        
     }
     
 }
