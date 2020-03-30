@@ -1,4 +1,4 @@
-package com.db.mobile.mental_health.ui.home
+package com.db.mobile.mental_health.ui.survey
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.db.mobile.mental_health.R
 
-class HomeFragment : Fragment() {
+class SurveyFragment : Fragment() {
 
-    private lateinit var homeViewModel: HomeViewModel
+    private lateinit var surveyViewModel: SurveyViewModel
 
     override fun onCreateView(
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        homeViewModel =
-                ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
-        val textView: TextView = root.findViewById(R.id.text_home)
-        homeViewModel.text.observe(viewLifecycleOwner, Observer {
+        surveyViewModel =
+                ViewModelProviders.of(this).get(SurveyViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_survey, container, false)
+        val textView: TextView = root.findViewById(R.id.text_survey)
+        surveyViewModel.text.observe(viewLifecycleOwner, Observer {
             textView.text = it
         })
         return root

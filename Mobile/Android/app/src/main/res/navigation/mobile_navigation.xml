@@ -3,23 +3,30 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/mobile_navigation"
-    app:startDestination="@+id/navigation_home">
+    app:startDestination="@+id/navigation_news">
 
     <fragment
-        android:id="@+id/navigation_home"
-        android:name="com.db.mobile.mental_health.ui.home.HomeFragment"
-        android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        android:id="@+id/navigation_news"
+        android:name="com.db.mobile.mental_health.ui.news.NewsFragment"
+        android:label="@string/title_news"
+        tools:layout="@layout/fragment_news" />
 
     <fragment
-        android:id="@+id/navigation_dashboard"
-        android:name="com.db.mobile.mental_health.ui.dashboard.DashboardFragment"
-        android:label="@string/title_dashboard"
-        tools:layout="@layout/fragment_dashboard" />
+        android:id="@+id/navigation_advices"
+        android:name="com.db.mobile.mental_health.ui.advices.AdvicesFragment"
+        android:label="@string/title_advices"
+        tools:layout="@layout/fragment_advices" />
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.db.mobile.mental_health.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
+        android:id="@+id/navigation_survey"
+        android:name="com.db.mobile.mental_health.ui.survey.SurveyFragment"
+        android:label="@string/title_survey"
+        tools:layout="@layout/fragment_survey" />
+
+    <fragment
+        android:id="@+id/navigation_more"
+        android:name="com.db.mobile.mental_health.ui.more.MoreFragment"
+        android:label="@string/title_more"
+        tools:layout="@layout/fragment_more" />
+
 </navigation>

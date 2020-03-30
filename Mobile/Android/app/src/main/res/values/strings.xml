@@ -1,6 +1,7 @@
 <resources>
-    <string name="app_name">Mental-Health</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="app_name">All4Medics</string>
+    <string name="title_news">Noutati</string>
+    <string name="title_advices">Pentru tine</string>
+    <string name="title_survey">Chestionar</string>
+    <string name="title_more">Mai mult</string>
 </resources>
