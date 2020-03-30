@@ -8,6 +8,12 @@
 
 import UIKit
 
+// MARK: - MHSliderDelegate
+
+protocol MHSliderDelegate: class {
+    func didSelect(step: Int)
+}
+
 // MARK: - MHSlider
 
 class MHSlider: UISlider {
@@ -32,6 +38,8 @@ class MHSlider: UISlider {
             }
         }
     }
+    
+    weak var delegate: MHSliderDelegate?
     
     var segmentWidth: CGFloat {
         return numberOfSteps > 1 ? bounds.width / CGFloat(numberOfSteps - 1) : bounds.width
@@ -65,7 +73,17 @@ class MHSlider: UISlider {
         super.init(coder: coder)
         customizeAppearance()
     }
+    
+    // Since the slider thumb will not be centered on the edges of the slider, but rather be offset by width/2 there, we need to account for thet offset in the markers. The offset is 0 in the middle of the slider and gradually goes to +/- width/2 on the edges
+    func markerCenter(for step: Int) -> CGFloat {
+        guard numberOfSteps > 1 else {
+            return 0
+        }
         
+        let thumbR = thumbRect(forBounds: bounds, trackRect: trackRect(forBounds: bounds), value: value(for: step))
+        return thumbR.midX
+    }
+    
 }
 
 // MARK: - MHSlider(Draw)
@@ -77,10 +95,10 @@ extension MHSlider {
         guard segmentMarkers > 0 else {
             return
         }
-        
+                
         let y = Int((rect.height - trackHeight) / 2) + 1
         for i in 1...segmentMarkers {
-            let x = Int(CGFloat(i) * (rect.width / CGFloat(numberOfSteps - 1)))
+            let x = Int(markerCenter(for: i))
             let path = UIBezierPath()
             path.lineWidth = Constants.segmentMarkerLineWidth
             path.move(to: CGPoint(x: x, y: y))
@@ -116,6 +134,17 @@ private extension MHSlider {
         let step = slider.value / stepSegment
         let wholeStep = roundf(step)
         slider.value = wholeStep * stepSegment
+        
+        delegate?.didSelect(step: Int(wholeStep))
+    }
+
+    func value(for step: Int) -> Float {
+        guard numberOfSteps > 1 else {
+            return 0
+        }
+        
+        let stepSegment = Float(1.0) / Float(numberOfSteps - 1)
+        return Float(step) * stepSegment
     }
     
 }

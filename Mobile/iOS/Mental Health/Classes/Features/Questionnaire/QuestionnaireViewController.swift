@@ -21,6 +21,12 @@ class QuestionnaireViewController: UIViewController {
         title = "Chestionar" 
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        // this needs to be here fo accurate slider hint labels layout
+        tableView.reloadData()
+    }
+    
 }
 
 // MARK: - QuestionnaireViewController (UITableViewDataSource, UITableViewDelegate)

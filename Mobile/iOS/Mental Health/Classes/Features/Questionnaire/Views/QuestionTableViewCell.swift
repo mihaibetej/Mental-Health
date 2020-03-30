@@ -56,7 +56,18 @@ class QuestionTableViewCell: UITableViewCell {
     
     func configure(delegate: AnswerDelegate) {
         self.delegate = delegate
-        //positionHintLabels()
+        answerSlider.delegate = self
+        positionHintLabels()
+    }
+    
+}
+
+// MARK: - QuestionTableViewCell(MHSliderDelegate)
+
+extension QuestionTableViewCell: MHSliderDelegate {
+    
+    func didSelect(step: Int) {
+        print("step selected: \(step)")
     }
     
 }
@@ -66,8 +77,11 @@ class QuestionTableViewCell: UITableViewCell {
 private extension QuestionTableViewCell {
     
     func positionHintLabels() {
-        let labelPosition2RightConstraintConstant = answerSlider.segmentWidth - (labelPosition2.bounds.width / 2 + labelPosition3.bounds.width / 2)
-        let labelPosition4LeftConstraintConstant = answerSlider.segmentWidth - (labelPosition4.bounds.width / 2 + labelPosition3.bounds.width / 2)
+        let labelHint2CenterX = answerSlider.markerCenter(for: 1) + answerSlider.frame.minX
+        let labelHint4CenterX = answerSlider.markerCenter(for: 3) + answerSlider.frame.minX
+        
+        let labelPosition2RightConstraintConstant =  (labelPosition3.frame.midX - labelHint2CenterX) - (labelPosition2.bounds.width / 2 + labelPosition3.bounds.width / 2)
+        let labelPosition4LeftConstraintConstant = (labelHint4CenterX - labelPosition3.frame.midX) - (labelPosition4.bounds.width / 2 + labelPosition3.bounds.width / 2)
         
         guard labelPosition2RightConstraint.constant != labelPosition2RightConstraintConstant && labelPosition4LeftConstraint.constant != labelPosition4LeftConstraintConstant else {
             return
@@ -75,12 +89,6 @@ private extension QuestionTableViewCell {
         
         labelPosition2RightConstraint.constant = labelPosition2RightConstraintConstant
         labelPosition4LeftConstraint.constant = labelPosition4LeftConstraintConstant
-        layoutIfNeeded()
-        
-        print("labelPosition2 ideal marker x: \(answerSlider.frame.minX + answerSlider.segmentWidth)")
-        print("labelPosition2.frame.midX: \(labelPosition2.frame.midX)")
-        print("labelPosition4 ideal marker x: \(answerSlider.frame.minX + answerSlider.segmentWidth * 3)")
-        print("labelPosition4.frame.midX: \(labelPosition4.frame.midX)")
     }
     
 }
