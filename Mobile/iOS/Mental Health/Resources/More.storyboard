@@ -8,21 +8,85 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--More View Controller-->
+        <!--Mai mult-->
         <scene sceneID="XmD-HL-Uae">
             <objects>
                 <viewController id="1eC-dd-0ZL" customClass="MoreViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="J4S-ON-wXz">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.94166344404220581" green="0.88238954544067383" blue="0.75584012269973755" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="80" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="7oA-ZB-hAB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="tintColor" red="0.0" green="0.094117647060000004" blue="0.6588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="1eC-dd-0ZL" id="wG0-Ov-ayc"/>
+                                    <outlet property="delegate" destination="1eC-dd-0ZL" id="Tpw-52-4qU"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7oA-ZB-hAB" firstAttribute="leading" secondItem="PiV-zP-YM0" secondAttribute="leading" id="CPm-b0-J0q"/>
+                            <constraint firstItem="7oA-ZB-hAB" firstAttribute="bottom" secondItem="PiV-zP-YM0" secondAttribute="bottom" id="QBZ-YN-jJj"/>
+                            <constraint firstItem="7oA-ZB-hAB" firstAttribute="trailing" secondItem="PiV-zP-YM0" secondAttribute="trailing" id="wSU-YZ-36i"/>
+                            <constraint firstItem="7oA-ZB-hAB" firstAttribute="top" secondItem="PiV-zP-YM0" secondAttribute="top" id="xLK-5Q-qNu"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="PiV-zP-YM0"/>
                     </view>
-                    <navigationItem key="navigationItem" id="oB4-p6-5Gg"/>
+                    <navigationItem key="navigationItem" title="Mai mult" id="oB4-p6-5Gg"/>
+                    <connections>
+                        <segue destination="B3J-z4-irY" kind="show" identifier="goToProfile" id="dbW-xz-9xd"/>
+                        <segue destination="nCR-ml-jhy" kind="show" identifier="goToJournal" id="NkD-NI-U57"/>
+                        <segue destination="TkN-qj-980" kind="show" identifier="goToSettings" id="Uln-WJ-5c6"/>
+                        <segue destination="bzo-Hh-dzP" kind="show" identifier="goToContact" id="Bgz-B7-CGm"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ued-b4-2ck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1134.7826086956522" y="118.52678571428571"/>
+        </scene>
+        <!--Profile-->
+        <scene sceneID="sqc-cx-8UJ">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Profile" id="B3J-z4-irY" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="eGA-Vh-sWG"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lWb-df-Xr9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1972" y="-137"/>
+        </scene>
+        <!--Journal-->
+        <scene sceneID="2N0-F2-l4i">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Journal" id="nCR-ml-jhy" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="ADr-y6-ENL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="efI-lz-xye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1949" y="-38"/>
+        </scene>
+        <!--Settings-->
+        <scene sceneID="cGW-Q9-dek">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Settings" id="TkN-qj-980" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="1Z9-fz-hmL"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="z8A-Kj-W9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1972" y="70"/>
+        </scene>
+        <!--Contact-->
+        <scene sceneID="0lV-6b-JPw">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Contact" id="bzo-Hh-dzP" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="h0q-Ov-D9r"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="UM2-mm-097" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1972" y="175"/>
         </scene>
         <!--Mai mult-->
         <scene sceneID="D88-n9-iB2">
