@@ -29,5 +29,11 @@ class FeedDetailViewController: UIViewController {
 //        titleLabel.text = feedDetail?.title
 //        imageView.image = feedDetail?.image
 //        textView.text = feedDetail?.text
+        
+        imageView.layer.shadowColor = UIColor.black.cgColor
+        imageView.layer.shadowOpacity = 0.4
+        imageView.layer.shadowOffset = CGSize.zero
+        imageView.layer.shadowRadius = 8
+        imageView.layer.masksToBounds = false
     }
 }

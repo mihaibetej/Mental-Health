@@ -12,6 +12,16 @@ class FeedTableViewCell: UITableViewCell {
     @IBOutlet var newsTitleLabel: UILabel!
     @IBOutlet var newsImageView: UIImageView!
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        
+        newsImageView.layer.shadowColor = UIColor.black.cgColor
+        newsImageView.layer.shadowOpacity = 0.4
+        newsImageView.layer.shadowOffset = CGSize.zero
+        newsImageView.layer.shadowRadius = 8
+        newsImageView.layer.masksToBounds = false
+    }
+    
     func configure(title: String, image: UIImage) {
         newsTitleLabel.text = title
         newsImageView.image = image
