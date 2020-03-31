@@ -1,4 +1,6 @@
 import React, {useEffect, useState} from 'react';
+
+import {withAuthorization} from "../../hoc";
 import {getQuestions} from "../../services/questions";
 
 const Questions = () => {
@@ -10,7 +12,7 @@ const Questions = () => {
       setQuestions(await getQuestions());
     };
     runEffect();
-  }, [setQuestions]);
+  }, []);
 
 
   console.log('questions', questions)
@@ -21,4 +23,4 @@ const Questions = () => {
   )
 }
 
-export default Questions;
+export default withAuthorization(Questions);

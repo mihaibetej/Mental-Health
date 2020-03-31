@@ -2,7 +2,6 @@ import React from 'react'
 import {Button, Form, Input} from 'antd';
 import {useHistory} from "react-router"
 import {login, loginOauth,} from '../../db/auth';
-import {firebaseAuth} from '../../db';
 
 const layout = {
   labelCol: { span: 8 },
@@ -13,21 +12,13 @@ const tailLayout = {
 };
 
 const Login = () => {
-
   const history = useHistory();
 
-  const handleClickOauth = (ev) => {
-    loginOauth(ev.target.id)
-  };
-
   const onFinish = ({ email, password }) => {
-    console.log('Success:');
-    login(email, password);
-    firebaseAuth().onAuthStateChanged((user) => {
-      //save user to state maybe display in a header ?
-      console.log('loggedin', user)
+    login(email, password).then(() => {
+      console.log('Success:');
       history.push('/questions')
-    })
+    }).catch(e => console.log('display login fail error message'))
   };
 
   const onFinishFailed = errorInfo => {

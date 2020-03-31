@@ -3,7 +3,8 @@ import {BrowserRouter as Router, Route} from "react-router-dom";
 import {Layout} from 'antd';
 import Login from './components/login';
 import Questions from "./screens/questions"
-
+import {withAuthentication} from "./hoc";
+import HeaderContent from './components/header-content';
 import 'antd/dist/antd.css';
 import './App.css';
 
@@ -13,7 +14,7 @@ function App() {
   return (
     <Router>
       <Layout>
-        <Header>Header</Header>
+        <Header><HeaderContent/></Header>
         <Content>
           <Route exact path="/" component={() => <div>HOME PAGE</div>}/>
           <Route exact path="/login" component={Login}/>
@@ -28,4 +29,4 @@ function App() {
   );
 }
 
-export default App;
+export default withAuthentication(App);
