@@ -11,6 +11,8 @@ import UIKit
 // MARK: - MHSliderDelegate
 
 protocol MHSliderDelegate: class {
+    func didBeginDragging()
+    func stepValueChanged(value: Float)
     func didSelect(step: Int)
 }
 
@@ -30,11 +32,9 @@ class MHSlider: UISlider {
     @IBInspectable open var numberOfSteps: Int = 0 {
         didSet {
             if numberOfSteps == 0 {
-                isContinuous = true
-                removeTarget(self, action: #selector(valueDidChange(for:)), for: UIControl.Event.valueChanged)
+                removeTarget(self, action: #selector(valueDidChange(for:event:)), for: UIControl.Event.valueChanged)
             } else {
-                isContinuous = false
-                addTarget(self, action: #selector(valueDidChange(for:)), for: UIControl.Event.valueChanged)
+                addTarget(self, action: #selector(valueDidChange(for:event:)), for: UIControl.Event.valueChanged)
             }
         }
     }
@@ -44,7 +44,16 @@ class MHSlider: UISlider {
     var segmentWidth: CGFloat {
         return numberOfSteps > 1 ? bounds.width / CGFloat(numberOfSteps - 1) : bounds.width
     }
-        
+    
+    var step: Int {
+        get {            
+            return Int(roundf(stepCurrentValue))
+        }
+        set {
+            value = Float(newValue) * stepValueSegment
+        }
+    }
+    
     private var segmentMarkers: Int {
         return numberOfSteps > 2 ? numberOfSteps - 2 : 0
     }
@@ -116,26 +125,47 @@ extension MHSlider {
 
 private extension MHSlider {
     
+    var stepValueSegment: Float {
+        return Float(1.0) / Float(numberOfSteps - 1)
+    }
+    
+    var stepCurrentValue: Float {
+        return value / stepValueSegment
+    }
+    
     func customizeAppearance() {
         minimumTrackTintColor = .clear
         maximumTrackTintColor = .clear
         
-        let sliderGradientImage = UIImage(bounds: trackRect(forBounds: bounds), colors: [UIColor.red.cgColor, UIColor.green.cgColor])
+        let startColor = UIColor(red: 205 / 255, green: 43 / 255, blue: 47 / 255, alpha: 1).cgColor
+        let endColor = UIColor(red: 74 / 255, green: 181 / 255, blue: 97 / 255, alpha: 1).cgColor        
+        let sliderGradientImage = UIImage(bounds: trackRect(forBounds: bounds), colors: [startColor, endColor])
         setMaximumTrackImage(sliderGradientImage, for: .normal)
         setMinimumTrackImage(sliderGradientImage, for: .normal)
     }
     
-    @objc func valueDidChange(for slider: UISlider) {
+    @objc func valueDidChange(for slider: UISlider, event: UIEvent) {
         guard numberOfSteps > 1 else {
             return
         }
         
-        let stepSegment = Float(1.0) / Float(numberOfSteps - 1)
-        let step = slider.value / stepSegment
-        let wholeStep = roundf(step)
-        slider.value = wholeStep * stepSegment
-        
-        delegate?.didSelect(step: Int(wholeStep))
+        if let touchEvent = event.allTouches?.first {
+            switch touchEvent.phase {
+            case .began, .stationary:
+                delegate?.didBeginDragging()
+            case .moved:
+                // handle drag moved
+                delegate?.stepValueChanged(value: stepCurrentValue)
+                break
+            case .ended, .cancelled:
+                let wholeStep = roundf(stepCurrentValue)
+                slider.value = wholeStep * stepValueSegment
+                
+                delegate?.didSelect(step: Int(wholeStep))
+            default:
+                break
+            }
+        }
     }
 
     func value(for step: Int) -> Float {

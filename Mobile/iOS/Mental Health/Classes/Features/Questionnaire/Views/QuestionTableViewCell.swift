@@ -8,12 +8,6 @@
 
 import UIKit
 
-// MARK: - AnswerDelegate
-
-protocol AnswerDelegate: class {
-    func answerUpdated(for cell: QuestionTableViewCell)
-}
-
 // MARK: - QuestionTableViewCell
 
 class QuestionTableViewCell: UITableViewCell {
@@ -31,15 +25,22 @@ class QuestionTableViewCell: UITableViewCell {
     // Answer slider
     @IBOutlet weak var answerSlider: MHSlider!
         
-    private weak var delegate: AnswerDelegate?
+    private weak var viewModel: QuestionnaireViewModel!
+    private var index: Int!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        questionLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)
+        labelPosition1.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition1.text = "Foarte mult"
+        labelPosition2.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition2.text = "Mult"
+        labelPosition3.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition3.text = "Mediu"
+        labelPosition4.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition4.text = "Rar"
+        labelPosition5.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition5.text = "Deloc"
     }
     
@@ -54,10 +55,19 @@ class QuestionTableViewCell: UITableViewCell {
         positionHintLabels()
     }
     
-    func configure(delegate: AnswerDelegate) {
-        self.delegate = delegate
+    func configure(viewModel: QuestionnaireViewModel, index: Int) {
+        self.viewModel = viewModel
+        self.index = index
+        
         answerSlider.delegate = self
         positionHintLabels()
+                
+        guard let question = viewModel.question(for: index) else {
+            return
+        }
+        questionLabel.text = "\(question.index). \(question.text)"
+        answerSlider.step = question.answer - 1
+        updateHintLabelsVisibility(for: answerSlider.step)
     }
     
 }
@@ -66,8 +76,48 @@ class QuestionTableViewCell: UITableViewCell {
 
 extension QuestionTableViewCell: MHSliderDelegate {
     
+    func didBeginDragging() {
+    }
+    
+    func stepValueChanged(value: Float) {
+        guard floor(value) != value else {
+            return
+        }
+        
+        let minStep = value.rounded(.down)
+        let maxStep = value.rounded(.up)
+        
+        let lowerAlpha = 1 - (min((value - minStep), 0.5) / 0.5)
+        let upperAlpha = 1 - (min((maxStep - value), 0.5) / 0.5)
+        
+        switch minStep {
+        case 0:
+            labelPosition2.alpha = CGFloat(upperAlpha)
+            labelPosition3.alpha = 0
+            labelPosition4.alpha = 0
+        case 1:
+            labelPosition2.alpha = CGFloat(lowerAlpha)
+            labelPosition3.alpha = CGFloat(upperAlpha)
+            labelPosition4.alpha = 0
+        case 2:
+            labelPosition2.alpha = 0
+            labelPosition3.alpha = CGFloat(lowerAlpha)
+            labelPosition4.alpha = CGFloat(upperAlpha)
+        case 3:
+            labelPosition2.alpha = 0
+            labelPosition3.alpha = 0
+            labelPosition4.alpha = CGFloat(lowerAlpha)
+        default:
+            break
+        }
+    }
+    
     func didSelect(step: Int) {
         print("step selected: \(step)")
+        // Update view model
+        viewModel.updateQuestion(at: index, with: step + 1)
+        // Make sure final alpha is applied
+        updateHintLabelsVisibility(for: step)
     }
     
 }
@@ -89,6 +139,25 @@ private extension QuestionTableViewCell {
         
         labelPosition2RightConstraint.constant = labelPosition2RightConstraintConstant
         labelPosition4LeftConstraint.constant = labelPosition4LeftConstraintConstant
+    }
+    
+    func updateHintLabelsVisibility(for step: Int) {
+        switch step {
+        case 1:
+            labelPosition2.alpha = 1
+            labelPosition3.alpha = 0
+            labelPosition4.alpha = 0
+        case 2:
+            labelPosition2.alpha = 0
+            labelPosition3.alpha = 1
+            labelPosition4.alpha = 0
+        case 3:
+            labelPosition2.alpha = 0
+            labelPosition3.alpha = 0
+            labelPosition4.alpha = 1
+        default:
+            break
+        }
     }
     
 }
