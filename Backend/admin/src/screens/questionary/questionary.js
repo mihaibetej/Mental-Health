@@ -17,8 +17,8 @@ const submitQuestions = ({ formValues, questions, userID }) => {
       const question = find(questions, { id: questionID });
       console.log('QUESTION', question);
       const answer = {
-        answer_id: value,
-        answer_value: question.answers[value].title,
+        answer_value: value,
+        answer_title: question.answers[value].title,
         question_body: question.body,
         question_id: questionID,
       };
