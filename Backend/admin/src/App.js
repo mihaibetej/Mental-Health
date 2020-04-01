@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
-import Questions, {AddQuestion} from './screens/questions';
+import Questions, { AddQuestion } from './screens/questions';
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
 import 'antd/dist/antd.css';

@@ -16,10 +16,10 @@ const Questions = () => {
   return (
     <div>
       {questions.map(({ body }) => {
-        return <div>{body}</div>
+        return (<div>{body}</div>);
       })}
     </div>
-  )
-}
+  );
+};
 
 export default withAuthorization(Questions);

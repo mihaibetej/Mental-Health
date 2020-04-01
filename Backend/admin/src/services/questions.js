@@ -34,4 +34,4 @@ export const createQuestion = async (body, answers = defaultAnswers) => {
     body,
     answers,
   });
-}
+};
