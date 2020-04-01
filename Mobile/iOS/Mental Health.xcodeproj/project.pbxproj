@@ -38,6 +38,7 @@
 		6367B75E2433FD4500388A6D /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B75D2433FD4500388A6D /* JournalViewController.swift */; };
 		6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7602433FD8F00388A6D /* ProfileViewController.swift */; };
 		6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7622433FD9C00388A6D /* SettingsViewController.swift */; };
+		6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */; };
 		BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */; };
 		BED2B7F224327A000035C130 /* Advices.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F124327A000035C130 /* Advices.json */; };
 		BED2B7F424327A110035C130 /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F324327A110035C130 /* Messages.json */; };
@@ -78,6 +79,7 @@
 		6367B75D2433FD4500388A6D /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		6367B7602433FD8F00388A6D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6367B7622433FD9C00388A6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewController.swift; sourceTree = "<group>"; };
 		BED2B7F124327A000035C130 /* Advices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Advices.json; sourceTree = "<group>"; };
 		BED2B7F324327A110035C130 /* Messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
@@ -275,6 +277,7 @@
 			isa = PBXGroup;
 			children = (
 				6367B7602433FD8F00388A6D /* ProfileViewController.swift */,
+				6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */,
 				6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */,
 				6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */,
+				6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */,
 				2717C1002432A0E4003C6A29 /* QuestionnaireViewModel.swift in Sources */,
 				27A2F0E9242E9820009A80D7 /* QuestionnaireViewController.swift in Sources */,
 				6367B7472433FADD00388A6D /* SwiftDisclosureIndicator.swift in Sources */,

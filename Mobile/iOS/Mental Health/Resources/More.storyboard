@@ -38,6 +38,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Mai mult" id="oB4-p6-5Gg"/>
                     <connections>
+                        <outlet property="tableView" destination="7oA-ZB-hAB" id="JTg-Td-gIe"/>
                         <segue destination="B3J-z4-irY" kind="show" identifier="goToProfile" id="dbW-xz-9xd"/>
                         <segue destination="nCR-ml-jhy" kind="show" identifier="goToJournal" id="NkD-NI-U57"/>
                         <segue destination="TkN-qj-980" kind="show" identifier="goToSettings" id="Uln-WJ-5c6"/>

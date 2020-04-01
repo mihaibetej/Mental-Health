@@ -37,11 +37,15 @@ class MoreViewController: UIViewController {
         
         static let all: [Screen] = [.profile, .journal, .settings, .contact]
     }
+    
+    @IBOutlet var tableView: UITableView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        tableView.tableFooterView = UIView(frame: .zero)
     }
     
 
@@ -80,23 +84,5 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         //extract selectedDetails from model
         performSegue(withIdentifier: Screen.all[indexPath.row].segueIdentifier, sender: self)
-    }
-    
-    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-
-        let result = UIView()
-
-        // recreate insets from existing ones in the table view
-        let insets = tableView.separatorInset
-        let width = tableView.bounds.width - insets.left - insets.right
-        let sepFrame = CGRect(x: insets.left, y: -0.5, width: width, height: 0.5)
-
-        // create layer with separator, setting color
-        let sep = CALayer()
-        sep.frame = sepFrame
-        sep.backgroundColor = tableView.separatorColor?.cgColor
-        result.layer.addSublayer(sep)
-
-        return result
     }
 }
