@@ -2,29 +2,6 @@
 import firebase, { db } from '../db';
 import { getDateKey } from '../utils/helpers';
 
-const defaultAnswers = [
-  {
-    title: 'Bad',
-    value: 0,
-  },
-  {
-    title: 'Mmm',
-    value: 1,
-  },
-  {
-    title: 'Ok',
-    value: 2,
-  },
-  {
-    title: 'Good',
-    value: 3,
-  },
-  {
-    title: 'Awesome',
-    value: 4,
-  },
-];
-
 // eslint-disable-next-line
 export const setAnswers = async (values, userId) => {
   db.collection('users')

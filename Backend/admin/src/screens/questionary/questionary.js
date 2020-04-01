@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'antd';
-import { keys } from 'lodash';
+import { keys, find } from 'lodash';
 
 import Slider from '../../components/slider';
 import { AuthContext } from '../../contexts';
@@ -11,9 +11,11 @@ import { setAnswers } from '../../services/answers';
 const submitQuestions = ({ formValues, questions, userID }) => {
   const answers = keys(formValues).reduce((acc, questionID) => {
     const value = formValues[questionID];
+    console.log('Q ID', questionID);
 
     if (value) {
-      const question = questions[questionID];
+      const question = find(questions, { id: questionID });
+      console.log('QUESTION', question);
       const answer = {
         answer_id: value,
         answer_value: question.answers[value].title,
@@ -39,7 +41,7 @@ const submitQuestions = ({ formValues, questions, userID }) => {
   return answers;
 };
 
-const Questions = () => {
+const Questionary = () => {
   const [questions, setQuestions] = useState([]);
   const [form] = Form.useForm();
 
@@ -63,25 +65,23 @@ const Questions = () => {
           <Form name="add-question" form={form} onFinish={onFinish(userID)}>
             <div style={{ padding: 15 }}>
               <h1>Chestionar:</h1>
-              {keys(questions).map((questionID) => {
-                const question = questions[questionID];
-
-                const { body, answers } = question;
+              {questions.map((question) => {
+                const { body, answers, id } = question;
                 const min = 0;
                 const max = answers.length - 1;
 
                 return (
-                  <div key={questionID}>
+                  <div key={id}>
                     <br />
                     <p>{body}</p>
                     <div>
-                      <Form.Item name={questionID}>
+                      <Form.Item name={id}>
                         <Slider
                           {...{
                             min,
                             max,
                             options: answers.map((o) => o.title),
-                            name: questionID,
+                            name: id,
                           }}
                         />
                       </Form.Item>
@@ -102,4 +102,4 @@ const Questions = () => {
   );
 };
 
-export default withAuthorization(Questions);
+export default withAuthorization(Questionary);
