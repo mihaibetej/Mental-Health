@@ -5,6 +5,7 @@ import { keys } from 'lodash';
 import Slider from '../../components/slider';
 import { withAuthorization } from '../../hoc';
 import { getQuestions } from '../../services/questions';
+import { setAnswers } from '../../services/answers';
 
 const submitQuestions = (formValues, questions) => {
   const answers = keys(formValues).reduce((acc, questionID) => {
@@ -29,6 +30,7 @@ const submitQuestions = (formValues, questions) => {
     answers,
   });
 
+  setAnswers(answers);
   return answers;
 };
 
@@ -61,7 +63,7 @@ const Questions = () => {
           return (
             <div>
               <br />
-              {body}
+              <p>{body}</p>
               <div>
                 <Form.Item name={questionID}>
                   <Slider
