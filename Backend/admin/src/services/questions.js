@@ -1,7 +1,7 @@
-import {db} from "../db"
+import { db } from '../db';
 
-export const getQuestions =  async () => {
-  const snapshot = await db.collection('questions').get()
-  return snapshot.docs.map(doc => doc.data());
-}
-
+// eslint-disable-next-line
+export const getQuestions = async () => {
+  const snapshot = await db.collection('questions').get();
+  return snapshot.docs.map((doc) => doc.data());
+};

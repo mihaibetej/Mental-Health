@@ -1,7 +1,7 @@
-import React from 'react'
-import {Button, Form, Input} from 'antd';
-import {useHistory} from "react-router"
-import {login, loginOauth,} from '../../db/auth';
+import React from 'react';
+import { Button, Form, Input } from 'antd';
+import { useHistory } from 'react-router';
+import { login } from '../../db/auth';
 
 const layout = {
   labelCol: { span: 8 },
@@ -15,13 +15,15 @@ const Login = () => {
   const history = useHistory();
 
   const onFinish = ({ email, password }) => {
-    login(email, password).then(() => {
-      console.log('Success:');
-      history.push('/questions')
-    }).catch(e => console.log('display login fail error message'))
+    login(email, password)
+      .then(() => {
+        console.log('Success:');
+        history.push('/questions');
+      })
+      .catch(() => console.log('display login fail error message'));
   };
 
-  const onFinishFailed = errorInfo => {
+  const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
 
@@ -38,7 +40,7 @@ const Login = () => {
         name="email"
         rules={[{ required: true, message: 'Please input your email!' }]}
       >
-        <Input/>
+        <Input />
       </Form.Item>
 
       <Form.Item
@@ -46,7 +48,7 @@ const Login = () => {
         name="password"
         rules={[{ required: true, message: 'Please input your password!' }]}
       >
-        <Input.Password/>
+        <Input.Password />
       </Form.Item>
 
       <Form.Item {...tailLayout}>
