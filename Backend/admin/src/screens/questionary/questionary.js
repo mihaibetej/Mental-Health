@@ -11,11 +11,9 @@ import { setAnswers } from '../../services/answers';
 const submitQuestions = ({ formValues, questions, userID }) => {
   const answers = keys(formValues).reduce((acc, questionID) => {
     const value = formValues[questionID];
-    console.log('Q ID', questionID);
 
     if (value) {
       const question = find(questions, { id: questionID });
-      console.log('QUESTION', question);
       const answer = {
         answer_value: value,
         answer_title: question.answers[value].title,
