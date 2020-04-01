@@ -77,6 +77,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.font = .systemFont(ofSize: 24, weight: .light)
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = SwiftDisclosureIndicator(frame: CGRect(x: 0, y: 0, width: 16, height: 24))
+        cell.selectionStyle = .none
         
         return cell
     }
