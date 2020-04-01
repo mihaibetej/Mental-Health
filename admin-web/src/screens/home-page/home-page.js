@@ -1,5 +1,13 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const HomePage = () => <div>First Page in application</div>;
+const Text = styled.div`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+
+const HomePage = () => <Text>First Page in application</Text>;
 
 export default HomePage;
