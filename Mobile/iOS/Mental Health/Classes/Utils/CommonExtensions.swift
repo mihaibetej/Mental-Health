@@ -45,3 +45,6 @@ extension UIImage {
         
 }
 
+extension UIColor {
+    static let mhBlue = #colorLiteral(red: 0.1294117647, green: 0.4901960784, blue: 0.7921568627, alpha: 1)
+}
