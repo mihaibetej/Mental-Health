@@ -1,5 +1,5 @@
-import formatISO from 'date-fns/formatISO'
+import formatISO from 'date-fns/formatISO';
 
 export const getDateKey = () => {
-  return formatISO(Date.now(), { representation: 'date' })
-}
+  return formatISO(Date.now(), { representation: 'date' });
+};
