@@ -1,50 +1,33 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'antd';
-import { keys } from 'lodash';
+import { useHistory } from 'react-router';
+import { find, get } from 'lodash';
 
-import Slider from '../../components/slider';
-import { AuthContext } from '../../contexts';
+// eslint-disable-next-line
+import { List, notification, Popconfirm, Typography, Button } from 'antd';
+
 import { withAuthorization } from '../../hoc';
-import { getQuestions } from '../../services/questions';
-import { setAnswers } from '../../services/answers';
+import { deleteQuestion, getQuestions } from '../../services/questions';
 
-const submitQuestions = ({ formValues, questions, userID }) => {
-  const answers = keys(formValues).reduce((acc, questionID) => {
-    const value = formValues[questionID];
-
-    if (value) {
-      const question = questions[questionID];
-      const answer = {
-        answer_id: value,
-        answer_value: question.answers[value].title,
-        question_body: question.body,
-        question_id: questionID,
-      };
-
-      return [...acc, answer];
-    }
-
-    return acc;
-  }, []);
-
-  console.log('Submitting to server: !!!!!', {
-    answers,
-    userID,
-  });
-
-  if (userID) {
-    setAnswers(answers, userID);
-  }
-
-  return answers;
-};
+import './questions.css';
 
 const Questions = () => {
+  const history = useHistory();
   const [questions, setQuestions] = useState([]);
-  const [form] = Form.useForm();
 
-  const onFinish = (userID) => (formValues) => {
-    submitQuestions({ formValues, questions, userID });
+  const deleteNotification = (id) => {
+    const question = get(find(questions, { id }), 'body');
+    notification.open({
+      message: 'Am sters cu succes intrebarea:',
+      description: question,
+    });
+  };
+
+  const handleEdit = (questionId) => () => {
+    history.push(`questions/${questionId}/edit`);
+  };
+
+  const handleCreate = () => {
+    history.push('questions/create');
   };
 
   useEffect(() => {
@@ -54,51 +37,53 @@ const Questions = () => {
     runEffect();
   }, []);
 
+  const confirm = (questionId) => () => {
+    deleteQuestion(questionId).then(async () => {
+      setQuestions(await getQuestions());
+      deleteNotification(questionId);
+    });
+  };
+
   return (
-    <AuthContext.Consumer>
-      {(authUser) => {
-        const userID = authUser.uid;
-
-        return (
-          <Form name="add-question" form={form} onFinish={onFinish(userID)}>
-            <div style={{ padding: 15 }}>
-              <h1>Chestionar:</h1>
-              {keys(questions).map((questionID) => {
-                const question = questions[questionID];
-
-                const { body, answers } = question;
-                const min = 0;
-                const max = answers.length - 1;
-
-                return (
-                  <div key={questionID}>
-                    <br />
-                    <p>{body}</p>
-                    <div>
-                      <Form.Item name={questionID}>
-                        <Slider
-                          {...{
-                            min,
-                            max,
-                            options: answers.map((o) => o.title),
-                            name: questionID,
-                          }}
-                        />
-                      </Form.Item>
-                    </div>
-                  </div>
-                );
-              })}
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
-            </div>
-          </Form>
-        );
-      }}
-    </AuthContext.Consumer>
+    <div className="questions-wrapper">
+      <List
+        className="questions-list"
+        bordered
+        header={
+          // eslint-disable-next-line
+          <>
+            <Typography.Title>Intrebari chestionar:</Typography.Title>
+            <Button type="dashed" onClick={handleCreate}>
+              Creaza o intrebare noua
+            </Button>
+          </>
+        }
+        itemLayout="horizontal"
+        dataSource={questions}
+        renderItem={({ body, id }, idx) => (
+          <List.Item
+            actions={[
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                edit
+              </a>,
+              <Popconfirm
+                title="Esti sigur ca vrei sa stergi aceasta intrebare?"
+                onConfirm={confirm(id)}
+                okText="Da"
+                cancelText="Nu"
+              >
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href="#">delete</a>
+              </Popconfirm>,
+            ]}
+          >
+            <Typography.Text strong>{idx + 1}</Typography.Text>
+            {`. ${body}`}
+          </List.Item>
+        )}
+      />
+    </div>
   );
 };
 

@@ -1,5 +1,6 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Form } from 'antd';
+import QuestionForm from './question-form';
 import { withAuthorization } from '../../hoc';
 import { createQuestion } from '../../services/questions';
 
@@ -11,18 +12,7 @@ const AddQuestion = () => {
     form.resetFields();
   };
 
-  return (
-    <Form name="add-question" form={form} onFinish={onFinish}>
-      <Form.Item name="body" label="Question Title">
-        <Input />
-      </Form.Item>
-      <Form.Item>
-        <Button type="primary" htmlType="submit">
-          Add question
-        </Button>
-      </Form.Item>
-    </Form>
-  );
+  return <QuestionForm form={form} onFinish={onFinish} />;
 };
 
 export default withAuthorization(AddQuestion);
