@@ -1,13 +1,19 @@
-import firebase from 'firebase/firebase';
-import { db } from '../db';
+// import firebase from 'firebase/firebase';
+import firebase, { db } from '../db';
+import { getDateKey } from '../utils/helpers';
+
 
 // eslint-disable-next-line
-export const setAnswers = async (values) => {
-  const answers = await db
+export const setAnswers = async (values, userId) => {
+  db
     .collection('users')
-    .doc('H5Vrh55coIzNDCPNrNQ8')
+    .doc(userId)
     .collection('answers')
-    .doc(firebase.firestore.FieldValue.serverTimestamp());
+    .doc(getDateKey())
+    .set({
+      created: firebase.firestore.FieldValue.serverTimestamp(),
+      items: values
+    })
 
-  console.log('setAnswers -> answers', answers);
+  // console.log('setAnswers -> answers', answers);
 };

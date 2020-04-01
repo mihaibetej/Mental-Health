@@ -30,7 +30,7 @@ const submitQuestions = (formValues, questions) => {
     answers,
   });
 
-  setAnswers(answers);
+  setAnswers(answers, 'H5Vrh55coIzNDCPNrNQ8');
   return answers;
 };
 
@@ -61,7 +61,7 @@ const Questions = () => {
           const max = answers.length - 1;
 
           return (
-            <div>
+            <div key={questionID}>
               <br />
               <p>{body}</p>
               <div>
