@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.db.mobile.mental_health.R
+import kotlinx.android.synthetic.main.fragment_more.*
 
 class MoreFragment : Fragment() {
 
@@ -22,9 +23,8 @@ class MoreFragment : Fragment() {
         moreViewModel =
                 ViewModelProviders.of(this).get(MoreViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_more, container, false)
-        val textView: TextView = root.findViewById(R.id.text_more)
         moreViewModel.text.observe(viewLifecycleOwner, Observer {
-            textView.text = it
+            text_more.text = it
         })
         return root
     }

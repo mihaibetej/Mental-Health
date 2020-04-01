@@ -4,8 +4,9 @@ import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import com.db.mobile.mental_health.BR
+import javax.inject.Inject
 
-class LoginViewModel : BaseObservable() {
+class LoginViewModel @Inject constructor() : BaseObservable() {
     var loginError: String? = null
         @Bindable
         get
