@@ -10,8 +10,7 @@ const HeaderContent = () => {
         // todo: add logout button
         return !isNil(authUser) ? (
           <div style={{ color: 'white' }}>
-            {' '}
-            Welcome
+            Welcome &nbsp;
             {authUser && authUser.email}
           </div>
         ) : null;
