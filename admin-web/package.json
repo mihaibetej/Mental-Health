@@ -17,6 +17,12 @@
       "git add"
     ]
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-stage",
+      "pre-push": "npm run verify"
+    }
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
@@ -24,9 +30,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./",
     "verify": "npm run test && npm run lint",
-    "prettier": "prettier ./**/*.js --write",
-    "precommit": "lint-stage",
-    "prepush": "npm run verify"
+    "prettier": "prettier ./**/*.js --write"
   },
   "eslintConfig": {
     "extends": "react-app"

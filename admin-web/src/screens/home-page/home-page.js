@@ -11,6 +11,8 @@ const Text = styled.div`
 const HomePage = () => (
   <Text>
     First Page in application
+
+    
   </Text>
 );
 
