@@ -8,6 +8,10 @@ const Text = styled.div`
 `;
 
 
-const HomePage = () => <Text>First Page in application</Text>;
+const HomePage = () => (
+  <Text>
+    First Page in application
+  </Text>
+);
 
 export default HomePage;
