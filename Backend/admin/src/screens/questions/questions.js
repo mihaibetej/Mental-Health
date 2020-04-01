@@ -18,7 +18,9 @@ const Questions = () => {
   console.log('questions', questions)
   return (
     <div>
-      Questions Page
+      {questions.map(({ body }) => {
+        return <div>{body}</div>
+      })}
     </div>
   )
 }
