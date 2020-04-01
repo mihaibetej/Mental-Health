@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form } from 'antd';
+import { Form, notification } from 'antd';
 import { useParams } from 'react-router';
 
 import QuestionForm from './question-form';
@@ -18,8 +18,16 @@ const EditQuestion = () => {
     runEffect();
   }, []);
 
+  const editNotification = (body) => {
+    notification.open({
+      message: 'Am editat cu succes intrebarea:',
+      description: body,
+    });
+  };
+
   const onFinish = async ({ body }) => {
     await updateQuestion(id, body);
+    editNotification(body);
   };
 
   if (!question) return null;
