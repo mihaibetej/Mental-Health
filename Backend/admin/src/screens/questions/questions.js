@@ -1,10 +1,9 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
-import {withAuthorization} from "../../hoc";
-import {getQuestions} from "../../services/questions";
+import { withAuthorization } from '../../hoc';
+import { getQuestions } from '../../services/questions';
 
 const Questions = () => {
-
   const [questions, setQuestions] = useState([]);
 
   useEffect(() => {
@@ -14,8 +13,6 @@ const Questions = () => {
     runEffect();
   }, []);
 
-
-  console.log('questions', questions)
   return (
     <div>
       {questions.map(({ body }) => {

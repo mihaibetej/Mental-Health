@@ -1,4 +1,4 @@
-import {db} from "../db"
+import { db } from '../db';
 
 const defaultAnswers = [
   {
@@ -23,13 +23,11 @@ const defaultAnswers = [
   }
 ];
 
+// eslint-disable-next-line
 export const getQuestions = async () => {
-  const snapshot = await db.collection('questions').get()
-  return snapshot.docs.map(doc => {
-    console.log('Question ID', doc.id)
-    return doc.data()
-  });
-}
+  const snapshot = await db.collection('questions').get();
+  return snapshot.docs.map((doc) => doc.data());
+};
 
 export const createQuestion = async (body, answers = defaultAnswers) => {
   await db.collection('questions').add({
@@ -37,4 +35,3 @@ export const createQuestion = async (body, answers = defaultAnswers) => {
     answers,
   });
 }
-

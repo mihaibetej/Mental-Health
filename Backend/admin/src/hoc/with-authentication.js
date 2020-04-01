@@ -1,19 +1,20 @@
-import React, {useEffect, useState} from 'react';
-import {AuthContext} from '../contexts';
-import firebase from "../db"
+import React, { useEffect, useState } from 'react';
+import { AuthContext } from '../contexts';
+import firebase from '../db';
 
-const withAuthentication = Component => {
+const withAuthentication = (Component) => {
   const WithAuthentication = (props) => {
     const [authUser, setAuthUser] = useState(null);
 
     useEffect(() => {
-      const unsubscribe = firebase.auth().onAuthStateChanged(
-        authUser => {
-          authUser
-            ? setAuthUser(authUser)
-            : setAuthUser(null );
-        },
-      );
+      const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
+        if (user) {
+          setAuthUser(user);
+        } else {
+          setAuthUser(null);
+        }
+      });
+
       return unsubscribe;
     }, []);
 
@@ -21,8 +22,8 @@ const withAuthentication = Component => {
       <AuthContext.Provider value={authUser}>
         <Component {...props} />
       </AuthContext.Provider>
-    )
-  }
+    );
+  };
 
   return WithAuthentication;
 };
