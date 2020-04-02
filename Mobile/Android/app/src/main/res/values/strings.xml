@@ -4,4 +4,11 @@
     <string name="title_advices">Pentru tine</string>
     <string name="title_survey">Chestionar</string>
     <string name="title_more">Mai mult</string>
+
+    <!-- Survey -->
+    <string name="survey_positive_connotation">Foarte mult</string>
+    <string name="survey_negative_connotation">Deloc</string>
+    <string name="survey_submit">Trimite raspunsuri</string>
+    <string name="survey_description">Vrem sa te ajutam sa iti fie mai bine!\n Raspunde la chestionarul de mai jos si laasa-ne sa o facem!</string>
+
 </resources>
