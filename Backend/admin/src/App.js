@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
-import News,{ AddNewsItem, EditNewsItem } from './screens/news'; 
+import News, { AddNewsItem, EditNewsItem } from './screens/news';
 import Questionary from './screens/questionary';
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';

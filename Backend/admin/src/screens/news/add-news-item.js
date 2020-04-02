@@ -12,13 +12,13 @@ const AddNewsItem = () => {
       title,
       body,
       file: image.file
-    }
+    };
 
     await addNewsItem(newsItem);
     form.resetFields();
   };
 
-  return <NewsItemForm form={form} onFinish={onFinish} />
+  return <NewsItemForm form={form} onFinish={onFinish} />;
 };
 
 export default withAuthorization(AddNewsItem);

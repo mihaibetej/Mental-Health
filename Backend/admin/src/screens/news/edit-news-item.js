@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form} from 'antd';
+import { Form } from 'antd';
 import { useParams } from 'react-router';
 
 import NewsItemForm from './news-item-form';
@@ -18,13 +18,15 @@ const EditNewsItem = () => {
     runEffect();
   }, []);
 
-  const onFinish = async ({title, body,image}) => {
-    const newsItem= {
-        id,
-        title,
-        body,
-        file:image.file}
-    await updateNewsItem(newsItem);
+  const onFinish = async ({ title, body, image }) => {
+    const item = {
+      id,
+      title,
+      body,
+      file: image.file
+    };
+
+    await updateNewsItem(item);
   };
 
   if (!newsItem) return null;
