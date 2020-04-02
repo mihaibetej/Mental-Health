@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { withAuthorization } from '../../hoc';
-import { deleteAdvice, getAdvices } from '../../services/advices';
 import { List, notification, Popconfirm, Typography, Button } from 'antd';
 import { find, get } from 'lodash';
+
+import { withAuthorization } from '../../hoc';
+import { deleteAdvice, getAdvices } from '../../services/advices';
 import { formatDate } from '../../utils/helpers';
 
 const Advices = () => {

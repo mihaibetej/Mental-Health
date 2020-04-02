@@ -7,9 +7,13 @@ import './advice-form.css';
 const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
   const values = initialValues
     ? {
+        // eslint-disable-next-line indent
         body: initialValues.body,
+        // eslint-disable-next-line indent
         creationDate: moment(initialValues.creationDate.toDate()),
+        // eslint-disable-next-line indent
         publishDate: moment(initialValues.publishDate.toDate()),
+        // eslint-disable-next-line indent
       }
     : {};
 
@@ -41,6 +45,7 @@ AdviceForm.propTypes = {
   submitTitle: PropTypes.string,
   initialValues: PropTypes.object,
   form: PropTypes.object.isRequired,
+  onFinish: PropTypes.func.isRequired,
 };
 
 AdviceForm.defaultProps = {
