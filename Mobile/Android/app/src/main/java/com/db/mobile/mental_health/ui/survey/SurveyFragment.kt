@@ -6,40 +6,36 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import com.db.mobile.mental_health.R
+import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentSurveyBinding
-import com.db.mobile.mental_health.ui.survey.model.SurveyQuestion
+import javax.inject.Inject
 
 class SurveyFragment : Fragment() {
+    private var component: SurveyComponent? = null
+
+    @Inject
+    lateinit var viewModel: SurveyViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        component = getApplicationComponent(context!!)?.surveyComponent()?.create()
+        component?.inject(this)
+
+        val adapter = SurveyAdapter(viewModel)
+        viewModel.questions?.observe(viewLifecycleOwner, Observer {
+            adapter.items.addAll(it)
+            adapter.notifyDataSetChanged()
+        })
+
         val binding: FragmentSurveyBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
-        val adapter = SurveyAdapter()
-        adapter.items.addAll(
-            listOf(
-                SurveyQuestion(0, "1. Question 1"),
-                SurveyQuestion(1, "2. Question 2"),
-                SurveyQuestion(2, "3. Question 3")
-            )
-        )
-        adapter.surveyAnswerChanged = this::answerChanged
-        adapter.submitSurvey = {
-            //TODO submit question
-        }
-        adapter.notifyDataSetChanged()
         binding.adapter = adapter
         return binding.root
     }
-
-    private fun answerChanged(survey: SurveyQuestion, answer: Int) {
-        //TODO use
-    }
-
-
 
 }

@@ -1,13 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:padding="@dimen/activity_vertical_margin">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <Button
-        android:id="@+id/survey_submit"
+    <data>
+        <variable
+            name="viewModel"
+            type="com.db.mobile.mental_health.ui.survey.SurveyViewModel" />
+    </data>
+
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/survey_submit" />
+        android:padding="@dimen/activity_vertical_margin">
 
-</FrameLayout>
+        <Button
+            android:id="@+id/survey_submit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="@{viewModel.submitSurvey}"
+            android:text="@string/survey_submit" />
+
+    </FrameLayout>
+</layout>

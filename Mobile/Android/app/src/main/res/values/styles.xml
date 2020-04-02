@@ -16,4 +16,8 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="TextSmall" parent="Light">
+        <item name="android:textSize">12sp</item>
+    </style>
+
 </resources>
