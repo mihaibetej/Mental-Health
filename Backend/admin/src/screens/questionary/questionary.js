@@ -141,9 +141,9 @@ const Questionary = ({ authUser }) => {
 
             return (
               <div key={id}>
-                <Typography.Text strong>{`${
-                  nr + 1
-                }. ${questionText}`}</Typography.Text>
+                <Typography.Text strong>
+                  {`${nr + 1}. ${questionText}`}
+                </Typography.Text>
                 <Form.Item name={id}>
                   <Slider
                     {...{
