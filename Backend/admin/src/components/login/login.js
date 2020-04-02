@@ -26,7 +26,7 @@ const Login = () => {
       })
       .catch(() => {
         form.resetFields();
-        alert('Invalid combination of email and password!');
+        window.alert('Invalid combination of email and password!');
         console.log('display login fail error message');
       });
   };
