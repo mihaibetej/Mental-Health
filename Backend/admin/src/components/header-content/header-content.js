@@ -23,7 +23,7 @@ const HeaderContent = () => {
             }}
           >
             {' '}
-            Welcome
+            Welcome &nbsp;
             {authUser && authUser.email}
             <div style={{ display: 'flex', justifyContent: 'space-around' }}>
               <Link to="/questions" style={navigationLink}>
