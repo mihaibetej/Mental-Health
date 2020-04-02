@@ -1,47 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form, List, Typography, Spin } from 'antd';
-import { keys, find } from 'lodash';
 
 import Slider from '../../components/slider';
 import { withAuthorization } from '../../hoc';
 import { getQuestions } from '../../services/questions';
-import { setAnswers, getUserAnswers } from '../../services/answers';
+import { getUserAnswers } from '../../services/answers';
+
+import { handleSubmitAnswers } from './handle-functions';
 
 import './questionary.css';
-
-const submitAnswers = async ({ formValues, questions, userID }) => {
-  const answers = keys(formValues).reduce((acc, questionID) => {
-    const value = formValues[questionID];
-
-    if (value) {
-      const question = find(questions, { id: questionID });
-      const answer = {
-        answer_value: value,
-        answer_title: question.answers[value].title,
-        question_body: question.body,
-        question_id: questionID,
-      };
-
-      return [...acc, answer];
-    }
-
-    return acc;
-  }, []);
-
-  if (userID) {
-    await setAnswers(answers, userID);
-
-    return {
-      loading: false,
-      ok: true,
-    };
-  }
-
-  return {
-    loading: false,
-    ok: true,
-  };
-};
 
 const Questionary = ({ authUser }) => {
   const [questions, setQuestions] = useState({
@@ -88,21 +55,13 @@ const Questionary = ({ authUser }) => {
     runEffect();
   }, [userID]);
 
-  if (questions.loading) {
-    return (
-      <div className="questionary">
-        <Spin spinning={questions.loading} />
-      </div>
-    );
-  }
-
   const onFinish = async (formValues) => {
     setQuestions({
       ...questions,
       submiting: true,
     });
 
-    const result = await submitAnswers({
+    const result = await handleSubmitAnswers({
       formValues,
       questions: questions.values,
       userID,
@@ -115,6 +74,14 @@ const Questionary = ({ authUser }) => {
       });
     }
   };
+
+  if (questions.loading) {
+    return (
+      <div className="questionary">
+        <Spin spinning={questions.loading} />
+      </div>
+    );
+  }
 
   return (
     <Form
