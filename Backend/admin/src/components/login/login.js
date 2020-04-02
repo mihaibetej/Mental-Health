@@ -3,12 +3,14 @@ import { Button, Form, Input } from 'antd';
 import { useHistory } from 'react-router';
 import { login } from '../../db/auth';
 
+import './login.css';
+
 const layout = {
   labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  wrapperCol: { span: 10 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 12, span: 18 },
 };
 
 const Login = () => {
@@ -34,6 +36,7 @@ const Login = () => {
       initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
+      className="login-form"
     >
       <Form.Item
         label="Email"
