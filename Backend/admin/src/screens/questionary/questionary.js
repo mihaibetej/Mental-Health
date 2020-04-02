@@ -1,102 +1,142 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form } from 'antd';
-import { keys, find } from 'lodash';
+import { Button, Form, List, Typography, Spin } from 'antd';
 
 import Slider from '../../components/slider';
-import { AuthContext } from '../../contexts';
 import { withAuthorization } from '../../hoc';
 import { getQuestions } from '../../services/questions';
-import { setAnswers } from '../../services/answers';
+import { getUserAnswers } from '../../services/answers';
 
-const submitQuestions = ({ formValues, questions, userID }) => {
-  const answers = keys(formValues).reduce((acc, questionID) => {
-    const value = formValues[questionID];
+import { handleSubmitAnswers } from './handle-functions';
 
-    if (value) {
-      const question = find(questions, { id: questionID });
-      const answer = {
-        answer_value: value,
-        answer_title: question.answers[value].title,
-        question_body: question.body,
-        question_id: questionID,
-      };
+import './questionary.css';
 
-      return [...acc, answer];
-    }
-
-    return acc;
-  }, []);
-
-  console.log('Submitting to server: !!!!!', {
-    answers,
-    userID,
+const Questionary = ({ authUser }) => {
+  const [questions, setQuestions] = useState({
+    values: [],
+    initialValues: {},
+    loading: true,
+    error: false,
+    submiting: false,
   });
 
-  if (userID) {
-    setAnswers(answers, userID);
-  }
-
-  return answers;
-};
-
-const Questionary = () => {
-  const [questions, setQuestions] = useState([]);
   const [form] = Form.useForm();
-
-  const onFinish = (userID) => (formValues) => {
-    submitQuestions({ formValues, questions, userID });
-  };
+  const userID = authUser.uid;
 
   useEffect(() => {
     const runEffect = async () => {
-      setQuestions(await getQuestions());
+      const prevAnswers = await getUserAnswers(userID);
+      const newQuestions = await getQuestions();
+
+      if (prevAnswers.items && prevAnswers.items.length > 0) {
+        const { items } = prevAnswers;
+        const initialValues = items.reduce((acc, item) => {
+          const answ = {
+            [item.question_id]: item.answer_value,
+          };
+
+          return {
+            ...acc,
+            ...answ,
+          };
+        }, {});
+
+        setQuestions({
+          values: newQuestions,
+          initialValues,
+          loading: false,
+        });
+      } else {
+        setQuestions({
+          values: newQuestions,
+          loading: false,
+        });
+      }
     };
     runEffect();
-  }, []);
+  }, [userID]);
+
+  const onFinish = async (formValues) => {
+    setQuestions({
+      ...questions,
+      submiting: true,
+    });
+
+    const result = await handleSubmitAnswers({
+      formValues,
+      questions: questions.values,
+      userID,
+    });
+
+    if (result.ok) {
+      setQuestions({
+        ...questions,
+        submiting: false,
+      });
+    }
+  };
+
+  if (questions.loading) {
+    return (
+      <div className="questionary">
+        <Spin spinning={questions.loading} />
+      </div>
+    );
+  }
 
   return (
-    <AuthContext.Consumer>
-      {(authUser) => {
-        const userID = authUser.uid;
+    <Form
+      initialValues={questions.initialValues}
+      name="answer-question"
+      className="questionary"
+      form={form}
+      onFinish={onFinish}
+    >
+      <div className="questionary">
+        <List
+          className="questionary__list"
+          bordered
+          header={
+            // eslint-disable-next-line
+            <Typography.Title>Chestionar:</Typography.Title>
+          }
+          itemLayout="horizontal"
+          dataSource={questions.values}
+          renderItem={(question, nr) => {
+            const { body: questionText, answers, id } = question;
+            const min = 0;
+            const max = answers.length - 1;
 
-        return (
-          <Form name="add-question" form={form} onFinish={onFinish(userID)}>
-            <div style={{ padding: 15 }}>
-              <h1>Chestionar:</h1>
-              {questions.map((question) => {
-                const { body, answers, id } = question;
-                const min = 0;
-                const max = answers.length - 1;
-
-                return (
-                  <div key={id}>
-                    <br />
-                    <p>{body}</p>
-                    <div>
-                      <Form.Item name={id}>
-                        <Slider
-                          {...{
-                            min,
-                            max,
-                            options: answers.map((o) => o.title),
-                            name: id,
-                          }}
-                        />
-                      </Form.Item>
-                    </div>
-                  </div>
-                );
-              })}
-              <Form.Item>
-                <Button type="primary" htmlType="submit">
-                  Submit
-                </Button>
-              </Form.Item>
-            </div>
-          </Form>
-        );
-      }}
-    </AuthContext.Consumer>
+            return (
+              <div key={id}>
+                <Typography.Text strong>
+                  {`${nr + 1}. ${questionText}`}
+                </Typography.Text>
+                <Form.Item name={id}>
+                  <Slider
+                    {...{
+                      min,
+                      max,
+                      options: answers.map((o) => o.title),
+                      name: id,
+                    }}
+                  />
+                </Form.Item>
+              </div>
+            );
+          }}
+        />
+        <Form.Item className="questionary__actions">
+          <Button
+            disabled={questions.submiting}
+            loading={questions.submiting}
+            type="primary"
+            htmlType="submit"
+          >
+            Submit
+          </Button>
+        </Form.Item>
+      </div>
+    </Form>
   );
 };
 
