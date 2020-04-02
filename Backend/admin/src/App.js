@@ -6,6 +6,7 @@ import Questions, { AddQuestion, EditQuestion } from './screens/questions';
 import Questionary from './screens/questionary';
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
+import Navigation from './components/navigation';
 import Page from './components/page';
 
 import 'antd/dist/antd.css';
@@ -18,7 +19,9 @@ function App() {
     <Router>
       <Layout>
         <Header>
-          <HeaderContent />
+          <HeaderContent>
+            <Navigation />
+          </HeaderContent>
         </Header>
         <Content>
           <Page>

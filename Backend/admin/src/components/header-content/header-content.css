@@ -1,0 +1,7 @@
+.header-content {
+  display: flex;
+}
+
+.header-content__navigation {
+  margin-left: 40px;
+}
