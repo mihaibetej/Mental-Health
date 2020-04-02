@@ -27,6 +27,8 @@
 		27A2F0F6242F9904009A80D7 /* CommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0F5242F9903009A80D7 /* CommonExtensions.swift */; };
 		27A2F0F8242F991C009A80D7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0F7242F991C009A80D7 /* Utils.swift */; };
 		27A2F0FB242F99C4009A80D7 /* MHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0FA242F99C4009A80D7 /* MHSlider.swift */; };
+		27CEDDCE2436167F00BA5DEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */; };
+		49140A0271FBD22CCCDB00E6 /* Pods_Mental_Health.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */; };
 		6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B742242F8A1400388A6D /* FeedTableViewCell.swift */; };
 		6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B744242F935800388A6D /* FeedDetailViewController.swift */; };
 		6367B7472433FADD00388A6D /* SwiftDisclosureIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */; };
@@ -38,10 +40,10 @@
 		6367B75E2433FD4500388A6D /* JournalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B75D2433FD4500388A6D /* JournalViewController.swift */; };
 		6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7602433FD8F00388A6D /* ProfileViewController.swift */; };
 		6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7622433FD9C00388A6D /* SettingsViewController.swift */; };
+		6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */; };
 		BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6BF6F324351D690096B11C /* ExpandableList.storyboard */; };
 		BEB6CBB124351F1900DB59D2 /* Journal.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB6CBB024351F1900DB59D2 /* Journal.json */; };
 		BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */; };
-		6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */; };
 		BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */; };
 		BED2B7F224327A000035C130 /* Advices.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F124327A000035C130 /* Advices.json */; };
 		BED2B7F424327A110035C130 /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F324327A110035C130 /* Messages.json */; };
@@ -71,6 +73,7 @@
 		27A2F0F5242F9903009A80D7 /* CommonExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonExtensions.swift; sourceTree = "<group>"; };
 		27A2F0F7242F991C009A80D7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		27A2F0FA242F99C4009A80D7 /* MHSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHSlider.swift; sourceTree = "<group>"; };
+		27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6367B742242F8A1400388A6D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		6367B744242F935800388A6D /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDisclosureIndicator.swift; sourceTree = "<group>"; };
@@ -82,14 +85,17 @@
 		6367B75D2433FD4500388A6D /* JournalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewController.swift; sourceTree = "<group>"; };
 		6367B7602433FD8F00388A6D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6367B7622433FD9C00388A6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
+		ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mental_Health.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.debug.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.debug.xcconfig"; sourceTree = "<group>"; };
 		BE6BF6F324351D690096B11C /* ExpandableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandableList.storyboard; sourceTree = "<group>"; };
 		BEB6CBB024351F1900DB59D2 /* Journal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Journal.json; sourceTree = "<group>"; };
 		BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToExpandableListViewController.swift; sourceTree = "<group>"; };
-		6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewController.swift; sourceTree = "<group>"; };
 		BED2B7F124327A000035C130 /* Advices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Advices.json; sourceTree = "<group>"; };
 		BED2B7F324327A110035C130 /* Messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		BED2B7F5243281A00035C130 /* ExpandableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListCell.swift; sourceTree = "<group>"; };
+		D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.release.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,12 +103,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				49140A0271FBD22CCCDB00E6 /* Pods_Mental_Health.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2597E5128CC99241E5C78583 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		2717C1012432A36D003C6A29 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,6 +131,8 @@
 			children = (
 				27A2F0C2242E4790009A80D7 /* Mental Health */,
 				27A2F0C1242E4790009A80D7 /* Products */,
+				587FD450824EBC9D1D5CAB5E /* Pods */,
+				2597E5128CC99241E5C78583 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +150,7 @@
 				27A2F0D7242E5807009A80D7 /* Classes */,
 				27A2F0DF242E58DB009A80D7 /* Resources */,
 				27A2F0D1242E4791009A80D7 /* Info.plist */,
+				27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */,
 			);
 			path = "Mental Health";
 			sourceTree = "<group>";
@@ -256,6 +274,16 @@
 			path = "Custon controls";
 			sourceTree = "<group>";
 		};
+		587FD450824EBC9D1D5CAB5E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */,
+				D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */,
+			);
+			name = Pods;
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		6367B7502433FD2400388A6D /* Contact */ = {
 			isa = PBXGroup;
 			children = (
@@ -317,9 +345,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 27A2F0D4242E4791009A80D7 /* Build configuration list for PBXNativeTarget "Mental Health" */;
 			buildPhases = (
+				58350F99704694BBDD096A01 /* [CP] Check Pods Manifest.lock */,
 				27A2F0BC242E4790009A80D7 /* Sources */,
 				27A2F0BD242E4790009A80D7 /* Frameworks */,
 				27A2F0BE242E4790009A80D7 /* Resources */,
+				8F2E466BE3C3AFA131818093 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -380,6 +410,7 @@
 				6367B74B2433FC4D00388A6D /* Journal.storyboard in Resources */,
 				27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */,
 				27A2F0E1242E5909009A80D7 /* Feed.storyboard in Resources */,
+				27CEDDCE2436167F00BA5DEC /* GoogleService-Info.plist in Resources */,
 				6367B74D2433FC5900388A6D /* Settings.storyboard in Resources */,
 				27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */,
 				6367B74F2433FC6C00388A6D /* Contact.storyboard in Resources */,
@@ -388,6 +419,48 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		58350F99704694BBDD096A01 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Mental Health-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F2E466BE3C3AFA131818093 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mental Health/Pods-Mental Health-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Mental Health/Pods-Mental Health-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Mental Health/Pods-Mental Health-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		27A2F0BC242E4790009A80D7 /* Sources */ = {
@@ -558,6 +631,7 @@
 		};
 		27A2F0D5242E4791009A80D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -568,7 +642,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.toiletpaperdispensers.Mental-Health";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toiletpaperdispensers.4MedicAll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -577,6 +651,7 @@
 		};
 		27A2F0D6242E4791009A80D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -587,7 +662,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.toiletpaperdispensers.Mental-Health";
+				PRODUCT_BUNDLE_IDENTIFIER = com.toiletpaperdispensers.4MedicAll;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

@@ -1,5 +1,10 @@
+#<====================iOS ignore==================>
 #Exclude UserInterfaceState
 UserInterfaceState.xcuserstate
 #Exclude personal Xcode user settings
 xcuserdata/
 .DS_Store
+*.ipa
+*.dSYM.zip
+*.dSYM
+#<====================iOS ignore==================/>
