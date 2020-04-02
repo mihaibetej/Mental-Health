@@ -1,5 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Route,
+  Switch,
+  Redirect,
+} from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
@@ -17,6 +22,7 @@ const { Header, Footer, Content } = Layout;
 function App() {
   return (
     <Router>
+      <Redirect to="/questions" />
       <Layout>
         <Header>
           <HeaderContent>
