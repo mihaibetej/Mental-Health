@@ -37,7 +37,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint ./",
     "verify": "npm run test && npm run lint",
-    "prettier": "prettier ./**/*.js --write"
+    "prettier": "prettier ./**/*.js --write",
+    "deploy": "npm run build && firebase deploy --only hosting:mental-health-admin"
   },
   "eslintConfig": {
     "extends": "react-app"
