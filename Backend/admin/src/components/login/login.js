@@ -26,7 +26,8 @@ const Login = () => {
       })
       .catch(() => {
         form.resetFields();
-        window.alert('Invalid combination of email and password!');
+        /*eslint no-undef: "error"*/
+        alert('Invalid combination of email and password!');
         console.log('display login fail error message');
       });
   };
