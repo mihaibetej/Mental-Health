@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
+import Advices, { CreateAdvice, EditAdvice } from './screens/advices';
 import Questionary from './screens/questionary';
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
@@ -29,6 +30,9 @@ function App() {
             <Route exact path="/login" component={Login} />
             <Route exact path="/questionary" component={Questionary} />
             <Switch>
+              <Route exact path="/advices" component={Advices} />
+              <Route exact path="/advices/create" component={CreateAdvice} />
+              <Route exact path="/advices/:id/edit" component={EditAdvice} />
               <Route exact path="/questions" component={Questions} />
               <Route exact path="/questions/create" component={AddQuestion} />
               <Route
