@@ -10,7 +10,7 @@ import UIKit
 
 class SendAnswersTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var answerButton: UIButton!
+    @IBOutlet weak var answerButton: MHButton!
     
     override func awakeFromNib() {
         super.awakeFromNib()

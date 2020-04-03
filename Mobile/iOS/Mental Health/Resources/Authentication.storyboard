@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -20,13 +19,13 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-qh-neX">
                                 <rect key="frame" x="20" y="265" width="374" height="210"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Nume utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="vKM-yP-o38"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="username"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="LTe-rI-22b"/>
                                         </connections>
@@ -37,14 +36,13 @@
                                             <constraint firstAttribute="height" constant="52" id="WF0-Gb-0as"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-rT-MQH">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-rT-MQH" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="158" width="374" height="52"/>
-                                        <color key="backgroundColor" name="MHDarkBlue"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="Oi0-IN-NZ8"/>
                                         </constraints>
@@ -97,9 +95,4 @@
             <point key="canvasLocation" x="53.623188405797109" y="4.6875"/>
         </scene>
     </scenes>
-    <resources>
-        <namedColor name="MHDarkBlue">
-            <color red="0.094117647058823528" green="0.4823529411764706" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
-    </resources>
 </document>

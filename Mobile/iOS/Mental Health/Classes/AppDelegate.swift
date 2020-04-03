@@ -21,8 +21,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         FirebaseApp.configure()
         
         // Customize UI
-        UINavigationBar.appearance().tintColor = UIColor(named: "MHDarkBlue")
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "MHDarkBlue") ?? .blue]
+        UITabBar.appearance().tintColor = .mhBlue
+        UINavigationBar.appearance().tintColor = .mhBlue
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor.mhBlue]
         
         // Go go go...
         return true

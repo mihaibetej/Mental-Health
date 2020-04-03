@@ -8,7 +8,7 @@
 
 import UIKit
 
-// MARK: UIImage
+// MARK: - UIImage
 
 extension UIImage {
     
@@ -42,8 +42,30 @@ extension UIImage {
         
         self.init(cgImage: cgImage)
     }
+    
+    convenience init?(color: UIColor) {
+        let rect = CGRect(x: 0.0, y: 0.0, width: 1.0, height: 1.0)
+        UIGraphicsBeginImageContext(rect.size)
+        let context = UIGraphicsGetCurrentContext()
+
+        context?.setFillColor(color.cgColor)
+        context?.fill(rect)
+
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+
+        // Extract image
+        guard let cgImage = image?.resizableImage(withCapInsets: .zero).cgImage else {
+            return nil
+        }
+        
+        self.init(cgImage: cgImage)
+
+    }
         
 }
+
+// MARK: - UIColor
 
 extension UIColor {
     static let mhBlue = #colorLiteral(red: 0.1294117647, green: 0.4901960784, blue: 0.7921568627, alpha: 1)

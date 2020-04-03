@@ -9,6 +9,8 @@
 import Foundation
 import FirebaseAuth
 
+// MARK: - FeaturesTabBarViewModel
+
 class FeaturesTabBarViewModel {
             
     func startObservingAuthenticationEvents() {

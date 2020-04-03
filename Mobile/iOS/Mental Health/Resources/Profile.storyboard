@@ -96,22 +96,17 @@
                                     <outlet property="delegate" destination="eCr-GS-Lhv" id="0ab-xz-iTN"/>
                                 </connections>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55u-al-3gi">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="55u-al-3gi" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
                                 <rect key="frame" x="33" y="776" width="348" height="50"/>
                                 <color key="backgroundColor" name="MHDarkBlue"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="11R-fD-hz8"/>
                                     <constraint firstAttribute="width" constant="348" id="S4F-9Z-WTm"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                                 <state key="normal" title="Editare detalii">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="10"/>
-                                    </userDefinedRuntimeAttribute>
-                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="editDetailsWithSender:" destination="eCr-GS-Lhv" eventType="touchUpInside" id="Oeg-KP-7Dp"/>
                                 </connections>

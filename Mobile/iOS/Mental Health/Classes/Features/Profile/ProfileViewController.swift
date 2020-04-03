@@ -31,7 +31,7 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         tableView.tableFooterView = UIView(frame: .zero)
         
-        profileImageView.layer.borderColor = UIColor(named: "MHDarkBlue")?.cgColor
+        profileImageView.layer.borderColor = UIColor.mhBlue.cgColor
         profileImageView.layer.borderWidth = 1
         profileImageView.layer.cornerRadius = 50
         profileImageViewContainer.layer.shadowColor = UIColor.black.cgColor

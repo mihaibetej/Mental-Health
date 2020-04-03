@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - FeaturesTabBarViewController
+
 class FeaturesTabBarViewController: UITabBarController {
 
     lazy var viewModel = FeaturesTabBarViewModel()

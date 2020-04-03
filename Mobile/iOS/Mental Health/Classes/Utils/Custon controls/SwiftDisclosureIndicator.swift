@@ -8,8 +8,10 @@
 
 import UIKit
 
+// MARK: - SwiftDisclosureIndicator
+
 class SwiftDisclosureIndicator: UIView {
-    var color = UIColor(named: "MHDarkBlue") ?? UIColor.blue
+    var color: UIColor = .mhBlue
     
     override init(frame: CGRect) {
         super.init(frame: frame)
