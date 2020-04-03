@@ -17,8 +17,8 @@ const AppRoutes = ({ authUser }) => {
       <Route exact path="/questions/create" component={AddQuestion} />
       <Route exact path="/questions/:id/edit" component={EditQuestion} />
 
-      <Route exact path="/answers" component={Answers}/>
-      <Route exact path="/answers/:userId" component={AnswersDetails}/>
+      <Route exact path="/answers" component={Answers} />
+      <Route exact path="/answers/:userId" component={AnswersDetails} />
 
       <Route exact path="/advices" component={Advices} />
       <Route exact path="/advices/create" component={CreateAdvice} />
