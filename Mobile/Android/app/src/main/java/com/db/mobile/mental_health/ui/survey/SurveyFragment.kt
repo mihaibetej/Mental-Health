@@ -35,6 +35,7 @@ class SurveyFragment : Fragment() {
         val binding: FragmentSurveyBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
         binding.adapter = adapter
+        binding.viewModel = viewModel
         return binding.root
     }
 
