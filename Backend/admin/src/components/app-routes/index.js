@@ -1,10 +1,9 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
 import { isNil } from 'lodash';
-
 import Login from '../login';
 import Questions, { AddQuestion, EditQuestion } from '../../screens/questions';
+import Answers, { AnswersDetails } from '../../screens/answers';
 import News, { AddNewsItem, EditNewsItem } from '../../screens/news';
 import Advices, { CreateAdvice, EditAdvice } from '../../screens/advices';
 import Questionary from '../../screens/questionary';
@@ -17,6 +16,9 @@ const AppRoutes = ({ authUser }) => {
       <Route exact path="/questions" component={Questions} />
       <Route exact path="/questions/create" component={AddQuestion} />
       <Route exact path="/questions/:id/edit" component={EditQuestion} />
+
+      <Route exact path="/answers" component={Answers}/>
+      <Route exact path="/answers/:userId" component={AnswersDetails}/>
 
       <Route exact path="/advices" component={Advices} />
       <Route exact path="/advices/create" component={CreateAdvice} />
@@ -31,6 +33,7 @@ const AppRoutes = ({ authUser }) => {
       <Route path="*">
         <Redirect to="/questions" />
       </Route>
+
     </Switch>
   ) : (
     <Switch>
