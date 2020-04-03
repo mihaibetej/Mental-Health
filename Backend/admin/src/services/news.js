@@ -14,40 +14,50 @@ export const getNewsItemById = async (id) => {
   return newsItem.data();
 };
 
-export const removeNewsItem = async (id) => {
-  const newsItemData = await getNewsItemById(id);
-  const imageRef = newsItemData.image && storage.refFromURL(newsItemData.image);
+export const removeImage=async(url)=>{
+  const imageRef = url && storage.refFromURL(url);
 
   if (imageRef) await imageRef.delete();
+};
+
+export const uploadImage=async(file)=>{
+  const fileName = uuidv4();
+  const imageRef = storageRef.child(fileName);
+  
+  await imageRef.put(file);
+  
+  return await imageRef.getDownloadURL();
+}
+
+export const removeNewsItem = async (id) => {
+  const newsItemData = await getNewsItemById(id);
+
+  await removeImage(newsItemData.image);
   await db.collection('news').doc(id).delete();
 };
 
-export const updateNewsItem = async (newsItem) => {
+export const updateNewsItem = async ({title,body,id,file}) => {
+  const newsItemData = await getNewsItemById(id);
+  await removeImage(newsItemData.image);
+  const url =await uploadImage(file);
+
   const item = {
-    title: newsItem.title,
-    body: newsItem.body,
-    date: new Date()
+    title,
+    body,
+    date: new Date(),
+    image:url
   };
 
-  await db.collection('news').doc(newsItem.id).update(item);
+  await db.collection('news').doc(id).update(item);
 };
 
-export const addNewsItem = async (item) => {
-  const fileName = uuidv4();
-  const imageRef = storageRef.child(fileName);
-  const task = imageRef.put(item.file);
+export const addNewsItem = async ({title,body,file}) => {
+  const url =await uploadImage(file);
 
-  task.on('state_changed',
-    () => { },
-    (error) => { console.log(error); },
-    () => {
-      task.snapshot.ref.getDownloadURL().then((url) => {
-        db.collection('news').add({
-          date: new Date(),
-          title: item.title,
-          body: item.body,
-          image: url
-        });
-      });
-    });
+  db.collection('news').add({
+    date: new Date(),
+    title,
+    body,
+    image: url
+  });    
 };
