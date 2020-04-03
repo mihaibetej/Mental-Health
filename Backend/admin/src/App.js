@@ -8,6 +8,7 @@ import {
 import { Layout } from 'antd';
 import Login from './components/login';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
+import News, { AddNewsItem, EditNewsItem } from './screens/news';
 import Advices, { CreateAdvice, EditAdvice } from './screens/advices';
 import Questionary from './screens/questionary';
 import { withAuthentication } from './hoc';
@@ -46,6 +47,9 @@ function App() {
                 path="/questions/:id/edit"
                 component={EditQuestion}
               />
+              <Route exact path="/news" component={News} />
+              <Route exact path="/news/create" component={AddNewsItem} />
+              <Route exact path="/news/:id/edit" component={EditNewsItem} />
             </Switch>
           </Page>
         </Content>
