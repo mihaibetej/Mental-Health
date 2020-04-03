@@ -22,7 +22,6 @@ const { Header, Footer, Content } = Layout;
 function App() {
   return (
     <Router>
-      <Redirect to="/questions" />
       <Layout>
         <Header>
           <HeaderContent>
@@ -31,17 +30,16 @@ function App() {
         </Header>
         <Content>
           <Page>
-            <Route exact path="/" component={() => <div>HOME PAGE</div>} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/questionary" component={Questionary} />
             <Switch>
-              <Route exact path="/questions" component={Questions} />
-              <Route exact path="/questions/create" component={AddQuestion} />
-              <Route
-                exact
-                path="/questions/:id/edit"
-                component={EditQuestion}
-              />
+              <Route exact path="/" component={() => <div>HOME PAGE</div>} />
+              <Route path="/login" component={Login} />
+              <Route path="/questionary" component={Questionary} />
+              <Route path="/questions" component={Questions} />
+              <Route path="/questions/create" component={AddQuestion} />
+              <Route path="/questions/:id/edit" component={EditQuestion} />
+              <Route path="*">
+                <Redirect to="/questions" />
+              </Route>
             </Switch>
           </Page>
         </Content>
