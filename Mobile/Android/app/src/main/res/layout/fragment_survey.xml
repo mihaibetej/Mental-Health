@@ -8,6 +8,10 @@
         <variable
             name="adapter"
             type="com.db.mobile.mental_health.ui.survey.SurveyAdapter" />
+
+        <variable
+            name="viewModel"
+            type="com.db.mobile.mental_health.ui.survey.SurveyViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -25,6 +29,14 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:itemCount="5"
             tools:listitem="@layout/item_survey_question" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

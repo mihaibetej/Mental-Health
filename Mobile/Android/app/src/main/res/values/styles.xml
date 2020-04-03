@@ -1,11 +1,15 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light">
         <!-- Customize your theme here. -->
-<!--        <item name="colorPrimary">@color/colorPrimary</item>-->
-<!--        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>-->
-<!--        <item name="colorAccent">@color/colorAccent</item>-->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <!-- Actionbar text color -->
+        <item name="android:textColorPrimary">@color/colorAccent</item>
+        <!-- Buttons style -->
+        <item name="android:buttonStyle">@style/SubmitButton</item>
     </style>
 
     <style name="Bold">
@@ -18,6 +22,11 @@
 
     <style name="TextSmall" parent="Light">
         <item name="android:textSize">12sp</item>
+    </style>
+
+    <style name="SubmitButton" parent="Widget.AppCompat.Button">
+        <item name="android:backgroundTint">@color/bg_button</item>
+        <item name="android:textColor">@color/colorPrimary</item>
     </style>
 
 </resources>
