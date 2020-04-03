@@ -14,20 +14,20 @@ export const getNewsItemById = async (id) => {
   return newsItem.data();
 };
 
-export const removeImage=async(url)=>{
+export const removeImage = async (url) => {
   const imageRef = url && storage.refFromURL(url);
 
   if (imageRef) await imageRef.delete();
 };
 
-export const uploadImage=async(file)=>{
+export const uploadImage = async (file) => {
   const fileName = uuidv4();
   const imageRef = storageRef.child(fileName);
-  
+
   await imageRef.put(file);
-  
-  return await imageRef.getDownloadURL();
-}
+
+  return imageRef.getDownloadURL();
+};
 
 export const removeNewsItem = async (id) => {
   const newsItemData = await getNewsItemById(id);
@@ -36,28 +36,28 @@ export const removeNewsItem = async (id) => {
   await db.collection('news').doc(id).delete();
 };
 
-export const updateNewsItem = async ({title,body,id,file}) => {
+export const updateNewsItem = async ({ title, body, id, file }) => {
   const newsItemData = await getNewsItemById(id);
   await removeImage(newsItemData.image);
-  const url =await uploadImage(file);
+  const url = await uploadImage(file);
 
   const item = {
     title,
     body,
     date: new Date(),
-    image:url
+    image: url,
   };
 
   await db.collection('news').doc(id).update(item);
 };
 
-export const addNewsItem = async ({title,body,file}) => {
-  const url =await uploadImage(file);
+export const addNewsItem = async ({ title, body, file }) => {
+  const url = await uploadImage(file);
 
   db.collection('news').add({
     date: new Date(),
     title,
     body,
-    image: url
-  });    
+    image: url,
+  });
 };
