@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
+import Answers, { AnswersDetails } from './screens/answers';
 import Questionary from './screens/questionary';
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
@@ -36,6 +37,10 @@ function App() {
                 path="/questions/:id/edit"
                 component={EditQuestion}
               />
+            </Switch>
+            <Switch>
+              <Route exact path="/answers" component={Answers}/>
+              <Route exact path="/answers/:userId" component={AnswersDetails}/>
             </Switch>
           </Page>
         </Content>
