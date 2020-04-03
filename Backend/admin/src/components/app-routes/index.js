@@ -8,6 +8,7 @@ import Questions, { AddQuestion, EditQuestion } from '../../screens/questions';
 import News, { AddNewsItem, EditNewsItem } from '../../screens/news';
 import Advices, { CreateAdvice, EditAdvice } from '../../screens/advices';
 import Questionary from '../../screens/questionary';
+import ForgotPassword from '../forgot-password';
 
 const AppRoutes = ({ authUser }) => {
   return (
@@ -36,6 +37,7 @@ const AppRoutes = ({ authUser }) => {
       ) : (
         <>
           <Route path="/login" component={Login} />
+          <Route path="/forgot-password" component={ForgotPassword} />
           <Route path="*">
             <Redirect to="/login" />
           </Route>

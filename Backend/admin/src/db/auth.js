@@ -14,6 +14,9 @@ export const logout = () => firebase.auth().signOut();
 export const login = (email, pw) =>
   firebase.auth().signInWithEmailAndPassword(email, pw);
 
+export const forgotPassword = (email) =>
+  firebase.auth().sendPasswordResetEmail(email);
+
 export const loginPopup = (provider) =>
   firebase
     .auth()
