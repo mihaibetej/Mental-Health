@@ -1,10 +1,6 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import { Layout } from 'antd';
-
 import { BrowserRouter as Router } from 'react-router-dom';
 import { Layout, Skeleton, Row } from 'antd';
-
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
 import Navigation from './components/navigation';
