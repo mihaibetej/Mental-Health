@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { List, Typography, Badge, Collapse, Row, Skeleton } from 'antd';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 import { takeRight, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
@@ -74,7 +74,7 @@ const renderTooltip = (questions) => (config) => {
 
   return (
     <ul className="tooltip">
-      {config.payload && config.payload.map((item, i) => {
+      {config.payload && config.payload.map((item) => {
         return (
           <li style={{ borderColor: item.stroke }} className="tooltip-item">
             <Badge status={getQuestionStatus(item.value)} />

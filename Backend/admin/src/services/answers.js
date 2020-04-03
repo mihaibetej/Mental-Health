@@ -1,7 +1,6 @@
 // import firebase from 'firebase/firebase';
 import firebase, { db } from '../db';
 import { getDateKey } from '../utils/helpers';
-import answers from '../screens/answers';
 
 export const usersSubscribe = (cb) =>
   db.collection('users').onSnapshot((snapshot) => {
