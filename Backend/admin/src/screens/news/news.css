@@ -1,8 +1,9 @@
 .content{
     display: flex;
     flex-wrap: wrap;
+    flex: 1 1 auto;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
 }
 
 .margin{
