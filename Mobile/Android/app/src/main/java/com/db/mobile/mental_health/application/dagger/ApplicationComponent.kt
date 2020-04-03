@@ -6,6 +6,8 @@ import com.db.mobile.mental_health.ui.login.dagger.LoginComponent
 import com.db.mobile.mental_health.ui.login.dagger.LoginModule
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
+import com.db.mobile.mental_health.ui.survey.SurveyComponent
+import com.db.mobile.mental_health.ui.survey.SurveyModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -17,14 +19,16 @@ fun getApplicationComponent(context: Context): ApplicationComponent? {
 }
 
 @Singleton
-@Component (
+@Component(
     modules = [
         ApplicationModule::class,
         LoginModule::class,
-        NewsFragmentModule::class
+        NewsFragmentModule::class,
+        SurveyModule::class
     ]
 )
 interface ApplicationComponent {
-    fun newsFragmentComponent() : NewsFragmentComponent.Factory
-    fun loginComponent() : LoginComponent.Factory
+    fun newsFragmentComponent(): NewsFragmentComponent.Factory
+    fun loginComponent(): LoginComponent.Factory
+    fun surveyComponent(): SurveyComponent.Factory
 }
