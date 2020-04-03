@@ -17,7 +17,6 @@ const News = () => {
     runEffect();
   }, []);
 
-
   const confirmDelete = (newsItemId) => () => {
     removeNewsItem(newsItemId).then(async () => {
       setNews(await getNews());
@@ -40,31 +39,27 @@ const News = () => {
       </Button>
       <div className="content">
         <Row justify="space-between">
-          {news && news.map(({ title, body, id, image }) => {
-            return (
-              <Col span={8}>
-                <Card
-                  className="margin"
-                  cover={(
-                    <Avatar
-                      shape="square"
-                      size={64}
-                      src={image}
-                    />
-                  )}
-                  actions={[
-                    <Typography.Text onClick={handleEdit(id)}>Edit</Typography.Text>,
-                    <Typography.Text onClick={confirmDelete(id)}>Stergere</Typography.Text>,
-                  ]}
-                >
-                  <Card.Meta
-                    title={title}
-                    description={body}
-                  />
-                </Card>
-              </Col>
-            );
-          })}
+          {news &&
+            news.map(({ title, body, id, image }) => {
+              return (
+                <Col span={8}>
+                  <Card
+                    className="margin"
+                    cover={<Avatar shape="square" size={64} src={image} />}
+                    actions={[
+                      <Typography.Text onClick={handleEdit(id)}>
+                        Edit
+                      </Typography.Text>,
+                      <Typography.Text onClick={confirmDelete(id)}>
+                        Stergere
+                      </Typography.Text>,
+                    ]}
+                  >
+                    <Card.Meta title={title} description={body} />
+                  </Card>
+                </Col>
+              );
+            })}
         </Row>
       </div>
     </>

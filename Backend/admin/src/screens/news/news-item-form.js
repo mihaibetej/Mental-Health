@@ -6,10 +6,10 @@ import './news-item-form.css';
 const NewsItemForm = ({ form, initialValues, onFinish }) => {
   const values = initialValues
     ? {
-      body: initialValues.body,
-      title: initialValues.title,
-      image: initialValues.image
-    }
+        body: initialValues.body,
+        title: initialValues.title,
+        image: initialValues.image,
+      }
     : {};
 
   return (
@@ -27,13 +27,8 @@ const NewsItemForm = ({ form, initialValues, onFinish }) => {
           <Input.TextArea />
         </Form.Item>
         <Form.Item name="image" label="Image">
-          <Upload
-            listType="picture-card"
-            beforeUpload={() => false}
-          >
-            <Button>
-              Incarca imagine
-            </Button>
+          <Upload listType="picture-card" beforeUpload={() => false}>
+            <Button>Incarca imagine</Button>
           </Upload>
         </Form.Item>
         <Form.Item>
