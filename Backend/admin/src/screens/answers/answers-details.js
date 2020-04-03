@@ -3,42 +3,16 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { List, Typography, Badge, Collapse, Row, Skeleton } from 'antd';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip 
 } from 'recharts';
-import { take, isEmpty } from 'lodash';
+import { takeRight, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { answersSubscribe, userSubscribe } from '../../services/answers';
 import { getQuestions } from '../../services/questions';
-
 import { getDateKey } from '../../utils/helpers';
+import theme from '../../utils/theme';
 import './answers.css';
-// import { calculateRating } from './answers-common';
-const calculateRating = (items) =>
-  items.reduce((acc, next) => acc + next.answer_value, 0)
-
-const getDailyStatus = (rating) => {
-  if (rating < 11) {
-    return 'error'
-  }
-
-  if (rating < 22) {
-    return 'warning'
-  }
-
-  return 'success'
-}
-
-const getQuestionStatus = (value) => {
-  if (value < 1) {
-    return 'error'
-  }
-
-  if (value < 3) {
-    return 'warning'
-  }
-
-  return 'success'
-}
+import { calculateRating, getQuestionStatus, getDailyStatus, getLineColor } from './answers-common';
 
 const QuestionsSet = ({ items }) => {
   /* eslint-disable */
@@ -83,30 +57,12 @@ const itemsToKeys = (items) =>
     return ({ ...acc, [next.question_id]: next.answer_value})
   }, {});
 
-const prepData = (answers) => {
+const prepData = (answers, questions) => {
   return answers.map(({ created, items }) => ({
     name: getDateKey(created.toDate()),
+    rating: calculateRating(items)/questions.length,
     ...itemsToKeys(items)
   }))
-};
-
-const getLineColor = (idx) => {
-  const colors = {
-    0: '#02082d',
-    1: '#52839b',
-    2: '#0f9e66',
-    3: '#3ed718',
-    4: '#55c72a',
-    5: '#966258',
-    6: '#c389be',
-    7: '#e25c54',
-    8: '#a2b8f3',
-    9: '#d2731a',
-    10: '#8b835b',
-    11: '#f5d141',
-  }
-
-  return colors[idx]
 };
 
 const getQuestionBody = (id, questions) =>
@@ -132,7 +88,7 @@ const renderTooltip = (questions) => (config) => {
 };
 
 const EvolutionChart = ({ answers, questions }) => {
-  const data = take(prepData(answers), 10)
+  const data = takeRight(prepData(answers, questions), 10)
   const questionsKeys = questions.map((x) => x.id)
 
   return (
@@ -152,6 +108,11 @@ const EvolutionChart = ({ answers, questions }) => {
       { questionsKeys.map((k, i) => (
         <Line key={k} type="monotone" dataKey={k} stroke={getLineColor(i)} />
       ))}
+      <Line key={"rating"}
+        type="monotone"
+        dataKey={"rating"}
+        stroke={theme.colors.primary}
+        strokeWidth={3} />
     </LineChart>
   )
 };
@@ -159,8 +120,7 @@ const EvolutionChart = ({ answers, questions }) => {
 EvolutionChart.propTypes = {
   answers: PropTypes.array.isRequired,
   questions: PropTypes.array.isRequired
-}
-
+};
 
 const AnswersDetails = () => {
   const { userId } = useParams();
@@ -189,7 +149,7 @@ const AnswersDetails = () => {
 
   return (
     <div>
-    { isEmpty(answers) 
+    { isEmpty(answers)
       ? (
         <Row>
           <Skeleton/>
