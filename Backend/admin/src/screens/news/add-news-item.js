@@ -18,7 +18,7 @@ const AddNewsItem = () => {
     const newsItem = {
       title,
       body,
-      file: image.file
+      file: image.file,
     };
 
     await addNewsItem(newsItem);

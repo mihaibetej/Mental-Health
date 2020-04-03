@@ -30,7 +30,7 @@ const EditNewsItem = () => {
       id,
       title,
       body,
-      file: image.file
+      file: image.file,
     };
 
     await updateNewsItem(item);
@@ -38,7 +38,9 @@ const EditNewsItem = () => {
   };
 
   if (!newsItem) return null;
-  return <NewsItemForm initialValues={newsItem} form={form} onFinish={onFinish} />;
+  return (
+    <NewsItemForm initialValues={newsItem} form={form} onFinish={onFinish} />
+  );
 };
 
 export default withAuthorization(EditNewsItem);

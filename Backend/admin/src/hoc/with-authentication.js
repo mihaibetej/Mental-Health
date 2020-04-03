@@ -5,13 +5,16 @@ import firebase from '../db';
 const withAuthentication = (Component) => {
   const WithAuthentication = (props) => {
     const [authUser, setAuthUser] = useState(null);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
       const unsubscribe = firebase.auth().onAuthStateChanged((user) => {
         if (user) {
           setAuthUser(user);
+          setLoading(false);
         } else {
           setAuthUser(null);
+          setLoading(false);
         }
       });
 
@@ -20,7 +23,7 @@ const withAuthentication = (Component) => {
 
     return (
       <AuthContext.Provider value={authUser}>
-        <Component {...props} />
+        <Component {...props} authUser={authUser} authLoading={loading} />
       </AuthContext.Provider>
     );
   };
