@@ -1,8 +1,6 @@
 import React from 'react';
 import { Route, Switch, Redirect } from 'react-router-dom';
-
 import { isNil } from 'lodash';
-
 import Login from '../login';
 import Questions, { AddQuestion, EditQuestion } from '../../screens/questions';
 import Answers, { AnswersDetails } from './screens/answers';
