@@ -56,12 +56,12 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
           </Form.Item>
           <Row justify="space-between">
             <Form.Item>
-              <Button onClick={handleReset}>
+              <Button shape="round" onClick={handleReset}>
                 Anulare
               </Button>
             </Form.Item>
             <Form.Item>
-              <Button type="primary" htmlType="submit">
+              <Button type="primary" shape="round" htmlType="submit">
                 Trimite
               </Button>
             </Form.Item>
