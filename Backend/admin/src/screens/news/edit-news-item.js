@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form } from 'antd';
+import { Form, notification } from 'antd';
 import { useParams } from 'react-router';
 
 import NewsItemForm from './news-item-form';
@@ -18,6 +18,13 @@ const EditNewsItem = () => {
     runEffect();
   }, []);
 
+  const editNotification = (title) => {
+    notification.open({
+      message: 'Am editat cu succes stirea:',
+      description: title,
+    });
+  };
+
   const onFinish = async ({ title, body, image }) => {
     const item = {
       id,
@@ -27,6 +34,7 @@ const EditNewsItem = () => {
     };
 
     await updateNewsItem(item);
+    editNotification(body);
   };
 
   if (!newsItem) return null;
