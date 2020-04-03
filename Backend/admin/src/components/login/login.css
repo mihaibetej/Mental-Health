@@ -1,0 +1,16 @@
+.login-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-form {
+  border: 1px solid #d9d9d9;
+  border-radius: 2px;
+  width: 30%;
+  padding: 24px!important;
+}
+
+.login-form-forgot {
+  float: right;
+}

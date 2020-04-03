@@ -1,21 +1,22 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import { Layout } from 'antd';
-import Login from './components/login';
-import Questions, { AddQuestion, EditQuestion } from './screens/questions';
-import Answers, { AnswersDetails } from './screens/answers';
-import Questionary from './screens/questionary';
+
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Layout, Skeleton, Row } from 'antd';
+
 import { withAuthentication } from './hoc';
 import HeaderContent from './components/header-content';
 import Navigation from './components/navigation';
 import Page from './components/page';
+import AppRoutes from './components/app-routes';
 
 import 'antd/dist/antd.css';
 import './App.css';
 
 const { Header, Footer, Content } = Layout;
 
-function App() {
+function App({ authUser, authLoading }) {
   return (
     <Router>
       <Layout>
@@ -26,22 +27,13 @@ function App() {
         </Header>
         <Content>
           <Page>
-            <Route exact path="/" component={() => <div>HOME PAGE</div>} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/questionary" component={Questionary} />
-            <Switch>
-              <Route exact path="/questions" component={Questions} />
-              <Route exact path="/questions/create" component={AddQuestion} />
-              <Route
-                exact
-                path="/questions/:id/edit"
-                component={EditQuestion}
-              />
-            </Switch>
-            <Switch>
-              <Route exact path="/answers" component={Answers}/>
-              <Route exact path="/answers/:userId" component={AnswersDetails}/>
-            </Switch>
+            {authLoading ? (
+              <Row>
+                <Skeleton active />
+              </Row>
+            ) : (
+              <AppRoutes authUser={authUser} />
+            )}
           </Page>
         </Content>
         <Footer>Footer</Footer>
