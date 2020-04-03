@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
 import { List, Typography, Badge, Collapse, Row, Skeleton } from 'antd';
 import {
-  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip 
+  LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip
 } from 'recharts';
 import { takeRight, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
@@ -74,7 +74,7 @@ const renderTooltip = (questions) => (config) => {
 
   return (
     <ul className="tooltip">
-      {config.payload && config.payload.map((item, i) => {
+      {config.payload && config.payload.map((item) => {
         return (
           <li style={{ borderColor: item.stroke }} className="tooltip-item">
             <Badge status={getQuestionStatus(item.value)} />
@@ -103,16 +103,18 @@ const EvolutionChart = ({ answers, questions }) => {
       <CartesianGrid strokeDasharray="3 3" />
       <XAxis dataKey="name" />
       <YAxis />
-      <Tooltip content={renderTooltip(questions)}/>
+      <Tooltip content={renderTooltip(questions)} />
 
       { questionsKeys.map((k, i) => (
         <Line key={k} type="monotone" dataKey={k} stroke={getLineColor(i)} />
       ))}
-      <Line key={"rating"}
+      <Line
+        key="rating"
         type="monotone"
-        dataKey={"rating"}
+        dataKey="rating"
         stroke={theme.colors.primary}
-        strokeWidth={3} />
+        strokeWidth={3}
+      />
     </LineChart>
   )
 };
@@ -149,10 +151,10 @@ const AnswersDetails = () => {
 
   return (
     <div>
-    { isEmpty(answers)
+      { isEmpty(answers)
       ? (
         <Row>
-          <Skeleton/>
+          <Skeleton />
         </Row>
       )
       : (
@@ -161,7 +163,7 @@ const AnswersDetails = () => {
             Utilizator
             {user.email && ` - ${user.email}`}
           </Typography.Title>
-          <EvolutionChart answers={answers} questions={questions}/>
+          <EvolutionChart answers={answers} questions={questions} />
           <Collapse accordion>
             { answers.map(
               ({ created, items }, idx) => (
@@ -169,14 +171,13 @@ const AnswersDetails = () => {
                 <Collapse.Panel key={idx}
                   header={<DailyListItem items={items} created={created} />}
                 >
-                  <QuestionsSet items={items}/>
+                  <QuestionsSet items={items} />
                 </Collapse.Panel>
               )
             )}
           </Collapse>
         </>
-      )
-    }
+      )}
     </div>
   )
 }

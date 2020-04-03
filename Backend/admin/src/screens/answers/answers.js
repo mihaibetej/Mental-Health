@@ -68,24 +68,24 @@ const Answers = () => {
 
   return (
     <div>
-    { isEmpty(userList)
+      { isEmpty(userList)
       ? (
-      <Row>
-        <Skeleton active />
-      </Row>
+        <Row>
+          <Skeleton active />
+        </Row>
       ) : (
         <List
-        bordered
-        header={
-          <Typography.Title>Raspunsuri Utilizatori</Typography.Title>
+          bordered
+          header={
+            <Typography.Title>Raspunsuri Utilizatori</Typography.Title>
         }
-        itemLayout="horizontal"
-        dataSource={userList}
-        renderItem={({ email, id }, idx) => {
+          itemLayout="horizontal"
+          dataSource={userList}
+          renderItem={({ email, id }, idx) => {
           return (
             <List.Item
               actions={[
-                <DetailsButton key="details-button" onPress={handleDetails(id)}/>
+                <DetailsButton key="details-button" onPress={handleDetails(id)} />
               ]}
             >
               <div className="answers-item-wrapper">
@@ -93,14 +93,13 @@ const Answers = () => {
                   <Typography.Text strong>{idx + 1}</Typography.Text>
                   {`. ${email}`}
                 </span>
-                <SmallChart userId={id}/>
+                <SmallChart userId={id} />
               </div>
             </List.Item>
           )
         }}
-      />
-      )
-    }
+        />
+      )}
     </div>
   )
 };
