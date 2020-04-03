@@ -11,38 +11,34 @@ import Questionary from '../../screens/questionary';
 import ForgotPassword from '../forgot-password';
 
 const AppRoutes = ({ authUser }) => {
-  return (
+  return !isNil(authUser) ? (
     <Switch>
-      {!isNil(authUser) ? (
-        <>
-          <Route exact path="/" component={() => <div>HOME PAGE</div>} />
-          <Route exact path="/questions" component={Questions} />
-          <Route exact path="/questions/create" component={AddQuestion} />
-          <Route exact path="/questions/:id/edit" component={EditQuestion} />
+      <Route exact path="/" component={() => <div>HOME PAGE</div>} />
+      <Route exact path="/questions" component={Questions} />
+      <Route exact path="/questions/create" component={AddQuestion} />
+      <Route exact path="/questions/:id/edit" component={EditQuestion} />
 
-          <Route exact path="/advices" component={Advices} />
-          <Route exact path="/advices/create" component={CreateAdvice} />
-          <Route exact path="/advices/:id/edit" component={EditAdvice} />
+      <Route exact path="/advices" component={Advices} />
+      <Route exact path="/advices/create" component={CreateAdvice} />
+      <Route exact path="/advices/:id/edit" component={EditAdvice} />
 
-          <Route exact path="/news" component={News} />
-          <Route exact path="/news/create" component={AddNewsItem} />
-          <Route exact path="/news/:id/edit" component={EditNewsItem} />
+      <Route exact path="/news" component={News} />
+      <Route exact path="/news/create" component={AddNewsItem} />
+      <Route exact path="/news/:id/edit" component={EditNewsItem} />
 
-          <Route path="/questionary" component={Questionary} />
+      <Route exact path="/questionary" component={Questionary} />
 
-          <Route path="*">
-            <Redirect to="/questions" />
-          </Route>
-        </>
-      ) : (
-        <>
-          <Route path="/login" component={Login} />
-          <Route path="/forgot-password" component={ForgotPassword} />
-          <Route path="*">
-            <Redirect to="/login" />
-          </Route>
-        </>
-      )}
+      <Route path="*">
+        <Redirect to="/questions" />
+      </Route>
+    </Switch>
+  ) : (
+    <Switch>
+      <Route path="/login" component={Login} />
+      <Route path="/forgot-password" component={ForgotPassword} />
+      <Route path="*">
+        <Redirect to="/login" />
+      </Route>
     </Switch>
   );
 };
