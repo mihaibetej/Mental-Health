@@ -12,34 +12,16 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
 
-    @IBOutlet weak var signInContainerView: UIView!
+    @IBOutlet weak var signInContainerView: UIStackView!
     @IBOutlet weak var signInContainerViewVCenterConstraint: NSLayoutConstraint!
     @IBOutlet weak var usernameTextField: MHTextField!
     @IBOutlet weak var passwordTextField: MHTextField!
+    @IBOutlet weak var passwordConfirmationTextField: MHTextField!
     @IBOutlet weak var authenticationButton: MHButton!
     @IBOutlet weak var changeStateButton: UIButton!
     @IBOutlet weak var changeStateLabel: MHLabel!
     @IBOutlet weak var changeStateStackBottomConstraint: NSLayoutConstraint!
     
-    private enum State {
-        case signIn
-        case signUp
-    }
-    
-    private var state: State = .signIn {
-        didSet {
-            switch state {
-            case .signIn:
-                changeStateButton.setTitle("Creaza unul", for: .normal)
-                changeStateLabel.text = "Nu ai deja cont? "
-                authenticationButton.setTitle("Autentificare", for: .normal)
-            case .signUp:
-                changeStateButton.setTitle("Autentifica-te", for: .normal)
-                changeStateLabel.text = "Ai deja cont? "
-                authenticationButton.setTitle("Creeaza cont", for: .normal)
-            }
-        }
-    }
     
     private lazy var viewModel: AuthenticationViewModel = {
         let vm = AuthenticationViewModel()
@@ -57,6 +39,13 @@ class AuthenticationViewController: UIViewController {
         }
         authenticationButton.isEnabled = false
         signInContainerView.backgroundColor = .clear
+        signInContainerView.setCustomSpacing(38, after: passwordConfirmationTextField)
+        viewModel.changeViewState()
+        registerForKeyboardNotifications()
+    }
+    
+    deinit {
+        unregisterForKeyboardNotifications()
     }
     
     @IBAction func authenticateUser(_ sender: Any) {
@@ -64,7 +53,7 @@ class AuthenticationViewController: UIViewController {
     }
     
     @IBAction func changeState(_ sender: Any) {
-        state = (state == .signIn) ? .signUp : .signIn
+        viewModel.changeViewState()
     }
     
 }
@@ -72,6 +61,25 @@ class AuthenticationViewController: UIViewController {
 // MARK: - AuthenticationViewController (AuthenticationViewModelDelegate)
 
 extension AuthenticationViewController: AuthenticationViewModelDelegate {
+    
+    func didChangeToSignInViewState() {
+        changeStateButton.setTitle("Creaza unul", for: .normal)
+        changeStateLabel.text = "Nu ai deja cont? "
+        authenticationButton.setTitle("Autentificare", for: .normal)
+        //signInContainerView.removeArrangedSubview(passwordConfirmationTextField)
+        UIView.animate(withDuration: 0.25) {
+            self.passwordConfirmationTextField.alpha = 0
+        }
+    }
+    
+    func didChangeToSignUpViewState() {
+        changeStateButton.setTitle("Autentifica-te", for: .normal)
+        changeStateLabel.text = "Ai deja cont? "
+        authenticationButton.setTitle("Creeaza cont", for: .normal)
+        UIView.animate(withDuration: 0.25) {
+            self.passwordConfirmationTextField.alpha = 1
+        }
+    }
     
     func didSignIn() {
         dismiss(animated: true, completion: nil)
@@ -130,3 +138,38 @@ extension AuthenticationViewController: UITextFieldDelegate {
     
 }
 
+// MARK: - AuthenticationViewController (Keyboard avoidance)
+
+extension AuthenticationViewController {
+    
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(toggleKeyboard(notification:)),
+                                               name: UIWindow.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(toggleKeyboard(notification:)),
+                                               name: UIWindow.keyboardWillHideNotification,
+                                               object: nil)
+    }
+    
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func toggleKeyboard(notification: Notification) {
+        let animationDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let animationCurve = notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
+        let currentFrame = (notification.userInfo![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let deltaY = targetFrame.origin.y - currentFrame.origin.y
+                
+        changeStateStackBottomConstraint.constant += (-1) * deltaY
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
+            self.view.layoutIfNeeded()
+        }) { (finished) in
+            // finished animating
+        }
+    }
+    
+}

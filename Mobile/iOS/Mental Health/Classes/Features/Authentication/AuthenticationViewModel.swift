@@ -16,6 +16,9 @@ protocol AuthenticationViewModelDelegate: class {
     func failedToSignIn(with: Error)
     func didCreateUser()
     func failedToCreateUser(with: Error)
+    // View state change
+    func didChangeToSignInViewState()
+    func didChangeToSignUpViewState()
 }
 
 // MARK: - AuthenticationViewModel
@@ -23,6 +26,26 @@ protocol AuthenticationViewModelDelegate: class {
 class AuthenticationViewModel {
     
     weak var delegate: AuthenticationViewModelDelegate?
+    
+    private enum ViewState {
+        case signIn
+        case signUp
+    }
+    
+    private var viewState: ViewState = .signUp {
+        didSet {
+            switch viewState {
+            case .signIn:
+                delegate?.didChangeToSignInViewState()
+            case .signUp:
+                delegate?.didChangeToSignUpViewState()
+            }
+        }
+    }
+
+    func changeViewState() {
+        viewState = (viewState == .signIn) ? .signUp : .signIn
+    }
     
     func isValid(email: String?) -> Bool {
         guard email != nil else {

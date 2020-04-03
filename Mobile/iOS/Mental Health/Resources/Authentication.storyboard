@@ -16,8 +16,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-qh-neX">
-                                <rect key="frame" x="20" y="265" width="374" height="210"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cso-ga-oYl">
+                                <rect key="frame" x="20" y="222" width="374" height="256"/>
                                 <subviews>
                                     <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
@@ -41,8 +41,19 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
                                     </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmare parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMF-ml-GKL" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="136" width="374" height="52"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="52" id="Tgc-CW-Uje"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="T2c-Li-uW1" id="ii5-df-pb0"/>
+                                        </connections>
+                                    </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-rT-MQH" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="158" width="374" height="52"/>
+                                        <rect key="frame" x="0.0" y="204" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="Oi0-IN-NZ8"/>
                                         </constraints>
@@ -60,20 +71,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.66526502370834351" green="0.78912222385406494" blue="0.92629218101501465" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="Qcr-rT-MQH" secondAttribute="bottom" id="4O1-bT-hks"/>
-                                    <constraint firstAttribute="trailing" secondItem="jOH-17-FNj" secondAttribute="trailing" id="NKR-Ah-vsp"/>
-                                    <constraint firstAttribute="trailing" secondItem="Qcr-rT-MQH" secondAttribute="trailing" id="NNT-8O-ESD"/>
-                                    <constraint firstItem="Qcr-rT-MQH" firstAttribute="top" secondItem="jOH-17-FNj" secondAttribute="bottom" constant="38" id="ViK-Fa-i5P"/>
-                                    <constraint firstAttribute="trailing" secondItem="HiB-Al-Z4S" secondAttribute="trailing" id="aQr-CB-f1S"/>
-                                    <constraint firstItem="jOH-17-FNj" firstAttribute="top" secondItem="HiB-Al-Z4S" secondAttribute="bottom" constant="16" id="g46-YX-NBW"/>
-                                    <constraint firstItem="jOH-17-FNj" firstAttribute="leading" secondItem="nc6-qh-neX" secondAttribute="leading" id="gdG-HT-C0d"/>
-                                    <constraint firstItem="Qcr-rT-MQH" firstAttribute="leading" secondItem="nc6-qh-neX" secondAttribute="leading" id="ovl-jR-9NT"/>
-                                    <constraint firstItem="HiB-Al-Z4S" firstAttribute="leading" secondItem="nc6-qh-neX" secondAttribute="leading" id="roJ-nb-omz"/>
-                                    <constraint firstItem="HiB-Al-Z4S" firstAttribute="top" secondItem="nc6-qh-neX" secondAttribute="top" id="wX6-zb-2v1"/>
-                                </constraints>
-                            </view>
+                            </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-cD-FNF">
                                 <rect key="frame" x="98.5" y="812" width="217" height="30"/>
                                 <subviews>
@@ -95,11 +93,11 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="nc6-qh-neX" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="NHW-cV-huA"/>
+                            <constraint firstItem="cso-ga-oYl" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="26i-M3-nF4"/>
                             <constraint firstItem="K6U-bM-rTD" firstAttribute="bottom" secondItem="QDh-cD-FNF" secondAttribute="bottom" constant="20" id="Nhx-fx-ZiB"/>
+                            <constraint firstItem="K6U-bM-rTD" firstAttribute="trailing" secondItem="cso-ga-oYl" secondAttribute="trailing" constant="20" id="QY2-Hu-a37"/>
+                            <constraint firstItem="cso-ga-oYl" firstAttribute="centerY" secondItem="lA6-IV-lJl" secondAttribute="centerY" constant="-98" id="ZZi-Qe-wbc"/>
                             <constraint firstItem="QDh-cD-FNF" firstAttribute="centerX" secondItem="lA6-IV-lJl" secondAttribute="centerX" id="bn9-nj-WK5"/>
-                            <constraint firstItem="nc6-qh-neX" firstAttribute="centerY" secondItem="lA6-IV-lJl" secondAttribute="centerY" constant="-78" id="s7l-as-3cI"/>
-                            <constraint firstItem="K6U-bM-rTD" firstAttribute="trailing" secondItem="nc6-qh-neX" secondAttribute="trailing" constant="20" id="tzb-JC-lFQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6U-bM-rTD"/>
                     </view>
@@ -108,9 +106,10 @@
                         <outlet property="changeStateButton" destination="znP-eh-8uZ" id="63f-Ue-irN"/>
                         <outlet property="changeStateLabel" destination="9Xy-aW-DbD" id="3iy-5L-WiO"/>
                         <outlet property="changeStateStackBottomConstraint" destination="Nhx-fx-ZiB" id="TE5-ml-3Sr"/>
+                        <outlet property="passwordConfirmationTextField" destination="aMF-ml-GKL" id="5xP-aN-K7E"/>
                         <outlet property="passwordTextField" destination="jOH-17-FNj" id="dhv-hs-1tM"/>
-                        <outlet property="signInContainerView" destination="nc6-qh-neX" id="tps-A2-Tep"/>
-                        <outlet property="signInContainerViewVCenterConstraint" destination="s7l-as-3cI" id="P76-dU-8jp"/>
+                        <outlet property="signInContainerView" destination="cso-ga-oYl" id="Cxl-La-uOo"/>
+                        <outlet property="signInContainerViewVCenterConstraint" destination="ZZi-Qe-wbc" id="Q7c-CX-BgM"/>
                         <outlet property="usernameTextField" destination="HiB-Al-Z4S" id="pUp-C6-JiJ"/>
                     </connections>
                 </viewController>
