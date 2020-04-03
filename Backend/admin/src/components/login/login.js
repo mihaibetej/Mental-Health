@@ -3,16 +3,20 @@ import { Button, Form, Input } from 'antd';
 import { useHistory } from 'react-router';
 import { login } from '../../db/auth';
 
+import './login.css';
+
 const layout = {
-  labelCol: { span: 8 },
+  labelCol: { span: 6 },
   wrapperCol: { span: 16 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 6, span: 16 },
 };
 
 const Login = () => {
   const history = useHistory();
+
+  const [form] = Form.useForm();
 
   const onFinish = ({ email, password }) => {
     login(email, password)
@@ -20,7 +24,10 @@ const Login = () => {
         console.log('Success:');
         history.push('/questions');
       })
-      .catch(() => console.log('display login fail error message'));
+      .catch(() => {
+        form.resetFields();
+        console.log('display login fail error message');
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -28,35 +35,42 @@ const Login = () => {
   };
 
   return (
-    <Form
-      {...layout}
-      name="basic"
-      initialValues={{ remember: true }}
-      onFinish={onFinish}
-      onFinishFailed={onFinishFailed}
-    >
-      <Form.Item
-        label="Email"
-        name="email"
-        rules={[{ required: true, message: 'Please input your email!' }]}
+    <div className="login-wrapper">
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{ remember: true }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+        className="login-form"
+        style={{ padding: '24px' }}
+        form={form}
       >
-        <Input />
-      </Form.Item>
+        <Form.Item
+          label="Email"
+          name="email"
+          rules={[{ required: true, message: 'Please input your email!' }]}
+        >
+          <Input />
+        </Form.Item>
 
-      <Form.Item
-        label="Password"
-        name="password"
-        rules={[{ required: true, message: 'Please input your password!' }]}
-      >
-        <Input.Password />
-      </Form.Item>
-
-      <Form.Item {...tailLayout}>
-        <Button type="primary" htmlType="submit">
-          Submit
-        </Button>
-      </Form.Item>
-    </Form>
+        <Form.Item
+          label="Password"
+          name="password"
+          rules={[{ required: true, message: 'Please input your password!' }]}
+        >
+          <Input.Password />
+        </Form.Item>
+        <Form.Item {...tailLayout} st>
+          <Button type="primary" htmlType="submit">
+            Submit
+          </Button>
+          <a className="login-form-forgot" href="/">
+            Forgot password
+          </a>
+        </Form.Item>
+      </Form>
+    </div>
   );
 };
 
