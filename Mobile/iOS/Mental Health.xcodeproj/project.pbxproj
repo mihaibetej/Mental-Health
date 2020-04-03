@@ -17,6 +17,8 @@
 		27A05B4E24376A9E008148C6 /* FeaturesTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4D24376A9E008148C6 /* FeaturesTabBarViewController.swift */; };
 		27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B5124376DD7008148C6 /* FeaturesTabBarViewModel.swift */; };
 		27A05B5424377BF1008148C6 /* MHButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B5324377BF1008148C6 /* MHButton.swift */; };
+		27A05B56243796FE008148C6 /* MHTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B55243796FE008148C6 /* MHTextField.swift */; };
+		27A05B582437A8CA008148C6 /* MHLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B572437A8CA008148C6 /* MHLabel.swift */; };
 		27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0C3242E4790009A80D7 /* AppDelegate.swift */; };
 		27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0C9242E4790009A80D7 /* Main.storyboard */; };
 		27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0CC242E4791009A80D7 /* Assets.xcassets */; };
@@ -67,6 +69,8 @@
 		27A05B4D24376A9E008148C6 /* FeaturesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeaturesTabBarViewController.swift; path = "Mental Health/Classes/FeaturesTabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
 		27A05B5124376DD7008148C6 /* FeaturesTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesTabBarViewModel.swift; sourceTree = "<group>"; };
 		27A05B5324377BF1008148C6 /* MHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHButton.swift; sourceTree = "<group>"; };
+		27A05B55243796FE008148C6 /* MHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHTextField.swift; sourceTree = "<group>"; };
+		27A05B572437A8CA008148C6 /* MHLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHLabel.swift; sourceTree = "<group>"; };
 		27A2F0C0242E4790009A80D7 /* Mental Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mental Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A2F0C3242E4790009A80D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27A2F0CA242E4790009A80D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -287,6 +291,8 @@
 			children = (
 				27A2F0FA242F99C4009A80D7 /* MHSlider.swift */,
 				27A05B5324377BF1008148C6 /* MHButton.swift */,
+				27A05B55243796FE008148C6 /* MHTextField.swift */,
+				27A05B572437A8CA008148C6 /* MHLabel.swift */,
 				6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */,
 			);
 			path = "Custon controls";
@@ -496,6 +502,7 @@
 				2717C1002432A0E4003C6A29 /* QuestionnaireViewModel.swift in Sources */,
 				27A2F0E9242E9820009A80D7 /* QuestionnaireViewController.swift in Sources */,
 				6367B7472433FADD00388A6D /* SwiftDisclosureIndicator.swift in Sources */,
+				27A05B56243796FE008148C6 /* MHTextField.swift in Sources */,
 				27A2F0EB242E9BF4009A80D7 /* PersonalViewController.swift in Sources */,
 				27A05B4E24376A9E008148C6 /* FeaturesTabBarViewController.swift in Sources */,
 				27A05B4A24366396008148C6 /* AuthenticationViewModel.swift in Sources */,
@@ -507,6 +514,7 @@
 				6367B75E2433FD4500388A6D /* JournalViewController.swift in Sources */,
 				2717C1092432ABEC003C6A29 /* SendAnswersTableViewCell.swift in Sources */,
 				6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */,
+				27A05B582437A8CA008148C6 /* MHLabel.swift in Sources */,
 				27A05B5424377BF1008148C6 /* MHButton.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 				27A2F0F6242F9904009A80D7 /* CommonExtensions.swift in Sources */,

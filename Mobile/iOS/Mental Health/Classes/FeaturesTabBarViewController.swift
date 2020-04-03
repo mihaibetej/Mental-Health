@@ -25,6 +25,7 @@ class FeaturesTabBarViewController: UITabBarController {
         super.viewDidAppear(animated)
         
         guard viewModel.isUserLoggedIn == false else  {
+            viewModel.signOut()
             return
         }
         

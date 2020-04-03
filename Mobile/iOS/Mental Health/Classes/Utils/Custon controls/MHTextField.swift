@@ -1,5 +1,5 @@
 //
-//  MHButton.swift
+//  MHTextField.swift
 //  Mental Health
 //
 //  Created by Mihai Betej on 03/04/2020.
@@ -8,10 +8,10 @@
 
 import UIKit
 
-// MARK: - MHButton
+// MARK: - MHTextField
 
-class MHButton: UIButton {
-
+class MHTextField: UITextField {
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customize()
@@ -21,20 +21,25 @@ class MHButton: UIButton {
         super.init(coder: coder)
         customize()
     }
-    
+
 }
 
-// MARK: - MHButton (private API)
+// MARK: - MHTextField (private API)
 
-private extension MHButton {
+private extension MHTextField {
     
     func customize() {
-        backgroundColor = .clear
-        titleLabel?.font = UIFont.systemFont(ofSize: 18, weight: .bold)
-        setTitleColor(.white, for: .normal)
-        setBackgroundImage(UIImage(color: .mhBlue), for: .normal)
+        // Border
         layer.masksToBounds = true
         layer.cornerRadius = 8
+        layer.borderWidth = 1
+        layer.borderColor = UIColor.mhBlue.cgColor
+        
+        // Text color
+        // textColor = .mhBlue
+        
+        // Carret color
+        tintColor = .mhBlue
     }
-
+    
 }

@@ -13,9 +13,33 @@ import UIKit
 class AuthenticationViewController: UIViewController {
 
     @IBOutlet weak var signInContainerView: UIView!
-    @IBOutlet weak var usernameTextField: UITextField!
-    @IBOutlet weak var passwordTextField: UITextField!
-    @IBOutlet weak var authenticationButton: UIButton!
+    @IBOutlet weak var signInContainerViewVCenterConstraint: NSLayoutConstraint!
+    @IBOutlet weak var usernameTextField: MHTextField!
+    @IBOutlet weak var passwordTextField: MHTextField!
+    @IBOutlet weak var authenticationButton: MHButton!
+    @IBOutlet weak var changeStateButton: UIButton!
+    @IBOutlet weak var changeStateLabel: MHLabel!
+    @IBOutlet weak var changeStateStackBottomConstraint: NSLayoutConstraint!
+    
+    private enum State {
+        case signIn
+        case signUp
+    }
+    
+    private var state: State = .signIn {
+        didSet {
+            switch state {
+            case .signIn:
+                changeStateButton.setTitle("Creaza unul", for: .normal)
+                changeStateLabel.text = "Nu ai deja cont? "
+                authenticationButton.setTitle("Autentificare", for: .normal)
+            case .signUp:
+                changeStateButton.setTitle("Autentifica-te", for: .normal)
+                changeStateLabel.text = "Ai deja cont? "
+                authenticationButton.setTitle("Creeaza cont", for: .normal)
+            }
+        }
+    }
     
     private lazy var viewModel: AuthenticationViewModel = {
         let vm = AuthenticationViewModel()
@@ -37,6 +61,10 @@ class AuthenticationViewController: UIViewController {
     
     @IBAction func authenticateUser(_ sender: Any) {
         viewModel.signIn(with: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+    }
+    
+    @IBAction func changeState(_ sender: Any) {
+        state = (state == .signIn) ? .signUp : .signIn
     }
     
 }

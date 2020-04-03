@@ -19,7 +19,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nc6-qh-neX">
                                 <rect key="frame" x="20" y="265" width="374" height="210"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="vKM-yP-o38"/>
@@ -30,7 +30,7 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="LTe-rI-22b"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOH-17-FNj">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOH-17-FNj" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="WF0-Gb-0as"/>
@@ -74,10 +74,30 @@
                                     <constraint firstItem="HiB-Al-Z4S" firstAttribute="top" secondItem="nc6-qh-neX" secondAttribute="top" id="wX6-zb-2v1"/>
                                 </constraints>
                             </view>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-cD-FNF">
+                                <rect key="frame" x="98.5" y="812" width="217" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu ai deja cont? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-aW-DbD" customClass="MHLabel" customModule="Mental_Health" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znP-eh-8uZ">
+                                        <rect key="frame" x="127" y="0.0" width="90" height="30"/>
+                                        <state key="normal" title="Creeaza unul"/>
+                                        <connections>
+                                            <action selector="changeState:" destination="T2c-Li-uW1" eventType="touchUpInside" id="QUa-K8-UuB"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="nc6-qh-neX" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="NHW-cV-huA"/>
+                            <constraint firstItem="K6U-bM-rTD" firstAttribute="bottom" secondItem="QDh-cD-FNF" secondAttribute="bottom" constant="20" id="Nhx-fx-ZiB"/>
+                            <constraint firstItem="QDh-cD-FNF" firstAttribute="centerX" secondItem="lA6-IV-lJl" secondAttribute="centerX" id="bn9-nj-WK5"/>
                             <constraint firstItem="nc6-qh-neX" firstAttribute="centerY" secondItem="lA6-IV-lJl" secondAttribute="centerY" constant="-78" id="s7l-as-3cI"/>
                             <constraint firstItem="K6U-bM-rTD" firstAttribute="trailing" secondItem="nc6-qh-neX" secondAttribute="trailing" constant="20" id="tzb-JC-lFQ"/>
                         </constraints>
@@ -85,8 +105,12 @@
                     </view>
                     <connections>
                         <outlet property="authenticationButton" destination="Qcr-rT-MQH" id="OLX-Rn-4q5"/>
+                        <outlet property="changeStateButton" destination="znP-eh-8uZ" id="63f-Ue-irN"/>
+                        <outlet property="changeStateLabel" destination="9Xy-aW-DbD" id="3iy-5L-WiO"/>
+                        <outlet property="changeStateStackBottomConstraint" destination="Nhx-fx-ZiB" id="TE5-ml-3Sr"/>
                         <outlet property="passwordTextField" destination="jOH-17-FNj" id="dhv-hs-1tM"/>
                         <outlet property="signInContainerView" destination="nc6-qh-neX" id="tps-A2-Tep"/>
+                        <outlet property="signInContainerViewVCenterConstraint" destination="s7l-as-3cI" id="P76-dU-8jp"/>
                         <outlet property="usernameTextField" destination="HiB-Al-Z4S" id="pUp-C6-JiJ"/>
                     </connections>
                 </viewController>
