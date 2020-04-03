@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
-import { List, Typography, Badge, Collapse } from 'antd';
+import { List, Typography, Badge, Collapse, Row, Skeleton } from 'antd';
 import {
   LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend,
 } from 'recharts';
-import { take } from 'lodash';
+import { take, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { answersSubscribe, userSubscribe } from '../../services/answers';
 import { getQuestions } from '../../services/questions';
@@ -189,23 +189,34 @@ const AnswersDetails = () => {
 
   return (
     <div>
-      <Typography.Title>
-        Utilizator
-        {user.email && ` - ${user.email}`}
-      </Typography.Title>
-      <EvolutionChart answers={answers} questions={questions}/>
-      <Collapse accordion>
-        { answers.map(
-          ({ created, items }, idx) => (
-            // eslint-disable-next-line
-            <Collapse.Panel key={idx}
-              header={<DailyListItem items={items} created={created} />}
-            >
-              <QuestionsSet items={items}/>
-            </Collapse.Panel>
-          )
-        )}
-      </Collapse>
+    { isEmpty(answers) 
+      ? (
+        <Row>
+          <Skeleton/>
+        </Row>
+      )
+      : (
+        <>
+          <Typography.Title>
+            Utilizator
+            {user.email && ` - ${user.email}`}
+          </Typography.Title>
+          <EvolutionChart answers={answers} questions={questions}/>
+          <Collapse accordion>
+            { answers.map(
+              ({ created, items }, idx) => (
+                // eslint-disable-next-line
+                <Collapse.Panel key={idx}
+                  header={<DailyListItem items={items} created={created} />}
+                >
+                  <QuestionsSet items={items}/>
+                </Collapse.Panel>
+              )
+            )}
+          </Collapse>
+        </>
+      )
+    }
     </div>
   )
 }

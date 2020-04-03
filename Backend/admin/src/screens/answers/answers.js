@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { BarChart, Bar } from 'recharts';
-import { List, Typography } from 'antd';
-import { take, noop } from 'lodash';
+import { List, Typography, Row, Skeleton } from 'antd';
+import { take, noop, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { usersSubscribe, answersSubscribe } from '../../services/answers';
 import { getDateKey } from '../../utils/helpers';
@@ -74,7 +74,13 @@ const Answers = () => {
 
   return (
     <div>
-      <List
+    { isEmpty(userList)
+      ? (
+      <Row>
+        <Skeleton active />
+      </Row>
+      ) : (
+        <List
         bordered
         header={
           <Typography.Title>Raspunsuri Utilizatori</Typography.Title>
@@ -99,6 +105,8 @@ const Answers = () => {
           )
         }}
       />
+      )
+    }
     </div>
   )
 };

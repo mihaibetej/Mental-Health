@@ -3,7 +3,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 import { isNil } from 'lodash';
 import Login from '../login';
 import Questions, { AddQuestion, EditQuestion } from '../../screens/questions';
-import Answers, { AnswersDetails } from './screens/answers';
+import Answers, { AnswersDetails } from '../../screens/answers';
 import News, { AddNewsItem, EditNewsItem } from '../../screens/news';
 import Advices, { CreateAdvice, EditAdvice } from '../../screens/advices';
 import Questionary from '../../screens/questionary';
