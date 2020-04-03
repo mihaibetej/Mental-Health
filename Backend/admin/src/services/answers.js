@@ -6,7 +6,7 @@ import answers from '../screens/answers';
 export const usersSubscribe = (cb) =>
   db.collection('users').onSnapshot((snapshot) => {
 
-    let us = []
+    const us = []
     snapshot.forEach(doc => {
       us.push(doc.data())
     })
@@ -24,7 +24,7 @@ export const userSubscribe = (userId, cb) => {
 export const answersSubscribe = (userId, cb) =>
   db.collection('users').doc(userId)
     .collection('answers').onSnapshot((snapshot) => {
-      let as = []
+      const as = []
       snapshot.forEach(doc => {
         as.push(doc.data())
       })

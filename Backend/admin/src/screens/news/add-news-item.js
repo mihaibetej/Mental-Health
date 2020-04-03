@@ -26,7 +26,7 @@ const AddNewsItem = () => {
     createNotification(title);
   };
 
-  return <NewsItemForm form={form} onFinish={onFinish} />;
+  return <NewsItemForm form={form} onFinish={onFinish} title="Adauga o stire" />;
 };
 
 export default withAuthorization(AddNewsItem);

@@ -1,12 +1,15 @@
 .content{
     display: flex;
     flex-wrap: wrap;
-    flex: 1 1 auto;
-    justify-content: center;
-    align-items: center;
 }
 
-.margin{
+.card-form{
     width: 200px;
-    margin-bottom: 20px !important;
+    margin: 10px;
 }
+
+.image{
+    width: 200px;
+    height: 80px;
+}
+

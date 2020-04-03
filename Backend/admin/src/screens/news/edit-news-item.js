@@ -39,7 +39,7 @@ const EditNewsItem = () => {
 
   if (!newsItem) return null;
   return (
-    <NewsItemForm initialValues={newsItem} form={form} onFinish={onFinish} />
+    <NewsItemForm initialValues={newsItem} form={form} onFinish={onFinish} title="Modifica o stire" />
   );
 };
 
