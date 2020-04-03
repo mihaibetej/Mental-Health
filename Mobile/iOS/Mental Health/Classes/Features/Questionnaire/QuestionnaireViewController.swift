@@ -67,7 +67,7 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
         }
         
         let titleLabel = UILabel(frame: headerView!.bounds)
-        titleLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.medium)
+        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         titleLabel.backgroundColor = .clear
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 0

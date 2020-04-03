@@ -31,7 +31,7 @@ class QuestionTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        questionLabel.font = UIFont.systemFont(ofSize: 17, weight: UIFont.Weight.light)
+        questionLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
         labelPosition1.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
         labelPosition1.text = "Foarte mult"
         labelPosition2.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)

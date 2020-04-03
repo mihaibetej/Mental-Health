@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,6 +11,11 @@
 		2717C1032432A3B2003C6A29 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717C1022432A3B2003C6A29 /* Question.swift */; };
 		2717C1072432A533003C6A29 /* Questionnaire.json in Resources */ = {isa = PBXBuildFile; fileRef = 2717C1062432A533003C6A29 /* Questionnaire.json */; };
 		2717C1092432ABEC003C6A29 /* SendAnswersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717C1082432ABEC003C6A29 /* SendAnswersTableViewCell.swift */; };
+		27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4724366381008148C6 /* AuthenticationViewController.swift */; };
+		27A05B4A24366396008148C6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4924366396008148C6 /* AuthenticationViewModel.swift */; };
+		27A05B4C24367CA8008148C6 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A05B4B24367CA8008148C6 /* Authentication.storyboard */; };
+		27A05B4E24376A9E008148C6 /* FeaturesTabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4D24376A9E008148C6 /* FeaturesTabBarViewController.swift */; };
+		27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B5124376DD7008148C6 /* FeaturesTabBarViewModel.swift */; };
 		27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0C3242E4790009A80D7 /* AppDelegate.swift */; };
 		27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0C9242E4790009A80D7 /* Main.storyboard */; };
 		27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27A2F0CC242E4791009A80D7 /* Assets.xcassets */; };
@@ -55,6 +60,11 @@
 		2717C1022432A3B2003C6A29 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2717C1062432A533003C6A29 /* Questionnaire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Questionnaire.json; sourceTree = "<group>"; };
 		2717C1082432ABEC003C6A29 /* SendAnswersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAnswersTableViewCell.swift; sourceTree = "<group>"; };
+		27A05B4724366381008148C6 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
+		27A05B4924366396008148C6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		27A05B4B24367CA8008148C6 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
+		27A05B4D24376A9E008148C6 /* FeaturesTabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FeaturesTabBarViewController.swift; path = "Mental Health/Classes/FeaturesTabBarViewController.swift"; sourceTree = SOURCE_ROOT; };
+		27A05B5124376DD7008148C6 /* FeaturesTabBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesTabBarViewModel.swift; sourceTree = "<group>"; };
 		27A2F0C0242E4790009A80D7 /* Mental Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mental Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A2F0C3242E4790009A80D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27A2F0CA242E4790009A80D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -160,6 +170,8 @@
 			children = (
 				27A2F0F3242F989B009A80D7 /* Utils */,
 				27A2F0F4242F98A9009A80D7 /* Features */,
+				27A05B4D24376A9E008148C6 /* FeaturesTabBarViewController.swift */,
+				27A05B5124376DD7008148C6 /* FeaturesTabBarViewModel.swift */,
 				27A2F0C3242E4790009A80D7 /* AppDelegate.swift */,
 			);
 			path = Classes;
@@ -168,6 +180,8 @@
 		27A2F0D8242E5817009A80D7 /* Authentication */ = {
 			isa = PBXGroup;
 			children = (
+				27A05B4724366381008148C6 /* AuthenticationViewController.swift */,
+				27A05B4924366396008148C6 /* AuthenticationViewModel.swift */,
 			);
 			path = Authentication;
 			sourceTree = "<group>";
@@ -214,6 +228,7 @@
 			isa = PBXGroup;
 			children = (
 				BED2B7F0243279E40035C130 /* Mock */,
+				27A05B4B24367CA8008148C6 /* Authentication.storyboard */,
 				27A2F0C9242E4790009A80D7 /* Main.storyboard */,
 				27A2F0E0242E5909009A80D7 /* Feed.storyboard */,
 				27A2F0E2242E591B009A80D7 /* Personal.storyboard */,
@@ -280,7 +295,6 @@
 				AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */,
 				D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -404,6 +418,7 @@
 				27A2F0D0242E4791009A80D7 /* LaunchScreen.storyboard in Resources */,
 				27A2F0E3242E591B009A80D7 /* Personal.storyboard in Resources */,
 				27A2F0E7242E5940009A80D7 /* More.storyboard in Resources */,
+				27A05B4C24367CA8008148C6 /* Authentication.storyboard in Resources */,
 				BED2B7F224327A000035C130 /* Advices.json in Resources */,
 				2717C1072432A533003C6A29 /* Questionnaire.json in Resources */,
 				27A2F0E5242E592D009A80D7 /* Questionnaire.storyboard in Resources */,
@@ -471,12 +486,16 @@
 				27A2F0EF242E9C1D009A80D7 /* MoreViewController.swift in Sources */,
 				6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */,
 				6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */,
+				27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */,
+				27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */,
 				6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */,
 				6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */,
 				2717C1002432A0E4003C6A29 /* QuestionnaireViewModel.swift in Sources */,
 				27A2F0E9242E9820009A80D7 /* QuestionnaireViewController.swift in Sources */,
 				6367B7472433FADD00388A6D /* SwiftDisclosureIndicator.swift in Sources */,
 				27A2F0EB242E9BF4009A80D7 /* PersonalViewController.swift in Sources */,
+				27A05B4E24376A9E008148C6 /* FeaturesTabBarViewController.swift in Sources */,
+				27A05B4A24366396008148C6 /* AuthenticationViewModel.swift in Sources */,
 				6367B75C2433FD3A00388A6D /* ContactViewController.swift in Sources */,
 				BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */,
 				BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */,

@@ -137,8 +137,8 @@ private extension MHSlider {
         minimumTrackTintColor = .clear
         maximumTrackTintColor = .clear
         
-        let startColor = UIColor(red: 205 / 255, green: 43 / 255, blue: 47 / 255, alpha: 1).cgColor
-        let endColor = UIColor(red: 74 / 255, green: 181 / 255, blue: 97 / 255, alpha: 1).cgColor        
+        let startColor = UIColor(red: 210 / 255, green: 56 / 255, blue: 59 / 255, alpha: 1).cgColor
+        let endColor = UIColor(red: 66 / 255, green: 178 / 255, blue: 90 / 255, alpha: 1).cgColor        
         let sliderGradientImage = UIImage(bounds: trackRect(forBounds: bounds), colors: [startColor, endColor])
         setMaximumTrackImage(sliderGradientImage, for: .normal)
         setMinimumTrackImage(sliderGradientImage, for: .normal)
