@@ -5,3 +5,8 @@
 .header-content__navigation {
   margin-left: 40px;
 }
+
+.header-logout {
+  cursor: pointer;
+  margin-left: auto;
+}

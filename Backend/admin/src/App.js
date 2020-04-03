@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import { Layout } from 'antd';
 import Login from './components/login';
+import ForgotPassword from './components/forgot-password';
 import Questions, { AddQuestion, EditQuestion } from './screens/questions';
 import News, { AddNewsItem, EditNewsItem } from './screens/news';
 import Advices, { CreateAdvice, EditAdvice } from './screens/advices';
@@ -35,6 +36,7 @@ function App() {
           <Page>
             <Route exact path="/" component={() => <div>HOME PAGE</div>} />
             <Route exact path="/login" component={Login} />
+            <Route exact path="/forgot-password" component={ForgotPassword} />
             <Route exact path="/questionary" component={Questionary} />
             <Switch>
               <Route exact path="/advices" component={Advices} />

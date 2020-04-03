@@ -30,6 +30,10 @@ const Login = () => {
       });
   };
 
+  const handleForgot = () => {
+    history.push('/forgot-password');
+  };
+
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
@@ -43,7 +47,6 @@ const Login = () => {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
         className="login-form"
-        style={{ padding: '24px' }}
         form={form}
       >
         <Form.Item
@@ -65,9 +68,9 @@ const Login = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
-          <a className="login-form-forgot" href="/">
+          <Button className="login-form-forgot" onClick={handleForgot}>
             Forgot password
-          </a>
+          </Button>
         </Form.Item>
       </Form>
     </div>
