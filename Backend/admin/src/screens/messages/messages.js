@@ -6,7 +6,7 @@ import { withAuthorization } from '../../hoc';
 import { getMessages, deleteMessage } from "../../services/messages";
 import {find, get} from "lodash";
 import {notification} from "antd/lib/index";
-import { formatDate } from '../../utils/helpers';
+import { formatDateTime } from '../../utils/helpers';
 
 const Messages = () => {
   const history = useHistory();
@@ -82,7 +82,7 @@ const Messages = () => {
                         Creat:
                       </Col>
                       <Col span={23}>
-                        {creationDate ? formatDate(creationDate) : ''}
+                        {creationDate ? formatDateTime(creationDate) : ''}
                       </Col>
                     </Row>
                     <Row>

@@ -1,7 +1,10 @@
 import { db } from '../db';
 
 export const getMessages = async () => {
-  const snapshot = await db.collection('messages').get();
+  const snapshot = await db
+    .collection('messages')
+    .orderBy('creationDate', 'desc')
+    .get();
   return snapshot.docs.map((doc) => ({
     id: doc.id,
     ...doc.data(),
