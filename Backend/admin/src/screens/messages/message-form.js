@@ -1,9 +1,11 @@
 import './message-form.css';
 import React from 'react';
+import { useHistory } from 'react-router';
 import PropTypes from 'prop-types';
 import { Button, Form, Input } from 'antd';
 
 const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
+  const history = useHistory();
   const values = initialValues
     ? {
       body: initialValues.body,
@@ -12,12 +14,8 @@ const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
     }
     : {};
 
-  const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 20 },
-  };
-  const tailLayout = {
-    wrapperCol: { offset: 4, span: 20},
+  const onCancel = () => {
+    history.goBack();
   };
 
   return(
@@ -28,7 +26,8 @@ const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
           name="add-question"
           form={form}
           onFinish={onFinish}
-          {...layout}
+          labelCol={{span: 6}}
+          wrapperCol={{span: 14}}
         >
           <Form.Item
             name="from"
@@ -46,14 +45,17 @@ const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
           </Form.Item>
           <Form.Item
             name="body"
-            label="Message"
+            label="Mesaj"
             rules={[{ required: true, message: 'Mesajul nu poate fi gol' }]}
           >
             <Input.TextArea />
           </Form.Item>
-          <Form.Item {...tailLayout}>
+          <Form.Item wrapperCol={{ offset: 6, span: 14}}>
             <Button type="primary" htmlType="submit">
               {submitTitle}
+            </Button>
+            <Button htmlType="button" onClick={onCancel} className="button--cancel">
+              Anulare
             </Button>
           </Form.Item>
         </Form>
@@ -70,7 +72,7 @@ MessageForm.propTypes = {
 };
 
 MessageForm.defaultProps = {
-  submitTitle: 'Save',
+  submitTitle: 'Salveaza',
   initialValues: null,
 };
 
