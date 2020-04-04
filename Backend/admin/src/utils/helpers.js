@@ -8,3 +8,7 @@ export const getDateKey = (date = Date.now()) => {
 export const formatDate = (date) => {
   return format(date.toDate(), 'dd MMM yyyy');
 };
+
+export const formatDateTime = (date) => {
+  return format(date.toDate(), 'dd MMM yyyy HH:mm');
+};
