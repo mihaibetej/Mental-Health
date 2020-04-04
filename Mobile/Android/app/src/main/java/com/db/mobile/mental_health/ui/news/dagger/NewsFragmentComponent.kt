@@ -1,6 +1,6 @@
 package com.db.mobile.mental_health.ui.news.dagger
 
-import com.db.mobile.mental_health.ui.news.NewsViewModel
+import com.db.mobile.mental_health.ui.news.NewsFragment
 import dagger.Subcomponent
 
 @Subcomponent
@@ -10,5 +10,5 @@ interface NewsFragmentComponent {
         fun create(): NewsFragmentComponent
     }
 
-    fun inject(newsViewModel: NewsViewModel)
+    fun inject(newsFragment: NewsFragment)
 }

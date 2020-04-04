@@ -11,8 +11,8 @@ import com.db.mobile.mental_health.ui.survey.SurveyModule
 import dagger.Component
 import javax.inject.Singleton
 
-fun getApplicationComponent(context: Context): ApplicationComponent? {
-    if (context.applicationContext is MentalHealthApplication) {
+fun getApplicationComponent(context: Context?): ApplicationComponent? {
+    if (context?.applicationContext is MentalHealthApplication) {
         return (context.applicationContext as MentalHealthApplication).applicationComponent
     }
     return null
