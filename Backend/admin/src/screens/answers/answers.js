@@ -3,19 +3,16 @@ import PropTypes from 'prop-types';
 import { useHistory } from 'react-router';
 import { BarChart, Bar } from 'recharts';
 import { List, Typography, Row, Skeleton, Card } from 'antd';
-import { take, noop, isEmpty } from 'lodash';
+import { takeRight, noop, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { usersSubscribe, answersSubscribe } from '../../services/answers';
 import { getDateKey } from '../../utils/helpers';
 import theme from '../../utils/theme';
-// import { calculateRating } from './answers-common';
+import { calculateRating } from './answers-common';
 import './answers.css';
 
-const calculateRating = (items) =>
-  items.reduce((acc, next) => acc + next.answer_value, 0);
-
 const prepData = (answers) =>
-  take(
+  takeRight(
     answers.map(({ created, items }) => ({
       name: getDateKey(created.toDate()),
       value: calculateRating(items),
@@ -32,12 +29,9 @@ const SmallChart = ({ userId }) => {
     return unsubscribe;
   }, [userId]);
 
-  console.log('answers', answers);
-  //console.log(prepData(answers))
-
   return (
     prepData(answers).length > 1 && (
-      <BarChart width={150} height={50} data={prepData(answers)}>
+      <BarChart width={100} height={40} data={prepData(answers)}>
         <Bar type="monotone" dataKey="value" fill={theme.colors.primary} />
       </BarChart>
     )
@@ -97,7 +91,7 @@ const Answers = () => {
                 >
                   <div className="answers-item-wrapper">
                     <span>
-                      <Typography.Text>{idx + 1}</Typography.Text>
+                      <Typography.Text strong>{idx + 1}</Typography.Text>
                       {`. ${email}`}
                     </span>
                     <SmallChart userId={id} />
