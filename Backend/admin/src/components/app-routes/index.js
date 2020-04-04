@@ -29,12 +29,12 @@ const AppRoutes = ({ authUser }) => {
       <Route exact path="/news/create" component={AddNewsItem} />
       <Route exact path="/news/:id/edit" component={EditNewsItem} />
 
-      <Route exact path="/questionary" component={Questionary} />
-          <Route exact path="/messages" component={Messages} />
-          <Route exact path="/messages/create" component={CreateMessage} />
-          <Route exact path="/messages/:id/edit" component={EditMessage} />
+      <Route exact path="/messages" component={Messages} />
+      <Route exact path="/messages/create" component={CreateMessage} />
+      <Route exact path="/messages/:id/edit" component={EditMessage} />
 
-          <Route path="/questionary" component={Questionary} />
+      <Route exact path="/questionary" component={Questionary} />
+      <Route path="/questionary" component={Questionary} />
 
       <Route path="*">
         <Redirect to="/questions" />
