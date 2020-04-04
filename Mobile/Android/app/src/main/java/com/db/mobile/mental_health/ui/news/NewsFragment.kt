@@ -27,7 +27,7 @@ class NewsFragment : Fragment() {
         newsFragmentComponent = getApplicationComponent(context)?.newsFragmentComponent()?.create()
         newsFragmentComponent?.inject(this)
 
-        val adapter = NewsAdapter(viewModel)
+        val adapter = NewsAdapter()
         viewModel.news.observe(viewLifecycleOwner, Observer {
             adapter.items.addAll(it)
             adapter.notifyDataSetChanged()

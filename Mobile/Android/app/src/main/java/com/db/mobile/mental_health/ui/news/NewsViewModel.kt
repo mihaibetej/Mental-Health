@@ -22,7 +22,6 @@ class NewsViewModel @Inject constructor() : BaseObservable() {
                 field = value
                 notifyPropertyChanged(BR.showNews)
             }
-
         }
 
     init {
@@ -36,11 +35,6 @@ class NewsViewModel @Inject constructor() : BaseObservable() {
                 showNews = true
             }, 800
         )
-    }
-
-    fun showNewsDetails(view: View, news: News) {
-        val action = NewsFragmentDirections.actionNavigationNewsToNewsDetailsFragment(news, news.title)
-        view.findNavController().navigate(action)
     }
 
 }

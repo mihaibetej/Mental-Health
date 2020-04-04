@@ -13,7 +13,7 @@
 
         <variable
             name="viewModel"
-            type="com.db.mobile.mental_health.ui.news.NewsViewModel" />
+            type="com.db.mobile.mental_health.ui.news.NewAdapterViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -37,8 +37,15 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="128dp"
-            app:cardBackgroundColor="@color/colorAccent"
-            app:layout_constraintTop_toBottomOf="@+id/news_item_title" />
+            app:layout_constraintTop_toBottomOf="@+id/news_item_title" >
+
+            <ImageView
+                android:id="@+id/news_item_image"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:cardBackgroundColor="@color/colorAccent"/>
+
+        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
