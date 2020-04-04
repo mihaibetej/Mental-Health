@@ -31,23 +31,22 @@
             android:paddingBottom="@dimen/elements_padding"
             android:text="@{item.title}"
             android:textSize="18sp"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
             tools:text="Click here to find out how to make six packs in quarantine" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="0dp"
-            android:layout_height="128dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:layout_height="@dimen/news_thumbnail_height"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/news_item_title" >
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/news_item_title">
 
             <ImageView
                 android:id="@+id/news_item_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                app:cardBackgroundColor="@color/colorAccent"/>
+                android:layout_height="match_parent" />
 
         </androidx.cardview.widget.CardView>
 

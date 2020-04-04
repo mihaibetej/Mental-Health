@@ -1,11 +1,9 @@
 package com.db.mobile.mental_health.ui.news
 
 import android.os.Handler
-import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
-import androidx.navigation.findNavController
 import com.db.mobile.mental_health.BR
 import com.db.mobile.mental_health.domain.model.News
 import javax.inject.Inject

@@ -5,4 +5,6 @@
 
     <dimen name="elements_padding">8dp</dimen>
 
+    <dimen name="news_thumbnail_height">128dp</dimen>
+
 </resources>
