@@ -32,8 +32,7 @@
             android:text="@{item.title}"
             android:textSize="18sp"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="Click here to find out how to make six packs in quarantine"
-            android:visibility="@{viewModel.showNews ? View.VISIBLE : View.VISIBLE}" />
+            tools:text="Click here to find out how to make six packs in quarantine" />
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"

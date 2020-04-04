@@ -39,7 +39,7 @@ class NewsViewModel @Inject constructor() : BaseObservable() {
     }
 
     fun showNewsDetails(view: View, news: News) {
-        val action = NewsFragmentDirections.actionNavigationNewsToNewsDetailsFragment(news)
+        val action = NewsFragmentDirections.actionNavigationNewsToNewsDetailsFragment(news, news.title)
         view.findNavController().navigate(action)
     }
 

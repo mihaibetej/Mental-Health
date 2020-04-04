@@ -36,10 +36,14 @@
     <fragment
         android:id="@+id/news_details_fragment"
         android:name="com.db.mobile.mental_health.ui.news.details.NewsDetailsFragment"
-        android:label="NewsDetailsFragment">
+        android:label="{title}"
+        tools:layout="@layout/fragment_news_details">
         <argument
             android:name="news"
             app:argType="com.db.mobile.mental_health.domain.model.News" />
+        <argument
+            android:name="title"
+            app:argType="string" />
     </fragment>
 
 </navigation>
