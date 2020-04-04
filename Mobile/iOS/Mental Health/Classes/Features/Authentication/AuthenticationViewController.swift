@@ -18,6 +18,7 @@ class AuthenticationViewController: UIViewController {
     @IBOutlet weak var passwordTextField: MHTextField!
     @IBOutlet weak var passwordConfirmationTextField: MHTextField!
     @IBOutlet weak var authenticationButton: MHButton!
+    @IBOutlet weak var changeStateContainerView: UIStackView!
     @IBOutlet weak var changeStateButton: UIButton!
     @IBOutlet weak var changeStateLabel: MHLabel!
     @IBOutlet weak var changeStateStackBottomConstraint: NSLayoutConstraint!
@@ -29,6 +30,10 @@ class AuthenticationViewController: UIViewController {
         
         return vm
     }()
+    
+    // Default constraint constants
+    var changeStateStackBottomConstraintConstant: CGFloat = 0
+    var signInContainerViewVCenterConstraintConstant: CGFloat = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,8 +53,19 @@ class AuthenticationViewController: UIViewController {
         unregisterForKeyboardNotifications()
     }
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        guard changeStateStackBottomConstraintConstant == 0 && signInContainerViewVCenterConstraintConstant == 0 else {
+            return
+        }
+        
+        changeStateStackBottomConstraintConstant = changeStateStackBottomConstraint.constant
+        signInContainerViewVCenterConstraintConstant = signInContainerViewVCenterConstraint.constant
+    }
+    
     @IBAction func authenticateUser(_ sender: Any) {
-        viewModel.signIn(with: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
+        viewModel.authenticateUser(with: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
     @IBAction func changeState(_ sender: Any) {
@@ -63,22 +79,31 @@ class AuthenticationViewController: UIViewController {
 extension AuthenticationViewController: AuthenticationViewModelDelegate {
     
     func didChangeToSignInViewState() {
-        changeStateButton.setTitle("Creaza unul", for: .normal)
+        // Update change controls
+        changeStateButton.setTitle("Creează unul", for: .normal)
         changeStateLabel.text = "Nu ai deja cont? "
         authenticationButton.setTitle("Autentificare", for: .normal)
-        //signInContainerView.removeArrangedSubview(passwordConfirmationTextField)
+        
+        // Update sign in controls
         UIView.animate(withDuration: 0.25) {
             self.passwordConfirmationTextField.alpha = 0
         }
+        
+        resetInputs()
     }
     
     func didChangeToSignUpViewState() {
-        changeStateButton.setTitle("Autentifica-te", for: .normal)
+        // Update change controls
+        changeStateButton.setTitle("Autentifică-te", for: .normal)
         changeStateLabel.text = "Ai deja cont? "
-        authenticationButton.setTitle("Creeaza cont", for: .normal)
+        authenticationButton.setTitle("Creează cont", for: .normal)
+        
+        // Update sign in controls
         UIView.animate(withDuration: 0.25) {
             self.passwordConfirmationTextField.alpha = 1
         }
+        
+        resetInputs()
     }
     
     func didSignIn() {
@@ -86,15 +111,15 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
     }
     
     func failedToSignIn(with: Error) {
-        
+        // Some error handling
     }
     
     func didCreateUser() {
-        
+        dismiss(animated: true, completion: nil)
     }
     
     func failedToCreateUser(with: Error) {
-        
+        // some error handling
     }
     
 }
@@ -108,11 +133,23 @@ extension AuthenticationViewController: UITextFieldDelegate {
         case usernameTextField:
             usernameTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
+            
         case passwordTextField:
             passwordTextField.resignFirstResponder()
-            if authenticationButton.isEnabled {
-                viewModel.signIn(with: usernameTextField.text!, password: passwordTextField.text!)
+            if viewModel.viewState == .signIn {
+                if authenticationButton.isEnabled {
+                    viewModel.authenticateUser(with: usernameTextField.text!, password: passwordTextField.text!)
+                }
+            } else {
+                passwordConfirmationTextField.becomeFirstResponder()
             }
+            
+        case passwordConfirmationTextField:
+            passwordConfirmationTextField.resignFirstResponder()
+            if authenticationButton.isEnabled {
+                viewModel.authenticateUser(with: usernameTextField.text!, password: passwordTextField.text!)
+            }
+            
         default:
             break
         }
@@ -127,11 +164,22 @@ extension AuthenticationViewController: UITextFieldDelegate {
         
         let newText = (text as NSString).replacingCharacters(in: range, with: string)
         
-        if textField == usernameTextField {
-            authenticationButton.isEnabled = viewModel.isValid(email: newText) && viewModel.isValid(password: passwordTextField.text)
-        } else if textField == passwordTextField {
-            authenticationButton.isEnabled = viewModel.isValid(password: newText) && viewModel.isValid(email: usernameTextField.text)
+        if viewModel.viewState == .signIn {
+            if textField == usernameTextField {
+                authenticationButton.isEnabled = viewModel.isValid(email: newText) && viewModel.isValid(password: passwordTextField.text)
+            } else if textField == passwordTextField {
+                authenticationButton.isEnabled = viewModel.isValid(password: newText) && viewModel.isValid(email: usernameTextField.text)
+            }
+        } else {
+            if textField == usernameTextField {
+                authenticationButton.isEnabled = viewModel.isValid(email: newText) && viewModel.isValid(password: passwordTextField.text) && viewModel.isValid(password: passwordConfirmationTextField.text)
+            } else if textField == passwordTextField {
+                authenticationButton.isEnabled = viewModel.isValid(password: newText) && viewModel.isValid(email: usernameTextField.text) && viewModel.isValid(password: passwordConfirmationTextField.text)
+            } else if textField == passwordConfirmationTextField {
+                authenticationButton.isEnabled = viewModel.isValid(password: newText) && viewModel.isValid(email: usernameTextField.text) && viewModel.isValid(password: passwordTextField.text) && newText == passwordTextField.text
+            }        
         }
+        
         
         return true
     }
@@ -140,7 +188,7 @@ extension AuthenticationViewController: UITextFieldDelegate {
 
 // MARK: - AuthenticationViewController (Keyboard avoidance)
 
-extension AuthenticationViewController {
+private extension AuthenticationViewController {
     
     func registerForKeyboardNotifications() {
         NotificationCenter.default.addObserver(self,
@@ -163,13 +211,42 @@ extension AuthenticationViewController {
         let currentFrame = (notification.userInfo![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
         let deltaY = targetFrame.origin.y - currentFrame.origin.y
-                
-        changeStateStackBottomConstraint.constant += (-1) * deltaY
-        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
-            self.view.layoutIfNeeded()
-        }) { (finished) in
-            // finished animating
-        }
+        
+        updateLayout(deltaY: deltaY, animationDuration: animationDuration, animationCurve: animationCurve)
     }
     
+    func updateLayout(deltaY: CGFloat, animationDuration: Double, animationCurve: UInt) {
+        if deltaY < 0
+            && signInContainerViewVCenterConstraint.constant == signInContainerViewVCenterConstraintConstant
+            && changeStateStackBottomConstraint.constant == changeStateStackBottomConstraintConstant {
+            // Keyboard is being shown
+            // Center sign in stack view in the available vertical space (view.height - kb.heaight)
+            let boundsUncoveredByKb = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height + deltaY)
+            let targetSignInContainerViewVCenterConstraintConstant = boundsUncoveredByKb.height / 2 - view.bounds.height / 2
+            signInContainerViewVCenterConstraint.constant = targetSignInContainerViewVCenterConstraintConstant
+            
+            // Center change state stack in the available vertical space between the sign in stack view bottom and the top of the keyboard
+            let signInContainerTargetBottom = boundsUncoveredByKb.height / 2 + signInContainerView.bounds.height / 2
+            let verticalSpaceAvailable = view.frame.height - abs(deltaY) - signInContainerTargetBottom
+            let targetChangeStateStackBottomConstraintContant = abs(deltaY) + (verticalSpaceAvailable - changeStateContainerView.bounds.height) / 2 - view.safeAreaInsets.bottom
+            changeStateStackBottomConstraint.constant = targetChangeStateStackBottomConstraintContant
+        } else if deltaY > 0 {
+            // Keyboard is being dismissed
+            // Restore default positions
+            signInContainerViewVCenterConstraint.constant = signInContainerViewVCenterConstraintConstant
+            changeStateStackBottomConstraint.constant = changeStateStackBottomConstraintConstant
+        } else {
+            // Keyboard position has not changed (deltaY == 0), so we do nothing
+        }
+                
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
+            self.view.layoutIfNeeded()
+        })
+    }
+    
+    func resetInputs() {
+        usernameTextField.text = ""
+        passwordTextField.text = ""
+        passwordConfirmationTextField.text = ""
+    }
 }

@@ -27,12 +27,12 @@ class AuthenticationViewModel {
     
     weak var delegate: AuthenticationViewModelDelegate?
     
-    private enum ViewState {
+    enum ViewState {
         case signIn
         case signUp
     }
     
-    private var viewState: ViewState = .signUp {
+    private(set) var viewState: ViewState = .signUp {
         didSet {
             switch viewState {
             case .signIn:
@@ -62,6 +62,19 @@ class AuthenticationViewModel {
         return (password ?? "").count > 4
     }
     
+    func authenticateUser(with email: String, password: String) {
+        switch viewState {
+        case .signIn:
+            signIn(with: email, password: password)
+        case .signUp:
+            signUp(with: email, password: password)
+        }
+    }
+        
+}
+
+private extension AuthenticationViewModel {
+    
     func signIn(with email: String, password: String) {
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             if let error = error {
@@ -79,7 +92,7 @@ class AuthenticationViewModel {
         }
     }
     
-    func createUser(with email: String, password: String) {
+    func signUp(with email: String, password: String) {
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
             if let error = error {
                 // User login failed
@@ -94,5 +107,5 @@ class AuthenticationViewModel {
             }
         }
     }
-    
+
 }

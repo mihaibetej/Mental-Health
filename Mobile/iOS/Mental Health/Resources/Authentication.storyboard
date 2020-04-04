@@ -41,7 +41,7 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirmare parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMF-ml-GKL" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirma parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMF-ml-GKL" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="Tgc-CW-Uje"/>
@@ -73,16 +73,17 @@
                                 </subviews>
                             </stackView>
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-cD-FNF">
-                                <rect key="frame" x="98.5" y="812" width="217" height="30"/>
+                                <rect key="frame" x="93.5" y="821" width="227" height="33"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu ai deja cont? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-aW-DbD" customClass="MHLabel" customModule="Mental_Health" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="0.0" width="127" height="30"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="127" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="znP-eh-8uZ">
-                                        <rect key="frame" x="127" y="0.0" width="90" height="30"/>
+                                        <rect key="frame" x="127" y="0.0" width="100" height="33"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <state key="normal" title="Creeaza unul"/>
                                         <connections>
                                             <action selector="changeState:" destination="T2c-Li-uW1" eventType="touchUpInside" id="QUa-K8-UuB"/>
@@ -94,7 +95,7 @@
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cso-ga-oYl" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="26i-M3-nF4"/>
-                            <constraint firstItem="K6U-bM-rTD" firstAttribute="bottom" secondItem="QDh-cD-FNF" secondAttribute="bottom" constant="20" id="Nhx-fx-ZiB"/>
+                            <constraint firstItem="K6U-bM-rTD" firstAttribute="bottom" secondItem="QDh-cD-FNF" secondAttribute="bottom" constant="8" id="Nhx-fx-ZiB"/>
                             <constraint firstItem="K6U-bM-rTD" firstAttribute="trailing" secondItem="cso-ga-oYl" secondAttribute="trailing" constant="20" id="QY2-Hu-a37"/>
                             <constraint firstItem="cso-ga-oYl" firstAttribute="centerY" secondItem="lA6-IV-lJl" secondAttribute="centerY" constant="-98" id="ZZi-Qe-wbc"/>
                             <constraint firstItem="QDh-cD-FNF" firstAttribute="centerX" secondItem="lA6-IV-lJl" secondAttribute="centerX" id="bn9-nj-WK5"/>
@@ -104,6 +105,7 @@
                     <connections>
                         <outlet property="authenticationButton" destination="Qcr-rT-MQH" id="OLX-Rn-4q5"/>
                         <outlet property="changeStateButton" destination="znP-eh-8uZ" id="63f-Ue-irN"/>
+                        <outlet property="changeStateContainerView" destination="QDh-cD-FNF" id="Mgv-rm-d3w"/>
                         <outlet property="changeStateLabel" destination="9Xy-aW-DbD" id="3iy-5L-WiO"/>
                         <outlet property="changeStateStackBottomConstraint" destination="Nhx-fx-ZiB" id="TE5-ml-3Sr"/>
                         <outlet property="passwordConfirmationTextField" destination="aMF-ml-GKL" id="5xP-aN-K7E"/>
