@@ -25,7 +25,7 @@
                                             <constraint firstAttribute="height" constant="52" id="vKM-yP-o38"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="LTe-rI-22b"/>
                                         </connections>
@@ -36,7 +36,7 @@
                                             <constraint firstAttribute="height" constant="52" id="WF0-Gb-0as"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
@@ -47,7 +47,7 @@
                                             <constraint firstAttribute="height" constant="52" id="Tgc-CW-Uje"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="ii5-df-pb0"/>
                                         </connections>

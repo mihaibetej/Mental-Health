@@ -12,6 +12,22 @@ import UIKit
 
 class MHTextField: UITextField {
     
+    enum ValidationState {
+        case isValid
+        case isInvalid
+    }
+    
+    var validationState: ValidationState = .isValid {
+        didSet {
+            switch validationState {
+            case .isValid:
+                customizeForValidState()
+            case .isInvalid:
+                customizeForInvalidState()
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customize()
@@ -27,7 +43,7 @@ class MHTextField: UITextField {
 // MARK: - MHTextField (private API)
 
 private extension MHTextField {
-    
+        
     func customize() {
         // Border
         layer.masksToBounds = true
@@ -40,6 +56,26 @@ private extension MHTextField {
         
         // Carret color
         tintColor = .mhBlue
+    }
+    
+    func customizeForValidState() {
+        let transition = CATransition()
+        transition.type = .fade
+        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        transition.duration = CATransaction.animationDuration()
+        layer.add(transition, forKey: "StateChangeAnimation")
+        backgroundColor = .white
+        layer.borderColor = UIColor.mhBlue.cgColor
+    }
+    
+    func customizeForInvalidState() {
+        let transition = CATransition()
+        transition.type = .fade
+        transition.timingFunction = CAMediaTimingFunction(name: .easeOut)
+        transition.duration = CATransaction.animationDuration()
+        layer.add(transition, forKey: "StateChangeAnimation")
+        backgroundColor = .mhTextInvalid
+        layer.borderColor = UIColor.mhRed.cgColor
     }
     
 }

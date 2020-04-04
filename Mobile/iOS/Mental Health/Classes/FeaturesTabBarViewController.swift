@@ -23,17 +23,34 @@ class FeaturesTabBarViewController: UITabBarController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        guard viewModel.isUserLoggedIn == false else  {
-            // viewModel.signOut()
+        guard checkAndSignInIfNeccesary() == false else {
             return
+        }
+        checkAndPresentDailyFeedbackIfNeccesary()
+    }
+    
+}
+
+// MARK: - FeaturesTabBarViewController (private API)
+
+private extension FeaturesTabBarViewController {
+    
+    func checkAndSignInIfNeccesary() -> Bool {
+        guard viewModel.isUserLoggedIn == false else  {
+            //viewModel.signOut()
+            return false
         }
         
         guard let authController = UIStoryboard(name: "Authentication", bundle: nil).instantiateInitialViewController() else {
-            return
+            return false
         }
         
         present(authController, animated: true, completion: nil)
+        return true
+    }
+    
+    func checkAndPresentDailyFeedbackIfNeccesary() {
+        //TODO: Present 'Cum te simti azi' dialog 
     }
     
 }

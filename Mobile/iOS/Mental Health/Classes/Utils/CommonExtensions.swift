@@ -68,5 +68,8 @@ extension UIImage {
 // MARK: - UIColor
 
 extension UIColor {
-    static let mhBlue = #colorLiteral(red: 0.1294117647, green: 0.4901960784, blue: 0.7921568627, alpha: 1)
+    static let mhGreen = UIColor(named: "MHDarkGreen")!
+    static let mhRed = UIColor(named: "MHDarkRed")!
+    static let mhBlue = UIColor(named: "MHDarkBlue")!
+    static let mhTextInvalid = UIColor(named: "MHTextInvalid")!
 }

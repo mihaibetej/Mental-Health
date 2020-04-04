@@ -85,6 +85,7 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
         authenticationButton.setTitle("Autentificare", for: .normal)
         
         // Update sign in controls
+        passwordTextField.returnKeyType = .go
         UIView.animate(withDuration: 0.25) {
             self.passwordConfirmationTextField.alpha = 0
         }
@@ -99,6 +100,7 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
         authenticationButton.setTitle("Creează cont", for: .normal)
         
         // Update sign in controls
+        passwordTextField.returnKeyType = .next
         UIView.animate(withDuration: 0.25) {
             self.passwordConfirmationTextField.alpha = 1
         }
@@ -128,16 +130,41 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
 
 extension AuthenticationViewController: UITextFieldDelegate {
     
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        if textField == usernameTextField {
+            guard let text = textField.text?.trimmingCharacters(in: CharacterSet.whitespacesAndNewlines) else {
+                usernameTextField.validationState = .isValid
+                return
+            }
+            
+            guard text.count > 0 else {
+                usernameTextField.text = ""
+                usernameTextField.validationState = .isValid
+                return
+            }
+            
+            if viewModel.isValid(email: textField.text) == false {
+                usernameTextField.validationState = .isInvalid
+            }
+        }
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == usernameTextField {
+            usernameTextField.validationState = .isValid
+        }
+    }
+    
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case usernameTextField:
-            usernameTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
             
         case passwordTextField:
-            passwordTextField.resignFirstResponder()
             if viewModel.viewState == .signIn {
                 if authenticationButton.isEnabled {
+                    passwordTextField.resignFirstResponder()
                     viewModel.authenticateUser(with: usernameTextField.text!, password: passwordTextField.text!)
                 }
             } else {
@@ -145,8 +172,8 @@ extension AuthenticationViewController: UITextFieldDelegate {
             }
             
         case passwordConfirmationTextField:
-            passwordConfirmationTextField.resignFirstResponder()
             if authenticationButton.isEnabled {
+                passwordConfirmationTextField.resignFirstResponder()
                 viewModel.authenticateUser(with: usernameTextField.text!, password: passwordTextField.text!)
             }
             
@@ -206,6 +233,9 @@ private extension AuthenticationViewController {
     }
     
     @objc func toggleKeyboard(notification: Notification) {
+        
+        print("toggle keyboard with notification: \(notification)")
+        
         let animationDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         let animationCurve = notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
         let currentFrame = (notification.userInfo![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
@@ -231,12 +261,17 @@ private extension AuthenticationViewController {
             let targetChangeStateStackBottomConstraintContant = abs(deltaY) + (verticalSpaceAvailable - changeStateContainerView.bounds.height) / 2 - view.safeAreaInsets.bottom
             changeStateStackBottomConstraint.constant = targetChangeStateStackBottomConstraintContant
         } else if deltaY > 0 {
+            // TODO: Remove temporary hack for keyboard resizing (caused by attempt to show suggested strong pass)
+            if deltaY < 20 {
+                return
+            }
             // Keyboard is being dismissed
             // Restore default positions
             signInContainerViewVCenterConstraint.constant = signInContainerViewVCenterConstraintConstant
             changeStateStackBottomConstraint.constant = changeStateStackBottomConstraintConstant
         } else {
             // Keyboard position has not changed (deltaY == 0), so we do nothing
+            return
         }
                 
         UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
@@ -246,7 +281,12 @@ private extension AuthenticationViewController {
     
     func resetInputs() {
         usernameTextField.text = ""
+        usernameTextField.validationState = .isValid
         passwordTextField.text = ""
+        passwordTextField.validationState = .isValid
         passwordConfirmationTextField.text = ""
+        passwordConfirmationTextField.validationState = .isValid
+        
+        usernameTextField.becomeFirstResponder()
     }
 }
