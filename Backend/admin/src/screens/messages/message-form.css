@@ -1,0 +1,17 @@
+.message-form-wrapper {
+    display: flex;
+    flex: 1 1 auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.message-form {
+    width: 40%;
+    background-color: #FFF;
+    padding: 1em;
+    box-shadow: 1px 2px 4px rgba(0, 0, 0, .5);
+}
+
+.button--cancel {
+    margin-left: 1em;
+}
