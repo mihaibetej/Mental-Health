@@ -15,11 +15,11 @@ const EditMessage = () => {
       setMessage(await getMessageById(id));
     };
     runEffect();
-  }, []);
+  }, [id]);
 
   const editNotification = (messageContent) => {
     notification.open({
-      message: 'Am editat cu succes mesajul:',
+      message: 'Am editat cu success mesajul:',
       description: messageContent,
     });
   };

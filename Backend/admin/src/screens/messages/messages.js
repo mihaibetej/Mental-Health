@@ -1,10 +1,12 @@
+import './messages.css';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { List, Typography, Button, Popconfirm } from 'antd';
+import { List, Typography, Button, Popconfirm, Row, Col } from 'antd';
 import { withAuthorization } from '../../hoc';
 import { getMessages, deleteMessage } from "../../services/messages";
 import {find, get} from "lodash";
 import {notification} from "antd/lib/index";
+import { formatDate } from '../../utils/helpers';
 
 const Messages = () => {
   const history = useHistory();
@@ -41,50 +43,74 @@ const Messages = () => {
   };
 
   return(
-    <div className="messages">
-      <List
-        header={
-          // eslint-disable-next-line
-          <>
-            <Typography.Title>Mesaje</Typography.Title>
-            <Button type="dashed" onClick={handleCreateMessage}>
-              Adauga un mesaj
-            </Button>
-          </>
-        }
-        bordered
-        itemLayout="vertical"
-        dataSource={messages}
-        renderItem={({ body, from, to, creationDate,  id }) => (
-          <List.Item
-            actions={[
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                Edit
-              </a>,
-              <Popconfirm
-                title="Esti sigur ca vrei sa stergi acest mesaj?"
-                onConfirm={confirmDelete(id)}
-                okText="Da"
-                cancelText="Nu"
-              >
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">Delete</a>
-              </Popconfirm>,
-            ]}
-          >
-            <p>
-              From: {from}
-            </p>
-            <p>
-              To: {to}
-            </p>
-            <p>
-            {body}
-            </p>
-          </List.Item>
-        )}
-      />
+    <div className="messages-wrapper">
+      <div className="messages">
+        <List
+          header={
+            <div className="messages__header">
+              <Typography.Title level={3}>Mesaje</Typography.Title>
+              <Button type="primary" shape="round" onClick={handleCreateMessage}>
+                Adauga un mesaj
+              </Button>
+            </div>
+          }
+          itemLayout="vertical"
+          dataSource={messages}
+          renderItem={({ body, from, to, creationDate,  id }) => (
+            <List.Item
+              actions={[
+                // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                  Editeaza
+                </a>,
+                <Popconfirm
+                  title="Esti sigur ca vrei sa stergi acest mesaj?"
+                  onConfirm={confirmDelete(id)}
+                  okText="Da"
+                  cancelText="Nu"
+                >
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a href="#">Sterge</a>
+                </Popconfirm>,
+              ]}
+            >
+              <List.Item.Meta
+                description={
+                  <>
+                    <Row>
+                      <Col span={1}>
+                        Creat:
+                      </Col>
+                      <Col span={23}>
+                        {creationDate ? formatDate(creationDate) : ''}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col span={1}>
+                        From:
+                      </Col>
+                      <Col span={23}>
+                        {from}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col span={1}>
+                        To:
+                      </Col>
+                      <Col span={23}>
+                        {to}
+                      </Col>
+                    </Row>
+                  </>
+                }
+              />
+              <Row>
+                {body}
+              </Row>
+            </List.Item>
+          )}
+        />
+      </div>
     </div>
   );
 };

@@ -20,11 +20,7 @@ const AddMessage = () => {
     createNotification(body);
   };
 
-  return(
-    <div className="add-message">
-      <MessageForm form={form} onFinish={onFinish} />
-    </div>
-  );
+  return <MessageForm form={form} onFinish={onFinish} />
 };
 
 export default withAuthorization(AddMessage);
