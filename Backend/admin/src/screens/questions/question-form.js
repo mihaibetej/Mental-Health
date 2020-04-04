@@ -1,27 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Input } from 'antd';
+import { Button, Card, Form, Input, Row } from 'antd';
 
-import './question-form.css';
+import '../styles.css';
 
-const QuestionForm = ({ form, initialValues, onFinish, submitTitle }) => {
+const QuestionForm = ({
+  form,
+  initialValues,
+  onFinish,
+  submitTitle,
+  onCancel,
+}) => {
   return (
-    <div className="question-form">
-      <Form
-        initialValues={initialValues}
-        name="add-question"
-        form={form}
-        onFinish={onFinish}
-      >
-        <Form.Item name="body" label="Question Title">
-          <Input />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {submitTitle}
-          </Button>
-        </Form.Item>
-      </Form>
+    <div className="form-wrapper">
+      <Card title="Adauga o intrebare">
+        <Form
+          initialValues={initialValues}
+          name="add-question"
+          form={form}
+          onFinish={onFinish}
+        >
+          <Form.Item name="body" label="Question Title">
+            <Input />
+          </Form.Item>
+          <Row className="action-btn-group">
+            <Button shape="round" className="action-btn" onClick={onCancel}>
+              Cancel
+            </Button>
+            <Form.Item>
+              <Button
+                type="primary"
+                shape="round"
+                htmlType="submit"
+                className="action-btn"
+              >
+                {submitTitle}
+              </Button>
+            </Form.Item>
+          </Row>
+        </Form>
+      </Card>
     </div>
   );
 };

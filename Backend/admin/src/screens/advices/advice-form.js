@@ -1,10 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Input, DatePicker } from 'antd';
+import { Button, Form, Input, DatePicker, Row, Card } from 'antd';
 import moment from 'moment';
-import './advice-form.css';
+import '../styles.css';
 
-const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
+const AdviceForm = ({
+  form,
+  initialValues,
+  onFinish,
+  submitTitle,
+  onCancel,
+}) => {
   const values = initialValues
     ? {
         body: initialValues.body,
@@ -14,25 +20,37 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
     : {};
 
   return (
-    <div className="advice-form">
-      <Form
-        initialValues={values}
-        name="add-question"
-        form={form}
-        onFinish={onFinish}
-      >
-        <Form.Item name="body" label="Advice">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item name="publishDate" label="Date for publish">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {submitTitle}
-          </Button>
-        </Form.Item>
-      </Form>
+    <div className="form-wrapper">
+      <Card title="Adauga un sfat">
+        <Form
+          initialValues={values}
+          name="add-question"
+          form={form}
+          onFinish={onFinish}
+        >
+          <Form.Item name="body" label="Advice">
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item name="publishDate" label="Date for publish">
+            <DatePicker />
+          </Form.Item>
+          <Row className="action-btn-group">
+            <Button shape="round" className="action-btn" onClick={onCancel}>
+              Cancel
+            </Button>
+            <Form.Item>
+              <Button
+                type="primary"
+                shape="round"
+                htmlType="submit"
+                className="action-btn"
+              >
+                {submitTitle}
+              </Button>
+            </Form.Item>
+          </Row>
+        </Form>
+      </Card>
     </div>
   );
 };

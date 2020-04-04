@@ -3,12 +3,12 @@ import { useHistory } from 'react-router';
 import { find, get } from 'lodash';
 
 // eslint-disable-next-line
-import { List, notification, Popconfirm, Typography, Button } from 'antd';
+import { List, notification, Popconfirm, Typography, Button, Card } from 'antd';
 
 import { withAuthorization } from '../../hoc';
 import { deleteQuestion, getQuestions } from '../../services/questions';
 
-import './questions.css';
+import '../styles.css';
 
 const Questions = () => {
   const history = useHistory();
@@ -45,44 +45,43 @@ const Questions = () => {
   };
 
   return (
-    <div className="questions-wrapper">
-      <List
-        className="questions-list"
-        bordered
-        header={
-          // eslint-disable-next-line
-          <>
-            <Typography.Title>Intrebari chestionar:</Typography.Title>
-            <Button type="dashed" onClick={handleCreate}>
-              Creaza o intrebare noua
-            </Button>
-          </>
+    <div className="general-wrapper">
+      <Card
+        title="Intrebari chestionar"
+        extra={
+          <Button type="primary" shape="round" onClick={handleCreate}>
+            Adauga o intrebare
+          </Button>
         }
-        itemLayout="horizontal"
-        dataSource={questions}
-        renderItem={({ body, id }, idx) => (
-          <List.Item
-            actions={[
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                edit
-              </a>,
-              <Popconfirm
-                title="Esti sigur ca vrei sa stergi aceasta intrebare?"
-                onConfirm={confirm(id)}
-                okText="Da"
-                cancelText="Nu"
-              >
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">delete</a>
-              </Popconfirm>,
-            ]}
-          >
-            <Typography.Text strong>{idx + 1}</Typography.Text>
-            {`. ${body}`}
-          </List.Item>
-        )}
-      />
+      >
+        <List
+          className="questions-list"
+          itemLayout="horizontal"
+          dataSource={questions}
+          renderItem={({ body, id }, idx) => (
+            <List.Item
+              actions={[
+                // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                  Editeaza
+                </a>,
+                <Popconfirm
+                  title="Esti sigur ca vrei sa stergi aceasta intrebare?"
+                  onConfirm={confirm(id)}
+                  okText="Da"
+                  cancelText="Nu"
+                >
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a href="#">Sterge</a>
+                </Popconfirm>,
+              ]}
+            >
+              <Typography.Text>{idx + 1}</Typography.Text>
+              {`. ${body}`}
+            </List.Item>
+          )}
+        />
+      </Card>
     </div>
   );
 };

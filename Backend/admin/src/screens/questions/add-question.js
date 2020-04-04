@@ -3,9 +3,15 @@ import { Form, notification } from 'antd';
 import QuestionForm from './question-form';
 import { withAuthorization } from '../../hoc';
 import { createQuestion } from '../../services/questions';
+import { useHistory } from 'react-router';
 
 const AddQuestion = () => {
   const [form] = Form.useForm();
+  const history = useHistory();
+
+  const onCancel = () => {
+    history.push('questions');
+  };
 
   const createNotification = (question) => {
     notification.open({
@@ -20,7 +26,7 @@ const AddQuestion = () => {
     createNotification(body);
   };
 
-  return <QuestionForm form={form} onFinish={onFinish} />;
+  return <QuestionForm form={form} onFinish={onFinish} onCancel={onCancel} />;
 };
 
 export default withAuthorization(AddQuestion);
