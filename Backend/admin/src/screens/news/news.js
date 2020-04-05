@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Typography, Button, Card, Avatar, List } from 'antd';
+import { Typography, Button, Card, notification, List, Popconfirm } from 'antd';
+import { find, get } from 'lodash';
 
 import { withAuthorization } from '../../hoc';
 import { getNews, removeNewsItem } from '../../services/news';
+import { formatDate } from '../../utils/helpers';
+import defaultImage from '../../assets/default.jpg';
 import './news.css';
 
 const News = () => {
@@ -17,9 +20,18 @@ const News = () => {
     runEffect();
   }, []);
 
+  const deleteNotification = (id) => {
+    const newsItem = get(find(news, { id }), 'body');
+    notification.open({
+      message: 'Am sters cu succes stirea:',
+      description: newsItem,
+    });
+  };
+
   const confirmDelete = (newsItemId) => () => {
     removeNewsItem(newsItemId).then(async () => {
       setNews(await getNews());
+      deleteNotification(newsItemId);
     });
   };
 
@@ -34,11 +46,11 @@ const News = () => {
   return (
     <Card
       title="Stiri"
-      extra={
+      extra={(
         <Button type="primary" shape="round" onClick={handleCreate}>
           Adauga o stire
         </Button>
-      }
+      )}
     >
       <List
         grid={{
@@ -51,21 +63,33 @@ const News = () => {
           xxl: 3,
         }}
         dataSource={news}
-        renderItem={({ title, body, id, image }) => (
+        renderItem={({ title, body, id, image, date }) => (
           <List.Item className="content">
             <Card
               className="margin"
-              cover={<Avatar shape="square" size={64} src={image} />}
+              cover={(
+                <img
+                  className="image"
+                  src={image || defaultImage}
+                  alt="No available"
+                />
+              )}
               actions={[
                 <Typography.Text onClick={handleEdit(id)}>
                   Editeaza
                 </Typography.Text>,
-                <Typography.Text onClick={confirmDelete(id)}>
-                  Sterge
-                </Typography.Text>,
+                <Popconfirm
+                  title="Esti sigur ca vrei sa stergi aceasta intrebare?"
+                  onConfirm={confirmDelete(id)}
+                  okText="Da"
+                  cancelText="Nu"
+                >
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a href="#">Sterge</a>
+                </Popconfirm>,
               ]}
             >
-              <Card.Meta title={title} description={body} />
+              <Card.Meta title={`${title} : ${formatDate(date)}`} description={body} />
             </Card>
           </List.Item>
         )}
