@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { List, notification, Popconfirm, Typography, Button } from 'antd';
+import { List, notification, Popconfirm, Button, Card } from 'antd';
 import { find, get } from 'lodash';
 
 import { withAuthorization } from '../../hoc';
 import { deleteAdvice, getAdvices } from '../../services/advices';
 import { formatDate } from '../../utils/helpers';
+
+import '../styles.css';
 
 const Advices = () => {
   const history = useHistory();
@@ -42,26 +44,24 @@ const Advices = () => {
   };
 
   return (
-    <div>
+    <Card
+      title="Sfaturi"
+      extra={
+        <Button type="primary" shape="round" onClick={handleCreate}>
+          Adauga un sfat
+        </Button>
+      }
+    >
       <List
-        bordered
-        header={
-          // eslint-disable-next-line
-          <>
-            <Typography.Title>Sfaturi</Typography.Title>
-            <Button type="dashed" onClick={handleCreate}>
-              Adauga un sfat
-            </Button>
-          </>
-        }
-        itemLayout="horizontal"
+        itemLayout="vertical"
         dataSource={advices}
         renderItem={({ body, creationDate, publishDate, id }) => (
           <List.Item
+            className="general-wrapper"
             actions={[
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
               <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                Edit
+                Editeaza
               </a>,
               <Popconfirm
                 title="Esti sigur ca vrei sa stergi aceasta intrebare?"
@@ -70,7 +70,7 @@ const Advices = () => {
                 cancelText="Nu"
               >
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">Delete</a>
+                <a href="#">Sterge</a>
               </Popconfirm>,
             ]}
           >
@@ -82,7 +82,7 @@ const Advices = () => {
           </List.Item>
         )}
       />
-    </div>
+    </Card>
   );
 };
 

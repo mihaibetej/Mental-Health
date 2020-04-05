@@ -3,12 +3,12 @@ import { useHistory } from 'react-router';
 import { find, get } from 'lodash';
 
 // eslint-disable-next-line
-import { List, notification, Popconfirm, Typography, Button } from 'antd';
+import { List, notification, Popconfirm, Typography, Button, Card } from 'antd';
 
 import { withAuthorization } from '../../hoc';
 import { deleteQuestion, getQuestions } from '../../services/questions';
 
-import './questions.css';
+import '../styles.css';
 
 const Questions = () => {
   const history = useHistory();
@@ -45,27 +45,24 @@ const Questions = () => {
   };
 
   return (
-    <div className="questions-wrapper">
+    <Card
+      title="Intrebari chestionar"
+      extra={
+        <Button type="primary" shape="round" onClick={handleCreate}>
+          Adauga o intrebare
+        </Button>
+      }
+    >
       <List
-        className="questions-list"
-        bordered
-        header={
-          // eslint-disable-next-line
-          <>
-            <Typography.Title>Intrebari chestionar:</Typography.Title>
-            <Button type="dashed" onClick={handleCreate}>
-              Creaza o intrebare noua
-            </Button>
-          </>
-        }
         itemLayout="horizontal"
         dataSource={questions}
         renderItem={({ body, id }, idx) => (
           <List.Item
+            className="general-wrapper"
             actions={[
               // eslint-disable-next-line jsx-a11y/anchor-is-valid
               <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                edit
+                Editeaza
               </a>,
               <Popconfirm
                 title="Esti sigur ca vrei sa stergi aceasta intrebare?"
@@ -74,16 +71,16 @@ const Questions = () => {
                 cancelText="Nu"
               >
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">delete</a>
+                <a href="#">Sterge</a>
               </Popconfirm>,
             ]}
           >
-            <Typography.Text strong>{idx + 1}</Typography.Text>
+            <Typography.Text>{idx + 1}</Typography.Text>
             {`. ${body}`}
           </List.Item>
         )}
       />
-    </div>
+    </Card>
   );
 };
 

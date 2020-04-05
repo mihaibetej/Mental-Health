@@ -39,7 +39,6 @@ const AppRoutes = ({ authUser }) => {
       <Route path="*">
         <Redirect to="/questions" />
       </Route>
-
     </Switch>
   ) : (
     <Switch>

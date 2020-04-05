@@ -2,7 +2,7 @@ import React from 'react';
 import { Form, notification } from 'antd';
 import MessageForm from './message-form';
 import { withAuthorization } from '../../hoc';
-import {createMessage} from "../../services/messages";
+import { createMessage } from '../../services/messages';
 
 const AddMessage = () => {
   const [form] = Form.useForm();
@@ -20,7 +20,7 @@ const AddMessage = () => {
     createNotification(body);
   };
 
-  return <MessageForm form={form} onFinish={onFinish} />
+  return <MessageForm form={form} onFinish={onFinish} />;
 };
 
 export default withAuthorization(AddMessage);

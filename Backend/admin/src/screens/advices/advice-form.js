@@ -1,10 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Input, DatePicker } from 'antd';
+import { Button, Form, Input, DatePicker, Row, Card } from 'antd';
 import moment from 'moment';
-import './advice-form.css';
+import { useHistory } from 'react-router';
+
+import '../styles.css';
 
 const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
+  const history = useHistory();
   const values = initialValues
     ? {
         body: initialValues.body,
@@ -13,26 +16,60 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
       }
     : {};
 
+  const onCancel = () => {
+    history.goBack();
+  };
+
   return (
-    <div className="advice-form">
-      <Form
-        initialValues={values}
-        name="add-question"
-        form={form}
-        onFinish={onFinish}
-      >
-        <Form.Item name="body" label="Advice">
-          <Input.TextArea />
-        </Form.Item>
-        <Form.Item name="publishDate" label="Date for publish">
-          <DatePicker />
-        </Form.Item>
-        <Form.Item>
-          <Button type="primary" htmlType="submit">
-            {submitTitle}
-          </Button>
-        </Form.Item>
-      </Form>
+    <div className="form-wrapper">
+      <Card title="Adauga un sfat">
+        <Form
+          initialValues={values}
+          name="add-question"
+          form={form}
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="body"
+            label="Advice"
+            rules={[
+              {
+                required: true,
+                message: 'Continutul sfatului nu poate fi gol',
+              },
+            ]}
+          >
+            <Input.TextArea />
+          </Form.Item>
+          <Form.Item
+            name="publishDate"
+            label="Date for publish"
+            rules={[
+              {
+                required: true,
+                message: 'Data publicarii sfatului nu poate fi goala',
+              },
+            ]}
+          >
+            <DatePicker />
+          </Form.Item>
+          <Row className="action-btn-group">
+            <Button shape="round" className="action-btn" onClick={onCancel}>
+              Anuleaza
+            </Button>
+            <Form.Item>
+              <Button
+                type="primary"
+                shape="round"
+                htmlType="submit"
+                className="action-btn"
+              >
+                {submitTitle}
+              </Button>
+            </Form.Item>
+          </Row>
+        </Form>
+      </Card>
     </div>
   );
 };
@@ -45,7 +82,7 @@ AdviceForm.propTypes = {
 };
 
 AdviceForm.defaultProps = {
-  submitTitle: 'Save',
+  submitTitle: 'Salveaza',
   initialValues: null,
 };
 
