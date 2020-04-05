@@ -1,5 +1,5 @@
 import uuidv4 from 'uuid';
-import { db, storageRef, storage } from '../db';
+import firebase,{ db, storageRef } from '../db';
 
 export const getNews = async () => {
   const snapshot = await db.collection('news').get();
@@ -15,7 +15,7 @@ export const getNewsItemById = async (id) => {
 };
 
 export const removeImage = async (url) => {
-  const imageRef = url && storage.refFromURL(url);
+  const imageRef = url && firebase.storage().refFromURL(url);
 
   if (imageRef) await imageRef.delete();
 };
@@ -36,29 +36,32 @@ export const removeNewsItem = async (id) => {
   await db.collection('news').doc(id).delete();
 };
 
-export const updateNewsItem = async ({ title, body, id, file }) => {
-  const newsItemData = await getNewsItemById(id);
-  await removeImage(newsItemData.image);
-  const url = await uploadImage(file);
-
-  const item = {
-    title,
-    body,
-    date: new Date(),
-    image: url,
-  };
-
-  await db.collection('news').doc(id).update(item);
-};
-
-export const addNewsItem = async ( title, body, image ) => {
-  const url =image&& await uploadImage(image.file);
-
+export const updateNewsItem = async (id, title,body, image) => {
   const newsItem={
     date: new Date(),
     title,
     body
+  };
+
+  const newsItemData = await getNewsItemById(id);
+  await removeImage(newsItemData.image);
+  const url = image && await uploadImage(image.file);
+
+   if(url){
+    newsItem.image=url;
   }
+
+  await db.collection('news').doc(id).update(newsItem);
+};
+
+export const addNewsItem = async ( title, body, image ) => {
+  const newsItem={
+    date: new Date(),
+    title,
+    body
+  };
+  
+  const url = image && await uploadImage(image.file);
 
   if(url){
     newsItem.image=url;

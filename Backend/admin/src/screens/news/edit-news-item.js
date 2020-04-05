@@ -26,14 +26,7 @@ const EditNewsItem = () => {
   };
 
   const onFinish = async ({ title, body, image }) => {
-    const item = {
-      id,
-      title,
-      body,
-      file: image.file,
-    };
-
-    await updateNewsItem(item);
+    await updateNewsItem(id, title,body, image);
     editNotification(body);
   };
 

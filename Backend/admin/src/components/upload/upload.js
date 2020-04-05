@@ -1,9 +1,17 @@
 import React, { useState } from 'react';
-import { Upload, Button,message,Form  } from 'antd';
+import { Upload, Button, Form } from 'antd';
 import { UploadOutlined } from '@ant-design/icons';
 
-const UploadImage =()=> {
-    const [fileList , setFileList] = useState([]);
+const UploadImage =(defaultImage)=> {
+  const defaultFileList= defaultImage.defaultImage?[
+    {
+      uid: '1',
+      name: 'image',
+      status: 'done',
+      url: defaultImage.defaultImage,
+    }]:[];
+
+  const [fileList , setFileList] = useState(defaultFileList);
 
   const handleChange = (info) => {
     let fileList = [...info.fileList];
@@ -11,18 +19,15 @@ const UploadImage =()=> {
     setFileList(fileList);
   };
 
-   const handleBeforeUpload=(file) =>{
-    
-    return false;
-  }
-
     return (
       <Form.Item name="image" label="Image">
         <Upload
-          accept={"image/x-png,image/jpeg" }
+          defaultFileList
+          listType="picture-card"
+          accept="image/x-png,image/jpeg"
           multiple={false} 
           onChange={handleChange}
-          beforeUpload={handleBeforeUpload}
+          beforeUpload={()=>false}
           fileList={fileList}
         >
           <Button>

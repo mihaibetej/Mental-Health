@@ -10,9 +10,10 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
     ? {
         body: initialValues.body,
         title: initialValues.title,
-        image: initialValues.image,
       }
     : {};
+
+    const image = initialValues && initialValues.image ? initialValues.image : ""; 
 
     const formItemLayout = {
       labelCol: { span: 6 },
@@ -50,7 +51,7 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
           >
             <Input.TextArea />
           </Form.Item>
-          <UploadImage />
+          <UploadImage defaultImage={image}/>
           <Row justify="space-between">
             <Form.Item>
               <Button shape="round" onClick={handleReset}>
