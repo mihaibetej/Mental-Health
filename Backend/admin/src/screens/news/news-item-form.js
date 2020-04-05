@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Input ,Row, Card } from 'antd';
 import { useHistory } from 'react-router';
+
 import './news-item-form.css';
 import UploadImage from '../../components/upload/upload'
 
@@ -24,7 +25,7 @@ const NewsItemForm = ({ form, initialValues, onFinish, title }) => {
 
     const onCancel = () => {
       history.goBack();
-    };;
+    };
 
   return (
     <div className="news-item-form">

@@ -14,9 +14,9 @@ const UploadImage =(defaultImage)=> {
   const [fileList , setFileList] = useState(defaultFileList);
 
   const handleChange = (info) => {
-    let fileList = [...info.fileList];
-    fileList = fileList.slice(-1);
-    setFileList(fileList);
+    let imageList = [...info.fileList];
+    imageList = imageList.slice(-1);
+    setFileList(imageList);
   };
 
     return (

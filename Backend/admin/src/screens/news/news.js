@@ -5,8 +5,9 @@ import { find, get } from 'lodash';
 
 import { withAuthorization } from '../../hoc';
 import { getNews, removeNewsItem } from '../../services/news';
-import './news.css';
+import { formatDate } from '../../utils/helpers';
 import defaultImage from '../../assets/default.jpg';
+import './news.css';
 
 const News = () => {
   const history = useHistory();
@@ -19,18 +20,18 @@ const News = () => {
     runEffect();
   }, []);
 
-  const confirmDelete = (newsItemId) => () => {
-    removeNewsItem(newsItemId).then(async () => {
-      setNews(await getNews());
-      deleteNotification(newsItemId);
-    });
-  };
-
   const deleteNotification = (id) => {
     const newsItem = get(find(news, { id }), 'body');
     notification.open({
       message: 'Am sters cu succes stirea:',
       description: newsItem,
+    });
+  };
+
+  const confirmDelete = (newsItemId) => () => {
+    removeNewsItem(newsItemId).then(async () => {
+      setNews(await getNews());
+      deleteNotification(newsItemId);
     });
   };
 
@@ -62,7 +63,7 @@ const News = () => {
           xxl: 3,
         }}
         dataSource={news}
-        renderItem={({ title, body, id, image }) => (
+        renderItem={({ title, body, id, image, date }) => (
           <List.Item className="content">
             <Card
               className="margin"
@@ -88,7 +89,7 @@ const News = () => {
                 </Popconfirm>,
               ]}
             >
-              <Card.Meta title={title} description={body} />
+              <Card.Meta title={`${title} : ${formatDate(date)}`} description={body} />
             </Card>
           </List.Item>
         )}
