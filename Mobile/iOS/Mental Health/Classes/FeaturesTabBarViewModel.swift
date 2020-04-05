@@ -9,14 +9,23 @@
 import Foundation
 import FirebaseAuth
 
+// MARK: - FeaturesTabBarViewModelDelegate
+
+protocol FeaturesTabBarViewModelDelegate: class {
+    func userDidSignOut()
+}
+
 // MARK: - FeaturesTabBarViewModel
 
 class FeaturesTabBarViewModel {
-            
+    
+    weak var delegate: FeaturesTabBarViewModelDelegate?
+    
     func startObservingAuthenticationEvents() {
-        Auth.auth().addStateDidChangeListener { (auth, user) in
+        Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
             guard let user = user else {
                 print("AUTH STATE LISTENER: User signed out!!!")
+                self?.delegate?.userDidSignOut()
                 return
             }
             

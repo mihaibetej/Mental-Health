@@ -12,7 +12,12 @@ import UIKit
 
 class FeaturesTabBarViewController: UITabBarController {
 
-    lazy var viewModel = FeaturesTabBarViewModel()
+    lazy var viewModel: FeaturesTabBarViewModel = {
+        let viewModel = FeaturesTabBarViewModel()
+        viewModel.delegate = self
+        
+        return viewModel
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -31,10 +36,24 @@ class FeaturesTabBarViewController: UITabBarController {
     
 }
 
+// MARK: - FeaturesTabBarViewController (FeaturesTabBarViewModelDelegate)
+
+extension FeaturesTabBarViewController: FeaturesTabBarViewModelDelegate {
+    
+    func userDidSignOut() {
+        checkAndSignInIfNeccesary()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+            self?.selectedIndex = 0
+        }
+    }
+    
+}
+
 // MARK: - FeaturesTabBarViewController (private API)
 
 private extension FeaturesTabBarViewController {
     
+    @discardableResult
     func checkAndSignInIfNeccesary() -> Bool {
         guard viewModel.isUserLoggedIn == false else  {
             //viewModel.signOut()

@@ -7,12 +7,17 @@
 //
 
 import UIKit
+import FirebaseAuth
+
+// MARK: - ProfileViewController
 
 class ProfileViewController: UIViewController {
+    
     struct Model {
         let title: String
         let value: String
     }
+    
     var inEditMode = false
     
     var models = [Model(title: "Oras", value: "Bucuresti"),
@@ -24,6 +29,10 @@ class ProfileViewController: UIViewController {
     @IBOutlet var profileImageView: UIImageView!
     @IBOutlet var profileImageViewContainer: UIView!
     @IBOutlet var nameLabel: UILabel!
+    
+    private var currentUser: User? {
+        return Auth.auth().currentUser
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,6 +47,10 @@ class ProfileViewController: UIViewController {
         profileImageViewContainer.layer.shadowOpacity = 0.6
         profileImageViewContainer.layer.shadowOffset = CGSize.zero
         profileImageViewContainer.layer.masksToBounds = false
+        
+        nameLabel.text = currentUser?.email ?? "Ion Popescu"
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Deconectare", style: UIBarButtonItem.Style.plain, target: self, action: #selector(signOut))
     }
     
 
@@ -64,6 +77,8 @@ class ProfileViewController: UIViewController {
 
 }
 
+// MARK: - ProfileViewController (UITableViewDelegate, UITableViewDataSource)
+
 extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return models.count
@@ -81,4 +96,21 @@ extension ProfileViewController: UITableViewDelegate, UITableViewDataSource {
         
         return cell
     }
+}
+
+// MARK: - ProfileViewController (Private API)
+
+private extension ProfileViewController {
+    
+    @objc func signOut() {
+        do {
+            try Auth.auth().signOut()
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) { [weak self] in
+                self?.navigationController?.popViewController(animated: false)
+            }
+        } catch {
+            print("WARNING: Failed to sign out user!")
+        }
+    }
+    
 }
