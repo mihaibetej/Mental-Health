@@ -1,12 +1,11 @@
 .content{
     display: flex;
-    flex-wrap: wrap;
     flex: 1 1 auto;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
 }
 
 .margin{
-    width: 200px;
+    width: 470px;
     margin-bottom: 20px !important;
 }
