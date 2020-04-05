@@ -25,15 +25,12 @@ class QuestionnaireViewModel {
     weak var delegate: QuestionnaireViewModelDelegate?
     
     private var dataSource = [Question]()
-    
-    var numberOfRows: Int {
-        return dataSource.count == 0 ? 0 : dataSource.count + 1
-    }
-    
+        
     // MARK: Lifecycle
     
-    init() {
+    init(delegate: QuestionnaireViewModelDelegate?) {
         //loadMockedData()
+        self.delegate = delegate
         loadData()
     }
         
@@ -42,6 +39,10 @@ class QuestionnaireViewModel {
 // MARK: - QuestionnaireViewModel (public API)
 
 extension QuestionnaireViewModel {
+    
+    var numberOfRows: Int {
+        return dataSource.count == 0 ? 0 : dataSource.count + 1
+    }
     
     func question(for index: Int) -> Question? {
         guard index < dataSource.count else {

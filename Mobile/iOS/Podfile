@@ -10,5 +10,5 @@ target 'Mental Health' do
   pod 'Firebase/Auth'
   pod 'Firebase/Firestore'
   pod 'FirebaseFirestoreSwift'
-
+  pod 'IHProgressHUD'
 end

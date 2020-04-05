@@ -12,10 +12,9 @@ import FirebaseAuth
 // MARK: - AuthenticationViewModelDelegate
 
 protocol AuthenticationViewModelDelegate: class {
-    func didSignIn()
-    func failedToSignIn(with: Error)
-    func didCreateUser()
-    func failedToCreateUser(with: Error)
+    func willAuthenticate()
+    func didAuthenticate()
+    func failedToAuthenticate(with: Error)
     // View state change
     func didChangeToSignInViewState()
     func didChangeToSignUpViewState()
@@ -76,15 +75,16 @@ class AuthenticationViewModel {
 private extension AuthenticationViewModel {
     
     func signIn(with email: String, password: String) {
+        delegate?.willAuthenticate()
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
             if let error = error {
                 // User login failed
                 print("sign in error: \(error)")
-                self?.delegate?.failedToSignIn(with: error)
+                self?.delegate?.failedToAuthenticate(with: error)
             } else if let result = result {
                 // User logged in
                 print("sign in result: \(result)")
-                self?.delegate?.didSignIn()
+                self?.delegate?.didAuthenticate()
             } else {
                 // shrug...
             }
@@ -93,15 +93,16 @@ private extension AuthenticationViewModel {
     }
     
     func signUp(with email: String, password: String) {
+        delegate?.willAuthenticate()
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
             if let error = error {
                 // User login failed
                 print("create user error: \(error)")
-                self?.delegate?.failedToCreateUser(with: error)
+                self?.delegate?.failedToAuthenticate(with: error)
             } else if let result = result {
                 // User logged in
                 print("create user result: \(result)")
-                self?.delegate?.didCreateUser()
+                self?.delegate?.didAuthenticate()
             } else {
                 // shrug...
             }

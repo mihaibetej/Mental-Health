@@ -269,6 +269,7 @@ PODS:
     - nanopb (~> 0.3)
   - gRPC-Core/Interface (1.21.0)
   - GTMSessionFetcher/Core (1.3.1)
+  - IHProgressHUD (0.1.4)
   - leveldb-library (1.22)
   - nanopb (0.3.9011):
     - nanopb/decode (= 0.3.9011)
@@ -282,6 +283,7 @@ DEPENDENCIES:
   - Firebase/Auth
   - Firebase/Firestore
   - FirebaseFirestoreSwift
+  - IHProgressHUD
 
 SPEC REPOS:
   trunk:
@@ -304,6 +306,7 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - GTMSessionFetcher
+    - IHProgressHUD
     - leveldb-library
     - nanopb
     - PromisesObjC
@@ -328,10 +331,11 @@ SPEC CHECKSUMS:
   "gRPC-C++": 9dfe7b44821e7b3e44aacad2af29d2c21f7cde83
   gRPC-Core: c9aef9a261a1247e881b18059b84d597293c9947
   GTMSessionFetcher: cea130bbfe5a7edc8d06d3f0d17288c32ffe9925
+  IHProgressHUD: a01846bfbb581c761c79747c67b08387c3bdfae3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 18003b5e52dab79db540fe93fe9579f399bd1ccd
   PromisesObjC: c119f3cd559f50b7ae681fa59dc1acd19173b7e6
 
-PODFILE CHECKSUM: 08dc350a99f291a4f0759dc81c899e09f5170bd6
+PODFILE CHECKSUM: 2770224e7ed387eeeca188ee8ade19d589ec4cfb
 
 COCOAPODS: 1.9.1

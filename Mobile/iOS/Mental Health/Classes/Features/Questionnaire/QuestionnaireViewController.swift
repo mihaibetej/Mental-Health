@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IHProgressHUD
 
 // MARK: - QuestionnaireViewController
 
@@ -15,9 +16,7 @@ class QuestionnaireViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     private lazy var viewModel: QuestionnaireViewModel = {
-        let viewModel = QuestionnaireViewModel()
-        viewModel.delegate = self
-        
+        let viewModel = QuestionnaireViewModel(delegate: self)
         return viewModel
     }()
     
@@ -43,15 +42,17 @@ class QuestionnaireViewController: UIViewController {
 extension QuestionnaireViewController: QuestionnaireViewModelDelegate {
     
     func willUpdate() {
-        
+        IHProgressHUD.show()
     }
     
     func didUpdate() {
         tableView.reloadData()
+        IHProgressHUD.dismiss()
     }
     
     func didFailToUpdate(with error: Error) {
-        
+        IHProgressHUD.dismiss()
+        IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
     }
     
 }
@@ -85,6 +86,10 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard viewModel.numberOfRows > 0 else {
+            return nil
+        }
+        
         var headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")
         if headerView == nil {
             headerView = UITableViewHeaderFooterView(reuseIdentifier: "header")
@@ -121,10 +126,18 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
     // MARK: UITableViewDelegate
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        guard viewModel.numberOfRows > 0 else {
+            return 0
+        }
+        
         return UITableView.automaticDimension
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForHeaderInSection section: Int) -> CGFloat {
+        guard viewModel.numberOfRows > 0 else {
+            return 0
+        }
+        
         return 240
     }
     

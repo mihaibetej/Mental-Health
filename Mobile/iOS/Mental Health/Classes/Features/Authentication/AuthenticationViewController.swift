@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IHProgressHUD
 
 // MARK: - AuthenticationViewController
 
@@ -108,22 +109,23 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
         resetInputs()
     }
     
-    func didSignIn() {
+    func willAuthenticate() {
+        IHProgressHUD.set(defaultMaskType: .black)
+        IHProgressHUD.show()
+    }
+    
+    func didAuthenticate() {
+        IHProgressHUD.dismiss()
+        IHProgressHUD.set(defaultMaskType: .none)
         dismiss(animated: true, completion: nil)
     }
-    
-    func failedToSignIn(with: Error) {
-        // Some error handling
+        
+    func failedToAuthenticate(with: Error) {
+        IHProgressHUD.dismiss()
+        IHProgressHUD.set(defaultMaskType: .none)
+        //IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
     }
-    
-    func didCreateUser() {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    func failedToCreateUser(with: Error) {
-        // some error handling
-    }
-    
+            
 }
 
 // MARK: - AuthenticationViewController (UITextFieldDelegate)

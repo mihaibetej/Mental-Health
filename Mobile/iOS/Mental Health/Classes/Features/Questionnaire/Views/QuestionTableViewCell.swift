@@ -61,16 +61,13 @@ class QuestionTableViewCell: UITableViewCell {
             return
         }
         
+        // Question label
         updateQuestionLabel(with: question, at: index)
+        // Slider
         answerSlider.step = question.userAnswer ?? question.defaultUserAnswer
+        // Hint labels
         updateHintLabelsVisibility(for: answerSlider.step)
-        
-        // Hint labels texts
-        labelPosition1.text = question.answers[0].title
-        labelPosition2.text = question.answers[1].title
-        labelPosition3.text = question.answers[2].title
-        labelPosition4.text = question.answers[3].title
-        labelPosition5.text = question.answers[4].title
+        updateHintLabelTexts(for: question)
     }
     
 }
@@ -169,6 +166,14 @@ private extension QuestionTableViewCell {
         paragraphStyle.lineSpacing = 5 // Whatever line spacing you want in points
         attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
         questionLabel.attributedText = attributedString
+    }
+    
+    func updateHintLabelTexts(for question: Question) {
+        labelPosition1.text = question.answers[0].title.capitalized
+        labelPosition2.text = question.answers[1].title.capitalized
+        labelPosition3.text = question.answers[2].title.capitalized
+        labelPosition4.text = question.answers[3].title.capitalized
+        labelPosition5.text = question.answers[4].title.capitalized
     }
     
 }
