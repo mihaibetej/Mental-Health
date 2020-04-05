@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Typography, Button, Card, Row } from 'antd';
+import { Typography, Button, Card, Avatar, List } from 'antd';
 
 import { withAuthorization } from '../../hoc';
 import { getNews, removeNewsItem } from '../../services/news';
@@ -33,42 +33,51 @@ const News = () => {
   };
 
   return (
-    <>
-      <Row justify="space-between">
-        <Typography.Title>Stiri</Typography.Title>
+    <Card
+      title="Stiri"
+      extra={
         <Button type="primary" shape="round" onClick={handleCreate}>
           Adauga o stire
         </Button>
-      </Row>
-      <div className="content">
-        <Row justify="space-between">
-          {news && news.map(({ title, body, id, image }) => {
-            return (
-              <div className="card-form">
-                <Card
-                  cover={(
-                    <img
-                      className="image"
-                      src={image || defaultImage}
-                      alt="No available"
-                    />
-                  )}
-                  actions={[
-                    <Typography.Text onClick={handleEdit(id)}>Edit</Typography.Text>,
-                    <Typography.Text onClick={confirmDelete(id)}>Stergere</Typography.Text>,
-                  ]}
-                >
-                  <Card.Meta
-                    title={title}
-                    description={body}
-                  />
-                </Card>
-              </div>
-            );
-          })}
-        </Row>
-      </div>
-    </>
+      }
+    >
+      <List
+        grid={{
+          gutter: 40,
+          xs: 1,
+          sm: 2,
+          md: 2,
+          lg: 2,
+          xl: 3,
+          xxl: 3,
+        }}
+        dataSource={news}
+        renderItem={({ title, body, id, image }) => (
+          <List.Item className="content">
+            <Card
+              className="margin"
+              cover={(
+                <img
+                  className="image"
+                  src={image || defaultImage}
+                  alt="No available"
+                />
+              )}
+              actions={[
+                <Typography.Text onClick={handleEdit(id)}>
+                  Editeaza
+                </Typography.Text>,
+                <Typography.Text onClick={confirmDelete(id)}>
+                  Sterge
+                </Typography.Text>,
+              ]}
+            >
+              <Card.Meta title={title} description={body} />
+            </Card>
+          </List.Item>
+        )}
+      />
+    </Card>
   );
 };
 

@@ -6,6 +6,7 @@ import Questions, { AddQuestion, EditQuestion } from '../../screens/questions';
 import Answers, { AnswersDetails } from '../../screens/answers';
 import News, { AddNewsItem, EditNewsItem } from '../../screens/news';
 import Advices, { CreateAdvice, EditAdvice } from '../../screens/advices';
+import Messages, { CreateMessage, EditMessage } from '../../screens/messages';
 import Questionary from '../../screens/questionary';
 import ForgotPassword from '../forgot-password';
 
@@ -28,12 +29,16 @@ const AppRoutes = ({ authUser }) => {
       <Route exact path="/news/create" component={AddNewsItem} />
       <Route exact path="/news/:id/edit" component={EditNewsItem} />
 
+      <Route exact path="/messages" component={Messages} />
+      <Route exact path="/messages/create" component={CreateMessage} />
+      <Route exact path="/messages/:id/edit" component={EditMessage} />
+
       <Route exact path="/questionary" component={Questionary} />
+      <Route path="/questionary" component={Questionary} />
 
       <Route path="*">
         <Redirect to="/questions" />
       </Route>
-
     </Switch>
   ) : (
     <Switch>

@@ -1,29 +1,29 @@
 export const calculateRating = (items) =>
-  items.reduce((acc, next) => acc + next.answer_value, 0)
+  items.reduce((acc, next) => acc + next.answer_value, 0);
 
 export const getDailyStatus = (rating) => {
   if (rating < 11) {
-    return 'error'
+    return 'error';
   }
 
   if (rating < 22) {
-    return 'warning'
+    return 'warning';
   }
 
-  return 'success'
-}
+  return 'success';
+};
 
 export const getQuestionStatus = (value) => {
   if (value < 1) {
-    return 'error'
+    return 'error';
   }
 
   if (value < 3) {
-    return 'warning'
+    return 'warning';
   }
 
-  return 'success'
-}
+  return 'success';
+};
 
 export const getLineColor = (idx) => {
   const colors = {
@@ -39,7 +39,7 @@ export const getLineColor = (idx) => {
     9: '#d2731a',
     10: '#8b835b',
     11: '#f5d141',
-  }
+  };
 
-  return colors[idx]
+  return colors[idx];
 };

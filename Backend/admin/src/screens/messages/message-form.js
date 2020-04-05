@@ -1,18 +1,15 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-import { Button, Form, Input, DatePicker, Row, Card } from 'antd';
-import moment from 'moment';
 import { useHistory } from 'react-router';
+import PropTypes from 'prop-types';
+import { Button, Card, Form, Input, Row } from 'antd';
 
-import '../styles.css';
-
-const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
+const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
   const history = useHistory();
   const values = initialValues
     ? {
         body: initialValues.body,
-        creationDate: moment(initialValues.creationDate.toDate()),
-        publishDate: moment(initialValues.publishDate.toDate()),
+        from: initialValues.from,
+        to: initialValues.to,
       }
     : {};
 
@@ -22,7 +19,7 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
 
   return (
     <div className="form-wrapper">
-      <Card title="Adauga un sfat">
+      <Card title="Adauga un mesaj">
         <Form
           initialValues={values}
           name="add-question"
@@ -30,28 +27,25 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
           onFinish={onFinish}
         >
           <Form.Item
-            name="body"
-            label="Advice"
-            rules={[
-              {
-                required: true,
-                message: 'Continutul sfatului nu poate fi gol',
-              },
-            ]}
+            name="from"
+            label="From"
+            rules={[{ required: true, message: 'Introdu email expeditor' }]}
           >
-            <Input.TextArea />
+            <Input />
           </Form.Item>
           <Form.Item
-            name="publishDate"
-            label="Date for publish"
-            rules={[
-              {
-                required: true,
-                message: 'Data publicarii sfatului nu poate fi goala',
-              },
-            ]}
+            name="to"
+            label="To"
+            rules={[{ required: true, message: 'Introdu email destinatar' }]}
           >
-            <DatePicker />
+            <Input />
+          </Form.Item>
+          <Form.Item
+            name="body"
+            label="Mesaj"
+            rules={[{ required: true, message: 'Mesajul nu poate fi gol' }]}
+          >
+            <Input.TextArea />
           </Form.Item>
           <Row className="action-btn-group">
             <Button shape="round" className="action-btn" onClick={onCancel}>
@@ -74,16 +68,16 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
   );
 };
 
-AdviceForm.propTypes = {
+MessageForm.propTypes = {
   submitTitle: PropTypes.string,
   initialValues: PropTypes.object,
   form: PropTypes.object.isRequired,
   onFinish: PropTypes.func.isRequired,
 };
 
-AdviceForm.defaultProps = {
+MessageForm.defaultProps = {
   submitTitle: 'Salveaza',
   initialValues: null,
 };
 
-export default AdviceForm;
+export default MessageForm;

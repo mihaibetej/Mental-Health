@@ -1,15 +1,11 @@
 .content{
     display: flex;
-    flex-wrap: wrap;
+    flex: 1 1 auto;
+    justify-content: space-between;
+    align-items: center;
 }
 
-.card-form{
-    width: 200px;
-    margin: 10px;
+.margin{
+    max-width: 480px;
+    min-width: 300px;
 }
-
-.image{
-    width: 200px;
-    height: 80px;
-}
-
