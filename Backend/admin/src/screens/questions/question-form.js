@@ -1,9 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Card, Form, Input, Row } from 'antd';
+import { useHistory } from 'react-router';
 
 import '../styles.css';
-import { useHistory } from 'react-router';
 
 const QuestionForm = ({ form, initialValues, onFinish, submitTitle }) => {
   const history = useHistory();

@@ -6,6 +6,6 @@
 }
 
 .margin{
-    width: 470px;
-    margin-bottom: 20px !important;
+    max-width: 480px;
+    min-width: 300px;
 }

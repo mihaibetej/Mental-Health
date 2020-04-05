@@ -2,8 +2,9 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Button, Form, Input, DatePicker, Row, Card } from 'antd';
 import moment from 'moment';
-import '../styles.css';
 import { useHistory } from 'react-router';
+
+import '../styles.css';
 
 const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
   const history = useHistory();

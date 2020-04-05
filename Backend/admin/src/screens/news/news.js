@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { Typography, Button, Card, Row, Col, Avatar, List } from 'antd';
+import { Typography, Button, Card, Avatar, List } from 'antd';
 
 import { withAuthorization } from '../../hoc';
 import { getNews, removeNewsItem } from '../../services/news';
@@ -42,7 +42,7 @@ const News = () => {
     >
       <List
         grid={{
-          gutter: 50,
+          gutter: 40,
           xs: 1,
           sm: 2,
           md: 2,
