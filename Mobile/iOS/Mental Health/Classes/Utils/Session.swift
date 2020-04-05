@@ -12,7 +12,7 @@ import Firebase
 // MARK: - Session
 
 class Session {
-
+        
     static let shared = Session()
         
     private(set) var dataBase: Firestore
@@ -20,5 +20,7 @@ class Session {
     init() {
         dataBase = Firestore.firestore()
     }
+    
+    
         
 }

@@ -22,6 +22,10 @@ struct Question: Codable {
         userAnswer = value
     }
     
+    var score: Int {
+        return answers.count - (userAnswer ?? defaultUserAnswer)
+    }
+    
 }
 
 struct Answer: Codable {

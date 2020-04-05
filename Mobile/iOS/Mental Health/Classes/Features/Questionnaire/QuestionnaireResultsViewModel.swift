@@ -9,14 +9,35 @@
 import Foundation
 
 class QuestionnaireResultsViewModel {
-    
-    enum ResultsType {
+        
+    private enum ResultsType {
         case good
         case inconclusive
         case bad
     }
+            
+    private  struct ResultsRangeConstants {
+        static let goodRange = 0..<20
+        static let inconclusiveRange = 20..<40
+        static let badRange = 40...60
+    }
+
+    private var resultsType: ResultsType = .inconclusive
     
-    var resultsType: ResultsType = .inconclusive
+    var score: Int = 0 {
+        didSet {
+            switch score {
+            case ResultsRangeConstants.goodRange:
+                resultsType = .good
+            case ResultsRangeConstants.inconclusiveRange:
+                resultsType = .inconclusive
+            case ResultsRangeConstants.badRange:
+                resultsType = .bad
+            default:
+                resultsType = .inconclusive
+            }
+        }
+    }
     
     var resultsText: String {
         switch resultsType {

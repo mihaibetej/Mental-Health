@@ -55,7 +55,13 @@ extension QuestionnaireViewModel {
     func updateQuestion(at index: Int, with answer: Int) {
         dataSource[index].updateAnswer(value: answer)
     }
-
+    
+    var score: Int {
+        return dataSource.reduce(0) { (result, question) -> Int in
+            return result + question.score
+        }
+    }
+    
 }
 
 // MARK: - QuestionnaireViewModel (private API)

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import MessageUI
+import IHProgressHUD
 
 // MARK: - QuestionnaireResultsViewController
 
@@ -37,6 +39,21 @@ class QuestionnaireResultsViewController: UIViewController {
     
     @IBAction func email(_ sender: Any) {
         composeEmail()
+    }
+    
+}
+
+// MARK: - QuestionnaireResultsViewController (MFMailComposeViewControllerDelegate)
+
+extension QuestionnaireResultsViewController: MFMailComposeViewControllerDelegate {
+    
+    func mailComposeController(_ controller: MFMailComposeViewController, didFinishWith result: MFMailComposeResult, error: Error?) {
+        
+        if let error = error {
+            IHProgressHUD.showError(withStatus: error.localizedDescription)
+        }
+        
+        controller.dismiss(animated: true, completion: nil)
     }
     
 }
@@ -76,11 +93,50 @@ private extension QuestionnaireResultsViewController {
     }
     
     func composeEmail() {
+        guard MFMailComposeViewController.canSendMail() == true else {
+            IHProgressHUD.showError(withStatus: "Serviciul de email nu este disponibil!")
+            return
+        }
+        
+        let composeVC = MFMailComposeViewController()
+        composeVC.mailComposeDelegate = self
+         
+        // Configure the fields of the interface.
+        composeVC.setToRecipients([emailButton.titleLabel?.text ?? ""])
+        composeVC.setSubject("4MedicAll")
+         
+        // Present the view controller modally.
+        self.present(composeVC, animated: true, completion: nil)
+        
         
     }
     
     func telephone() {
+        guard let phone = phoneNumberButton.titleLabel?.text?.replacingOccurrences(of: " ", with: "") else {
+            return
+        }
         
+        let phoneUrl = URL(string: "telprompt://\(phone)")
+        let phoneFallbackUrl = URL(string: "tel://\(phone)")
+        
+        if(phoneUrl != nil && UIApplication.shared.canOpenURL(phoneUrl!)) {
+            UIApplication.shared.open(phoneUrl!, options: [:]) { (success) in
+                if !success {
+                    // Show an error message: Failed opening the url
+                    IHProgressHUD.showError(withStatus: "Plasarea apelului a esuat!")
+                }
+            }
+        } else if(phoneFallbackUrl != nil && UIApplication.shared.canOpenURL(phoneFallbackUrl!)) {
+            UIApplication.shared.open(phoneFallbackUrl!, options: [:]) { (success) in
+                if !success {
+                    // Show an error message: Failed opening the url
+                    IHProgressHUD.showError(withStatus: "Plasarea apelului a esuat!")
+                }
+            }
+        } else {
+            // Show an error message: Your device can not do phone calls.
+            IHProgressHUD.showError(withStatus: "Plasarea apelului a esuat!")
+        }
     }
     
     @objc func close() {

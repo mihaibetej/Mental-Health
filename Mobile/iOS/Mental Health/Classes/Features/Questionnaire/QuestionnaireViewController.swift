@@ -63,7 +63,10 @@ extension QuestionnaireViewController: SendAnswersTableViewCellDelegate {
     
     func sendResults() {
         let questionnaireStoryboard = UIStoryboard(name: "Questionnaire", bundle: nil)
-        let resultsNavC = questionnaireStoryboard.instantiateViewController(withIdentifier: "QuestionnaireResultsNavigationController")
+        let resultsNavC = questionnaireStoryboard.instantiateViewController(withIdentifier: "QuestionnaireResultsNavigationController") as! UINavigationController
+        let resultsVC = resultsNavC.viewControllers.first! as! QuestionnaireResultsViewController
+        resultsVC.viewModel.score = viewModel.score
+        
         
         present(resultsNavC, animated: true, completion: nil)
     }
