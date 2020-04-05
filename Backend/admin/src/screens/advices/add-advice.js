@@ -1,17 +1,11 @@
 import React from 'react';
 import { Form, notification } from 'antd';
-import { useHistory } from 'react-router';
 import AdviceForm from './advice-form';
 import { withAuthorization } from '../../hoc';
 import { createAdvice } from '../../services/advices';
 
 const AddAdvice = () => {
   const [form] = Form.useForm();
-  const history = useHistory();
-
-  const onCancel = () => {
-    history.push('advices');
-  };
 
   const createNotification = (adviceContent) => {
     notification.open({
@@ -26,7 +20,7 @@ const AddAdvice = () => {
     createNotification(body);
   };
 
-  return <AdviceForm form={form} onFinish={onFinish} onCancel={onCancel} />;
+  return <AdviceForm form={form} onFinish={onFinish} />;
 };
 
 export default withAuthorization(AddAdvice);

@@ -3,14 +3,10 @@ import PropTypes from 'prop-types';
 import { Button, Form, Input, DatePicker, Row, Card } from 'antd';
 import moment from 'moment';
 import '../styles.css';
+import { useHistory } from 'react-router';
 
-const AdviceForm = ({
-  form,
-  initialValues,
-  onFinish,
-  submitTitle,
-  onCancel,
-}) => {
+const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
+  const history = useHistory();
   const values = initialValues
     ? {
         body: initialValues.body,
@@ -18,6 +14,10 @@ const AdviceForm = ({
         publishDate: moment(initialValues.publishDate.toDate()),
       }
     : {};
+
+  const onCancel = () => {
+    history.goBack();
+  };
 
   return (
     <div className="form-wrapper">

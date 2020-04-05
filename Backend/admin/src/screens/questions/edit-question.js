@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, notification } from 'antd';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import QuestionForm from './question-form';
 import { withAuthorization } from '../../hoc';
@@ -10,12 +10,6 @@ const EditQuestion = () => {
   const [form] = Form.useForm();
   const { id } = useParams();
   const [question, setQuestion] = useState(null);
-
-  const history = useHistory();
-
-  const onCancel = () => {
-    history.push('questions');
-  };
 
   useEffect(() => {
     const runEffect = async () => {
@@ -38,12 +32,7 @@ const EditQuestion = () => {
 
   if (!question) return null;
   return (
-    <QuestionForm
-      initialValues={question}
-      form={form}
-      onFinish={onFinish}
-      onCancel={onCancel}
-    />
+    <QuestionForm initialValues={question} form={form} onFinish={onFinish} />
   );
 };
 

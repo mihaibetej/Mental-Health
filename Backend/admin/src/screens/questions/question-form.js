@@ -3,14 +3,15 @@ import PropTypes from 'prop-types';
 import { Button, Card, Form, Input, Row } from 'antd';
 
 import '../styles.css';
+import { useHistory } from 'react-router';
 
-const QuestionForm = ({
-  form,
-  initialValues,
-  onFinish,
-  submitTitle,
-  onCancel,
-}) => {
+const QuestionForm = ({ form, initialValues, onFinish, submitTitle }) => {
+  const history = useHistory();
+
+  const onCancel = () => {
+    history.goBack();
+  };
+
   return (
     <div className="form-wrapper">
       <Card title="Adauga o intrebare">

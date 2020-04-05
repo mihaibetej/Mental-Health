@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Form, notification } from 'antd';
-import { useHistory, useParams } from 'react-router';
+import { useParams } from 'react-router';
 
 import AdviceForm from './advice-form';
 import { withAuthorization } from '../../hoc';
@@ -10,11 +10,6 @@ const EditAdvice = () => {
   const [form] = Form.useForm();
   const { id } = useParams();
   const [advice, setAdvice] = useState(null);
-  const history = useHistory();
-
-  const onCancel = () => {
-    history.push('advices');
-  };
 
   useEffect(() => {
     const runEffect = async () => {
@@ -36,14 +31,7 @@ const EditAdvice = () => {
   };
 
   if (!advice) return null;
-  return (
-    <AdviceForm
-      initialValues={advice}
-      form={form}
-      onFinish={onFinish}
-      onCancel={onCancel}
-    />
-  );
+  return <AdviceForm initialValues={advice} form={form} onFinish={onFinish} />;
 };
 
 export default withAuthorization(EditAdvice);
