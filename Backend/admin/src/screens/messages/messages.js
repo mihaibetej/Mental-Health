@@ -1,15 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import {
-  List,
-  Typography,
-  Button,
-  Popconfirm,
-  Row,
-  Col,
-  notification,
-  Card,
-} from 'antd';
+import { List, Button, Popconfirm, Row, Col, notification, Card } from 'antd';
 import { find, get } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { getMessages, deleteMessage } from '../../services/messages';
