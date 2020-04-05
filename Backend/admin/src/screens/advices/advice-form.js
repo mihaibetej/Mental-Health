@@ -28,15 +28,33 @@ const AdviceForm = ({
           form={form}
           onFinish={onFinish}
         >
-          <Form.Item name="body" label="Advice">
+          <Form.Item
+            name="body"
+            label="Advice"
+            rules={[
+              {
+                required: true,
+                message: 'Continutul sfatului nu poate fi gol',
+              },
+            ]}
+          >
             <Input.TextArea />
           </Form.Item>
-          <Form.Item name="publishDate" label="Date for publish">
+          <Form.Item
+            name="publishDate"
+            label="Date for publish"
+            rules={[
+              {
+                required: true,
+                message: 'Data publicarii sfatului nu poate fi goala',
+              },
+            ]}
+          >
             <DatePicker />
           </Form.Item>
           <Row className="action-btn-group">
             <Button shape="round" className="action-btn" onClick={onCancel}>
-              Cancel
+              Anuleaza
             </Button>
             <Form.Item>
               <Button
@@ -63,7 +81,7 @@ AdviceForm.propTypes = {
 };
 
 AdviceForm.defaultProps = {
-  submitTitle: 'Save',
+  submitTitle: 'Salveaza',
   initialValues: null,
 };
 

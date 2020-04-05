@@ -1,4 +1,3 @@
-import './messages.css';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import {
@@ -9,6 +8,7 @@ import {
   Row,
   Col,
   notification,
+  Card,
 } from 'antd';
 import { find, get } from 'lodash';
 import { withAuthorization } from '../../hoc';
@@ -51,67 +51,61 @@ const Messages = () => {
   };
 
   return (
-    <div className="messages-wrapper">
-      <div className="messages">
-        <List
-          header={
-            <div className="messages__header">
-              <Typography.Title level={3}>Mesaje</Typography.Title>
-              <Button
-                type="primary"
-                shape="round"
-                onClick={handleCreateMessage}
+    <Card
+      title="Mesaje"
+      extra={
+        <Button type="primary" shape="round" onClick={handleCreateMessage}>
+          Adauga un mesaj
+        </Button>
+      }
+    >
+      <List
+        itemLayout="vertical"
+        dataSource={messages}
+        renderItem={({ body, from, to, creationDate, id }) => (
+          <List.Item
+            className="general-wrapper"
+            actions={[
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                Editeaza
+              </a>,
+              <Popconfirm
+                title="Esti sigur ca vrei sa stergi acest mesaj?"
+                onConfirm={confirmDelete(id)}
+                okText="Da"
+                cancelText="Nu"
               >
-                Adauga un mesaj
-              </Button>
-            </div>
-          }
-          itemLayout="vertical"
-          dataSource={messages}
-          renderItem={({ body, from, to, creationDate, id }) => (
-            <List.Item
-              actions={[
-                // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                  Editeaza
-                </a>,
-                <Popconfirm
-                  title="Esti sigur ca vrei sa stergi acest mesaj?"
-                  onConfirm={confirmDelete(id)}
-                  okText="Da"
-                  cancelText="Nu"
-                >
-                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a href="#">Sterge</a>
-                </Popconfirm>,
-              ]}
-            >
-              <List.Item.Meta
-                description={
-                  <>
-                    <Row>
-                      <Col span={1}>Creat:</Col>
-                      <Col span={23}>
-                        {creationDate ? formatDateTime(creationDate) : ''}
-                      </Col>
-                    </Row>
-                    <Row>
-                      <Col span={1}>From:</Col>
-                      <Col span={23}>{from}</Col>
-                    </Row>
-                    <Row>
-                      <Col span={1}>To:</Col>
-                      <Col span={23}>{to}</Col>
-                    </Row>
-                  </>
-                }
-              />
-              <Row>{body}</Row>
-            </List.Item>
-          )}
-        />
-      </div>
-    </div>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href="#">Sterge</a>
+              </Popconfirm>,
+            ]}
+          >
+            <List.Item.Meta
+              description={
+                <>
+                  <Row>
+                    <Col span={1}>Creat:</Col>
+                    <Col span={23}>
+                      {creationDate ? formatDateTime(creationDate) : ''}
+                    </Col>
+                  </Row>
+                  <Row>
+                    <Col span={1}>From:</Col>
+                    <Col span={23}>{from}</Col>
+                  </Row>
+                  <Row>
+                    <Col span={1}>To:</Col>
+                    <Col span={23}>{to}</Col>
+                  </Row>
+                </>
+              }
+            />
+            <Row>{body}</Row>
+          </List.Item>
+        )}
+      />
+    </Card>
   );
 };
 

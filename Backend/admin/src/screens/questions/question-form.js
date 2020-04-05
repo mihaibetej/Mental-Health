@@ -20,12 +20,21 @@ const QuestionForm = ({
           form={form}
           onFinish={onFinish}
         >
-          <Form.Item name="body" label="Question Title">
+          <Form.Item
+            name="body"
+            label="Question Title"
+            rules={[
+              {
+                required: true,
+                message: 'Continutul intrebarii nu poate fi gol',
+              },
+            ]}
+          >
             <Input />
           </Form.Item>
           <Row className="action-btn-group">
             <Button shape="round" className="action-btn" onClick={onCancel}>
-              Cancel
+              Anuleaza
             </Button>
             <Form.Item>
               <Button
@@ -51,7 +60,7 @@ QuestionForm.propTypes = {
 };
 
 QuestionForm.defaultProps = {
-  submitTitle: 'Save',
+  submitTitle: 'Salveaza',
   initialValues: null,
 };
 
