@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Input, Upload,Row,Card } from 'antd';
+import { Button, Form, Input ,Row, Card } from 'antd';
 import { useHistory } from 'react-router';
 import './news-item-form.css';
 import UploadImage from '../../components/upload/upload'
 
-const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
+const NewsItemForm = ({ form, initialValues, onFinish, title }) => {
   const values = initialValues
     ? {
         body: initialValues.body,
@@ -21,9 +21,10 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
     };
 
     const history = useHistory();
-    const handleReset =  () => {
-      history.push(`/news`);
-    };
+
+    const onCancel = () => {
+      history.goBack();
+    };;
 
   return (
     <div className="news-item-form">
@@ -40,21 +41,31 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
           <Form.Item
             name="title"
             label="Titlu"
-            rules={[{ required: true, message: 'Camp obligatoriu!' }]}
+            rules={[
+              {
+                required: true,
+                message: 'Titlul stirii nu poate fi gol',
+              },
+            ]}
           >
             <Input />
           </Form.Item>
           <Form.Item
             name="body"
             label="Descriere"
-            rules={[{ required: true, message: 'Camp obligatoriu!' }]}
+            rules={[
+              {
+                required: true,
+                message: 'Descrierea stirii nu poate fi goala',
+              },
+            ]}
           >
             <Input.TextArea />
           </Form.Item>
-          <UploadImage defaultImage={image}/>
+          <UploadImage defaultImage={image} />
           <Row justify="space-between">
             <Form.Item>
-              <Button shape="round" onClick={handleReset}>
+              <Button shape="round" onClick={onCancel}>
                 Anuleaza
               </Button>
             </Form.Item>

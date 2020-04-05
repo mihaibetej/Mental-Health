@@ -15,7 +15,6 @@ const AddNewsItem = () => {
   };
 
   const onFinish = async ({title,body,image}) => {
-
     await addNewsItem(title,body,image);
     
     form.resetFields();
