@@ -1,75 +1,325 @@
 
 [
     {
-        "index": 1,
-        "text": "Cand ma gandesc ca incepe iar o noua zi, ma simt foarte trist(a).",
-        "answer": 3
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Cand ma gandesc ca incepe iar o noua zi, ma simt foarte trist(a).",
+        "userAnswer": 2
         
     },
     {
-        "index": 2,
-        "text": "Ma invinovatesc pentru toate relele care se intampla.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Ma invinovatesc pentru toate relele care se intampla.",
+        "userAnswer": 2
         
     },
     {
-        "index": 3,
-        "text": "Imi vine sa plang, dar nu mai pot plange.",
-        "answer": 3
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Imi vine sa plang, dar nu mai pot plange.",
+        "userAnswer": 2
         
     },
     {
-        "index": 4,
-        "text": "Sunt atat de agitat(a) sau incordat(a), incat trebuie sa ma misc sau sa fac ceva tot timpul.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Sunt atat de agitat(a) sau incordat(a), incat trebuie sa ma misc sau sa fac ceva tot timpul.",
+        "userAnswer": 2
         
     },
     {
-        "index": 5,
-        "text": "Sunt iritabil(a) tot timpul.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Sunt iritabil(a) tot timpul.",
+        "userAnswer": 2
         
     },
     {
-        "index": 6,
-        "text": "In prezent ma simt teribil de abatut(a) si trista in cea mai mare parte a timpului.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "In prezent ma simt teribil de abatut(a) si trista in cea mai mare parte a timpului.",
+        "userAnswer": 2
         
     },
     {
-        "index": 7,
-        "text": "Mi-am pierdut in intregime pofta de mancare.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Mi-am pierdut in intregime pofta de mancare.",
+        "userAnswer": 2
         
     },
     {
-        "index": 8,
-        "text": "Am probleme cu somnul in majoritatea noptilor",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Am probleme cu somnul in majoritatea noptilor",
+        "userAnswer": 2
         
     },
     {
-        "index": 9,
-        "text": "In ultima vreme transpir foarte mult si ma simt foarte tensionat(a).",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "In ultima vreme transpir foarte mult si ma simt foarte tensionat(a).",
+        "userAnswer": 2
         
     },
     {
-        "index": 10,
-        "text": "Exista anumite ganduri care continua sa imi vina din nou si din nou in minte.",
-        "answer": 2
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Exista anumite ganduri care continua sa imi vina din nou si din nou in minte.",
+        "userAnswer": 2
         
     },
     {
-        "index": 11,
-        "text": "Repet anumite comportamente la nesfarsit, uneori pentru a-mi reduce ingrijorarea, iar alteori pentru a preveni un rau.",
-        "answer": 2
-        
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Repet anumite comportamente la nesfarsit, uneori pentru a-mi reduce ingrijorarea, iar alteori pentru a preveni un rau.",
+        "userAnswer": 2
     },
     {
-        "index": 12,
-        "text": "Am mereu ganduri ciudate, de care as dori sa scap.",
-        "answer": 2
-        
-    },
+        "answers": [
+            {
+                "title": "Foarte mult",
+                "value": 0
+            },
+            {
+                "title": "Mult",
+                "value": 1
+            },
+            {
+                "title": "Mediu",
+                "value": 2
+            },
+            {
+                "title": "Rar",
+                "value": 3
+            },
+            {
+                "title": "Deloc",
+                "value": 4
+            }
+        ],
+        "body": "Am mereu ganduri ciudate, de care as dori sa scap.",
+        "userAnswer": 2
+    }
 ]

@@ -33,15 +33,10 @@ class QuestionTableViewCell: UITableViewCell {
         // Initialization code
         questionLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.light)
         labelPosition1.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
-        labelPosition1.text = "Foarte mult"
         labelPosition2.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
-        labelPosition2.text = "Mult"
         labelPosition3.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
-        labelPosition3.text = "Mediu"
         labelPosition4.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
-        labelPosition4.text = "Rar"
         labelPosition5.font = UIFont.systemFont(ofSize: 12, weight: UIFont.Weight.light)
-        labelPosition5.text = "Deloc"
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -65,9 +60,17 @@ class QuestionTableViewCell: UITableViewCell {
         guard let question = viewModel.question(for: index) else {
             return
         }
-        questionLabel.text = "\(question.index). \(question.text)"
-        answerSlider.step = question.answer - 1
+        
+        updateQuestionLabel(with: question, at: index)
+        answerSlider.step = question.userAnswer ?? question.defaultUserAnswer
         updateHintLabelsVisibility(for: answerSlider.step)
+        
+        // Hint labels texts
+        labelPosition1.text = question.answers[0].title
+        labelPosition2.text = question.answers[1].title
+        labelPosition3.text = question.answers[2].title
+        labelPosition4.text = question.answers[3].title
+        labelPosition5.text = question.answers[4].title
     }
     
 }
@@ -158,6 +161,14 @@ private extension QuestionTableViewCell {
         default:
             break
         }
+    }
+    
+    func updateQuestionLabel(with question: Question, at index: Int) {
+        let attributedString = NSMutableAttributedString(string: "\(index + 1). \(question.body)")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 5 // Whatever line spacing you want in points
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        questionLabel.attributedText = attributedString
     }
     
 }

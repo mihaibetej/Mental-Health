@@ -10,17 +10,38 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
+// MARK: - QuestionnaireViewModelDelegate
+
+protocol QuestionnaireViewModelDelegate: class {
+    func willUpdate()
+    func didUpdate()
+    func didFailToUpdate(with error: Error)
+}
+
+// MARK: - QuestionnaireViewModel
+
 class QuestionnaireViewModel {
-    var dataSource = [Question]()
+    // MARK: Variables
+    weak var delegate: QuestionnaireViewModelDelegate?
+    
+    private var dataSource = [Question]()
     
     var numberOfRows: Int {
         return dataSource.count == 0 ? 0 : dataSource.count + 1
     }
     
+    // MARK: Lifecycle
+    
     init() {
-        loadMockedData()
-        //loadData()
+        //loadMockedData()
+        loadData()
     }
+        
+}
+
+// MARK: - QuestionnaireViewModel (public API)
+
+extension QuestionnaireViewModel {
     
     func question(for index: Int) -> Question? {
         guard index < dataSource.count else {
@@ -33,45 +54,69 @@ class QuestionnaireViewModel {
     func updateQuestion(at index: Int, with answer: Int) {
         dataSource[index].updateAnswer(value: answer)
     }
-    
+
 }
+
+// MARK: - QuestionnaireViewModel (private API)
 
 private extension QuestionnaireViewModel {
     
     func loadMockedData() {
         dataSource.removeAll()
-        
         let path = Bundle.main.path(forResource: "Questionnaire", ofType: "json")!
         let url = URL(fileURLWithPath: path)
-        let data = try! Data(contentsOf: url)
+        
+        guard let data = try? Data(contentsOf: url) else {
+            let customError = NSError(domain: "read.error", code: 0, userInfo: ["message" : "Unable to load data"])
+            delegate?.didFailToUpdate(with: customError)
+            return
+        }
         
         let decoder = JSONDecoder()
-        
         let questions = try! decoder.decode([Question].self, from: data)
-        dataSource.append(contentsOf: questions.sorted(by: {
-            $0.index < $1.index
-        }))
+        dataSource.append(contentsOf: questions)
+        
+        delegate?.didUpdate()
     }
     
-    func loadData() {        
-        Session.shared.dataBase.collection("questions").getDocuments { (snapshot, error) in
+    func loadNetworkData() {
+        Session.shared.dataBase.collection("questions").getDocuments { [weak self] (snapshot, error) in
             if let error = error {
-                print("failed to fetch questions: \(error)")
+                self?.delegate?.didFailToUpdate(with: error)
             } else {
                 guard let snapshot = snapshot else {
-                    print("failed to fetch questions, no snapshot returned")
+                    let customError = NSError(domain: "no.results", code: 0, userInfo: ["message" : "No results found"])
+                    self?.delegate?.didFailToUpdate(with: customError)
                     return
                 }
                 
                 // 'document' is a dictionary
+                var questions = [Question]()
                 for document in snapshot.documents {
-                    print("question item\(document.documentID): \(document.data())")
                     do {
-                        let question = try document.data(as: Question.self)
-                        print(question)
+                        if let question = try document.data(as: Question.self) {
+                            questions.append(question)
+                            print(question)
+                        }
                     } catch {}
                 }
+                
+                DispatchQueue.main.async {
+                    self?.dataSource.removeAll()
+                    self?.dataSource.append(contentsOf: questions)
+                    
+                    self?.delegate?.didUpdate()
+                }
             }
+        }
+    }
+    
+    func loadData() {
+        delegate?.willUpdate()
+        if ProcessInfo.processInfo.environment["use_mock_data"] == "YES" {
+            loadMockedData()
+        } else {
+            loadNetworkData()
         }
     }
     

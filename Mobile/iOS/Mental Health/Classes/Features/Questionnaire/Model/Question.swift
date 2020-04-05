@@ -9,13 +9,19 @@
 import Foundation
 
 struct Question: Codable {
-    let index: Int
-    let text: String
-    var answer: Int
+    
+    let body: String
+    let answers: [Answer]
+    var userAnswer: Int?
+    
+    var defaultUserAnswer: Int {
+        return 2
+    }
     
     mutating func updateAnswer(value: Int) {
-        answer = value
+        userAnswer = value
     }
+    
 }
 
 struct Answer: Codable {

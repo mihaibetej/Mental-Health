@@ -11,10 +11,17 @@ import UIKit
 // MARK: - QuestionnaireViewController
 
 class QuestionnaireViewController: UIViewController {
-
+    // MARK: Variables
     @IBOutlet weak var tableView: UITableView!
     
-    private lazy var viewModel = QuestionnaireViewModel()
+    private lazy var viewModel: QuestionnaireViewModel = {
+        let viewModel = QuestionnaireViewModel()
+        viewModel.delegate = self
+        
+        return viewModel
+    }()
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +34,24 @@ class QuestionnaireViewController: UIViewController {
         super.viewDidAppear(animated)
         // this needs to be here fo accurate slider hint labels layout
         tableView.reloadData()
+    }
+    
+}
+
+// MARK: - QuestionnaireViewController (QuestionnaireViewModelDelegate)
+
+extension QuestionnaireViewController: QuestionnaireViewModelDelegate {
+    
+    func willUpdate() {
+        
+    }
+    
+    func didUpdate() {
+        tableView.reloadData()
+    }
+    
+    func didFailToUpdate(with error: Error) {
+        
     }
     
 }
@@ -66,23 +91,28 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
             headerView?.contentView.backgroundColor = .white
         }
         
+        // Create and configure label properties
         let titleLabel = UILabel(frame: headerView!.bounds)
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         titleLabel.backgroundColor = .clear
         titleLabel.textColor = .black
         titleLabel.numberOfLines = 0
-        titleLabel.text = "Vrem sa te ajutam sa iti fie mai bine!\nRaspunde chestionarului de mai jos si lasa-ne sa o facem!"
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
+        // Configure label paragraph
+        let attributedString = NSMutableAttributedString(string: "Vrem sa te ajutam sa iti fie mai bine!\nRaspunde chestionarului de mai jos si lasa-ne sa o facem!")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6 // Whatever line spacing you want in points
+        attributedString.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, attributedString.length))
+        titleLabel.attributedText = attributedString
         
+        // Add label and constraints
         headerView!.contentView.addSubview(titleLabel)
-        
         let constraints = [
             titleLabel.topAnchor.constraint(equalTo: headerView!.contentView.topAnchor, constant: 20),
             titleLabel.leftAnchor.constraint(equalTo: headerView!.contentView.leftAnchor, constant: 16),
-            titleLabel.bottomAnchor.constraint(equalTo: headerView!.contentView.bottomAnchor, constant: -12),
+            titleLabel.bottomAnchor.constraint(equalTo: headerView!.contentView.bottomAnchor, constant: -20),
             titleLabel.rightAnchor.constraint(equalTo: headerView!.contentView.rightAnchor, constant: -16)
         ]
-
         NSLayoutConstraint.activate(constraints)
         
         return headerView!
