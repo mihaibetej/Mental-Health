@@ -2,8 +2,8 @@ package com.db.mobile.mental_health.application.dagger
 
 import android.content.Context
 import com.db.mobile.mental_health.application.MentalHealthApplication
-import com.db.mobile.mental_health.ui.login.dagger.LoginComponent
-import com.db.mobile.mental_health.ui.login.dagger.LoginModule
+import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
+import com.db.mobile.mental_health.ui.splash.dagger.LoginModule
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
 import com.db.mobile.mental_health.ui.survey.SurveyComponent

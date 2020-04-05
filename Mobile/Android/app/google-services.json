@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "253909274544",
+    "firebase_url": "https://mental-health-d34c6.firebaseio.com",
+    "project_id": "mental-health-d34c6",
+    "storage_bucket": "mental-health-d34c6.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:253909274544:android:73e275f601bab3a5c4d075",
+        "android_client_info": {
+          "package_name": "com.db.mobile.mental_health"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "253909274544-sdpqpg1cerbi3t4nenc6pig86cmrtij0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_GGx2h9TGrdS6GhOV9Lg_PXfgJHMU90E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "253909274544-sdpqpg1cerbi3t4nenc6pig86cmrtij0.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "253909274544-sbe0n3u11e8pd0cd4rkc074ick2nc3ku.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.toiletpaperdispensers.4MedicAll"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
