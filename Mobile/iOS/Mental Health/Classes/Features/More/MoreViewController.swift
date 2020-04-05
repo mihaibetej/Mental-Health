@@ -8,13 +8,18 @@
 
 import UIKit
 
+// MARK: - MoreViewController
+
 class MoreViewController: UIViewController {
+    
+    // MARK: Variables
     
     let cellIdentifier = "MoreCellIdentifier"
     
     enum Screen: String {
         case profile
         case journal
+        case statistics
         case settings
         case contact
         
@@ -23,7 +28,9 @@ class MoreViewController: UIViewController {
             case .profile:
                 return "Profil"
             case .journal:
-                return "Jurnal personal"
+                return "Jurnal eroului"
+            case .statistics:
+                return "Statistici"
             case .settings:
                 return "Setări"
             case .contact:
@@ -35,11 +42,13 @@ class MoreViewController: UIViewController {
             return "goTo\(rawValue.capitalized)"
         }
         
-        static let all: [Screen] = [.profile, .journal, .settings, .contact]
+        static let all: [Screen] = [.profile, .journal, .statistics, .settings, .contact]
     }
     
     @IBOutlet var tableView: UITableView!
 
+    // MARK: Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -49,17 +58,21 @@ class MoreViewController: UIViewController {
     }
     
 
-    /*
-    // MARK: - Navigation
+    // MARK: Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "goToContact" {
+            guard let destVC = segue.destination as? QuestionnaireResultsViewController else {
+                return
+            }
+            
+            destVC.viewModel.title = "Contact"
+        }
     }
-    */
 
 }
+
+// MARK: - MoreViewController (UITableViewDelegate, UITableViewDataSource)
 
 extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +87,7 @@ extension MoreViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         cell.textLabel?.text = Screen.all[indexPath.row].title
-        cell.textLabel?.font = .systemFont(ofSize: 24, weight: .light)
+        cell.textLabel?.font = .systemFont(ofSize: 22, weight: .light)
         cell.accessoryType = .disclosureIndicator
         cell.accessoryView = SwiftDisclosureIndicator(frame: CGRect(x: 0, y: 0, width: 16, height: 24))
         cell.selectionStyle = .none

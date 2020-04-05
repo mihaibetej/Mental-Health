@@ -193,7 +193,7 @@
         <!--Questionnaire Results View Controller-->
         <scene sceneID="M0v-4i-17S">
             <objects>
-                <viewController id="hrX-U9-vIX" customClass="QuestionnaireResultsViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionnaireResultsViewController" id="hrX-U9-vIX" customClass="QuestionnaireResultsViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iyz-Mo-w2K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -207,7 +207,7 @@
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ai grijă de tine în continuare!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-5q-j8P">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ai grijă de tine în continuare!" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-5q-j8P">
                                         <rect key="frame" x="0.0" y="101" width="374" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>

@@ -29,7 +29,10 @@ class QuestionnaireResultsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Închide", style: .plain, target: self, action: #selector(close))
+        if navigationController?.presentingViewController != nil {
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Închide", style: .plain, target: self, action: #selector(close))
+        }
+        
         customize()
     }
     
@@ -64,12 +67,12 @@ private extension QuestionnaireResultsViewController {
     
     func customize() {
         // Title
-        title = "Rezultate chestionar"
+        title = viewModel.title
         
         // Controls appearance
-        resultLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        recommendationLabel.font = UIFont.systemFont(ofSize: 28, weight: .light)
-        recommendationLabel.textColor = .mhRecommendation
+        resultLabel.font = UIFont.systemFont(ofSize: 20, weight: .semibold)        
+        recommendationLabel.font = viewModel.recommendationLabelFont
+        recommendationLabel.textColor = viewModel.recommendationLabelColor
         phoneNumberLabel.font = UIFont.systemFont(ofSize: 18, weight: .light)
         phoneNumberButton.titleLabel?.font = UIFont.systemFont(ofSize: 36, weight: .bold)
         phoneNumberButton.setTitleColor(.mhBlue, for: .normal)
@@ -84,12 +87,24 @@ private extension QuestionnaireResultsViewController {
         containerView.setCustomSpacing(0, after: emailLabel)
         
         // Content
+        // Result
         let resultText = NSMutableAttributedString(string: viewModel.resultsText)
-        let paragraphStyle = NSMutableParagraphStyle()
-        paragraphStyle.lineSpacing = 6 // Whatever line spacing you want in points
-        resultText.addAttribute(NSAttributedString.Key.paragraphStyle, value:paragraphStyle, range:NSMakeRange(0, resultText.length))
+        resultText.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                value: viewModel.paragraphStyleTitle,
+                                range:NSMakeRange(0, resultText.length))
         resultLabel.attributedText = resultText
-
+        // Recommendation
+        guard let paragraphStyleRecommendation = viewModel.paragraphStyleRecommendation else {
+            recommendationLabel.attributedText = nil
+            recommendationLabel.text = viewModel.recommendationText
+            return
+        }
+        let recommendationText = NSMutableAttributedString(string: viewModel.recommendationText)
+        recommendationText.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                        value: paragraphStyleRecommendation,
+                                        range:NSMakeRange(0, recommendationText.length))
+        recommendationLabel.text = nil
+        recommendationLabel.attributedText = recommendationText
     }
     
     func composeEmail() {

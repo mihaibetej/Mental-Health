@@ -43,6 +43,7 @@
                         <segue destination="nCR-ml-jhy" kind="show" identifier="goToJournal" id="NkD-NI-U57"/>
                         <segue destination="TkN-qj-980" kind="show" identifier="goToSettings" id="Uln-WJ-5c6"/>
                         <segue destination="bzo-Hh-dzP" kind="show" identifier="goToContact" id="Bgz-B7-CGm"/>
+                        <segue destination="d2L-rP-ALV" kind="show" identifier="goToStatistics" id="ia9-Zk-jzF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ued-b4-2ck" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -57,7 +58,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lWb-df-Xr9" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="-137"/>
+            <point key="canvasLocation" x="1928" y="-132"/>
         </scene>
         <!--Journal-->
         <scene sceneID="2N0-F2-l4i">
@@ -67,7 +68,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="efI-lz-xye" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1949" y="-38"/>
+            <point key="canvasLocation" x="1932" y="-60"/>
         </scene>
         <!--Settings-->
         <scene sceneID="cGW-Q9-dek">
@@ -77,17 +78,27 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z8A-Kj-W9t" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="70"/>
+            <point key="canvasLocation" x="1936" y="85"/>
         </scene>
-        <!--Contact-->
+        <!--Statistics-->
+        <scene sceneID="GPh-In-0fC">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Statistics" id="d2L-rP-ALV" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="h1s-qX-pze"/>
+                </viewControllerPlaceholder>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zhp-G7-L8B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1941" y="11"/>
+        </scene>
+        <!--QuestionnaireResultsViewController-->
         <scene sceneID="0lV-6b-JPw">
             <objects>
-                <viewControllerPlaceholder storyboardName="Contact" id="bzo-Hh-dzP" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Questionnaire" referencedIdentifier="QuestionnaireResultsViewController" id="bzo-Hh-dzP" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="h0q-Ov-D9r"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UM2-mm-097" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1972" y="175"/>
+            <point key="canvasLocation" x="2058" y="159"/>
         </scene>
         <!--Mai mult-->
         <scene sceneID="D88-n9-iB2">
