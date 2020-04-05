@@ -72,4 +72,5 @@ extension UIColor {
     static let mhRed = UIColor(named: "MHDarkRed")!
     static let mhBlue = UIColor(named: "MHDarkBlue")!
     static let mhTextInvalid = UIColor(named: "MHTextInvalid")!
+    static let mhRecommendation = UIColor(named: "MHRecommendation")!
 }

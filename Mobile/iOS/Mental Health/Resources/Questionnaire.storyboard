@@ -190,11 +190,111 @@
             </objects>
             <point key="canvasLocation" x="140.57971014492756" y="118.52678571428571"/>
         </scene>
+        <!--Questionnaire Results View Controller-->
+        <scene sceneID="M0v-4i-17S">
+            <objects>
+                <viewController id="hrX-U9-vIX" customClass="QuestionnaireResultsViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="iyz-Mo-w2K">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="40" translatesAutoresizingMaskIntoConstraints="NO" id="r2d-uT-cTD">
+                                <rect key="frame" x="20" y="108" width="374" height="443"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ne bucurăm că starea ta este una bună, suntem aici pentru ține dacă ai nevoie de un specialist în sănătate mintală." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Sri-q8-Yeg">
+                                        <rect key="frame" x="0.0" y="0.0" width="374" height="61"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Ai grijă de tine în continuare!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5iD-5q-j8P">
+                                        <rect key="frame" x="0.0" y="101" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Număr telefon:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5cj-Eg-pS3">
+                                        <rect key="frame" x="0.0" y="161.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lds-5N-fYk">
+                                        <rect key="frame" x="0.0" y="222" width="374" height="30"/>
+                                        <state key="normal" title="0000 000 000"/>
+                                        <connections>
+                                            <action selector="telephone:" destination="hrX-U9-vIX" eventType="touchUpInside" id="h3z-nD-q44"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sau ne poți scrie la adresa de mai jos:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jfu-6T-Mdf">
+                                        <rect key="frame" x="0.0" y="292" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adresă email:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZeK-Vh-lU6">
+                                        <rect key="frame" x="0.0" y="352.5" width="374" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zMd-g5-Rws">
+                                        <rect key="frame" x="0.0" y="413" width="374" height="30"/>
+                                        <state key="normal" title="adresa.email@me.com"/>
+                                        <connections>
+                                            <action selector="email:" destination="hrX-U9-vIX" eventType="touchUpInside" id="AwB-6u-WKf"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="r2d-uT-cTD" firstAttribute="leading" secondItem="bJS-ds-11V" secondAttribute="leading" constant="20" id="7Gm-FA-5aw"/>
+                            <constraint firstItem="r2d-uT-cTD" firstAttribute="top" secondItem="bJS-ds-11V" secondAttribute="top" constant="20" id="MwG-Qo-8q6"/>
+                            <constraint firstItem="r2d-uT-cTD" firstAttribute="trailing" secondItem="bJS-ds-11V" secondAttribute="trailing" constant="-20" id="X16-8L-z0z"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="bJS-ds-11V"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Qju-l9-m01"/>
+                    <connections>
+                        <outlet property="containerView" destination="r2d-uT-cTD" id="Xpb-Pj-Vid"/>
+                        <outlet property="emailButton" destination="zMd-g5-Rws" id="3Nk-dF-Jpv"/>
+                        <outlet property="emailContactLabel" destination="Jfu-6T-Mdf" id="srA-lZ-Wx1"/>
+                        <outlet property="emailLabel" destination="ZeK-Vh-lU6" id="dau-C2-clS"/>
+                        <outlet property="phoneNumberButton" destination="lds-5N-fYk" id="o2t-Nu-Sib"/>
+                        <outlet property="phoneNumberLabel" destination="5cj-Eg-pS3" id="QUX-sy-Ewe"/>
+                        <outlet property="recommendationLabel" destination="5iD-5q-j8P" id="nbV-Mr-IZ9"/>
+                        <outlet property="resultLabel" destination="Sri-q8-Yeg" id="CzM-3T-V9i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fmk-IQ-7tl" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3205.7971014492755" y="118.52678571428571"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Bsx-zK-XM3">
+            <objects>
+                <navigationController storyboardIdentifier="QuestionnaireResultsNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="wdP-JP-eHe" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="TaB-zZ-S4u">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="hrX-U9-vIX" kind="relationship" relationship="rootViewController" id="xdA-kr-e40"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zrS-Iw-Uwc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2233" y="119"/>
+        </scene>
     </scenes>
     <resources>
         <image name="staroflife" catalog="system" width="124" height="128"/>
         <namedColor name="MHDarkBlue">
-            <color red="0.094117647058823528" green="0.4823529411764706" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

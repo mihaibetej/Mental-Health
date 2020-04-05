@@ -57,6 +57,19 @@ extension QuestionnaireViewController: QuestionnaireViewModelDelegate {
     
 }
 
+// MARK: - QuestionnaireViewController (QuestionnaireViewModelDelegate)
+
+extension QuestionnaireViewController: SendAnswersTableViewCellDelegate {
+    
+    func sendResults() {
+        let questionnaireStoryboard = UIStoryboard(name: "Questionnaire", bundle: nil)
+        let resultsNavC = questionnaireStoryboard.instantiateViewController(withIdentifier: "QuestionnaireResultsNavigationController")
+        
+        present(resultsNavC, animated: true, completion: nil)
+    }
+    
+}
+
 // MARK: - QuestionnaireViewController (UITableViewDataSource, UITableViewDelegate)
 
 extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegate {
@@ -79,6 +92,7 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
             return cell
         case viewModel.numberOfRows - 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SendAnswersTableViewCell", for: indexPath) as! SendAnswersTableViewCell
+            cell.configure(delegate: self)
             return cell
         default:
             return UITableViewCell()

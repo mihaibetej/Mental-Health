@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol SendAnswersTableViewCellDelegate: class {
+    func sendResults()
+}
+
 class SendAnswersTableViewCell: UITableViewCell {
 
     @IBOutlet weak var answerButton: MHButton!
+    
+    weak var delegate: SendAnswersTableViewCellDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,9 +29,12 @@ class SendAnswersTableViewCell: UITableViewCell {
         // Configure the view for the selected state
     }
 
+    func configure(delegate: SendAnswersTableViewCellDelegate) {
+        self.delegate = delegate
+    }
     
     @IBAction func answerAction(_ sender: Any) {
-        
+        delegate?.sendResults()
     }
     
 }
