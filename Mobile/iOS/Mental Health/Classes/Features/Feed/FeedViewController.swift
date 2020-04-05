@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
 
 class FeedViewController: UIViewController {
     
@@ -26,6 +27,7 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        loadData()
     }
 }
 
@@ -48,4 +50,32 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
         //extract selectedDetails from model
         performSegue(withIdentifier: detailSegueName, sender: self)
     }
+}
+
+// MARK: - (Private API)
+
+private extension FeedViewController {
+    
+    func loadData() {
+        Session.shared.dataBase.collection("news").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("failed to fetch news: \(error)")
+            } else {
+                guard let snapshot = snapshot else {
+                    print("failed to fetch news, no snapshot returned")
+                    return
+                }
+                
+                // 'document' is a dictionary
+                for document in snapshot.documents {
+                    print("news item \(document.documentID): \(document.data())")
+//                    // NewsItem is Decodable
+//                    do {
+//                        let newsItem = try document.data(as: NewsItem.self)
+//                    } catch {}
+                }
+            }
+        }
+    }
+    
 }

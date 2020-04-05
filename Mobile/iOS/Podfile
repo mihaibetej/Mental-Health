@@ -8,5 +8,7 @@ target 'Mental Health' do
   # Pods for Mental Health
   pod 'Firebase/Analytics'
   pod 'Firebase/Auth'
+  pod 'Firebase/Firestore'
+  pod 'FirebaseFirestoreSwift'
 
 end

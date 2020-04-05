@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseFirestoreSwift
 
 struct ExpandableListItem: Codable {
        let title: String
@@ -49,6 +50,51 @@ class PersonalViewController: UIViewController {
     }
     
     //MARK: - Private
+    
+    private func loadMessages() {
+        Session.shared.dataBase.collection("messages").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("failed to fetch messages: \(error)")
+            } else {
+                guard let snapshot = snapshot else {
+                    print("failed to fetch messages, no snapshot returned")
+                    return
+                }
+                
+                // 'document' is a dictionary
+                for document in snapshot.documents {
+                    print("message item \(document.documentID): \(document.data())")
+//                    // Message is Decodable
+//                    do {
+//                        let message = try document.data(as: Message.self)
+//                    } catch {}
+
+                }
+            }
+        }
+    }
+    
+    private func loadAdvice() {
+        Session.shared.dataBase.collection("daily-advices").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("failed to fetch daily-advice: \(error)")
+            } else {
+                guard let snapshot = snapshot else {
+                    print("failed to fetch daily-advice, no snapshot returned")
+                    return
+                }
+                
+                // 'document' is a dictionary
+                for document in snapshot.documents {
+                    print("daily-advice item \(document.documentID): \(document.data())")
+//                    // Advice is Decodable
+//                    do {
+//                        let advice = try document.data(as: Advice.self)
+//                    } catch {}
+                }
+            }
+        }
+    }
     
     private func loadJson(name: String) -> [ExpandableListItem] {
         let path = Bundle.main.path(forResource: name, ofType: "json")!

@@ -17,3 +17,8 @@ struct Question: Codable {
         answer = value
     }
 }
+
+struct Answer: Codable {
+    let title: String
+    let value: Int
+}

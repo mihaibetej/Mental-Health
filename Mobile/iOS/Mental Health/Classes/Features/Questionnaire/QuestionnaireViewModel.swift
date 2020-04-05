@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import Firebase
+import FirebaseFirestoreSwift
 
 class QuestionnaireViewModel {
     var dataSource = [Question]()
@@ -16,7 +18,8 @@ class QuestionnaireViewModel {
     }
     
     init() {
-        loadData()
+        loadMockedData()
+        //loadData()
     }
     
     func question(for index: Int) -> Question? {
@@ -35,7 +38,7 @@ class QuestionnaireViewModel {
 
 private extension QuestionnaireViewModel {
     
-    func loadData() {
+    func loadMockedData() {
         dataSource.removeAll()
         
         let path = Bundle.main.path(forResource: "Questionnaire", ofType: "json")!
@@ -48,6 +51,28 @@ private extension QuestionnaireViewModel {
         dataSource.append(contentsOf: questions.sorted(by: {
             $0.index < $1.index
         }))
+    }
+    
+    func loadData() {        
+        Session.shared.dataBase.collection("questions").getDocuments { (snapshot, error) in
+            if let error = error {
+                print("failed to fetch questions: \(error)")
+            } else {
+                guard let snapshot = snapshot else {
+                    print("failed to fetch questions, no snapshot returned")
+                    return
+                }
+                
+                // 'document' is a dictionary
+                for document in snapshot.documents {
+                    print("question item\(document.documentID): \(document.data())")
+                    do {
+                        let question = try document.data(as: Question.self)
+                        print(question)
+                    } catch {}
+                }
+            }
+        }
     }
     
 }
