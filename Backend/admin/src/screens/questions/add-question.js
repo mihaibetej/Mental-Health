@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, notification } from 'antd';
+import { useHistory } from 'react-router';
 import QuestionForm from './question-form';
 import { withAuthorization } from '../../hoc';
 import { createQuestion } from '../../services/questions';
-import { useHistory } from 'react-router';
 
 const AddQuestion = () => {
   const [form] = Form.useForm();

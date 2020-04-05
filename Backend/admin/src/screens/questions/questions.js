@@ -45,44 +45,42 @@ const Questions = () => {
   };
 
   return (
-    <div className="general-wrapper">
-      <Card
-        title="Intrebari chestionar"
-        extra={
-          <Button type="primary" shape="round" onClick={handleCreate}>
-            Adauga o intrebare
-          </Button>
-        }
-      >
-        <List
-          className="questions-list"
-          itemLayout="horizontal"
-          dataSource={questions}
-          renderItem={({ body, id }, idx) => (
-            <List.Item
-              actions={[
-                // eslint-disable-next-line jsx-a11y/anchor-is-valid
-                <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                  Editeaza
-                </a>,
-                <Popconfirm
-                  title="Esti sigur ca vrei sa stergi aceasta intrebare?"
-                  onConfirm={confirm(id)}
-                  okText="Da"
-                  cancelText="Nu"
-                >
-                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                  <a href="#">Sterge</a>
-                </Popconfirm>,
-              ]}
-            >
-              <Typography.Text>{idx + 1}</Typography.Text>
-              {`. ${body}`}
-            </List.Item>
-          )}
-        />
-      </Card>
-    </div>
+    <Card
+      title="Intrebari chestionar"
+      extra={
+        <Button type="primary" shape="round" onClick={handleCreate}>
+          Adauga o intrebare
+        </Button>
+      }
+    >
+      <List
+        itemLayout="horizontal"
+        dataSource={questions}
+        renderItem={({ body, id }, idx) => (
+          <List.Item
+            className="general-wrapper"
+            actions={[
+              // eslint-disable-next-line jsx-a11y/anchor-is-valid
+              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                Editeaza
+              </a>,
+              <Popconfirm
+                title="Esti sigur ca vrei sa stergi aceasta intrebare?"
+                onConfirm={confirm(id)}
+                okText="Da"
+                cancelText="Nu"
+              >
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                <a href="#">Sterge</a>
+              </Popconfirm>,
+            ]}
+          >
+            <Typography.Text>{idx + 1}</Typography.Text>
+            {`. ${body}`}
+          </List.Item>
+        )}
+      />
+    </Card>
   );
 };
 

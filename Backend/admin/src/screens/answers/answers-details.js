@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router';
-import { List, Typography, Badge, Collapse, Row, Skeleton } from 'antd';
+import { List, Badge, Collapse, Row, Skeleton, Card } from 'antd';
 import {
   LineChart,
   Line,
@@ -105,10 +105,10 @@ const EvolutionChart = ({ answers, questions }) => {
       height={300}
       data={data}
       margin={{
-        top: 5,
-        right: 30,
+        top: 0,
+        right: 20,
         left: 20,
-        bottom: 5,
+        bottom: 10,
       }}
     >
       <CartesianGrid strokeDasharray="3 3" />
@@ -167,16 +167,12 @@ const AnswersDetails = () => {
           <Skeleton />
         </Row>
       ) : (
-        <>
-          <Typography.Title>
-            Utilizator
-            {user.email && ` - ${user.email}`}
-          </Typography.Title>
+        <Card title={`Utilizator ${user.email && user.email}`}>
           <EvolutionChart answers={answers} questions={questions} />
           <Collapse accordion>
             {answers.map(({ created, items }, idx) => (
-              // eslint-disable-next-line
               <Collapse.Panel
+                // eslint-disable-next-line
                 key={idx}
                 header={<DailyListItem items={items} created={created} />}
               >
@@ -184,7 +180,7 @@ const AnswersDetails = () => {
               </Collapse.Panel>
             ))}
           </Collapse>
-        </>
+        </Card>
       )}
     </div>
   );

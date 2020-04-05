@@ -1,9 +1,9 @@
 import React from 'react';
 import { Form, notification } from 'antd';
+import { useHistory } from 'react-router';
 import AdviceForm from './advice-form';
 import { withAuthorization } from '../../hoc';
 import { createAdvice } from '../../services/advices';
-import { useHistory } from 'react-router';
 
 const AddAdvice = () => {
   const [form] = Form.useForm();

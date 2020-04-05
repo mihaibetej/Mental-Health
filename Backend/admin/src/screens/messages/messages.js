@@ -1,11 +1,19 @@
 import './messages.css';
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { List, Typography, Button, Popconfirm, Row, Col } from 'antd';
+import {
+  List,
+  Typography,
+  Button,
+  Popconfirm,
+  Row,
+  Col,
+  notification,
+} from 'antd';
+import { find, get } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { getMessages, deleteMessage } from '../../services/messages';
-import { find, get } from 'lodash';
-import { notification } from 'antd/lib/index';
+
 import { formatDateTime } from '../../utils/helpers';
 
 const Messages = () => {

@@ -11,11 +11,11 @@
     width: 150px;
 }
 
-.general-wrapper {
+.general-wrapper  {
     display: flex;
     flex: 1 1 auto;
-    justify-content: center;
     align-items: center;
+    justify-content: space-between;
 }
 
 .width-800 {

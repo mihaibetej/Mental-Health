@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Form, notification } from 'antd';
+import { useParams } from 'react-router';
 import MessageForm from './message-form';
 import { withAuthorization } from '../../hoc';
-import { useParams } from 'react-router';
 import { getMessageById, updateMessage } from '../../services/messages';
 
 const EditMessage = () => {
