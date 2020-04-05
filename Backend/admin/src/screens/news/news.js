@@ -36,7 +36,7 @@ const News = () => {
     <>
       <Row justify="space-between">
         <Typography.Title>Stiri</Typography.Title>
-        <Button type="primary" onClick={handleCreate}>
+        <Button type="primary" shape="round" onClick={handleCreate}>
           Adauga o stire
         </Button>
       </Row>

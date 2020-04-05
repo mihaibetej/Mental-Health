@@ -14,14 +14,10 @@ const AddNewsItem = () => {
     });
   };
 
-  const onFinish = async ({ title, body, image }) => {
-    const newsItem = {
-      title,
-      body,
-      file: image.file,
-    };
+  const onFinish = async ({title,body,image}) => {
 
-    await addNewsItem(newsItem);
+    await addNewsItem(title,body,image);
+    
     form.resetFields();
     createNotification(title);
   };

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { Button, Form, Input, Upload,Row,Card } from 'antd';
 import { useHistory } from 'react-router';
 import './news-item-form.css';
+import UploadImage from '../../components/upload/upload'
 
 const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
   const values = initialValues
@@ -49,20 +50,16 @@ const NewsItemForm = ({ form, initialValues, onFinish,title }) => {
           >
             <Input.TextArea />
           </Form.Item>
-          <Form.Item name="image" label="Image">
-            <Upload listType="picture-card">
-              <Button>Incarca imagine</Button>
-            </Upload>
-          </Form.Item>
+          <UploadImage />
           <Row justify="space-between">
             <Form.Item>
               <Button shape="round" onClick={handleReset}>
-                Anulare
+                Anuleaza
               </Button>
             </Form.Item>
             <Form.Item>
               <Button type="primary" shape="round" htmlType="submit">
-                Trimite
+                Salveaza
               </Button>
             </Form.Item>
           </Row>

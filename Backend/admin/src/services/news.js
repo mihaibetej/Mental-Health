@@ -51,13 +51,18 @@ export const updateNewsItem = async ({ title, body, id, file }) => {
   await db.collection('news').doc(id).update(item);
 };
 
-export const addNewsItem = async ({ title, body, file }) => {
-  const url = await uploadImage(file);
+export const addNewsItem = async ( title, body, image ) => {
+  const url =image&& await uploadImage(image.file);
 
-  db.collection('news').add({
+  const newsItem={
     date: new Date(),
     title,
-    body,
-    image: url,
-  });
+    body
+  }
+
+  if(url){
+    newsItem.image=url;
+  }
+
+  db.collection('news').add(newsItem);
 };
