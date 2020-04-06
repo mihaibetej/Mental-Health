@@ -23,11 +23,11 @@ class SurveyFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        component = getApplicationComponent(context!!)?.surveyComponent()?.create()
+        component = getApplicationComponent(context)?.surveyComponent()?.create()
         component?.inject(this)
 
         val adapter = SurveyAdapter(viewModel)
-        viewModel.questions?.observe(viewLifecycleOwner, Observer {
+        viewModel.questions.observe(viewLifecycleOwner, Observer {
             adapter.items.addAll(it)
             adapter.notifyDataSetChanged()
         })
@@ -35,6 +35,7 @@ class SurveyFragment : Fragment() {
         val binding: FragmentSurveyBinding =
             DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
         binding.adapter = adapter
+        binding.viewModel = viewModel
         return binding.root
     }
 

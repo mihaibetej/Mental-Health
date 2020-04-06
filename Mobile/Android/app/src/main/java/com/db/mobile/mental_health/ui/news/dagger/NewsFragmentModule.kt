@@ -7,5 +7,4 @@ import dagger.Module
         NewsFragmentComponent::class
     ]
 )
-class NewsFragmentModule {
-}
+abstract class NewsFragmentModule

@@ -9,7 +9,11 @@
         android:id="@+id/navigation_news"
         android:name="com.db.mobile.mental_health.ui.news.NewsFragment"
         android:label="@string/title_news"
-        tools:layout="@layout/fragment_news" />
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_navigation_news_to_newsDetailsFragment"
+            app:destination="@id/news_details_fragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_advices"
@@ -28,5 +32,18 @@
         android:name="com.db.mobile.mental_health.ui.more.MoreFragment"
         android:label="@string/title_more"
         tools:layout="@layout/fragment_more" />
+
+    <fragment
+        android:id="@+id/news_details_fragment"
+        android:name="com.db.mobile.mental_health.ui.news.details.NewsDetailsFragment"
+        android:label="{title}"
+        tools:layout="@layout/fragment_news_details">
+        <argument
+            android:name="news"
+            app:argType="com.db.mobile.mental_health.domain.model.News" />
+        <argument
+            android:name="title"
+            app:argType="string" />
+    </fragment>
 
 </navigation>
