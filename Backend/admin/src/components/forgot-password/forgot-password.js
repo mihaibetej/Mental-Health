@@ -6,11 +6,11 @@ import { forgotPassword } from '../../db/auth';
 import './forgot-password.css';
 
 const layout = {
-  labelCol: { span: 8 },
-  wrapperCol: { span: 16 },
+  labelCol: { span: 4 },
+  wrapperCol: { span: 18 },
 };
 const tailLayout = {
-  wrapperCol: { offset: 8, span: 16 },
+  wrapperCol: { offset: 2, span: 16 },
 };
 
 const ForgotPassword = () => {
@@ -28,12 +28,7 @@ const ForgotPassword = () => {
   return (
     <div className="forgot-password-wrapper">
       <Card title="Am uitat parola">
-        <Form
-          {...layout}
-          className="forgot-password-form"
-          name="basic"
-          onFinish={onFinish}
-        >
+        <Form {...layout} name="basic" onFinish={onFinish}>
           <Form.Item
             label="Email"
             name="email"
