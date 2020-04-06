@@ -75,10 +75,10 @@ const Questions = () => {
               </Popconfirm>,
             ]}
           >
-            <>
+            <div>
               <Typography.Text>{idx + 1}</Typography.Text>
               {`. ${body}`}
-            </>
+            </div>
           </List.Item>
         )}
       />

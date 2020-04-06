@@ -74,13 +74,13 @@ const Advices = () => {
               </Popconfirm>,
             ]}
           >
-            <>
+            <div>
               <List.Item.Meta
                 description={`Created: ${formatDate(creationDate)}`}
                 title={`Publish by: ${formatDate(publishDate)}`}
               />
               {body}
-            </>
+            </div>
           </List.Item>
         )}
       />

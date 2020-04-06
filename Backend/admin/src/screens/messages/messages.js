@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { List, Button, Popconfirm, Row, Col, notification, Card } from 'antd';
+import {
+  List,
+  Button,
+  Popconfirm,
+  Row,
+  Col,
+  notification,
+  Card,
+  Typography,
+} from 'antd';
 import { find, get } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { getMessages, deleteMessage } from '../../services/messages';
@@ -72,29 +81,35 @@ const Messages = () => {
               </Popconfirm>,
             ]}
           >
-            <>
+            <div>
               <List.Item.Meta
                 description={
-                  <>
-                    <Row>
-                      <Col span={1}>Creat:</Col>
-                      <Col span={23}>
+                  <div>
+                    <Row justifyContent="space-between">
+                      <Typography.Paragraph strong>
+                        Creat:&nbsp;&nbsp;
+                      </Typography.Paragraph>
+                      <Typography.Paragraph>
                         {creationDate ? formatDateTime(creationDate) : ''}
-                      </Col>
+                      </Typography.Paragraph>
                     </Row>
                     <Row>
-                      <Col span={1}>From:</Col>
-                      <Col span={23}>{from}</Col>
+                      <Typography.Paragraph strong>
+                        De la:&nbsp;&nbsp;
+                      </Typography.Paragraph>
+                      <Typography.Paragraph>{from}</Typography.Paragraph>
                     </Row>
                     <Row>
-                      <Col span={1}>To:</Col>
-                      <Col span={23}>{to}</Col>
+                      <Typography.Paragraph strong>
+                        Catre:&nbsp;&nbsp;
+                      </Typography.Paragraph>
+                      <Typography.Paragraph>{to}</Typography.Paragraph>
                     </Row>
-                  </>
+                  </div>
                 }
               />
               {body}
-            </>
+            </div>
           </List.Item>
         )}
       />
