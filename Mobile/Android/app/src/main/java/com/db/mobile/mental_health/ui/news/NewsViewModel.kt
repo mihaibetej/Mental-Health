@@ -1,14 +1,18 @@
 package com.db.mobile.mental_health.ui.news
 
-import android.os.Handler
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
+import com.db.mobile.mental_health.data.datasource.NewsDataSource
 import com.db.mobile.mental_health.domain.model.News
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class NewsViewModel @Inject constructor() : BaseObservable() {
+class NewsViewModel @Inject constructor(private val newsDataSource: NewsDataSource) : BaseObservable() {
     val news = MutableLiveData<List<News>>()
 
     var showNews: Boolean? = false
@@ -23,16 +27,17 @@ class NewsViewModel @Inject constructor() : BaseObservable() {
         }
 
     init {
-        Handler().postDelayed(
-            {
-                news.value = listOf(
-                    News("Mental health plummets", "https://www.timesnewroman.ro/files/attach/images/127/746107/nea_costel_fabrica.jpg", "Bacon ipsum dolor amet jowl ball tip hamburger burgdoggen. Strip steak tail beef ribs meatloaf meatball brisket pork belly jerky biltong, cow frankfurter shank ham venison. Pork loin salami shank jowl beef ribs. Meatball hamburger kevin turkey pig pork chop, sausage short ribs turducken ribeye beef. Buffalo turducken kevin pastrami capicola tenderloin strip steak pork loin fatback pork chop pancetta meatball shank. Kielbasa tenderloin filet mignon shankle tail ground round pancetta bacon. Bresaola capicola strip steak t-bone turkey cow."),
-                    News("Corona fears is irish pubs", "https://www.timesnewroman.ro/files/attach/images/127/746107/nea_costel_fabrica.jpg", "Bacon ipsum dolor amet jowl ball tip hamburger burgdoggen. Strip steak tail beef ribs meatloaf meatball brisket pork belly jerky biltong, cow frankfurter shank ham venison. Pork loin salami shank jowl beef ribs. Meatball hamburger kevin turkey pig pork chop, sausage short ribs turducken ribeye beef. Buffalo turducken kevin pastrami capicola tenderloin strip steak pork loin fatback pork chop pancetta meatball shank. Kielbasa tenderloin filet mignon shankle tail ground round pancetta bacon. Bresaola capicola strip steak t-bone turkey cow."),
-                    News("Click here to find out how to make six packs in quarantine", "https://www.timesnewroman.ro/files/attach/images/127/746107/nea_costel_fabrica.jpg", "Bacon ipsum dolor amet jowl ball tip hamburger burgdoggen. Strip steak tail beef ribs meatloaf meatball brisket pork belly jerky biltong, cow frankfurter shank ham venison. Pork loin salami shank jowl beef ribs. Meatball hamburger kevin turkey pig pork chop, sausage short ribs turducken ribeye beef. Buffalo turducken kevin pastrami capicola tenderloin strip steak pork loin fatback pork chop pancetta meatball shank. Kielbasa tenderloin filet mignon shankle tail ground round pancetta bacon. Bresaola capicola strip steak t-bone turkey cow.")
-                )
-                showNews = true
-            }, 800
-        )
+        GlobalScope.launch(Dispatchers.IO) {
+            val result = newsDataSource.getNews()
+            showNews(result?.map {
+                News(it.title, it.image, it.body)
+            })
+        }
+    }
+
+    private suspend fun showNews(result: List<News>?) = withContext(Dispatchers.Main) {
+        news.value = result
+        showNews = true
     }
 
 }
