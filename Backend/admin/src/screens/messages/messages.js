@@ -72,27 +72,29 @@ const Messages = () => {
               </Popconfirm>,
             ]}
           >
-            <List.Item.Meta
-              description={
-                <>
-                  <Row>
-                    <Col span={1}>Creat:</Col>
-                    <Col span={23}>
-                      {creationDate ? formatDateTime(creationDate) : ''}
-                    </Col>
-                  </Row>
-                  <Row>
-                    <Col span={1}>From:</Col>
-                    <Col span={23}>{from}</Col>
-                  </Row>
-                  <Row>
-                    <Col span={1}>To:</Col>
-                    <Col span={23}>{to}</Col>
-                  </Row>
-                </>
-              }
-            />
-            <Row>{body}</Row>
+            <>
+              <List.Item.Meta
+                description={
+                  <>
+                    <Row>
+                      <Col span={1}>Creat:</Col>
+                      <Col span={23}>
+                        {creationDate ? formatDateTime(creationDate) : ''}
+                      </Col>
+                    </Row>
+                    <Row>
+                      <Col span={1}>From:</Col>
+                      <Col span={23}>{from}</Col>
+                    </Row>
+                    <Row>
+                      <Col span={1}>To:</Col>
+                      <Col span={23}>{to}</Col>
+                    </Row>
+                  </>
+                }
+              />
+              {body}
+            </>
           </List.Item>
         )}
       />
