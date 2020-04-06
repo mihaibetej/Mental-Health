@@ -9,31 +9,58 @@
 import UIKit
 
 class FeedDetailViewController: UIViewController {
-    struct FeedDetail {
-        let title: String
-        let image: UIImage
-        let text: String
-    }
-    
     @IBOutlet var titleLabel: UILabel!
     @IBOutlet var imageView: UIImageView!
     @IBOutlet var textView: UITextView!
+    @IBOutlet var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet var noImageLabel: UILabel!
     
-    var feedDetail: FeedDetail?
+    var feedDetail: NewsItem?
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
         
-//        titleLabel.text = feedDetail?.title
-//        imageView.image = feedDetail?.image
-//        textView.text = feedDetail?.text
-        
         imageView.layer.shadowColor = UIColor.black.cgColor
-        imageView.layer.shadowOpacity = 0.4
+        imageView.layer.shadowOpacity = 0.8
         imageView.layer.shadowOffset = CGSize.zero
         imageView.layer.shadowRadius = 8
         imageView.layer.masksToBounds = false
+        
+        titleLabel.text = feedDetail?.title
+        textView.text = feedDetail?.body
+        
+        imageView.image = nil
+        activityIndicator.startAnimating()
+        activityIndicator.isHidden = false
+        noImageLabel.isHidden = true
+        
+        guard let urlString = feedDetail?.image,
+            let url = URL(string: urlString) else {
+            imageView.image = nil
+            activityIndicator.stopAnimating()
+            activityIndicator.isHidden = true
+            noImageLabel.isHidden = false
+            return
+        }
+        
+        ImageCacher.downloadImage(url: url) { [weak self] (image, error) in
+            guard let image = image else {
+                print("failed to load image with error: \(String(describing: error))")
+                DispatchQueue.main.async {
+                    self?.activityIndicator.stopAnimating()
+                    self?.activityIndicator.isHidden = true
+                    self?.noImageLabel.isHidden = false
+                }
+                return
+            }
+            
+            DispatchQueue.main.async {
+                self?.imageView.image = image
+                self?.activityIndicator.stopAnimating()
+                self?.activityIndicator.isHidden = true
+            }
+        }
     }
 }
