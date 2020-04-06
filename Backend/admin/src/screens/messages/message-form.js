@@ -17,10 +17,16 @@ const MessageForm = ({ form, initialValues, onFinish, submitTitle }) => {
     history.goBack();
   };
 
+  const formItemLayout = {
+    labelCol: { span: 3 },
+    wrapperCol: { span: 21 },
+  };
+
   return (
     <div className="form-wrapper">
       <Card title="Adauga un mesaj">
         <Form
+          {...formItemLayout}
           initialValues={values}
           name="add-question"
           form={form}
