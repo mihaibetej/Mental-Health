@@ -39,7 +39,7 @@ const Login = () => {
   };
 
   return (
-    <div className="login-wrapper">
+    <div className="login-form">
       <Card title="Login">
         <Form
           {...layout}
@@ -47,7 +47,6 @@ const Login = () => {
           initialValues={{ remember: true }}
           onFinish={onFinish}
           onFinishFailed={onFinishFailed}
-          className="login-form"
           form={form}
         >
           <Form.Item
@@ -66,15 +65,20 @@ const Login = () => {
             <Input.Password />
           </Form.Item>
           <Form.Item {...tailLayout} st>
-            <Button type="primary" shape="round" htmlType="submit">
-              Login
-            </Button>
             <Button
               className="login-form-forgot"
               shape="round"
               onClick={handleForgot}
             >
               Am uitat parola
+            </Button>
+            <Button
+              type="primary"
+              shape="round"
+              htmlType="submit"
+              className="login-btn"
+            >
+              Login
             </Button>
           </Form.Item>
         </Form>
