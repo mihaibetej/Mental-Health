@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Card, Form, Input } from 'antd';
 import { useHistory } from 'react-router';
 import { forgotPassword } from '../../db/auth';
 
@@ -27,26 +27,28 @@ const ForgotPassword = () => {
 
   return (
     <div className="forgot-password-wrapper">
-      <Form
-        {...layout}
-        className="forgot-password-form"
-        name="basic"
-        onFinish={onFinish}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
+      <Card title="Am uitat parola">
+        <Form
+          {...layout}
+          className="forgot-password-form"
+          name="basic"
+          onFinish={onFinish}
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: 'Introdu adresa de mail!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item {...tailLayout}>
-          <Button type="primary" htmlType="submit">
-            Send Email
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item {...tailLayout}>
+            <Button type="primary" shape="round" htmlType="submit">
+              Trimite Email
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
     </div>
   );
 };

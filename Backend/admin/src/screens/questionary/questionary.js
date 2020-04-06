@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Button, Form, List, Typography, Spin } from 'antd';
+import { Button, Form, List, Typography, Spin, Card } from 'antd';
 
 import Slider from '../../components/slider';
 import { withAuthorization } from '../../hoc';
@@ -84,59 +84,55 @@ const Questionary = ({ authUser }) => {
   }
 
   return (
-    <Form
-      initialValues={questions.initialValues}
-      name="answer-question"
-      className="questionary"
-      form={form}
-      onFinish={onFinish}
-    >
-      <div className="questionary">
-        <List
-          className="questionary__list"
-          bordered
-          header={
-            // eslint-disable-next-line
-            <Typography.Title>Chestionar:</Typography.Title>
-          }
-          itemLayout="horizontal"
-          dataSource={questions.values}
-          renderItem={(question, nr) => {
-            const { body: questionText, answers, id } = question;
-            const min = 0;
-            const max = answers.length - 1;
+    <div className="questionary__list">
+      <Card title="Chestionar">
+        <Form
+          initialValues={questions.initialValues}
+          name="answer-question"
+          form={form}
+          onFinish={onFinish}
+        >
+          <List
+            itemLayout="horizontal"
+            dataSource={questions.values}
+            renderItem={(question, nr) => {
+              const { body: questionText, answers, id } = question;
+              const min = 0;
+              const max = answers.length - 1;
 
-            return (
-              <div key={id}>
-                <Typography.Text strong>
-                  {`${nr + 1}. ${questionText}`}
-                </Typography.Text>
-                <Form.Item name={id}>
-                  <Slider
-                    {...{
-                      min,
-                      max,
-                      options: answers.map((o) => o.title),
-                      name: id,
-                    }}
-                  />
-                </Form.Item>
-              </div>
-            );
-          }}
-        />
-        <Form.Item className="questionary__actions">
-          <Button
-            disabled={questions.submiting}
-            loading={questions.submiting}
-            type="primary"
-            htmlType="submit"
-          >
-            Submit
-          </Button>
-        </Form.Item>
-      </div>
-    </Form>
+              return (
+                <div key={id}>
+                  <Typography.Text strong>
+                    {`${nr + 1}. ${questionText}`}
+                  </Typography.Text>
+                  <Form.Item name={id}>
+                    <Slider
+                      {...{
+                        min,
+                        max,
+                        options: answers.map((o) => o.title),
+                        name: id,
+                      }}
+                    />
+                  </Form.Item>
+                </div>
+              );
+            }}
+          />
+          <Form.Item className="questionary__actions">
+            <Button
+              disabled={questions.submiting}
+              loading={questions.submiting}
+              type="primary"
+              shape="round"
+              htmlType="submit"
+            >
+              Submit
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
+    </div>
   );
 };
 

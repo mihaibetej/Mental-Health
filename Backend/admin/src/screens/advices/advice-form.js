@@ -20,10 +20,16 @@ const AdviceForm = ({ form, initialValues, onFinish, submitTitle }) => {
     history.goBack();
   };
 
+  const formItemLayout = {
+    labelCol: { span: 6 },
+    wrapperCol: { span: 18 },
+  };
+
   return (
     <div className="form-wrapper">
       <Card title="Adauga un sfat">
         <Form
+          {...formItemLayout}
           initialValues={values}
           name="add-question"
           form={form}

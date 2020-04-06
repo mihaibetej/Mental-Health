@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Button, Form, Input ,Row, Card } from 'antd';
+import { Button, Form, Input, Row, Card } from 'antd';
 import { useHistory } from 'react-router';
 
-import './news-item-form.css';
-import UploadImage from '../../components/upload/upload'
+import '../styles.css';
+import UploadImage from '../../components/upload/upload';
 
 const NewsItemForm = ({ form, initialValues, onFinish, title }) => {
   const values = initialValues
@@ -14,24 +14,22 @@ const NewsItemForm = ({ form, initialValues, onFinish, title }) => {
       }
     : {};
 
-    const image = initialValues && initialValues.image ? initialValues.image : ""; 
+  const image = initialValues && initialValues.image ? initialValues.image : '';
 
-    const formItemLayout = {
-      labelCol: { span: 6 },
-      wrapperCol: { span: 14 },
-    };
+  const formItemLayout = {
+    labelCol: { span: 4 },
+    wrapperCol: { span: 20 },
+  };
 
-    const history = useHistory();
+  const history = useHistory();
 
-    const onCancel = () => {
-      history.goBack();
-    };
+  const onCancel = () => {
+    history.goBack();
+  };
 
   return (
-    <div className="news-item-form">
-      <Card
-        title={title}
-      >
+    <div className="form-wrapper">
+      <Card title={title}>
         <Form
           {...formItemLayout}
           initialValues={values}
@@ -64,7 +62,7 @@ const NewsItemForm = ({ form, initialValues, onFinish, title }) => {
             <Input.TextArea />
           </Form.Item>
           <UploadImage defaultImage={image} />
-          <Row justify="space-between">
+          <Row className="action-btn-group">
             <Form.Item>
               <Button shape="round" onClick={onCancel}>
                 Anuleaza
