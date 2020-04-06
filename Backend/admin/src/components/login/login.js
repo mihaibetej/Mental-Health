@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button, Form, Input } from 'antd';
+import { Button, Card, Form, Input } from 'antd';
 import { useHistory } from 'react-router';
 import { login } from '../../db/auth';
 
@@ -40,39 +40,45 @@ const Login = () => {
 
   return (
     <div className="login-wrapper">
-      <Form
-        {...layout}
-        name="basic"
-        initialValues={{ remember: true }}
-        onFinish={onFinish}
-        onFinishFailed={onFinishFailed}
-        className="login-form"
-        form={form}
-      >
-        <Form.Item
-          label="Email"
-          name="email"
-          rules={[{ required: true, message: 'Please input your email!' }]}
+      <Card title="Login">
+        <Form
+          {...layout}
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          className="login-form"
+          form={form}
         >
-          <Input />
-        </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: 'Introdu adresa de email!' }]}
+          >
+            <Input />
+          </Form.Item>
 
-        <Form.Item
-          label="Password"
-          name="password"
-          rules={[{ required: true, message: 'Please input your password!' }]}
-        >
-          <Input.Password />
-        </Form.Item>
-        <Form.Item {...tailLayout} st>
-          <Button type="primary" htmlType="submit">
-            Submit
-          </Button>
-          <Button className="login-form-forgot" onClick={handleForgot}>
-            Forgot password
-          </Button>
-        </Form.Item>
-      </Form>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Introdu parola!' }]}
+          >
+            <Input.Password />
+          </Form.Item>
+          <Form.Item {...tailLayout} st>
+            <Button type="primary" shape="round" htmlType="submit">
+              Login
+            </Button>
+            <Button
+              className="login-form-forgot"
+              shape="round"
+              onClick={handleForgot}
+            >
+              Am uitat parola
+            </Button>
+          </Form.Item>
+        </Form>
+      </Card>
     </div>
   );
 };
