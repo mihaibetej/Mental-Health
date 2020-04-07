@@ -53,6 +53,8 @@
 		6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7622433FD9C00388A6D /* SettingsViewController.swift */; };
 		6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */; };
 		63D0C259243BB57B007F9742 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D0C258243BB57B007F9742 /* ImageCacher.swift */; };
+		BE19360F243CC64D000FE229 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19360E243CC64D000FE229 /* Message.swift */; };
+		BE193611243CC66C000FE229 /* DailyAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193610243CC66C000FE229 /* DailyAdvice.swift */; };
 		BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6BF6F324351D690096B11C /* ExpandableList.storyboard */; };
 		BEB6CBB124351F1900DB59D2 /* Journal.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB6CBB024351F1900DB59D2 /* Journal.json */; };
 		BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */; };
@@ -112,6 +114,8 @@
 		63D0C258243BB57B007F9742 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
 		ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mental_Health.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.debug.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.debug.xcconfig"; sourceTree = "<group>"; };
+		BE19360E243CC64D000FE229 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
+		BE193610243CC66C000FE229 /* DailyAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAdvice.swift; sourceTree = "<group>"; };
 		BE6BF6F324351D690096B11C /* ExpandableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandableList.storyboard; sourceTree = "<group>"; };
 		BEB6CBB024351F1900DB59D2 /* Journal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Journal.json; sourceTree = "<group>"; };
 		BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToExpandableListViewController.swift; sourceTree = "<group>"; };
@@ -146,6 +150,8 @@
 			isa = PBXGroup;
 			children = (
 				2717C1022432A3B2003C6A29 /* Question.swift */,
+				BE19360E243CC64D000FE229 /* Message.swift */,
+				BE193610243CC66C000FE229 /* DailyAdvice.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -514,6 +520,7 @@
 				279CA576243A8DAD00EB4E52 /* StatisticsViewController.swift in Sources */,
 				6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */,
 				2717C1002432A0E4003C6A29 /* QuestionnaireViewModel.swift in Sources */,
+				BE193611243CC66C000FE229 /* DailyAdvice.swift in Sources */,
 				27A2F0E9242E9820009A80D7 /* QuestionnaireViewController.swift in Sources */,
 				6367B7472433FADD00388A6D /* SwiftDisclosureIndicator.swift in Sources */,
 				27A05B56243796FE008148C6 /* MHTextField.swift in Sources */,
@@ -530,6 +537,7 @@
 				6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */,
 				27A05B582437A8CA008148C6 /* MHLabel.swift in Sources */,
 				27A05B5424377BF1008148C6 /* MHButton.swift in Sources */,
+				BE19360F243CC64D000FE229 /* Message.swift in Sources */,
 				279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 				279CA56F243A268D00EB4E52 /* QuestionnaireResultsViewController.swift in Sources */,
