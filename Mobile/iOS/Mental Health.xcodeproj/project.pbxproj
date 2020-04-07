@@ -55,12 +55,12 @@
 		63D0C259243BB57B007F9742 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D0C258243BB57B007F9742 /* ImageCacher.swift */; };
 		BE19360F243CC64D000FE229 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19360E243CC64D000FE229 /* Message.swift */; };
 		BE193611243CC66C000FE229 /* DailyAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193610243CC66C000FE229 /* DailyAdvice.swift */; };
+		BE193613243CFB77000FE229 /* InternalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193612243CFB77000FE229 /* InternalUser.swift */; };
+		BE193615243D173E000FE229 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193614243D173E000FE229 /* Journal.swift */; };
 		BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6BF6F324351D690096B11C /* ExpandableList.storyboard */; };
 		BEB6CBB124351F1900DB59D2 /* Journal.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB6CBB024351F1900DB59D2 /* Journal.json */; };
 		BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */; };
 		BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */; };
-		BED2B7F224327A000035C130 /* Advices.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F124327A000035C130 /* Advices.json */; };
-		BED2B7F424327A110035C130 /* Messages.json in Resources */ = {isa = PBXBuildFile; fileRef = BED2B7F324327A110035C130 /* Messages.json */; };
 		BED2B7F6243281A00035C130 /* ExpandableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7F5243281A00035C130 /* ExpandableListCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -116,12 +116,12 @@
 		AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.debug.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.debug.xcconfig"; sourceTree = "<group>"; };
 		BE19360E243CC64D000FE229 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		BE193610243CC66C000FE229 /* DailyAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAdvice.swift; sourceTree = "<group>"; };
+		BE193612243CFB77000FE229 /* InternalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalUser.swift; sourceTree = "<group>"; };
+		BE193614243D173E000FE229 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
 		BE6BF6F324351D690096B11C /* ExpandableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandableList.storyboard; sourceTree = "<group>"; };
 		BEB6CBB024351F1900DB59D2 /* Journal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Journal.json; sourceTree = "<group>"; };
 		BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToExpandableListViewController.swift; sourceTree = "<group>"; };
 		BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewController.swift; sourceTree = "<group>"; };
-		BED2B7F124327A000035C130 /* Advices.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Advices.json; sourceTree = "<group>"; };
-		BED2B7F324327A110035C130 /* Messages.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Messages.json; sourceTree = "<group>"; };
 		BED2B7F5243281A00035C130 /* ExpandableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListCell.swift; sourceTree = "<group>"; };
 		D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.release.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -152,6 +152,8 @@
 				2717C1022432A3B2003C6A29 /* Question.swift */,
 				BE19360E243CC64D000FE229 /* Message.swift */,
 				BE193610243CC66C000FE229 /* DailyAdvice.swift */,
+				BE193612243CFB77000FE229 /* InternalUser.swift */,
+				BE193614243D173E000FE229 /* Journal.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -372,8 +374,6 @@
 			isa = PBXGroup;
 			children = (
 				2717C1062432A533003C6A29 /* Questionnaire.json */,
-				BED2B7F124327A000035C130 /* Advices.json */,
-				BED2B7F324327A110035C130 /* Messages.json */,
 				BEB6CBB024351F1900DB59D2 /* Journal.json */,
 			);
 			path = Mock;
@@ -439,14 +439,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				BED2B7F424327A110035C130 /* Messages.json in Resources */,
 				BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */,
 				6367B7492433FC4100388A6D /* Profile.storyboard in Resources */,
 				27A2F0D0242E4791009A80D7 /* LaunchScreen.storyboard in Resources */,
 				27A2F0E3242E591B009A80D7 /* Personal.storyboard in Resources */,
 				27A2F0E7242E5940009A80D7 /* More.storyboard in Resources */,
 				27A05B4C24367CA8008148C6 /* Authentication.storyboard in Resources */,
-				BED2B7F224327A000035C130 /* Advices.json in Resources */,
 				2717C1072432A533003C6A29 /* Questionnaire.json in Resources */,
 				27A2F0E5242E592D009A80D7 /* Questionnaire.storyboard in Resources */,
 				6367B74B2433FC4D00388A6D /* Journal.storyboard in Resources */,
@@ -532,6 +530,7 @@
 				27A2F0F2242F92BB009A80D7 /* QuestionTableViewCell.swift in Sources */,
 				279CA56D24396F1F00EB4E52 /* Session.swift in Sources */,
 				27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */,
+				BE193613243CFB77000FE229 /* InternalUser.swift in Sources */,
 				6367B75E2433FD4500388A6D /* JournalViewController.swift in Sources */,
 				2717C1092432ABEC003C6A29 /* SendAnswersTableViewCell.swift in Sources */,
 				6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */,
@@ -541,6 +540,7 @@
 				279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 				279CA56F243A268D00EB4E52 /* QuestionnaireResultsViewController.swift in Sources */,
+				BE193615243D173E000FE229 /* Journal.swift in Sources */,
 				27A2F0F6242F9904009A80D7 /* CommonExtensions.swift in Sources */,
 				27A2F0F8242F991C009A80D7 /* Utils.swift in Sources */,
 				BED2B7F6243281A00035C130 /* ExpandableListCell.swift in Sources */,
