@@ -9,16 +9,31 @@
 import UIKit
 import FirebaseFirestoreSwift
 
+struct NewsItem: Decodable {
+    var body: String?
+    var image: String?
+    var title: String?
+}
+
 class FeedViewController: UIViewController {
     
+    @IBOutlet var tableView: UITableView!
+    
     let detailSegueName = "showFeedDetail"
-    var selectedDetails: Any?
+    var selectedDetails: NewsItem?
+    var newsItems = [NewsItem]() {
+        didSet {
+            tableView.reloadData()
+        }
+    }
+    
+    private let refreshControl = UIRefreshControl()
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == detailSegueName,
             let destination = segue.destination as? FeedDetailViewController {
             // pass the data in selectedDetails then erase the information in it
-            destination.feedDetail = nil//pass the info here
+            destination.feedDetail = selectedDetails
             selectedDetails = nil
         }
     }
@@ -27,13 +42,31 @@ class FeedViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        // Add Refresh Control to Table View
+        if #available(iOS 10.0, *) {
+            tableView.refreshControl = refreshControl
+        } else {
+            self.tableView.insertSubview(refreshControl, at: 0)
+        }
+        
+        // Configure Refresh Control
+        refreshControl.addTarget(self, action: #selector(refreshData), for: .valueChanged)
+        refreshControl.tintColor = UIColor(named: "MHDarkBlue")
+        let attributes: [NSAttributedString.Key: Any] = [.foregroundColor: UIColor(named: "MHDarkBlue") ?? .clear]
+        refreshControl.attributedTitle = NSAttributedString(string: "Actualizare", attributes: attributes)
+        
+        loadData()
+    }
+    
+    @objc func refreshData() {
         loadData()
     }
 }
 
 extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return newsItems.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -41,13 +74,14 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
             return FeedTableViewCell()
         }
         
-//        cell.configure(title: "", image: UIImage())
+        let item = newsItems[indexPath.row]
+        cell.configure(title: item.title ?? "", imageURL: URL(string: item.image ?? ""))
         
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        //extract selectedDetails from model
+        selectedDetails = newsItems[indexPath.row]
         performSegue(withIdentifier: detailSegueName, sender: self)
     }
 }
@@ -58,6 +92,10 @@ private extension FeedViewController {
     
     func loadData() {
         Session.shared.dataBase.collection("news").getDocuments { (snapshot, error) in
+            defer {
+                self.refreshControl.endRefreshing()
+            }
+
             if let error = error {
                 print("failed to fetch news: \(error)")
             } else {
@@ -65,15 +103,22 @@ private extension FeedViewController {
                     print("failed to fetch news, no snapshot returned")
                     return
                 }
-                
+
+                var items = [NewsItem]()
                 // 'document' is a dictionary
                 for document in snapshot.documents {
                     print("news item \(document.documentID): \(document.data())")
-//                    // NewsItem is Decodable
-//                    do {
-//                        let newsItem = try document.data(as: NewsItem.self)
-//                    } catch {}
+                    // NewsItem is Decodable
+                    do {
+                        if let newsItem = try document.data(as: NewsItem.self) {
+                            items.append(newsItem)
+                        }
+                    } catch {
+                        print("failed to parse newsItem with error: \(error)")
+                    }
                 }
+
+                self.newsItems = items
             }
         }
     }
