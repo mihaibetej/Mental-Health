@@ -174,7 +174,7 @@
         <scene sceneID="BT9-k2-N0h">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="jUa-Ld-bnr" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Chestionar" image="staroflife" catalog="system" id="g0Y-pQ-SgV"/>
+                    <tabBarItem key="tabBarItem" title="Chestionar" image="questionnaire-icon" id="g0Y-pQ-SgV"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="UJI-HM-5SJ">
@@ -292,7 +292,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="staroflife" catalog="system" width="124" height="128"/>
+        <image name="questionnaire-icon" width="21" height="25"/>
         <namedColor name="MHDarkBlue">
             <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

@@ -240,47 +240,36 @@ private extension AuthenticationViewController {
         
         let animationDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
         let animationCurve = notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
-        let currentFrame = (notification.userInfo![UIResponder.keyboardFrameBeginUserInfoKey] as! NSValue).cgRectValue
         let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
-        let deltaY = targetFrame.origin.y - currentFrame.origin.y
-        
-        updateLayout(deltaY: deltaY, animationDuration: animationDuration, animationCurve: animationCurve)
+        updateLayout(targetFrame: targetFrame, animationDuration: animationDuration, animationCurve: animationCurve)
     }
     
-    func updateLayout(deltaY: CGFloat, animationDuration: Double, animationCurve: UInt) {
-        if deltaY < 0
-            && signInContainerViewVCenterConstraint.constant == signInContainerViewVCenterConstraintConstant
-            && changeStateStackBottomConstraint.constant == changeStateStackBottomConstraintConstant {
-            // Keyboard is being shown
+    func updateLayout(targetFrame: CGRect, animationDuration: Double, animationCurve: UInt) {
+        if targetFrame.minY >= view.bounds.height {
+            // Keyboard is being dismissed
+            signInContainerViewVCenterConstraint.constant = signInContainerViewVCenterConstraintConstant
+            changeStateStackBottomConstraint.constant = changeStateStackBottomConstraintConstant
+        } else {
+            // Keyboard is being shown (or is already shown and it modifies it's bounds)
             // Center sign in stack view in the available vertical space (view.height - kb.heaight)
-            let boundsUncoveredByKb = CGRect(x: 0, y: 0, width: view.bounds.width, height: view.bounds.height + deltaY)
+            
+            let boundsUncoveredByKb = view.bounds.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: targetFrame.height, right: 0))
             let targetSignInContainerViewVCenterConstraintConstant = boundsUncoveredByKb.height / 2 - view.bounds.height / 2
             signInContainerViewVCenterConstraint.constant = targetSignInContainerViewVCenterConstraintConstant
             
             // Center change state stack in the available vertical space between the sign in stack view bottom and the top of the keyboard
             let signInContainerTargetBottom = boundsUncoveredByKb.height / 2 + signInContainerView.bounds.height / 2
-            let verticalSpaceAvailable = view.frame.height - abs(deltaY) - signInContainerTargetBottom
-            let targetChangeStateStackBottomConstraintContant = abs(deltaY) + (verticalSpaceAvailable - changeStateContainerView.bounds.height) / 2 - view.safeAreaInsets.bottom
+            let verticalSpaceAvailable = boundsUncoveredByKb.height - signInContainerTargetBottom
+            
+            let targetChangeStateStackBottomConstraintContant = targetFrame.height + (verticalSpaceAvailable - changeStateContainerView.bounds.height) / 2 - view.safeAreaInsets.bottom
             changeStateStackBottomConstraint.constant = targetChangeStateStackBottomConstraintContant
-        } else if deltaY > 0 {
-            // TODO: Remove temporary hack for keyboard resizing (caused by attempt to show suggested strong pass)
-            if deltaY < 20 {
-                return
-            }
-            // Keyboard is being dismissed
-            // Restore default positions
-            signInContainerViewVCenterConstraint.constant = signInContainerViewVCenterConstraintConstant
-            changeStateStackBottomConstraint.constant = changeStateStackBottomConstraintConstant
-        } else {
-            // Keyboard position has not changed (deltaY == 0), so we do nothing
-            return
         }
-                
+        
         UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
             self.view.layoutIfNeeded()
         })
     }
-    
+        
     func resetInputs() {
         usernameTextField.text = ""
         usernameTextField.validationState = .isValid

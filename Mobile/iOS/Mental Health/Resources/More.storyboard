@@ -104,7 +104,7 @@
         <scene sceneID="D88-n9-iB2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="SXU-LW-Uzq" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Mai mult" image="ellipsis.circle.fill" catalog="system" id="Cvl-xk-2XP"/>
+                    <tabBarItem key="tabBarItem" title="Mai mult" image="more-icon" id="Cvl-xk-2XP"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="G83-Zo-aiq">
@@ -122,6 +122,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ellipsis.circle.fill" catalog="system" width="128" height="121"/>
+        <image name="more-icon" width="30" height="27"/>
     </resources>
 </document>

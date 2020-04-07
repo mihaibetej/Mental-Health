@@ -114,7 +114,11 @@ extension MHSlider {
             path.addLine(to: CGPoint(x: x, y: y - Constants.segmentMarkerHeight))
             path.close()
             
-            UIColor.black.set()
+            if #available(iOS 13.0, *) {
+                UIColor.label.set()
+            } else {
+                UIColor.black.set()
+            }            
             path.stroke()
         }
     }

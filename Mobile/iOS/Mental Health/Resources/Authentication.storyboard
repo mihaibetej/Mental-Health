@@ -16,6 +16,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="login-bkg" translatesAutoresizingMaskIntoConstraints="NO" id="kce-gR-NJG">
+                                <rect key="frame" x="0.0" y="44" width="414" height="273"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cso-ga-oYl">
                                 <rect key="frame" x="20" y="222" width="374" height="256"/>
                                 <subviews>
@@ -25,7 +28,7 @@
                                             <constraint firstAttribute="height" constant="52" id="vKM-yP-o38"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" keyboardType="emailAddress" returnKeyType="next" textContentType="email"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="LTe-rI-22b"/>
                                         </connections>
@@ -36,7 +39,7 @@
                                             <constraint firstAttribute="height" constant="52" id="WF0-Gb-0as"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
@@ -47,7 +50,7 @@
                                             <constraint firstAttribute="height" constant="52" id="Tgc-CW-Uje"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" returnKeyType="go" secureTextEntry="YES" textContentType="password"/>
                                         <connections>
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="ii5-df-pb0"/>
                                         </connections>
@@ -95,10 +98,13 @@
                         <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="cso-ga-oYl" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="26i-M3-nF4"/>
+                            <constraint firstItem="kce-gR-NJG" firstAttribute="top" secondItem="K6U-bM-rTD" secondAttribute="top" id="53L-0I-ZIO"/>
                             <constraint firstItem="K6U-bM-rTD" firstAttribute="bottom" secondItem="QDh-cD-FNF" secondAttribute="bottom" constant="8" id="Nhx-fx-ZiB"/>
                             <constraint firstItem="K6U-bM-rTD" firstAttribute="trailing" secondItem="cso-ga-oYl" secondAttribute="trailing" constant="20" id="QY2-Hu-a37"/>
                             <constraint firstItem="cso-ga-oYl" firstAttribute="centerY" secondItem="lA6-IV-lJl" secondAttribute="centerY" constant="-98" id="ZZi-Qe-wbc"/>
                             <constraint firstItem="QDh-cD-FNF" firstAttribute="centerX" secondItem="lA6-IV-lJl" secondAttribute="centerX" id="bn9-nj-WK5"/>
+                            <constraint firstItem="kce-gR-NJG" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" id="iiO-ic-Zfs"/>
+                            <constraint firstItem="kce-gR-NJG" firstAttribute="trailing" secondItem="K6U-bM-rTD" secondAttribute="trailing" id="nff-1N-nDv"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="K6U-bM-rTD"/>
                     </view>
@@ -120,4 +126,7 @@
             <point key="canvasLocation" x="53.623188405797109" y="4.6875"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="login-bkg" width="375" height="273"/>
+    </resources>
 </document>

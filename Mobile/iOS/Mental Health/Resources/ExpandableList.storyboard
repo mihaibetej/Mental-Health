@@ -209,7 +209,7 @@
     </scenes>
     <resources>
         <namedColor name="MHDarkBlue">
-            <color red="0.094117647058823528" green="0.4823529411764706" blue="0.80392156862745101" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

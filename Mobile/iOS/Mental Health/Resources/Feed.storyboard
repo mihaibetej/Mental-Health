@@ -151,7 +151,7 @@
         <scene sceneID="iSk-tQ-Vqe">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="g9V-zQ-tAT" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Noutăți" image="list.bullet" catalog="system" id="iCo-8p-50S"/>
+                    <tabBarItem key="tabBarItem" title="Noutăți" image="news-icon" id="iCo-8p-50S"/>
                     <toolbarItems/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sRh-vm-F6W">
@@ -169,7 +169,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="news-icon" width="24" height="24"/>
         <image name="placeholderNews" width="4512" height="3000"/>
     </resources>
 </document>

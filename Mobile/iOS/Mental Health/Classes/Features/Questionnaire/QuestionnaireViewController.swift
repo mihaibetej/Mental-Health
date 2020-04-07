@@ -110,14 +110,22 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
         var headerView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "header")
         if headerView == nil {
             headerView = UITableViewHeaderFooterView(reuseIdentifier: "header")
-            headerView?.contentView.backgroundColor = .white
+            if #available(iOS 13.0, *) {
+                headerView?.contentView.backgroundColor = .systemBackground
+            } else {
+                headerView?.contentView.backgroundColor = .white
+            }
         }
         
         // Create and configure label properties
         let titleLabel = UILabel(frame: headerView!.bounds)
         titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFont.Weight.semibold)
         titleLabel.backgroundColor = .clear
-        titleLabel.textColor = .black
+        if #available(iOS 13.0, *) {
+            titleLabel.textColor = .label
+        } else {
+            titleLabel.textColor = .black
+        }
         titleLabel.numberOfLines = 0
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         // Configure label paragraph

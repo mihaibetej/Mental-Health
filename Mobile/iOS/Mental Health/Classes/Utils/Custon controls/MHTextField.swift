@@ -56,6 +56,9 @@ private extension MHTextField {
         
         // Carret color
         tintColor = .mhBlue
+        
+        // Placeholder color
+        // attributedPlaceholder
     }
     
     func customizeForValidState() {

@@ -66,7 +66,11 @@ class QuestionnaireResultsViewModel {
     
     var recommendationLabelColor: UIColor {
         if resultsType == .none {
-            return .black
+            if #available(iOS 13.0, *) {
+                return .label
+            } else {
+                return .black
+            }
         }
         
         return .mhRecommendation
