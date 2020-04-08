@@ -28,6 +28,16 @@ class MHTextField: UITextField {
         }
     }
     
+    override var isEnabled: Bool {
+        didSet {
+            if self.isEnabled {
+                layer.borderWidth = 1
+            } else {
+                layer.borderWidth = 0
+            }
+        }
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customize()
