@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kcZ-vR-ezy">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="kcZ-vR-ezy">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,55 +11,40 @@
         <!--Journal View Controller-->
         <scene sceneID="6kd-W5-5YZ">
             <objects>
-                <viewController id="kcZ-vR-ezy" customClass="JournalViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="kcZ-vR-ezy" customClass="JournalViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uUR-Jc-Z0h">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="7eT-wh-gyd">
-                                <rect key="frame" x="20" y="54" width="374" height="32"/>
-                                <segments>
-                                    <segment title="Jurnal personal"/>
-                                    <segment title="Grafic chestionar"/>
-                                </segments>
-                                <color key="selectedSegmentTintColor" red="0.12549019610000001" green="0.49019607840000001" blue="0.79215686269999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <connections>
-                                    <action selector="segmentedControlValueChanged:" destination="kcZ-vR-ezy" eventType="valueChanged" id="Daa-we-JOY"/>
-                                </connections>
-                            </segmentedControl>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Adaugă și azi o nouă poveste în jurnalul eroului. Cărei intămplare îi ești azi recunoscător?" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jvB-q6-oYE">
+                                <rect key="frame" x="20" y="74" width="374" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Nj3-bU-IsZ">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                                <rect key="frame" x="0.0" y="158.5" width="414" height="703.5"/>
                                 <connections>
                                     <segue destination="Zpa-yC-S11" kind="embed" identifier="embedJournal" id="wfh-N2-Iew"/>
-                                </connections>
-                            </containerView>
-                            <containerView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="009-Md-Pyn">
-                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
-                                <connections>
-                                    <segue destination="oZE-6c-rrH" kind="embed" identifier="embedGraph" id="z1k-Ck-MPu"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.94901960780000005" green="0.95686274510000002" blue="0.96470588239999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="009-Md-Pyn" firstAttribute="trailing" secondItem="I5w-e9-xrd" secondAttribute="trailing" id="5fA-EF-WSu"/>
-                            <constraint firstItem="Nj3-bU-IsZ" firstAttribute="top" secondItem="7eT-wh-gyd" secondAttribute="bottom" constant="10" id="Afd-82-qHL"/>
-                            <constraint firstItem="009-Md-Pyn" firstAttribute="top" secondItem="7eT-wh-gyd" secondAttribute="bottom" constant="10" id="E75-Se-Yj6"/>
                             <constraint firstItem="I5w-e9-xrd" firstAttribute="bottom" secondItem="Nj3-bU-IsZ" secondAttribute="bottom" id="IGz-nR-gW2"/>
-                            <constraint firstItem="009-Md-Pyn" firstAttribute="leading" secondItem="I5w-e9-xrd" secondAttribute="leading" id="L7p-CQ-41X"/>
+                            <constraint firstItem="jvB-q6-oYE" firstAttribute="top" secondItem="I5w-e9-xrd" secondAttribute="top" constant="30" id="Ors-w8-r5o"/>
+                            <constraint firstItem="jvB-q6-oYE" firstAttribute="leading" secondItem="I5w-e9-xrd" secondAttribute="leading" constant="20" id="TfT-Gu-pvT"/>
+                            <constraint firstItem="I5w-e9-xrd" firstAttribute="trailing" secondItem="jvB-q6-oYE" secondAttribute="trailing" constant="20" id="abg-ge-EiD"/>
                             <constraint firstItem="Nj3-bU-IsZ" firstAttribute="leading" secondItem="I5w-e9-xrd" secondAttribute="leading" id="ccf-Rm-7IP"/>
-                            <constraint firstItem="I5w-e9-xrd" firstAttribute="bottom" secondItem="009-Md-Pyn" secondAttribute="bottom" id="epg-oq-Yj8"/>
-                            <constraint firstItem="7eT-wh-gyd" firstAttribute="top" secondItem="I5w-e9-xrd" secondAttribute="top" constant="10" id="qfr-in-bxw"/>
-                            <constraint firstItem="7eT-wh-gyd" firstAttribute="leading" secondItem="I5w-e9-xrd" secondAttribute="leading" constant="20" id="rUP-Yt-BfQ"/>
+                            <constraint firstItem="Nj3-bU-IsZ" firstAttribute="top" secondItem="jvB-q6-oYE" secondAttribute="bottom" constant="20" id="jtR-3c-cVR"/>
                             <constraint firstItem="I5w-e9-xrd" firstAttribute="trailing" secondItem="Nj3-bU-IsZ" secondAttribute="trailing" id="s8F-sv-wJ5"/>
-                            <constraint firstItem="I5w-e9-xrd" firstAttribute="trailing" secondItem="7eT-wh-gyd" secondAttribute="trailing" constant="20" id="zGr-hd-HC8"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="I5w-e9-xrd"/>
                     </view>
                     <navigationItem key="navigationItem" id="U1R-n1-9LH"/>
                     <connections>
-                        <outlet property="graphContainer" destination="009-Md-Pyn" id="YVA-ma-4rE"/>
                         <outlet property="journalContainer" destination="Nj3-bU-IsZ" id="36n-6H-dRY"/>
+                        <outlet property="titleLabel" destination="jvB-q6-oYE" id="8vC-fl-MiS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="08U-MC-RFs" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -73,33 +58,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yVF-TU-GKG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="812" y="558"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="67b-zA-pJc">
-            <objects>
-                <viewController id="oZE-6c-rrH" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="bmK-B4-dxX">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="767"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Embed graph here" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BCg-LR-hKV">
-                                <rect key="frame" x="136.5" y="373" width="141.5" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                        <constraints>
-                            <constraint firstItem="BCg-LR-hKV" firstAttribute="centerX" secondItem="bmK-B4-dxX" secondAttribute="centerX" id="e93-nc-hUl"/>
-                            <constraint firstItem="BCg-LR-hKV" firstAttribute="centerY" secondItem="bmK-B4-dxX" secondAttribute="centerY" id="r3V-vv-zn2"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ZeB-eo-kmg"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BwV-LB-VBD" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1464" y="844"/>
         </scene>
     </scenes>
 </document>

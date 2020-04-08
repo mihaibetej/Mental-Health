@@ -12,9 +12,10 @@ import IHProgressHUD
 
 class JournalViewController: UIViewController {
     
+    @IBOutlet weak var titleLabel: UILabel!
+    
     struct Segues {
         static let journal = "embedJournal"
-        static let graph = "embedGraph"
     }
     
     @IBOutlet weak var journalContainer: UIView!
@@ -33,9 +34,15 @@ class JournalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
-        title = "Jurnal personal"
+        title = "Jurnalul eroului"
+        
+        let titleParagraphText = NSMutableAttributedString(string: "Adaugă și azi o nouă poveste în jurnalul eroului. Cărei intămplare îi ești azi recunoscător?")
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 6
+        titleParagraphText.addAttribute(NSAttributedString.Key.paragraphStyle,
+                                value: paragraphStyle,
+                                range:NSMakeRange(0, titleParagraphText.length))
+        titleLabel.attributedText = titleParagraphText
         
         IHProgressHUD.show()
         loadJournalItems { error in
@@ -48,19 +55,6 @@ class JournalViewController: UIViewController {
         }
     }
     
-    //MARK: - Actions
-    
-    @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
-        switch sender.selectedSegmentIndex {
-        case 0:
-            journalContainer.isHidden = false
-        case 1:
-            journalContainer.isHidden = true
-        default:
-            break
-        }
-        graphContainer.isHidden = !graphContainer.isHidden
-    }
     
     //MARK: - Private
     

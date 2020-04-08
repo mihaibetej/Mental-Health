@@ -12,7 +12,7 @@
         <!--Check In View Controller-->
         <scene sceneID="0Cb-n1-kAK">
             <objects>
-                <viewController id="7be-45-f94" customClass="CheckInViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="7be-45-f94" customClass="CheckInViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="xq1-jc-ArV">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +44,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="QwQ-c5-dYO" customClass="MHSlider" customModule="Mental_Health" customModuleProvider="target">
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="QwQ-c5-dYO" customClass="MHSlider" customModule="_MedicAll" customModuleProvider="target">
                                 <rect key="frame" x="36" y="480.5" width="342" height="31"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
@@ -61,7 +61,7 @@
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy-face" translatesAutoresizingMaskIntoConstraints="NO" id="4eO-gG-ZWH">
                                 <rect key="frame" x="356" y="460" width="20" height="20"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgv-zl-hnD" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgv-zl-hnD" customClass="MHButton" customModule="_MedicAll" customModuleProvider="target">
                                 <rect key="frame" x="20" y="560.5" width="374" height="52"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="52" id="cpc-3o-Aws"/>
@@ -122,6 +122,13 @@
                     </view>
                     <connections>
                         <outlet property="checkInSlider" destination="QwQ-c5-dYO" id="QGP-JB-BhH"/>
+                        <outletCollection property="verticalConstraints" destination="4mk-R1-BlW" collectionClass="NSMutableArray" id="OVn-Ml-nJx"/>
+                        <outletCollection property="verticalConstraints" destination="old-U2-zki" collectionClass="NSMutableArray" id="vs1-Pz-AYt"/>
+                        <outletCollection property="verticalConstraints" destination="iJb-mT-DdY" collectionClass="NSMutableArray" id="Qcm-tM-JbW"/>
+                        <outletCollection property="verticalConstraints" destination="qHg-dB-S8T" collectionClass="NSMutableArray" id="iPQ-T3-eiE"/>
+                        <outletCollection property="verticalConstraints" destination="K1G-dK-ZFM" collectionClass="NSMutableArray" id="1fm-D0-Gzj"/>
+                        <outletCollection property="verticalConstraints" destination="8jq-Z4-gAt" collectionClass="NSMutableArray" id="GrI-LM-a5T"/>
+                        <outletCollection property="verticalConstraints" destination="Bx4-0I-wgr" collectionClass="NSMutableArray" id="euB-vk-7gk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zIc-d4-UCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

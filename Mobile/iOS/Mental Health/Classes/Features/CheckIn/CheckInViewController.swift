@@ -23,6 +23,7 @@ class CheckInViewController: UIViewController {
     // MARK: Variables
     
     @IBOutlet weak var checkInSlider: MHSlider!
+    @IBOutlet var verticalConstraints: [NSLayoutConstraint]!
     
     weak var delegate: CheckinViewControllerDelegate?
     
@@ -32,6 +33,7 @@ class CheckInViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        customize()
     }
     
     // MARK: Actions
@@ -49,6 +51,29 @@ class CheckInViewController: UIViewController {
     @IBAction func cancelAction(_ sender: Any) {
         delegate?.checkInDismissed()
         dismiss(animated: true, completion: nil)
+    }
+    
+}
+
+// MARK: - CheckinViewController
+
+private extension CheckInViewController {
+    
+    func customize() {
+        var scaleFactor: CGFloat = 1
+        switch UIScreen.main.sizeType {
+        case .iPhone5:
+            scaleFactor = 0.6
+        case .iPhone6:
+            scaleFactor = 0.8
+        default:
+            return
+        }
+        
+        for constraint in verticalConstraints {
+            constraint.constant = round(constraint.constant * scaleFactor)
+        }
+        view.layoutIfNeeded()
     }
     
 }

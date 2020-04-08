@@ -12,7 +12,7 @@
         <!--Questionnaire View Controller-->
         <scene sceneID="Xex-Th-8Dy">
             <objects>
-                <viewController id="8J2-Wz-3rv" customClass="QuestionnaireViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="8J2-Wz-3rv" customClass="QuestionnaireViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="UIm-xM-ayl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -21,7 +21,7 @@
                                 <rect key="frame" x="0.0" y="88" width="414" height="725"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionTableViewCell" rowHeight="131" id="AkV-Sa-06I" customClass="QuestionTableViewCell" customModule="Mental_Health" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="QuestionTableViewCell" rowHeight="131" id="AkV-Sa-06I" customClass="QuestionTableViewCell" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="414" height="131"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="AkV-Sa-06I" id="NSB-DO-sM2">
@@ -34,7 +34,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-h1-hlr" customClass="MHSlider" customModule="Mental_Health" customModuleProvider="target">
+                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="sIg-h1-hlr" customClass="MHSlider" customModule="_MedicAll" customModuleProvider="target">
                                                     <rect key="frame" x="30" y="76" width="354" height="31"/>
                                                     <userDefinedRuntimeAttributes>
                                                         <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
@@ -108,14 +108,14 @@
                                             <outlet property="questionLabel" destination="ugK-X8-cmu" id="8IR-vG-hnn"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SendAnswersTableViewCell" rowHeight="98" id="JEc-1s-Ih9" customClass="SendAnswersTableViewCell" customModule="Mental_Health" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="SendAnswersTableViewCell" rowHeight="98" id="JEc-1s-Ih9" customClass="SendAnswersTableViewCell" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="159" width="414" height="98"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="JEc-1s-Ih9" id="lQ5-Ql-bTF">
                                             <rect key="frame" x="0.0" y="0.0" width="414" height="98"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyM-jh-lAz" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XyM-jh-lAz" customClass="MHButton" customModule="_MedicAll" customModuleProvider="target">
                                                     <rect key="frame" x="20" y="12" width="374" height="52"/>
                                                     <constraints>
                                                         <constraint firstAttribute="height" constant="52" id="VU0-jk-iQr"/>
@@ -193,7 +193,7 @@
         <!--Questionnaire Results View Controller-->
         <scene sceneID="M0v-4i-17S">
             <objects>
-                <viewController storyboardIdentifier="QuestionnaireResultsViewController" id="hrX-U9-vIX" customClass="QuestionnaireResultsViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="QuestionnaireResultsViewController" id="hrX-U9-vIX" customClass="QuestionnaireResultsViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="iyz-Mo-w2K">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
