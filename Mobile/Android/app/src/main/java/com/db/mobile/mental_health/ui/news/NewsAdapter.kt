@@ -51,7 +51,7 @@ class NewAdapterViewModel {
 
     fun showNewsDetails(view: View, news: News) {
         val action =
-            NewsFragmentDirections.actionNavigationNewsToNewsDetailsFragment(news, news.title)
+            NewsFragmentDirections.actionNavigationNewsToNewsDetailsFragment(news, news.title ?: "")
         view.findNavController().navigate(action)
     }
 }
