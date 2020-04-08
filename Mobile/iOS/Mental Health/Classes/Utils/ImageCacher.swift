@@ -23,7 +23,6 @@ class ImageCacher {
             URLSession.shared.dataTask(with: url) { data, response, error in
                 if let error = error {
                     completion(nil, error)
-
                 } else if let data = data, let image = UIImage(data: data) {
                     imageCache.setObject(image, forKey: url.absoluteString as NSString)
                     completion(image, nil)

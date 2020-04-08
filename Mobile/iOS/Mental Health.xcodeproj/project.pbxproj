@@ -89,7 +89,7 @@
 		27A05B5324377BF1008148C6 /* MHButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHButton.swift; sourceTree = "<group>"; };
 		27A05B55243796FE008148C6 /* MHTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHTextField.swift; sourceTree = "<group>"; };
 		27A05B572437A8CA008148C6 /* MHLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHLabel.swift; sourceTree = "<group>"; };
-		27A2F0C0242E4790009A80D7 /* Mental Health.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Mental Health.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		27A2F0C0242E4790009A80D7 /* 4MedicAll.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 4MedicAll.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27A2F0C3242E4790009A80D7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27A2F0CA242E4790009A80D7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		27A2F0CC242E4791009A80D7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -217,7 +217,7 @@
 		27A2F0C1242E4790009A80D7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				27A2F0C0242E4790009A80D7 /* Mental Health.app */,
+				27A2F0C0242E4790009A80D7 /* 4MedicAll.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -442,7 +442,7 @@
 			);
 			name = "Mental Health";
 			productName = "Mental Health";
-			productReference = 27A2F0C0242E4790009A80D7 /* Mental Health.app */;
+			productReference = 27A2F0C0242E4790009A80D7 /* 4MedicAll.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -746,7 +746,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toiletpaperdispensers.4MedicAll;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = 4MedicAll;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -766,7 +766,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.toiletpaperdispensers.4MedicAll;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = 4MedicAll;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

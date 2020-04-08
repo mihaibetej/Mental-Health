@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -11,7 +12,7 @@
         <!--Authentication View Controller-->
         <scene sceneID="1WN-DX-3Zw">
             <objects>
-                <viewController id="T2c-Li-uW1" customClass="AuthenticationViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="T2c-Li-uW1" customClass="AuthenticationViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="lA6-IV-lJl">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -22,7 +23,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="16" translatesAutoresizingMaskIntoConstraints="NO" id="cso-ga-oYl">
                                 <rect key="frame" x="20" y="222" width="374" height="256"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="E-mail utilizator" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HiB-Al-Z4S" customClass="MHTextField" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="vKM-yP-o38"/>
@@ -33,7 +34,7 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="LTe-rI-22b"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOH-17-FNj" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jOH-17-FNj" customClass="MHTextField" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="68" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="WF0-Gb-0as"/>
@@ -44,7 +45,7 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="3TR-cZ-u5g"/>
                                         </connections>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirma parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMF-ml-GKL" customClass="MHTextField" customModule="Mental_Health" customModuleProvider="target">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Confirma parola" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMF-ml-GKL" customClass="MHTextField" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="136" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="Tgc-CW-Uje"/>
@@ -55,7 +56,7 @@
                                             <outlet property="delegate" destination="T2c-Li-uW1" id="ii5-df-pb0"/>
                                         </connections>
                                     </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-rT-MQH" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qcr-rT-MQH" customClass="MHButton" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="204" width="374" height="52"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="52" id="Oi0-IN-NZ8"/>
@@ -78,7 +79,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QDh-cD-FNF">
                                 <rect key="frame" x="93.5" y="821" width="227" height="33"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu ai deja cont? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-aW-DbD" customClass="MHLabel" customModule="Mental_Health" customModuleProvider="target">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nu ai deja cont? " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Xy-aW-DbD" customClass="MHLabel" customModule="_MedicAll" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="127" height="33"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -95,7 +96,7 @@
                                 </subviews>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGray5Color" red="0.8980392157" green="0.8980392157" blue="0.91764705879999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" name="MHAuthBkg"/>
                         <constraints>
                             <constraint firstItem="cso-ga-oYl" firstAttribute="leading" secondItem="K6U-bM-rTD" secondAttribute="leading" constant="20" id="26i-M3-nF4"/>
                             <constraint firstItem="kce-gR-NJG" firstAttribute="top" secondItem="K6U-bM-rTD" secondAttribute="top" id="53L-0I-ZIO"/>
@@ -128,5 +129,8 @@
     </scenes>
     <resources>
         <image name="login-bkg" width="375" height="273"/>
+        <namedColor name="MHAuthBkg">
+            <color red="0.90196078431372551" green="0.90196078431372551" blue="0.90196078431372551" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

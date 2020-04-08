@@ -87,6 +87,7 @@ extension UIImage {
 // MARK: - UIColor
 
 extension UIColor {
+    static let mhAuthBkg = UIColor(named: "MHAuthBkg")!
     static let mhGreen = UIColor(named: "MHDarkGreen")!
     static let mhRed = UIColor(named: "MHDarkRed")!
     static let mhBlue = UIColor(named: "MHDarkBlue")!
