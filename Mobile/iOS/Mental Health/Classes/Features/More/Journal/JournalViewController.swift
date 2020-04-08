@@ -78,8 +78,8 @@ class JournalViewController: UIViewController {
     
     
     private func loadJournalItems(completion: @escaping (_ error: Error?) ->() ) {
-        InternalUser.getCurrent { user in
-            guard let user = user else {
+
+            guard let userId = InternalUser.id else {
                 let customError = NSError(domain: "read.error", code: 0, userInfo: ["message" : "Actiunea nu a putut fi executata"])
                 completion(customError)
                 return
@@ -87,7 +87,7 @@ class JournalViewController: UIViewController {
             
             Session.shared.dataBase
                 .collection("users")
-                .document(user.internalUserId!)
+                .document(userId)
                 .collection("journals")
                 .getDocuments { (snapshot, error) in
                     if let error = error {
@@ -117,7 +117,6 @@ class JournalViewController: UIViewController {
                         self.journalController?.items =  self.journalItems
                         completion(nil)
                     }
-            }
         }
     }
     

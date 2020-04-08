@@ -10,58 +10,20 @@ import Foundation
 import Firebase
 
 struct InternalUser: Codable {
-    let email: String
-    let authenticatedUserId: String
-    var internalUserId: String!
+    static var email: String? { Auth.auth().currentUser?.email }
+    static var id: String? { Auth.auth().currentUser?.uid }
     
-    private enum CodingKeys: String, CodingKey {
-        case email, authenticatedUserId = "id"
-    }
-    
-    static func getCurrent(completion: @escaping (InternalUser?) -> ()) {
-        let usersCollection = Session.shared.dataBase.collection("users")
-        
-        guard let authenticatedUserId = Auth.auth().currentUser?.uid,
-            let email = Auth.auth().currentUser?.email else {
-            completion(nil)
+    static func update(completion: @escaping (_ error: Error?) -> () ) {
+        guard let email = email, let id = id else {
             return
         }
-        
-        let query = usersCollection.whereField("id", isEqualTo: authenticatedUserId)
-        
-        //if the user is not found, create one
-        let processUser = { (user: InternalUser?) -> () in
-            if let user = user {
-                completion(user)
-                return
+        let usersCollection = Session.shared.dataBase.collection("users")
+        usersCollection.document(id).setData (["email": email, "id": id]) { error in
+            if let error = error {
+                completion(error)
+            } else {
+                completion(nil)
             }
-            let uuid = UUID().uuidString
-            usersCollection.document(uuid).setData (["email": email, "id": authenticatedUserId]) { err in
-                if let _ = err {
-                    completion(nil)
-                } else {
-                    completion(InternalUser(email: email,
-                                            authenticatedUserId: authenticatedUserId,
-                                            internalUserId: uuid))
-                }
-            }
-        }
-        
-        query.getDocuments { (snapshot, error) in
-            guard let snapshot = snapshot else {
-                processUser(nil)
-                return
-            }
-            if let document = snapshot.documents.first {
-                do {
-                    if var user = try document.data(as: InternalUser.self) {
-                        user.internalUserId = document.documentID
-                        processUser(user)
-                        return
-                    }
-                } catch {}
-            }
-            processUser(nil)
         }
     }
 }

@@ -80,27 +80,24 @@ extension ExpandableListViewController: UITableViewDataSource {
 extension ExpandableListViewController: AddToExpandableListViewControllerDelegate {
     func didAdd(title: String, text: String) {
         
-        InternalUser.getCurrent { user in
-            guard let user = user else {
-                IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata")
-                return
-            }
-            
-            Session.shared.dataBase
-                .collection("users")
-                .document(user.internalUserId!)
-                .collection("journals")
-                .addDocument(data: ["date": Date(), "body": text]) { err in
-                    if let _ = err {
-                        
-                    } else {
-                        DispatchQueue.main.async {
-                            self.items.insert(.init(title: title, text: text), at: 0)
-                            self.tableView.reloadData()
-                        }
+        guard let userId = InternalUser.id else {
+            IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata")
+            return
+        }
+        
+        Session.shared.dataBase
+            .collection("users")
+            .document(userId)
+            .collection("journals")
+            .addDocument(data: ["date": Date(), "body": text]) { err in
+                if let _ = err {
+                    
+                } else {
+                    DispatchQueue.main.async {
+                        self.items.insert(.init(title: title, text: text), at: 0)
+                        self.tableView.reloadData()
                     }
-            }
-            
+                }
         }
     }
 }
