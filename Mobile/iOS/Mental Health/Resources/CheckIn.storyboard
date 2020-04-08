@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16096" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7be-45-f94">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Check In View Controller-->
+        <scene sceneID="0Cb-n1-kAK">
+            <objects>
+                <viewController id="7be-45-f94" customClass="CheckInViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xq1-jc-ArV">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="checkin-bkg" translatesAutoresizingMaskIntoConstraints="NO" id="Rem-Yh-sg3">
+                                <rect key="frame" x="0.0" y="44" width="414" height="852"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Salut!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NKg-1c-83z">
+                                <rect key="frame" x="157.5" y="94" width="99" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IȚI MULȚUMIM!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l5o-0O-AcV">
+                                <rect key="frame" x="79" y="291.5" width="256" height="43"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="36"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Știm ca ești acolo si că împreună cu ai tăi colegi, lupți pentru ca nouă si celor dragi nouă să ne fie bine!" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OSD-hb-nX4">
+                                <rect key="frame" x="20" y="187" width="374" height="64.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="18"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tu cum te simți astăzi?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5hk-Bc-GSG">
+                                <rect key="frame" x="98.5" y="404.5" width="217" height="26"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="21"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="QwQ-c5-dYO" customClass="MHSlider" customModule="Mental_Health" customModuleProvider="target">
+                                <rect key="frame" x="36" y="480.5" width="342" height="31"/>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="numberOfSteps">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="trackHeight">
+                                        <real key="value" value="6"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </slider>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sad-face" translatesAutoresizingMaskIntoConstraints="NO" id="Yfo-7F-fdT">
+                                <rect key="frame" x="38" y="460" width="20" height="20"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy-face" translatesAutoresizingMaskIntoConstraints="NO" id="4eO-gG-ZWH">
+                                <rect key="frame" x="356" y="460" width="20" height="20"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jgv-zl-hnD" customClass="MHButton" customModule="Mental_Health" customModuleProvider="target">
+                                <rect key="frame" x="20" y="560.5" width="374" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="cpc-3o-Aws"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
+                                <state key="normal" title="Trimite">
+                                    <color key="titleColor" name="MHDarkBlue"/>
+                                </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="8"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                                <connections>
+                                    <action selector="checkinAction:" destination="7be-45-f94" eventType="touchUpInside" id="20e-gi-RSH"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qjz-as-Mh7">
+                                <rect key="frame" x="171.5" y="662.5" width="71" height="32"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <state key="normal" title="Mai târziu">
+                                    <color key="titleColor" name="MHDarkBlue"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelAction:" destination="7be-45-f94" eventType="touchUpInside" id="rfo-Jl-3ru"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="fZo-Jr-Ffd" firstAttribute="trailing" secondItem="QwQ-c5-dYO" secondAttribute="trailing" constant="38" id="0es-5d-lJH"/>
+                            <constraint firstItem="NKg-1c-83z" firstAttribute="centerX" secondItem="xq1-jc-ArV" secondAttribute="centerX" id="1dH-1Z-0G7"/>
+                            <constraint firstAttribute="bottom" secondItem="Rem-Yh-sg3" secondAttribute="bottom" id="3Dl-s0-4v9"/>
+                            <constraint firstItem="fZo-Jr-Ffd" firstAttribute="trailing" secondItem="OSD-hb-nX4" secondAttribute="trailing" constant="20" id="3dP-xl-xHz"/>
+                            <constraint firstItem="NKg-1c-83z" firstAttribute="top" secondItem="fZo-Jr-Ffd" secondAttribute="top" constant="50" id="4mk-R1-BlW"/>
+                            <constraint firstItem="jgv-zl-hnD" firstAttribute="top" secondItem="QwQ-c5-dYO" secondAttribute="bottom" constant="50" id="8jq-Z4-gAt"/>
+                            <constraint firstItem="Qjz-as-Mh7" firstAttribute="top" secondItem="jgv-zl-hnD" secondAttribute="bottom" constant="50" id="Bx4-0I-wgr"/>
+                            <constraint firstItem="Rem-Yh-sg3" firstAttribute="top" secondItem="fZo-Jr-Ffd" secondAttribute="top" id="CzT-mv-Fi4"/>
+                            <constraint firstItem="l5o-0O-AcV" firstAttribute="centerX" secondItem="xq1-jc-ArV" secondAttribute="centerX" id="K10-In-nCb"/>
+                            <constraint firstItem="QwQ-c5-dYO" firstAttribute="top" secondItem="5hk-Bc-GSG" secondAttribute="bottom" constant="50" id="K1G-dK-ZFM"/>
+                            <constraint firstItem="fZo-Jr-Ffd" firstAttribute="trailing" secondItem="jgv-zl-hnD" secondAttribute="trailing" constant="20" id="Lv9-rQ-Ygv"/>
+                            <constraint firstItem="OSD-hb-nX4" firstAttribute="leading" secondItem="xq1-jc-ArV" secondAttribute="leading" constant="20" id="MgC-nZ-ZqH"/>
+                            <constraint firstItem="QwQ-c5-dYO" firstAttribute="top" secondItem="Yfo-7F-fdT" secondAttribute="bottom" constant="0.5" id="PKH-cB-XFm"/>
+                            <constraint firstItem="4eO-gG-ZWH" firstAttribute="centerY" secondItem="Yfo-7F-fdT" secondAttribute="centerY" id="TTk-hh-cnc"/>
+                            <constraint firstItem="QwQ-c5-dYO" firstAttribute="leading" secondItem="fZo-Jr-Ffd" secondAttribute="leading" constant="38" id="U0z-jW-HLK"/>
+                            <constraint firstItem="4eO-gG-ZWH" firstAttribute="trailing" secondItem="QwQ-c5-dYO" secondAttribute="trailing" id="W3N-Qn-WKd"/>
+                            <constraint firstItem="Rem-Yh-sg3" firstAttribute="trailing" secondItem="fZo-Jr-Ffd" secondAttribute="trailing" id="aaa-Re-jNd"/>
+                            <constraint firstItem="l5o-0O-AcV" firstAttribute="top" secondItem="OSD-hb-nX4" secondAttribute="bottom" constant="40" id="iJb-mT-DdY"/>
+                            <constraint firstItem="QwQ-c5-dYO" firstAttribute="leading" secondItem="Yfo-7F-fdT" secondAttribute="leading" id="jmJ-45-oA0"/>
+                            <constraint firstItem="Qjz-as-Mh7" firstAttribute="centerX" secondItem="xq1-jc-ArV" secondAttribute="centerX" id="mSU-Er-8ty"/>
+                            <constraint firstItem="5hk-Bc-GSG" firstAttribute="centerX" secondItem="xq1-jc-ArV" secondAttribute="centerX" id="mff-r8-v3Y"/>
+                            <constraint firstItem="OSD-hb-nX4" firstAttribute="top" secondItem="NKg-1c-83z" secondAttribute="bottom" constant="50" id="old-U2-zki"/>
+                            <constraint firstItem="5hk-Bc-GSG" firstAttribute="top" secondItem="l5o-0O-AcV" secondAttribute="bottom" constant="70" id="qHg-dB-S8T"/>
+                            <constraint firstItem="jgv-zl-hnD" firstAttribute="leading" secondItem="fZo-Jr-Ffd" secondAttribute="leading" constant="20" id="rdc-YG-suG"/>
+                            <constraint firstItem="Rem-Yh-sg3" firstAttribute="leading" secondItem="fZo-Jr-Ffd" secondAttribute="leading" id="xDa-S8-6PU"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="fZo-Jr-Ffd"/>
+                    </view>
+                    <connections>
+                        <outlet property="checkInSlider" destination="QwQ-c5-dYO" id="QGP-JB-BhH"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zIc-d4-UCW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-30.434782608695656" y="55.580357142857139"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="checkin-bkg" width="750" height="1298"/>
+        <image name="happy-face" width="20" height="20"/>
+        <image name="sad-face" width="20" height="20"/>
+        <namedColor name="MHDarkBlue">
+            <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+    </resources>
+</document>

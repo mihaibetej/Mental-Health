@@ -13,13 +13,18 @@ import FirebaseAuth
 
 protocol FeaturesTabBarViewModelDelegate: class {
     func userDidSignOut()
+    func appDidBecomeActive()
 }
 
 // MARK: - FeaturesTabBarViewModel
 
 class FeaturesTabBarViewModel {
+        
+    // MARK: Variables
     
     weak var delegate: FeaturesTabBarViewModelDelegate?
+    
+    // MARK: Public API
     
     func startObservingAuthenticationEvents() {
         Auth.auth().addStateDidChangeListener { [weak self] (auth, user) in
@@ -32,13 +37,13 @@ class FeaturesTabBarViewModel {
             print("Auth state changed: \(auth), \(user)")
         }
     }
-    
-    var isUserLoggedIn: Bool {
+        
+    var isUserSignedIn: Bool {
         return Auth.auth().currentUser != nil
     }
     
     func signOut() {
-        if isUserLoggedIn {
+        if isUserSignedIn {
             do {
                try Auth.auth().signOut()
                 print("User successfuly signed out")
@@ -47,4 +52,27 @@ class FeaturesTabBarViewModel {
             }
         }
     }
+    
+    var isCheckInNeeded: Bool {
+        return Session.shared.isCheckInNeeded
+    }
+    
+    func startObservingAppStateChanges() {
+        NotificationCenter.default.addObserver(self, selector: #selector(handleAppDidBecomeActive(for:)), name: UIApplication.didBecomeActiveNotification, object: nil)
+    }
+    
+    func stopObservingAppStateChanges() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+}
+
+// MARK: FeaturesTabBarViewModel (private API)
+
+private extension FeaturesTabBarViewModel {
+    
+    @objc func handleAppDidBecomeActive(for notification: Notification) {
+        delegate?.appDidBecomeActive()
+    }
+    
 }
