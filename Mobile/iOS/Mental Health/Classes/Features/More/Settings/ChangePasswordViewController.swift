@@ -29,6 +29,12 @@ class ChangePasswordViewController: UIViewController {
             secondElementInBetweenConstraint.constant = 14
             thirdElementInBetweenConstraint.constant = 14
         }
+        
+        registerForKeyboardNotifications()
+    }
+    
+    deinit {
+        unregisterForKeyboardNotifications()
     }
     
 
@@ -113,6 +119,8 @@ class ChangePasswordViewController: UIViewController {
 
 }
 
+// MARK: - Textfield delegate
+
 extension ChangePasswordViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if textField == newPasswordTextField {
@@ -123,16 +131,53 @@ extension ChangePasswordViewController: UITextFieldDelegate {
             return true
         }
         textField.resignFirstResponder()
-        if UIScreen.main.sizeType == .iPhone5 {
-            firstElementTopConstraint.constant = 20
-        }
+        
         return true
     }
+}
+
+// MARK: - Keyboard adjustments
+
+extension ChangePasswordViewController {
+    func registerForKeyboardNotifications() {
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(toggleKeyboard(notification:)),
+                                               name: UIWindow.keyboardWillShowNotification,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(toggleKeyboard(notification:)),
+                                               name: UIWindow.keyboardWillHideNotification,
+                                               object: nil)
+    }
     
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if UIScreen.main.sizeType == .iPhone5 {
-            firstElementTopConstraint.constant = 8
+    func unregisterForKeyboardNotifications() {
+        NotificationCenter.default.removeObserver(self)
+    }
+    
+    @objc func toggleKeyboard(notification: Notification) {
+        
+        print("toggle keyboard with notification: \(notification)")
+        
+        let animationDuration = notification.userInfo![UIResponder.keyboardAnimationDurationUserInfoKey] as! Double
+        let animationCurve = notification.userInfo![UIResponder.keyboardAnimationCurveUserInfoKey] as! UInt
+        let targetFrame = (notification.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        updateLayout(targetFrame: targetFrame, animationDuration: animationDuration, animationCurve: animationCurve)
+    }
+    
+    func updateLayout(targetFrame: CGRect, animationDuration: Double, animationCurve: UInt) {
+        if targetFrame.minY >= view.bounds.height {
+            // Keyboard is being dismissed
+            if UIScreen.main.sizeType == .iPhone5 {
+                firstElementTopConstraint.constant = 20
+            }
+        } else {
+            if UIScreen.main.sizeType == .iPhone5 {
+                firstElementTopConstraint.constant = 8
+            }
         }
-        return true
+        
+        UIView.animate(withDuration: animationDuration, delay: 0, options: UIView.AnimationOptions(rawValue: animationCurve), animations: {
+            self.view.layoutIfNeeded()
+        })
     }
 }
