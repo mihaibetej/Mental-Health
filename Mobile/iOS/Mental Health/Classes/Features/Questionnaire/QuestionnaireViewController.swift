@@ -41,6 +41,8 @@ class QuestionnaireViewController: UIViewController {
 
 extension QuestionnaireViewController: QuestionnaireViewModelDelegate {
     
+    // MARK: Loading
+    
     func willUpdate() {
         IHProgressHUD.show()
     }
@@ -55,13 +57,16 @@ extension QuestionnaireViewController: QuestionnaireViewModelDelegate {
         IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
     }
     
-}
-
-// MARK: - QuestionnaireViewController (QuestionnaireViewModelDelegate)
-
-extension QuestionnaireViewController: SendAnswersTableViewCellDelegate {
+    // MARK: Send results
     
-    func sendResults() {
+    func willSendResults() {
+        IHProgressHUD.set(defaultMaskType: .black)
+        IHProgressHUD.show()
+    }
+    
+    func didSendResults() {
+        IHProgressHUD.dismiss()
+        IHProgressHUD.set(defaultMaskType: .none)
         let questionnaireStoryboard = UIStoryboard(name: "Questionnaire", bundle: nil)
         let resultsNavC = questionnaireStoryboard.instantiateViewController(withIdentifier: "QuestionnaireResultsNavigationController") as! UINavigationController
         let resultsVC = resultsNavC.viewControllers.first! as! QuestionnaireResultsViewController
@@ -71,6 +76,11 @@ extension QuestionnaireViewController: SendAnswersTableViewCellDelegate {
         present(resultsNavC, animated: true, completion: nil)
     }
     
+    func didFailToSendResults(with error: Error) {
+        IHProgressHUD.dismiss()
+        IHProgressHUD.set(defaultMaskType: .none)
+        IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
+    }
 }
 
 // MARK: - QuestionnaireViewController (UITableViewDataSource, UITableViewDelegate)
@@ -95,7 +105,7 @@ extension QuestionnaireViewController: UITableViewDataSource, UITableViewDelegat
             return cell
         case viewModel.numberOfRows - 1:
             let cell = tableView.dequeueReusableCell(withIdentifier: "SendAnswersTableViewCell", for: indexPath) as! SendAnswersTableViewCell
-            cell.configure(delegate: self)
+            cell.configure(viewModel: viewModel)
             return cell
         default:
             return UITableViewCell()

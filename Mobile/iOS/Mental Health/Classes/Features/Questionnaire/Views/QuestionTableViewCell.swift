@@ -115,7 +115,7 @@ extension QuestionTableViewCell: MHSliderDelegate {
     func didSelect(step: Int) {
         print("step selected: \(step)")
         // Update view model
-        viewModel.updateQuestion(at: index, with: step + 1)
+        viewModel.updateQuestion(at: index, with: step)
         // Make sure final alpha is applied
         updateHintLabelsVisibility(for: step)
     }

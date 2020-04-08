@@ -81,7 +81,7 @@ extension ExpandableListViewController: AddToExpandableListViewControllerDelegat
     func didAdd(title: String, text: String) {
         
         guard let userId = InternalUser.id else {
-            IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata")
+            IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata!")
             return
         }
         

@@ -8,6 +8,7 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 import FirebaseFirestoreSwift
 
 // MARK: - QuestionnaireViewModelDelegate
@@ -16,6 +17,9 @@ protocol QuestionnaireViewModelDelegate: class {
     func willUpdate()
     func didUpdate()
     func didFailToUpdate(with error: Error)
+    func willSendResults()
+    func didSendResults()
+    func didFailToSendResults(with error: Error)
 }
 
 // MARK: - QuestionnaireViewModel
@@ -62,11 +66,58 @@ extension QuestionnaireViewModel {
         }
     }
     
+    func sendResults() {
+        setResults()
+    }
+    
 }
 
 // MARK: - QuestionnaireViewModel (private API)
 
 private extension QuestionnaireViewModel {
+    
+    func setResults() {
+        delegate?.willSendResults()
+        guard let userId = InternalUser.id else {
+            let customError = NSError(domain: "user.error", code: 0, userInfo: ["message" : "Actiunea nu poate a putut fi executata. Id utilizator inexistent!"])
+            delegate?.didFailToSendResults(with: customError)
+            return
+        }
+        
+        do {
+            try Session.shared.dataBase
+                .collection("users")
+                .document(userId)
+                .collection("answers")
+                .document(Session.shared.todayAsString)
+                .setData(from: encodeAnswers(), encoder: Firestore.Encoder.init(), completion: { [weak self] (error) in
+                    DispatchQueue.main.async {
+                        guard error == nil else {
+                            let customError = NSError(domain: "set.results.error", code: 0, userInfo: ["message" : "Actiunea nu poate a putut fi executata."])
+                            self?.delegate?.didFailToSendResults(with: customError)
+                            return
+                        }
+                        
+                        self?.delegate?.didSendResults()
+                    }
+                })
+        } catch {
+            let customError = NSError(domain: "set.results.error", code: 0, userInfo: ["message" : "Actiunea nu poate a putut fi executata."])
+            delegate?.didFailToSendResults(with: customError)
+        }
+    }
+    
+    func encodeAnswers() -> QuestionsAnswers {
+        var items = [QuestionResult]()
+        for question in dataSource {            
+            items.append(QuestionResult(answer_title: question.answerTitleForCurrentScore,
+                                        answer_value: question.score,
+                                        question_body: question.body,
+                                        question_id: question.questionId))
+        }
+        
+        return QuestionsAnswers(created: Date(), items: items)
+    }
     
     func loadMockedData() {
         dataSource.removeAll()
@@ -101,7 +152,8 @@ private extension QuestionnaireViewModel {
                 var questions = [Question]()
                 for document in snapshot.documents {
                     do {
-                        if let question = try document.data(as: Question.self) {
+                        if var question = try document.data(as: Question.self) {
+                            question.updateId(value: document.documentID)
                             questions.append(question)
                             print(question)
                         }

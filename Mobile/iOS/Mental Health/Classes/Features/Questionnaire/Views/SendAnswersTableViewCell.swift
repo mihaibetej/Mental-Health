@@ -8,15 +8,17 @@
 
 import UIKit
 
-protocol SendAnswersTableViewCellDelegate: class {
-    func sendResults()
-}
+// MARK: - SendAnswersTableViewCell
 
 class SendAnswersTableViewCell: UITableViewCell {
 
+    // MARK: Variables
+    
     @IBOutlet weak var answerButton: MHButton!
     
-    weak var delegate: SendAnswersTableViewCellDelegate?
+    private weak var viewModel: QuestionnaireViewModel?
+        
+    // MARK: Lifecycle
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -28,13 +30,15 @@ class SendAnswersTableViewCell: UITableViewCell {
 
         // Configure the view for the selected state
     }
+    
+    // MARK: Public API
 
-    func configure(delegate: SendAnswersTableViewCellDelegate) {
-        self.delegate = delegate
+    func configure(viewModel: QuestionnaireViewModel) {
+        self.viewModel = viewModel
     }
     
     @IBAction func answerAction(_ sender: Any) {
-        delegate?.sendResults()
+        viewModel?.sendResults()
     }
     
 }

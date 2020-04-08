@@ -13,17 +13,35 @@ struct Question: Codable {
     let body: String
     let answers: [Answer]
     var userAnswer: Int?
+    var id: String?
+        
+    mutating func updateAnswer(value: Int) {
+        userAnswer = value
+    }
+    
+    mutating func updateId(value: String) {
+        id = value
+    }
+        
+}
+
+extension Question {
     
     var defaultUserAnswer: Int {
         return 2
     }
     
-    mutating func updateAnswer(value: Int) {
-        userAnswer = value
-    }
-    
     var score: Int {
         return answers.count - (userAnswer ?? defaultUserAnswer)
+    }
+    
+    var answerTitleForCurrentScore: String {
+        let answerValue = userAnswer ?? defaultUserAnswer
+        return answers.first(where: {$0.value == answerValue})?.title ?? ""
+    }
+
+    var questionId: String {
+        return id ?? UUID().uuidString
     }
     
 }

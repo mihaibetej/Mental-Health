@@ -8,16 +8,21 @@
 
 import Foundation
 import Firebase
+import FirebaseFirestore
 
 // MARK: - Session
 
 class Session {
 
-    // MARK: variables
+    // MARK: Variables
     
     static let shared = Session()
         
     private(set) var dataBase: Firestore
+        
+    private struct StorageKeys {
+        static let checkInDates = "checkInDates"
+    }    
     
     private lazy var dateFormatterISO8601: DateFormatter = {
         let dateFormatter = DateFormatter()
@@ -28,22 +33,18 @@ class Session {
 
         return dateFormatter
     }()
-    
-    private struct StorageKeys {
-        static let checkInDates = "checkInDates"
-    }
-    
-    private var todayAsString: String {
-        return dateFormatterISO8601.string(from: Date())
-    }
-    
-    // MARK: lifecycle
+
+    // MARK: Lifecycle
     
     init() {
         dataBase = Firestore.firestore()
     }
     
-    // MARK: public API
+    // MARK: Public API
+    
+    var todayAsString: String {
+        return dateFormatterISO8601.string(from: Date())
+    }
     
     var isCheckInNeeded: Bool {
         guard let storedCheckIns = UserDefaults.standard.value(forKey: StorageKeys.checkInDates) as? [String] else {
