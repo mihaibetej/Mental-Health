@@ -12,3 +12,11 @@ export const formatDate = (date) => {
 export const formatDateTime = (date) => {
   return format(date.toDate(), 'dd MMM yyyy HH:mm');
 };
+
+export const generateDataOnLoading = (n) => {
+  let data = [];
+  for (let i = 0; i < n; i++) {
+    data.push({ title: 'Placeholder' });
+  }
+  return data;
+};

@@ -14,7 +14,7 @@ import { find, get, isEmpty } from 'lodash';
 
 import { withAuthorization } from '../../hoc';
 import { getNews, removeNewsItem } from '../../services/news';
-import { formatDate } from '../../utils/helpers';
+import { formatDate, generateDataOnLoading } from '../../utils/helpers';
 import defaultImage from '../../assets/default.jpg';
 import './news.css';
 
@@ -52,17 +52,7 @@ const News = () => {
     history.push('news/create');
   };
 
-  const dataOnLoading = [
-    {
-      title: 'Stire',
-    },
-    {
-      title: 'Stire',
-    },
-    {
-      title: 'Stire',
-    },
-  ];
+  const dataOnLoading = generateDataOnLoading(3);
 
   return (
     <Card
