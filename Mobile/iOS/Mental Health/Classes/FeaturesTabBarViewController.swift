@@ -24,6 +24,7 @@ class FeaturesTabBarViewController: UITabBarController {
 
         // Do any additional setup after loading the view.
         viewModel.startObservingAuthenticationEvents()
+        viewModel.startObservingAppStateChanges()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -31,7 +32,11 @@ class FeaturesTabBarViewController: UITabBarController {
         guard checkAndSignInIfNeccesary() == false else {
             return
         }
-        checkAndPresentDailyFeedbackIfNeccesary()
+        checkAndPresentCheckInIfNeccesary()
+    }
+    
+    deinit {
+        viewModel.stopObservingAppStateChanges()
     }
     
 }
@@ -47,6 +52,32 @@ extension FeaturesTabBarViewController: FeaturesTabBarViewModelDelegate {
         }
     }
     
+    func appDidBecomeActive() {
+        checkAndPresentCheckInIfNeccesary()
+    }
+    
+}
+
+extension FeaturesTabBarViewController: CheckinViewControllerDelegate {
+    
+    func checkInResultsGood() {
+        // Alles gut, nothing needs to change atm
+        // Maybe a pat on the back would be in order?
+        Session.shared.addCheckIn()
+    }
+    
+    func checkInResultsFurtherInvestigate() {
+        // Redirect to Questionnaire
+        if selectedIndex != 2 {
+            selectedIndex = 2
+        }
+        Session.shared.addCheckIn()
+    }
+    
+    func checkInDismissed() {
+        // ¯\_(ツ)_/¯
+    }
+    
 }
 
 // MARK: - FeaturesTabBarViewController (private API)
@@ -55,8 +86,7 @@ private extension FeaturesTabBarViewController {
     
     @discardableResult
     func checkAndSignInIfNeccesary() -> Bool {
-        guard viewModel.isUserLoggedIn == false else  {
-            //viewModel.signOut()
+        guard viewModel.isUserSignedIn == false else  {
             return false
         }
         
@@ -68,8 +98,17 @@ private extension FeaturesTabBarViewController {
         return true
     }
     
-    func checkAndPresentDailyFeedbackIfNeccesary() {
-        //TODO: Present 'Cum te simti azi' dialog 
+    func checkAndPresentCheckInIfNeccesary() {
+        guard viewModel.isCheckInNeeded == true else {
+            return
+        }
+        
+        guard let checkinViewController = UIStoryboard(name: "CheckIn", bundle: nil).instantiateInitialViewController() as? CheckInViewController else {
+            return
+        }
+        checkinViewController.delegate = self
+        
+        present(checkinViewController, animated: true, completion: nil)
     }
     
 }

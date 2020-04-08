@@ -20,6 +20,8 @@ protocol MHSliderDelegate: class {
 
 class MHSlider: UISlider {
     
+    // MARK: Variables
+    
     // Bar thickness
     @IBInspectable open var trackHeight: CGFloat = 2 {
         didSet {
@@ -63,6 +65,12 @@ class MHSlider: UISlider {
         static let segmentMarkerLineWidth: CGFloat = 1
     }
     
+    private var sliderGradientImage: UIImage? {
+        let startColor = UIColor.mhRed.cgColor
+        let endColor = UIColor.mhGreen.cgColor
+        return UIImage(bounds: trackRect(forBounds: bounds), colors: [startColor, endColor])
+    }
+    
     override open func trackRect(forBounds bounds: CGRect) -> CGRect {
         let defaultBounds = super.trackRect(forBounds: bounds)
         return CGRect(
@@ -73,6 +81,8 @@ class MHSlider: UISlider {
         )
     }
     
+    // MARK: Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         customizeAppearance()
@@ -82,6 +92,8 @@ class MHSlider: UISlider {
         super.init(coder: coder)
         customizeAppearance()
     }
+    
+    // MARK: Public API
     
     // Since the slider thumb will not be centered on the edges of the slider, but rather be offset by width/2 there, we need to account for thet offset in the markers. The offset is 0 in the middle of the slider and gradually goes to +/- width/2 on the edges
     func markerCenter(for step: Int) -> CGFloat {
@@ -138,12 +150,6 @@ private extension MHSlider {
     }
     
     func customizeAppearance() {
-        minimumTrackTintColor = .clear
-        maximumTrackTintColor = .clear
-        
-        let startColor = UIColor.mhRed.cgColor
-        let endColor = UIColor.mhGreen.cgColor
-        let sliderGradientImage = UIImage(bounds: trackRect(forBounds: bounds), colors: [startColor, endColor])
         setMaximumTrackImage(sliderGradientImage, for: .normal)
         setMinimumTrackImage(sliderGradientImage, for: .normal)
     }

@@ -292,7 +292,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="questionnaire-icon" width="21" height="25"/>
+        <image name="questionnaire-icon" width="20" height="24"/>
         <namedColor name="MHDarkBlue">
             <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

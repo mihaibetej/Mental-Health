@@ -16,6 +16,8 @@
 		279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA570243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift */; };
 		279CA573243A8D4B00EB4E52 /* Statistics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279CA572243A8D4B00EB4E52 /* Statistics.storyboard */; };
 		279CA576243A8DAD00EB4E52 /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA575243A8DAD00EB4E52 /* StatisticsViewController.swift */; };
+		279CA578243CEB5300EB4E52 /* CheckInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA577243CEB5300EB4E52 /* CheckInViewController.swift */; };
+		279CA57B243CEB8100EB4E52 /* CheckIn.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 279CA57A243CEB8100EB4E52 /* CheckIn.storyboard */; };
 		27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4724366381008148C6 /* AuthenticationViewController.swift */; };
 		27A05B4A24366396008148C6 /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A05B4924366396008148C6 /* AuthenticationViewModel.swift */; };
 		27A05B4C24367CA8008148C6 /* Authentication.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27A05B4B24367CA8008148C6 /* Authentication.storyboard */; };
@@ -72,6 +74,8 @@
 		279CA570243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireResultsViewModel.swift; sourceTree = "<group>"; };
 		279CA572243A8D4B00EB4E52 /* Statistics.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Statistics.storyboard; sourceTree = "<group>"; };
 		279CA575243A8DAD00EB4E52 /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		279CA577243CEB5300EB4E52 /* CheckInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInViewController.swift; sourceTree = "<group>"; };
+		279CA57A243CEB8100EB4E52 /* CheckIn.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CheckIn.storyboard; sourceTree = "<group>"; };
 		27A05B4724366381008148C6 /* AuthenticationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewController.swift; sourceTree = "<group>"; };
 		27A05B4924366396008148C6 /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		27A05B4B24367CA8008148C6 /* Authentication.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Authentication.storyboard; sourceTree = "<group>"; };
@@ -156,6 +160,14 @@
 				279CA575243A8DAD00EB4E52 /* StatisticsViewController.swift */,
 			);
 			path = Statistics;
+			sourceTree = "<group>";
+		};
+		279CA579243CEB5A00EB4E52 /* CheckIn */ = {
+			isa = PBXGroup;
+			children = (
+				279CA577243CEB5300EB4E52 /* CheckInViewController.swift */,
+			);
+			path = CheckIn;
 			sourceTree = "<group>";
 		};
 		27A2F0B7242E4790009A80D7 = {
@@ -257,6 +269,7 @@
 			children = (
 				BED2B7F0243279E40035C130 /* Mock */,
 				27A05B4B24367CA8008148C6 /* Authentication.storyboard */,
+				279CA57A243CEB8100EB4E52 /* CheckIn.storyboard */,
 				27A2F0C9242E4790009A80D7 /* Main.storyboard */,
 				27A2F0E0242E5909009A80D7 /* Feed.storyboard */,
 				27A2F0E2242E591B009A80D7 /* Personal.storyboard */,
@@ -302,6 +315,7 @@
 				27A2F0DB242E5853009A80D7 /* Personal */,
 				27A2F0DA242E5833009A80D7 /* Feed */,
 				27A2F0D8242E5817009A80D7 /* Authentication */,
+				279CA579243CEB5A00EB4E52 /* CheckIn */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -436,6 +450,7 @@
 				BED2B7F424327A110035C130 /* Messages.json in Resources */,
 				BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */,
 				6367B7492433FC4100388A6D /* Profile.storyboard in Resources */,
+				279CA57B243CEB8100EB4E52 /* CheckIn.storyboard in Resources */,
 				27A2F0D0242E4791009A80D7 /* LaunchScreen.storyboard in Resources */,
 				27A2F0E3242E591B009A80D7 /* Personal.storyboard in Resources */,
 				27A2F0E7242E5940009A80D7 /* More.storyboard in Resources */,
@@ -506,6 +521,7 @@
 				2717C1032432A3B2003C6A29 /* Question.swift in Sources */,
 				63D0C259243BB57B007F9742 /* ImageCacher.swift in Sources */,
 				27A2F0EF242E9C1D009A80D7 /* MoreViewController.swift in Sources */,
+				279CA578243CEB5300EB4E52 /* CheckInViewController.swift in Sources */,
 				6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */,
 				6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */,
 				27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */,
