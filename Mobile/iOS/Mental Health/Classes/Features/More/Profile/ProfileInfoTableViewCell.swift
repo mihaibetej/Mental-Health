@@ -15,7 +15,7 @@ class ProfileInfoTableViewCell: UITableViewCell {
     }
     
     @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var valueTextField: UITextField!
+    @IBOutlet weak var valueTextField: MHTextField!
     @IBOutlet weak var titleBottomConstraint: NSLayoutConstraint!
     
     func configure(title: String, value: String, placeholder: String) {
@@ -28,12 +28,12 @@ class ProfileInfoTableViewCell: UITableViewCell {
     
     func enterEditMode() {
         valueTextField.isEnabled = true
-        valueTextField.borderStyle = .roundedRect
+        valueTextField.layer.sublayerTransform = CATransform3DMakeTranslation(5, 0, 0);
     }
     
     @discardableResult func exitEditMode() -> EditModeOutput {
         valueTextField.isEnabled = false
-        valueTextField.borderStyle = .none
+        valueTextField.layer.sublayerTransform = CATransform3DMakeTranslation(0, 0, 0);
         valueTextField.resignFirstResponder()
         return EditModeOutput(title: titleLabel.text ?? "", value: valueTextField.text)
     }

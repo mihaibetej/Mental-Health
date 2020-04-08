@@ -56,6 +56,7 @@
 		6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7622433FD9C00388A6D /* SettingsViewController.swift */; };
 		6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */; };
 		63D0C259243BB57B007F9742 /* ImageCacher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D0C258243BB57B007F9742 /* ImageCacher.swift */; };
+		63D0C25B243E2867007F9742 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63D0C25A243E2867007F9742 /* ChangePasswordViewController.swift */; };
 		BE19360F243CC64D000FE229 /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE19360E243CC64D000FE229 /* Message.swift */; };
 		BE193611243CC66C000FE229 /* DailyAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193610243CC66C000FE229 /* DailyAdvice.swift */; };
 		BE193613243CFB77000FE229 /* InternalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193612243CFB77000FE229 /* InternalUser.swift */; };
@@ -118,6 +119,7 @@
 		6367B7622433FD9C00388A6D /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInfoTableViewCell.swift; sourceTree = "<group>"; };
 		63D0C258243BB57B007F9742 /* ImageCacher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCacher.swift; sourceTree = "<group>"; };
+		63D0C25A243E2867007F9742 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
 		ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Mental_Health.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AD47DFB99559629CCF355408 /* Pods-Mental Health.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.debug.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.debug.xcconfig"; sourceTree = "<group>"; };
 		BE19360E243CC64D000FE229 /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
@@ -356,6 +358,7 @@
 			isa = PBXGroup;
 			children = (
 				6367B7622433FD9C00388A6D /* SettingsViewController.swift */,
+				63D0C25A243E2867007F9742 /* ChangePasswordViewController.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -559,6 +562,7 @@
 				BE19360F243CC64D000FE229 /* Message.swift in Sources */,
 				279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
+				63D0C25B243E2867007F9742 /* ChangePasswordViewController.swift in Sources */,
 				279CA56F243A268D00EB4E52 /* QuestionnaireResultsViewController.swift in Sources */,
 				BE193615243D173E000FE229 /* Journal.swift in Sources */,
 				27A2F0F6242F9904009A80D7 /* CommonExtensions.swift in Sources */,
