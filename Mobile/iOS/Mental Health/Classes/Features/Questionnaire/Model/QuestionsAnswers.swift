@@ -1,5 +1,5 @@
 //
-//  QuestionResult.swift
+//  QuestionsAnswers.swift
 //  Mental Health
 //
 //  Created by Mihai Betej on 08/04/2020.

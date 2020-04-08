@@ -11,7 +11,7 @@
 		2717C1032432A3B2003C6A29 /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717C1022432A3B2003C6A29 /* Question.swift */; };
 		2717C1072432A533003C6A29 /* Questionnaire.json in Resources */ = {isa = PBXBuildFile; fileRef = 2717C1062432A533003C6A29 /* Questionnaire.json */; };
 		2717C1092432ABEC003C6A29 /* SendAnswersTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2717C1082432ABEC003C6A29 /* SendAnswersTableViewCell.swift */; };
-		278FFF01243E643900DEBE78 /* QuestionResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278FFF00243E643900DEBE78 /* QuestionResult.swift */; };
+		278FFF01243E643900DEBE78 /* QuestionsAnswers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 278FFF00243E643900DEBE78 /* QuestionsAnswers.swift */; };
 		279CA56D24396F1F00EB4E52 /* Session.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA56C24396F1F00EB4E52 /* Session.swift */; };
 		279CA56F243A268D00EB4E52 /* QuestionnaireResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA56E243A268D00EB4E52 /* QuestionnaireResultsViewController.swift */; };
 		279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 279CA570243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift */; };
@@ -73,7 +73,7 @@
 		2717C1022432A3B2003C6A29 /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		2717C1062432A533003C6A29 /* Questionnaire.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = Questionnaire.json; sourceTree = "<group>"; };
 		2717C1082432ABEC003C6A29 /* SendAnswersTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SendAnswersTableViewCell.swift; sourceTree = "<group>"; };
-		278FFF00243E643900DEBE78 /* QuestionResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionResult.swift; sourceTree = "<group>"; };
+		278FFF00243E643900DEBE78 /* QuestionsAnswers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionsAnswers.swift; sourceTree = "<group>"; };
 		279CA56C24396F1F00EB4E52 /* Session.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Session.swift; sourceTree = "<group>"; };
 		279CA56E243A268D00EB4E52 /* QuestionnaireResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireResultsViewController.swift; sourceTree = "<group>"; };
 		279CA570243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QuestionnaireResultsViewModel.swift; sourceTree = "<group>"; };
@@ -158,11 +158,32 @@
 			isa = PBXGroup;
 			children = (
 				2717C1022432A3B2003C6A29 /* Question.swift */,
-				BE19360E243CC64D000FE229 /* Message.swift */,
-				BE193610243CC66C000FE229 /* DailyAdvice.swift */,
-				BE193612243CFB77000FE229 /* InternalUser.swift */,
+				278FFF00243E643900DEBE78 /* QuestionsAnswers.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		278FFF02243E797000DEBE78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
 				BE193614243D173E000FE229 /* Journal.swift */,
-				278FFF00243E643900DEBE78 /* QuestionResult.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		278FFF03243E798D00DEBE78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE193610243CC66C000FE229 /* DailyAdvice.swift */,
+				BE19360E243CC64D000FE229 /* Message.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		278FFF04243E79BA00DEBE78 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BE193612243CFB77000FE229 /* InternalUser.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -246,6 +267,7 @@
 		27A2F0DB242E5853009A80D7 /* Personal */ = {
 			isa = PBXGroup;
 			children = (
+				278FFF03243E798D00DEBE78 /* Model */,
 				BED2B7ED243278C20035C130 /* ExpandableList */,
 				27A2F0EA242E9BF4009A80D7 /* PersonalViewController.swift */,
 			);
@@ -366,6 +388,7 @@
 		6367B7572433FD2400388A6D /* Journal */ = {
 			isa = PBXGroup;
 			children = (
+				278FFF02243E797000DEBE78 /* Model */,
 				6367B75D2433FD4500388A6D /* JournalViewController.swift */,
 			);
 			path = Journal;
@@ -374,6 +397,7 @@
 		6367B75F2433FD7900388A6D /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				278FFF04243E79BA00DEBE78 /* Model */,
 				6367B7602433FD8F00388A6D /* ProfileViewController.swift */,
 				6367B7642435335200388A6D /* ProfileInfoTableViewCell.swift */,
 			);
@@ -534,7 +558,7 @@
 				279CA578243CEB5300EB4E52 /* CheckInViewController.swift in Sources */,
 				6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */,
 				6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */,
-				278FFF01243E643900DEBE78 /* QuestionResult.swift in Sources */,
+				278FFF01243E643900DEBE78 /* QuestionsAnswers.swift in Sources */,
 				27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */,
 				27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */,
 				6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */,
