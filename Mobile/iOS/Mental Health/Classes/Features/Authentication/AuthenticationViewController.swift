@@ -115,14 +115,15 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
     }
     
     func didAuthenticate() {
-        InternalUser.update { _ in
-            DispatchQueue.main.async {
-                IHProgressHUD.dismiss()
-                IHProgressHUD.set(defaultMaskType: .none)
-                self.dismiss(animated: true, completion: nil)
+        InternalUser.fetchUserData { _ in
+            InternalUser.update { _ in
+                DispatchQueue.main.async {
+                    IHProgressHUD.dismiss()
+                    IHProgressHUD.set(defaultMaskType: .none)
+                    self.dismiss(animated: true, completion: nil)
+                }
             }
-        }
-        
+        }        
     }
         
     func failedToAuthenticate(with: Error) {

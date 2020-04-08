@@ -87,7 +87,9 @@ private extension FeaturesTabBarViewController {
     @discardableResult
     func checkAndSignInIfNeccesary() -> Bool {
         guard viewModel.isUserSignedIn == false else  {
-            InternalUser.update { _ in}
+            InternalUser.fetchUserData { _ in
+                InternalUser.update { _ in}
+            }
             return false
         }
         
