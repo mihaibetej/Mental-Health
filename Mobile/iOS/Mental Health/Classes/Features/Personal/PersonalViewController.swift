@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseFirestoreSwift
+import IHProgressHUD
 
 struct ExpandableListItem: Codable {
        let title: String
@@ -24,8 +25,17 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var advicesContainer: UIView!
     @IBOutlet weak var messagesContainer: UIView!
     
-    lazy var advices = loadJson(name: "Advices")
-    lazy var messages = loadJson(name: "Messages")
+    var advicesListController: ExpandableListViewController?
+    var messagesListController: ExpandableListViewController?
+    
+    var advices = [ExpandableListItem]()
+    var messages = [ExpandableListItem]()
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE, dd MMMM"
+        dateFormatter.locale = Locale(identifier: "ro")
+        return dateFormatter
+    }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +43,26 @@ class PersonalViewController: UIViewController {
         let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
         title = "Pentru tine"
+        
+        IHProgressHUD.show()
+        
+        let loadComplete = { (error : Error?) in
+            DispatchQueue.main.async {
+                IHProgressHUD.dismiss()
+                if let error = error {
+                    IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
+                }
+            }
+        }
+        
+        var errors = [Error]()
+        loadAdvices { error in
+            error.flatMap { errors.append($0) }
+            self.loadMessages { error in
+                error.flatMap { errors.append($0) }
+                loadComplete(errors.first)
+            }
+        }
     }
     
     //MARK: - Actions
@@ -51,60 +81,62 @@ class PersonalViewController: UIViewController {
     
     //MARK: - Private
     
-    private func loadMessages() {
+    private func loadMessages(completion: @escaping (_ error: Error?) ->() ) {
         Session.shared.dataBase.collection("messages").getDocuments { (snapshot, error) in
             if let error = error {
-                print("failed to fetch messages: \(error)")
+                completion(error)
+                return
             } else {
                 guard let snapshot = snapshot else {
-                    print("failed to fetch messages, no snapshot returned")
+                    let customError = NSError(domain: "no.results", code: 0, userInfo: ["message" : "No results found"])
+                    completion(customError)
                     return
                 }
                 
-                // 'document' is a dictionary
+                self.messages = []
                 for document in snapshot.documents {
-                    print("message item \(document.documentID): \(document.data())")
-//                    // Message is Decodable
-//                    do {
-//                        let message = try document.data(as: Message.self)
-//                    } catch {}
-
+                    do {
+                       if let message = try document.data(as: Message.self) {
+                        let item = ExpandableListItem(title: message.from,
+                                                      text: message.body)
+                        self.messages.append(item)
+                       }
+                   } catch {}
                 }
+                self.messagesListController?.items = self.messages
+                completion(nil)
             }
         }
     }
     
-    private func loadAdvice() {
+    private func loadAdvices(completion: @escaping (_ error: Error?) ->() ) {
         Session.shared.dataBase.collection("daily-advices").getDocuments { (snapshot, error) in
             if let error = error {
-                print("failed to fetch daily-advice: \(error)")
+                completion(error)
+                return
             } else {
                 guard let snapshot = snapshot else {
-                    print("failed to fetch daily-advice, no snapshot returned")
+                    let customError = NSError(domain: "no.results", code: 0, userInfo: ["message" : "No results found"])
+                    completion(customError)
                     return
                 }
                 
-                // 'document' is a dictionary
+                self.advices = []
                 for document in snapshot.documents {
-                    print("daily-advice item \(document.documentID): \(document.data())")
-//                    // Advice is Decodable
-//                    do {
-//                        let advice = try document.data(as: Advice.self)
-//                    } catch {}
+                    do {
+                       if let dailyAdvice = try document.data(as: DailyAdvice.self) {
+                        
+                        let title = self.dateFormatter.string(from: dailyAdvice.publishDate)
+                        let item = ExpandableListItem(title: title.capitalizingFirstLetter(),
+                                                      text: dailyAdvice.body)
+                        self.advices.append(item)
+                       }
+                   } catch {}
                 }
+                self.advicesListController?.items = self.advices
+                completion(nil)
             }
         }
-    }
-    
-    private func loadJson(name: String) -> [ExpandableListItem] {
-        let path = Bundle.main.path(forResource: name, ofType: "json")!
-        let url = URL(fileURLWithPath: path)
-        let data = try! Data(contentsOf: url)
-        
-        let decoder = JSONDecoder()
-        
-        let items = try! decoder.decode([ExpandableListItem].self, from: data)
-        return items
     }
     
     //MARK: - Navigation
@@ -113,9 +145,9 @@ class PersonalViewController: UIViewController {
         let destination = segue.destination as? ExpandableListViewController
         switch segue.identifier {
         case Segues.advices:
-            destination?.items = advices
+            advicesListController = destination
         case Segues.messages:
-            destination?.items = messages
+            messagesListController = destination
         default:
             break
         }

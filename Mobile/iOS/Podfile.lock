@@ -286,7 +286,7 @@ DEPENDENCIES:
   - IHProgressHUD
 
 SPEC REPOS:
-  trunk:
+  https://github.com/cocoapods/specs.git:
     - abseil
     - BoringSSL-GRPC
     - Firebase
@@ -338,4 +338,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: 2770224e7ed387eeeca188ee8ade19d589ec4cfb
 
-COCOAPODS: 1.9.1
+COCOAPODS: 1.5.3

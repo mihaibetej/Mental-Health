@@ -74,3 +74,27 @@ extension UIColor {
     static let mhTextInvalid = UIColor(named: "MHTextInvalid")!
     static let mhRecommendation = UIColor(named: "MHRecommendation")!
 }
+
+// MARK: - String
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
+    }
+}
+
+
+extension String {
+    func heightWithConstrainedWidth(width: CGFloat, font: UIFont) -> CGFloat {
+        let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
+        let boundingBox = self.boundingRect(with: constraintRect,
+                                            options: [.usesLineFragmentOrigin, .usesFontLeading],
+                                            attributes: [NSAttributedString.Key.font: font],
+                                            context: nil)
+        return boundingBox.height
+    }
+}

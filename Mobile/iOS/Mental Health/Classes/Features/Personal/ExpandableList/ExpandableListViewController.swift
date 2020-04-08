@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import IHProgressHUD
 
 class ExpandableListViewController: UIViewController {
-
+    
     struct Config {
         let allowsAdding: Bool
     }
@@ -28,7 +29,11 @@ class ExpandableListViewController: UIViewController {
         }
     }
     
-    var items: [ExpandableListItem] = []
+    var items: [ExpandableListItem] = [] {
+        didSet {
+            tableView.reloadData()
+        }
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? AddToExpandableListViewController
         switch segue.identifier {
@@ -55,6 +60,14 @@ extension ExpandableListViewController: UITableViewDataSource {
         let item = items[indexPath.row]
         cell.titleLabel.text = item.title
         cell.detailsLabel.text = item.text
+        
+        let textHeight = item.text.heightWithConstrainedWidth(width: view.bounds.width - 40.0, font: cell.detailsLabel.font)
+        
+        cell.moreButton.isHidden = true
+        if textHeight > cell.detailsLabel.font.pointSize * 4 {
+            cell.moreButton.isHidden = false
+        }
+        
         cell.backgroundColor = UIColor.clear
         cell.didUpdateSize = { [weak self] in
             self?.tableView.reloadData()
@@ -66,7 +79,28 @@ extension ExpandableListViewController: UITableViewDataSource {
 
 extension ExpandableListViewController: AddToExpandableListViewControllerDelegate {
     func didAdd(title: String, text: String) {
-        items.insert(.init(title: title, text: text), at: 0)
-        tableView.reloadData()
+        
+        InternalUser.getCurrent { user in
+            guard let user = user else {
+                IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata")
+                return
+            }
+            
+            Session.shared.dataBase
+                .collection("users")
+                .document(user.internalUserId!)
+                .collection("journals")
+                .addDocument(data: ["date": Date(), "body": text]) { err in
+                    if let _ = err {
+                        
+                    } else {
+                        DispatchQueue.main.async {
+                            self.items.insert(.init(title: title, text: text), at: 0)
+                            self.tableView.reloadData()
+                        }
+                    }
+            }
+            
+        }
     }
 }
