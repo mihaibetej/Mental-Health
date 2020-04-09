@@ -6,7 +6,7 @@ import { List, Typography, Row, Skeleton, Card } from 'antd';
 import { takeRight, noop, isEmpty } from 'lodash';
 import { withAuthorization } from '../../hoc';
 import { usersSubscribe, answersSubscribe } from '../../services/answers';
-import { getDateKey } from '../../utils/helpers';
+import { generateDataOnLoading, getDateKey } from '../../utils/helpers';
 import theme from '../../utils/theme';
 import { calculateRating } from './answers-common';
 import './answers.css';
@@ -68,14 +68,24 @@ const Answers = () => {
     history.push(`answers/${userId}`);
   };
 
+  const dataOnLoading = generateDataOnLoading(3);
+
   return (
     <div>
-      {isEmpty(userList) ? (
-        <Row>
-          <Skeleton active />
-        </Row>
-      ) : (
-        <Card title="Raspunsuri Utilizatori">
+      <Card title="Raspunsuri Utilizatori">
+        {isEmpty(userList) ? (
+          <List
+            itemLayout="horizontal"
+            dataSource={dataOnLoading}
+            renderItem={({ title }) => (
+              <List.Item>
+                <Skeleton title={false} active>
+                  {title}
+                </Skeleton>
+              </List.Item>
+            )}
+          />
+        ) : (
           <List
             itemLayout="horizontal"
             dataSource={userList}
@@ -100,8 +110,8 @@ const Answers = () => {
               );
             }}
           />
-        </Card>
-      )}
+        )}
+      </Card>
     </div>
   );
 };

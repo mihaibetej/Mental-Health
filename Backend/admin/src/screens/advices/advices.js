@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
-import { List, notification, Popconfirm, Button, Card } from 'antd';
-import { find, get } from 'lodash';
+import { List, notification, Popconfirm, Button, Card, Skeleton } from 'antd';
+import { find, get, isEmpty } from 'lodash';
 
 import { withAuthorization } from '../../hoc';
 import { deleteAdvice, getAdvices } from '../../services/advices';
-import { formatDate } from '../../utils/helpers';
+import { formatDate, generateDataOnLoading } from '../../utils/helpers';
 
 import '../styles.css';
 
@@ -43,6 +43,8 @@ const Advices = () => {
     history.push('advices/create');
   };
 
+  const dataOnLoading = generateDataOnLoading(4);
+
   return (
     <Card
       title="Sfaturi"
@@ -52,38 +54,53 @@ const Advices = () => {
         </Button>
       }
     >
-      <List
-        itemLayout="vertical"
-        dataSource={advices}
-        renderItem={({ body, creationDate, publishDate, id }) => (
-          <List.Item
-            className="general-wrapper"
-            actions={[
-              // eslint-disable-next-line jsx-a11y/anchor-is-valid
-              <a key="list-loadmore-edit" onClick={handleEdit(id)}>
-                Editeaza
-              </a>,
-              <Popconfirm
-                title="Esti sigur ca vrei sa stergi aceasta intrebare?"
-                onConfirm={confirmDelete(id)}
-                okText="Da"
-                cancelText="Nu"
-              >
-                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
-                <a href="#">Sterge</a>
-              </Popconfirm>,
-            ]}
-          >
-            <div>
-              <List.Item.Meta
-                description={`Created: ${formatDate(creationDate)}`}
-                title={`Publish by: ${formatDate(publishDate)}`}
-              />
-              {body}
-            </div>
-          </List.Item>
-        )}
-      />
+      {isEmpty(advices) ? (
+        <List
+          itemLayout="vertical"
+          dataSource={dataOnLoading}
+          renderItem={({ title }) => (
+            <List.Item>
+              <Skeleton title={false} active>
+                <List.Item.Meta description={title} title={title} />
+                {title}
+              </Skeleton>
+            </List.Item>
+          )}
+        />
+      ) : (
+        <List
+          itemLayout="vertical"
+          dataSource={advices}
+          renderItem={({ body, creationDate, publishDate, id }) => (
+            <List.Item
+              className="general-wrapper"
+              actions={[
+                // eslint-disable-next-line jsx-a11y/anchor-is-valid
+                <a key="list-loadmore-edit" onClick={handleEdit(id)}>
+                  Editeaza
+                </a>,
+                <Popconfirm
+                  title="Esti sigur ca vrei sa stergi aceasta intrebare?"
+                  onConfirm={confirmDelete(id)}
+                  okText="Da"
+                  cancelText="Nu"
+                >
+                  {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                  <a href="#">Sterge</a>
+                </Popconfirm>,
+              ]}
+            >
+              <div>
+                <List.Item.Meta
+                  description={`Created: ${formatDate(creationDate)}`}
+                  title={`Publish by: ${formatDate(publishDate)}`}
+                />
+                {body}
+              </div>
+            </List.Item>
+          )}
+        />
+      )}
     </Card>
   );
 };
