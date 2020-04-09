@@ -2,23 +2,23 @@ import { db } from '../db';
 
 const defaultAnswers = [
   {
-    title: 'Bad',
+    title: 'foarte mult',
     value: 0,
   },
   {
-    title: 'Mmm',
+    title: 'mult',
     value: 1,
   },
   {
-    title: 'Ok',
+    title: 'mediu',
     value: 2,
   },
   {
-    title: 'Good',
+    title: 'rar',
     value: 3,
   },
   {
-    title: 'Awesome',
+    title: 'deloc',
     value: 4,
   },
 ];
