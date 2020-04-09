@@ -4,7 +4,7 @@ import android.app.Application
 import com.db.mobile.mental_health.application.dagger.ApplicationComponent
 import com.db.mobile.mental_health.application.dagger.ApplicationModule
 import com.db.mobile.mental_health.application.dagger.DaggerApplicationComponent
-import com.db.mobile.mental_health.data.dagger.DataComponentProvider
+import com.db.mobile.mental_health.domain.dagger.DomainComponentProvider
 
 class MentalHealthApplication : Application() {
     lateinit var applicationComponent: ApplicationComponent
@@ -14,7 +14,7 @@ class MentalHealthApplication : Application() {
 
         applicationComponent = DaggerApplicationComponent
             .builder()
-            .dataComponent(DataComponentProvider.get())
+            .domainComponent(DomainComponentProvider.get())
             .applicationModule(
                 ApplicationModule(this)
             ).build()
