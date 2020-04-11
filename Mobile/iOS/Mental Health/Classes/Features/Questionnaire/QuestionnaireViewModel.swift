@@ -33,7 +33,6 @@ class QuestionnaireViewModel {
     // MARK: Lifecycle
     
     init(delegate: QuestionnaireViewModelDelegate?) {
-        //loadMockedData()
         self.delegate = delegate
         loadData()
     }

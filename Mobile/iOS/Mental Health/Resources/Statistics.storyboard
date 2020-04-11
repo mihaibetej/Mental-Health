@@ -11,13 +11,32 @@
         <!--Statistics View Controller-->
         <scene sceneID="FRf-Q1-0T4">
             <objects>
-                <viewController id="9vU-pH-onh" customClass="StatisticsViewController" customModule="Mental_Health" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="9vU-pH-onh" customClass="StatisticsViewController" customModule="_MedicAll" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="EP4-jP-bRv">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3OT-YE-fjI">
+                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9vU-pH-onh" id="ijF-35-ywY"/>
+                                    <outlet property="delegate" destination="9vU-pH-onh" id="CgC-30-eVF"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="3OT-YE-fjI" firstAttribute="top" secondItem="tPX-zB-dEi" secondAttribute="top" id="3Xr-Be-x88"/>
+                            <constraint firstItem="tPX-zB-dEi" firstAttribute="trailing" secondItem="3OT-YE-fjI" secondAttribute="trailing" id="Bpb-ug-Dax"/>
+                            <constraint firstItem="3OT-YE-fjI" firstAttribute="leading" secondItem="tPX-zB-dEi" secondAttribute="leading" id="ChM-5N-RXY"/>
+                            <constraint firstItem="tPX-zB-dEi" firstAttribute="bottom" secondItem="3OT-YE-fjI" secondAttribute="bottom" id="bH8-ye-2lg"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="tPX-zB-dEi"/>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="3OT-YE-fjI" id="pkZ-Rt-hq6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDa-vK-Yfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
