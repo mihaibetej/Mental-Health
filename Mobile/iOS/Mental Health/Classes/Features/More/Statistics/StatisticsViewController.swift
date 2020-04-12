@@ -14,6 +14,7 @@ class StatisticsViewController: UIViewController {
 
     // MARK: Variables
         
+    @IBOutlet weak var statisticsTypeSwitch: MHSegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     
     private lazy var viewModel: StatisticsViewModel = {
@@ -30,6 +31,12 @@ class StatisticsViewController: UIViewController {
         title = "Statistici"
         viewModel.loadData()
     }
+    
+    // MARK: Actions
+    
+    @IBAction func statisticsTypeChanged(_ sender: Any) {
+        viewModel.changeStatisticsType(to: statisticsTypeSwitch.selectedSegmentIndex)
+    }    
     
 }
 

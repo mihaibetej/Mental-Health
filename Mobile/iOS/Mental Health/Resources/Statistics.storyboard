@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16086"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,8 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="v0T-Rx-nh0" customClass="MHSegmentedControl" customModule="_MedicAll" customModuleProvider="target">
+                                <rect key="frame" x="20" y="54" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Progres zilnic"/>
+                                    <segment title="Grafic chestionar"/>
+                                </segments>
+                                <color key="selectedSegmentTintColor" name="MHDarkBlue"/>
+                                <connections>
+                                    <action selector="statisticsTypeChanged:" destination="9vU-pH-onh" eventType="valueChanged" id="055-uf-aul"/>
+                                </connections>
+                            </segmentedControl>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3OT-YE-fjI">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoricalResultTableViewCell" rowHeight="71" id="4YL-n3-ROp" customClass="HistoricalResultTableViewCell" customModule="_MedicAll" customModuleProvider="target">
@@ -74,14 +86,18 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="3OT-YE-fjI" firstAttribute="top" secondItem="tPX-zB-dEi" secondAttribute="top" id="3Xr-Be-x88"/>
+                            <constraint firstItem="v0T-Rx-nh0" firstAttribute="leading" secondItem="tPX-zB-dEi" secondAttribute="leading" constant="20" id="BeA-EB-Id7"/>
                             <constraint firstItem="tPX-zB-dEi" firstAttribute="trailing" secondItem="3OT-YE-fjI" secondAttribute="trailing" id="Bpb-ug-Dax"/>
                             <constraint firstItem="3OT-YE-fjI" firstAttribute="leading" secondItem="tPX-zB-dEi" secondAttribute="leading" id="ChM-5N-RXY"/>
+                            <constraint firstItem="tPX-zB-dEi" firstAttribute="trailing" secondItem="v0T-Rx-nh0" secondAttribute="trailing" constant="20" id="Fbn-b0-Jpl"/>
+                            <constraint firstItem="3OT-YE-fjI" firstAttribute="top" secondItem="v0T-Rx-nh0" secondAttribute="bottom" constant="10" id="JzM-te-TV8"/>
                             <constraint firstItem="tPX-zB-dEi" firstAttribute="bottom" secondItem="3OT-YE-fjI" secondAttribute="bottom" id="bH8-ye-2lg"/>
+                            <constraint firstItem="v0T-Rx-nh0" firstAttribute="top" secondItem="tPX-zB-dEi" secondAttribute="top" constant="10" id="sqv-MN-nPn"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="tPX-zB-dEi"/>
                     </view>
                     <connections>
+                        <outlet property="statisticsTypeSwitch" destination="v0T-Rx-nh0" id="7Fg-F6-hfi"/>
                         <outlet property="tableView" destination="3OT-YE-fjI" id="pkZ-Rt-hq6"/>
                     </connections>
                 </viewController>
@@ -92,5 +108,8 @@
     </scenes>
     <resources>
         <image name="happy-face" width="20" height="20"/>
+        <namedColor name="MHDarkBlue">
+            <color red="0.093999996781349182" green="0.48199999332427979" blue="0.80400002002716064" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
 </document>

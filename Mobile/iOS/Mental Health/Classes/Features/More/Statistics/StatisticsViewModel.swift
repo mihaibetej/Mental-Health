@@ -27,6 +27,17 @@ class StatisticsViewModel {
     
     private weak var delegate: StatisticsViewModelDelegate?
     
+    private enum StatisticsType: Int {
+        case checkin = 0
+        case questionnaire
+    }
+    
+    private var statisticsType: StatisticsType = .checkin {
+        didSet {
+            
+        }
+    }
+    
     private enum ResultsType {
         case good(UIImage?)
         case inconclusive(UIImage?)
@@ -100,6 +111,10 @@ extension StatisticsViewModel {
         return "Scor chestionar - \(historicalResult(at: index)?.score ?? 0) puncte"
     }
     
+    func changeStatisticsType(to value: Int) {
+        statisticsType = StatisticsType(rawValue: value) ?? .checkin
+    }
+    
     func loadData() {
         loadNetworkData()
     }
@@ -147,7 +162,6 @@ private extension StatisticsViewModel {
                     do {
                         if let historicalResult = try document.data(as: HistoricalResult.self) {
                             historicalResults.append(historicalResult)
-                            print(historicalResults)
                         }
                     } catch {}
                 }

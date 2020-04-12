@@ -47,6 +47,7 @@
 		27CEDDCE2436167F00BA5DEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */; };
 		27F703AB24438F7D002AB68D /* HistoricalResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F703AA24438F7D002AB68D /* HistoricalResults.swift */; };
 		27F703AE24439A08002AB68D /* HistoricalResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F703AD24439A08002AB68D /* HistoricalResultTableViewCell.swift */; };
+		27F703B02443CBD6002AB68D /* MHSegmentedControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F703AF2443CBD6002AB68D /* MHSegmentedControl.swift */; };
 		49140A0271FBD22CCCDB00E6 /* Pods_Mental_Health.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */; };
 		6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B742242F8A1400388A6D /* FeedTableViewCell.swift */; };
 		6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B744242F935800388A6D /* FeedDetailViewController.swift */; };
@@ -114,6 +115,7 @@
 		27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		27F703AA24438F7D002AB68D /* HistoricalResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResults.swift; sourceTree = "<group>"; };
 		27F703AD24439A08002AB68D /* HistoricalResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResultTableViewCell.swift; sourceTree = "<group>"; };
+		27F703AF2443CBD6002AB68D /* MHSegmentedControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHSegmentedControl.swift; sourceTree = "<group>"; };
 		6367B742242F8A1400388A6D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		6367B744242F935800388A6D /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDisclosureIndicator.swift; sourceTree = "<group>"; };
@@ -371,6 +373,7 @@
 				27A05B5324377BF1008148C6 /* MHButton.swift */,
 				27A05B55243796FE008148C6 /* MHTextField.swift */,
 				27A05B572437A8CA008148C6 /* MHLabel.swift */,
+				27F703AF2443CBD6002AB68D /* MHSegmentedControl.swift */,
 				6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */,
 			);
 			path = "Custon controls";
@@ -603,6 +606,7 @@
 				BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */,
 				BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */,
 				27A2F0F2242F92BB009A80D7 /* QuestionTableViewCell.swift in Sources */,
+				27F703B02443CBD6002AB68D /* MHSegmentedControl.swift in Sources */,
 				279CA56D24396F1F00EB4E52 /* Session.swift in Sources */,
 				27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */,
 				BE193613243CFB77000FE229 /* InternalUser.swift in Sources */,

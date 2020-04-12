@@ -40,12 +40,9 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UISegmentedControl.appearance().setTitleTextAttributes(titleTextAttributes, for: .selected)
         title = "Pentru tine"
         
         IHProgressHUD.show()
-        
         let loadComplete = { (error : Error?) in
             DispatchQueue.main.async {
                 IHProgressHUD.dismiss()

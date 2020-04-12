@@ -58,6 +58,8 @@ extension FeaturesTabBarViewController: FeaturesTabBarViewModelDelegate {
     
 }
 
+// MARK: -
+
 extension FeaturesTabBarViewController: CheckinViewControllerDelegate {
     
     func checkInResultsGood() {

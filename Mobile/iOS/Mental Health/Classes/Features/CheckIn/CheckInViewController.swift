@@ -39,12 +39,17 @@ class CheckInViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func checkinAction(_ sender: Any) {
+        // Sync results on backend
+        sendResults()
+        
+        // Interpret results
         if checkInSlider.value > 0.65 {
             delegate?.checkInResultsGood()
         } else {
             delegate?.checkInResultsFurtherInvestigate()
         }                
         
+        // Our job is done
         dismiss(animated: true, completion: nil)
     }
     
@@ -74,6 +79,19 @@ private extension CheckInViewController {
             constraint.constant = round(constraint.constant * scaleFactor)
         }
         view.layoutIfNeeded()
+    }
+    
+    func sendResults() {
+        guard let userId = InternalUser.id else {
+            return
+        }
+        
+        Session.shared.dataBase
+            .collection("users")
+            .document(userId)
+            .collection("checkins")
+            .document(Session.shared.todayAsString)
+            .setData(["created" : Date(), "result": checkInSlider.value])
     }
     
 }
