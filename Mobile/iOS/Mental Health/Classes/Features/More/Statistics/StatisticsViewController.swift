@@ -38,7 +38,7 @@ class StatisticsViewController: UIViewController {
 extension StatisticsViewController: StatisticsViewModelDelegate {
     
     func willUpdate() {
-        
+        // TODO
     }
     
     func didUpdate() {
@@ -46,7 +46,7 @@ extension StatisticsViewController: StatisticsViewModelDelegate {
     }
     
     func didFailToUpdate(with error: Error) {
-        
+        // TODO
     }
     
 }
@@ -66,7 +66,10 @@ extension StatisticsViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = tableView.dequeueReusableCell(withIdentifier: "HistoricalResultTableViewCell", for: indexPath) as! HistoricalResultTableViewCell
+        cell.configure(viewModel: viewModel, index: indexPath.row)
+        
+        return cell
     }
     
 }

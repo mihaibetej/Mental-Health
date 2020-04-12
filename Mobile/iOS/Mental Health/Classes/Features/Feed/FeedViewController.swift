@@ -91,7 +91,10 @@ extension FeedViewController: UITableViewDelegate, UITableViewDataSource {
 private extension FeedViewController {
     
     func loadData() {
-        Session.shared.dataBase.collection("news").getDocuments { (snapshot, error) in
+        Session.shared.dataBase
+            .collection("news")
+            .order(by: "date")
+            .getDocuments { (snapshot, error) in
             defer {
                 self.refreshControl.endRefreshing()
             }
@@ -118,7 +121,7 @@ private extension FeedViewController {
                     }
                 }
 
-                self.newsItems = items
+                self.newsItems = items.reversed()
             }
         }
     }

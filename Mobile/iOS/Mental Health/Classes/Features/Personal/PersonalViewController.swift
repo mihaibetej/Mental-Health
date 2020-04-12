@@ -82,7 +82,10 @@ class PersonalViewController: UIViewController {
     //MARK: - Private
     
     private func loadMessages(completion: @escaping (_ error: Error?) ->() ) {
-        Session.shared.dataBase.collection("messages").getDocuments { (snapshot, error) in
+        Session.shared.dataBase
+            .collection("messages")
+            .order(by: "creationDate")
+            .getDocuments { (snapshot, error) in
             if let error = error {
                 completion(error)
                 return
@@ -93,16 +96,19 @@ class PersonalViewController: UIViewController {
                     return
                 }
                 
-                self.messages = []
+                var tempMessages = [ExpandableListItem]()
                 for document in snapshot.documents {
                     do {
                        if let message = try document.data(as: Message.self) {
                         let item = ExpandableListItem(title: message.from,
                                                       text: message.body)
-                        self.messages.append(item)
+                        tempMessages.append(item)
                        }
                    } catch {}
                 }
+                
+                self.messages.removeAll()
+                self.messages.append(contentsOf: tempMessages.reversed())
                 self.messagesListController?.items = self.messages
                 completion(nil)
             }
@@ -110,7 +116,10 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadAdvices(completion: @escaping (_ error: Error?) ->() ) {
-        Session.shared.dataBase.collection("daily-advices").getDocuments { (snapshot, error) in
+        Session.shared.dataBase
+            .collection("daily-advices")
+            .order(by: "publishDate")
+            .getDocuments { (snapshot, error) in
             if let error = error {
                 completion(error)
                 return
@@ -121,7 +130,7 @@ class PersonalViewController: UIViewController {
                     return
                 }
                 
-                self.advices = []
+                var tempAdvices = [ExpandableListItem]()
                 for document in snapshot.documents {
                     do {
                        if let dailyAdvice = try document.data(as: DailyAdvice.self) {
@@ -129,10 +138,13 @@ class PersonalViewController: UIViewController {
                         let title = self.dateFormatter.string(from: dailyAdvice.publishDate)
                         let item = ExpandableListItem(title: title.capitalizingFirstLetter(),
                                                       text: dailyAdvice.body)
-                        self.advices.append(item)
+                        tempAdvices.append(item)
                        }
                    } catch {}
                 }
+                
+                self.advices.removeAll()
+                self.advices.append(contentsOf: tempAdvices.reversed())
                 self.advicesListController?.items = self.advices
                 completion(nil)
             }

@@ -45,6 +45,8 @@
 		27A2F0F8242F991C009A80D7 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0F7242F991C009A80D7 /* Utils.swift */; };
 		27A2F0FB242F99C4009A80D7 /* MHSlider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27A2F0FA242F99C4009A80D7 /* MHSlider.swift */; };
 		27CEDDCE2436167F00BA5DEC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */; };
+		27F703AB24438F7D002AB68D /* HistoricalResults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F703AA24438F7D002AB68D /* HistoricalResults.swift */; };
+		27F703AE24439A08002AB68D /* HistoricalResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F703AD24439A08002AB68D /* HistoricalResultTableViewCell.swift */; };
 		49140A0271FBD22CCCDB00E6 /* Pods_Mental_Health.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ACE9BD15580F2558126C9761 /* Pods_Mental_Health.framework */; };
 		6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B742242F8A1400388A6D /* FeedTableViewCell.swift */; };
 		6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6367B744242F935800388A6D /* FeedDetailViewController.swift */; };
@@ -110,6 +112,8 @@
 		27A2F0F7242F991C009A80D7 /* Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		27A2F0FA242F99C4009A80D7 /* MHSlider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MHSlider.swift; sourceTree = "<group>"; };
 		27CEDDCD2436167F00BA5DEC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		27F703AA24438F7D002AB68D /* HistoricalResults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResults.swift; sourceTree = "<group>"; };
+		27F703AD24439A08002AB68D /* HistoricalResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoricalResultTableViewCell.swift; sourceTree = "<group>"; };
 		6367B742242F8A1400388A6D /* FeedTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedTableViewCell.swift; sourceTree = "<group>"; };
 		6367B744242F935800388A6D /* FeedDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedDetailViewController.swift; sourceTree = "<group>"; };
 		6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftDisclosureIndicator.swift; sourceTree = "<group>"; };
@@ -193,6 +197,8 @@
 		279CA574243A8D7100EB4E52 /* Statistics */ = {
 			isa = PBXGroup;
 			children = (
+				27F703A924438F48002AB68D /* Model */,
+				27F703AC24439346002AB68D /* Views */,
 				279CA575243A8DAD00EB4E52 /* StatisticsViewController.swift */,
 				278FFF07243F1C9C00DEBE78 /* StatisticsViewModel.swift */,
 			);
@@ -368,6 +374,22 @@
 				6367B7462433FADD00388A6D /* SwiftDisclosureIndicator.swift */,
 			);
 			path = "Custon controls";
+			sourceTree = "<group>";
+		};
+		27F703A924438F48002AB68D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				27F703AA24438F7D002AB68D /* HistoricalResults.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		27F703AC24439346002AB68D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				27F703AD24439A08002AB68D /* HistoricalResultTableViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		587FD450824EBC9D1D5CAB5E /* Pods */ = {
@@ -555,6 +577,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F703AB24438F7D002AB68D /* HistoricalResults.swift in Sources */,
 				2717C1032432A3B2003C6A29 /* Question.swift in Sources */,
 				63D0C259243BB57B007F9742 /* ImageCacher.swift in Sources */,
 				27A2F0EF242E9C1D009A80D7 /* MoreViewController.swift in Sources */,
@@ -564,6 +587,7 @@
 				278FFF01243E643900DEBE78 /* QuestionsAnswers.swift in Sources */,
 				27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */,
 				27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */,
+				27F703AE24439A08002AB68D /* HistoricalResultTableViewCell.swift in Sources */,
 				6367B743242F8A1400388A6D /* FeedTableViewCell.swift in Sources */,
 				279CA576243A8DAD00EB4E52 /* StatisticsViewController.swift in Sources */,
 				6367B7652435335200388A6D /* ProfileInfoTableViewCell.swift in Sources */,

@@ -16,9 +16,56 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3OT-YE-fjI">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="3OT-YE-fjI">
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="HistoricalResultTableViewCell" rowHeight="71" id="4YL-n3-ROp" customClass="HistoricalResultTableViewCell" customModule="_MedicAll" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="414" height="71"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="4YL-n3-ROp" id="ALo-yP-2uw">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="71"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="happy-face" translatesAutoresizingMaskIntoConstraints="NO" id="hOH-a5-qx2">
+                                                    <rect key="frame" x="20" y="25.5" width="20" height="20"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="20" id="KCR-ZK-uo8"/>
+                                                        <constraint firstAttribute="height" constant="20" id="VEK-r9-gLw"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Luni, 30 Martie" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GP3-mH-bp5">
+                                                    <rect key="frame" x="60" y="15" width="334" height="20"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="1000" text="Scor chestionar - 30 puncte" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HBU-uO-0LJ">
+                                                    <rect key="frame" x="60" y="39" width="334" height="17"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="14"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="HBU-uO-0LJ" firstAttribute="trailing" secondItem="ALo-yP-2uw" secondAttribute="trailingMargin" id="1AQ-Gi-d2f"/>
+                                                <constraint firstItem="HBU-uO-0LJ" firstAttribute="leading" secondItem="hOH-a5-qx2" secondAttribute="trailing" constant="20" id="GqC-zQ-Z8O"/>
+                                                <constraint firstItem="GP3-mH-bp5" firstAttribute="top" secondItem="ALo-yP-2uw" secondAttribute="topMargin" constant="4" id="JDA-xM-EJP"/>
+                                                <constraint firstItem="HBU-uO-0LJ" firstAttribute="top" secondItem="GP3-mH-bp5" secondAttribute="bottom" constant="4" id="XJx-wk-8F7"/>
+                                                <constraint firstItem="GP3-mH-bp5" firstAttribute="trailing" secondItem="ALo-yP-2uw" secondAttribute="trailingMargin" id="ZjH-9h-Dyt"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="HBU-uO-0LJ" secondAttribute="bottom" constant="4" id="nq2-Ah-s34"/>
+                                                <constraint firstItem="hOH-a5-qx2" firstAttribute="leading" secondItem="ALo-yP-2uw" secondAttribute="leadingMargin" id="qJs-eJ-dW6"/>
+                                                <constraint firstItem="hOH-a5-qx2" firstAttribute="centerY" secondItem="ALo-yP-2uw" secondAttribute="centerY" id="sin-pz-urA"/>
+                                                <constraint firstItem="GP3-mH-bp5" firstAttribute="leading" secondItem="hOH-a5-qx2" secondAttribute="trailing" constant="20" id="uuv-lP-heh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="resultDateLabel" destination="GP3-mH-bp5" id="Oxc-gJ-th0"/>
+                                            <outlet property="resultImageView" destination="hOH-a5-qx2" id="P3f-gF-055"/>
+                                            <outlet property="resultsScoreLabel" destination="HBU-uO-0LJ" id="Q7d-Tp-v2v"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
                                 <connections>
                                     <outlet property="dataSource" destination="9vU-pH-onh" id="ijF-35-ywY"/>
                                     <outlet property="delegate" destination="9vU-pH-onh" id="CgC-30-eVF"/>
@@ -40,7 +87,10 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="eDa-vK-Yfj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="42" y="62"/>
+            <point key="canvasLocation" x="40.579710144927539" y="61.607142857142854"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="happy-face" width="20" height="20"/>
+    </resources>
 </document>

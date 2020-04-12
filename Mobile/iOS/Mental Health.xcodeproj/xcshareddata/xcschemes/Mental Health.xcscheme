@@ -15,7 +15,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "27A2F0BF242E4790009A80D7"
-               BuildableName = "Mental Health.app"
+               BuildableName = "4MedicAll.app"
                BlueprintName = "Mental Health"
                ReferencedContainer = "container:Mental Health.xcodeproj">
             </BuildableReference>
@@ -45,7 +45,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27A2F0BF242E4790009A80D7"
-            BuildableName = "Mental Health.app"
+            BuildableName = "4MedicAll.app"
             BlueprintName = "Mental Health"
             ReferencedContainer = "container:Mental Health.xcodeproj">
          </BuildableReference>
@@ -69,7 +69,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "27A2F0BF242E4790009A80D7"
-            BuildableName = "Mental Health.app"
+            BuildableName = "4MedicAll.app"
             BlueprintName = "Mental Health"
             ReferencedContainer = "container:Mental Health.xcodeproj">
          </BuildableReference>

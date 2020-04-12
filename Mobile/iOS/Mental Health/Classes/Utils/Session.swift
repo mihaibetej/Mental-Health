@@ -34,6 +34,16 @@ class Session {
         return dateFormatter
     }()
 
+    private lazy var readableDateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
+        let enUSPosixLocale = Locale(identifier: "ro_RO")
+        dateFormatter.locale = enUSPosixLocale
+        dateFormatter.dateFormat = "EEEE, dd MMMM"
+        dateFormatter.calendar = Calendar(identifier: .gregorian)
+
+        return dateFormatter
+    }()
+    
     // MARK: Lifecycle
     
     init() {
@@ -44,6 +54,10 @@ class Session {
     
     var todayAsString: String {
         return dateFormatterISO8601.string(from: Date())
+    }
+    
+    func readable(date: Date) -> String {
+        return readableDateFormatter.string(from: date).capitalized
     }
     
     var isCheckInNeeded: Bool {

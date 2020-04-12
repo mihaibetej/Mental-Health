@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 // MARK: - StatisticsViewModelDelegate
 
@@ -22,14 +23,50 @@ class StatisticsViewModel {
     
     // MARK: Variables
     
-    private var dataSource = [Any]()
+    private var dataSource = [HistoricalResult]()
+    
     private weak var delegate: StatisticsViewModelDelegate?
+    
+    private enum ResultsType {
+        case good(UIImage?)
+        case inconclusive(UIImage?)
+        case bad(UIImage?)
+        case none
+        
+        init(result: Int) {
+            switch result {
+            case ResultsRangeConstants.goodRange:
+                self = .good(UIImage(named: "happy-face"))
+            case ResultsRangeConstants.inconclusiveRange:
+                self = .inconclusive(UIImage(named: "normal-face"))
+            case ResultsRangeConstants.badRange:
+                self = .bad(UIImage(named: "sad-face"))
+            default:
+                self = .none
+            }
+        }
+        
+        func getImage() -> UIImage? {
+            switch self {
+            case .good(let image), .inconclusive(let image), .bad(let image):
+                return image
+            default:
+                return nil
+            }
+        }
+    }
+            
+    private  struct ResultsRangeConstants {
+        static let goodRange = 0..<20
+        static let inconclusiveRange = 20..<40
+        static let badRange = 40...60
+    }
+
     
     // MARK: Lifecycle
     
     init(delegate: StatisticsViewModelDelegate?) {
         self.delegate = delegate
-        loadData()
     }
     
 }
@@ -46,6 +83,23 @@ extension StatisticsViewModel {
         return dataSource.count
     }
     
+    
+    func resultImage(for index: Int) -> UIImage? {
+        guard let result = historicalResult(at: index) else {
+            return nil
+        }
+        
+        return ResultsType(result: result.score).getImage()
+    }
+    
+    func resultDateReadable(for index: Int) -> String {
+        return Session.shared.readable(date: historicalResult(at: index)?.created ?? Date())
+    }
+    
+    func resultScoreReadable(for index: Int) -> String {
+        return "Scor chestionar - \(historicalResult(at: index)?.score ?? 0) puncte"
+    }
+    
     func loadData() {
         loadNetworkData()
     }
@@ -55,6 +109,14 @@ extension StatisticsViewModel {
 // MARK: - StatisticsViewModel (Private API)
 
 private extension StatisticsViewModel {
+    
+    func historicalResult(at index: Int) -> HistoricalResult? {
+        guard index < dataSource.count else {
+            return nil
+        }
+        
+        return dataSource[index]
+    }
     
     func loadNetworkData() {
         delegate?.willUpdate()
@@ -67,7 +129,9 @@ private extension StatisticsViewModel {
         Session.shared.dataBase
             .collection("users")
             .document(userId)
-            .collection("answers").getDocuments { [weak self] (snapshot, error) in
+            .collection("answers")
+            .order(by: "created")
+            .getDocuments { [weak self] (snapshot, error) in
             if let error = error {
                 self?.delegate?.didFailToUpdate(with: error)
             } else {
@@ -78,20 +142,19 @@ private extension StatisticsViewModel {
                 }
                 
                 // 'document' is a dictionary
-                var questions = [Question]()
+                var historicalResults = [HistoricalResult]()
                 for document in snapshot.documents {
                     do {
-                        if var question = try document.data(as: Question.self) {
-                            question.updateId(value: document.documentID)
-                            questions.append(question)
-                            print(question)
+                        if let historicalResult = try document.data(as: HistoricalResult.self) {
+                            historicalResults.append(historicalResult)
+                            print(historicalResults)
                         }
                     } catch {}
                 }
                 
                 DispatchQueue.main.async {
                     self?.dataSource.removeAll()
-                    self?.dataSource.append(contentsOf: questions)
+                    self?.dataSource.append(contentsOf: historicalResults.reversed())
                     
                     self?.delegate?.didUpdate()
                 }
