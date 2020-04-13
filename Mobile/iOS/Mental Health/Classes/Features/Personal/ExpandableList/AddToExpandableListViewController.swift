@@ -8,20 +8,26 @@
 
 import UIKit
 
+// MARK: - AddToExpandableListViewController
+
 protocol AddToExpandableListViewControllerDelegate {
     func didAdd(title: String, text: String)
 }
 
-class AddToExpandableListViewController: UIViewController {
+// MARK: - AddToExpandableListViewController
 
+class AddToExpandableListViewController: UIViewController {
+    
     @IBOutlet weak var textViewContainer: UIView!
     @IBOutlet weak var textView: UITextView!
     
     var delegate: AddToExpandableListViewControllerDelegate?
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         textViewContainer.layer.borderColor = UIColor.mhBlue.cgColor
         textViewContainer.layer.borderWidth = 1
         textViewContainer.layer.cornerRadius = 8
@@ -31,10 +37,10 @@ class AddToExpandableListViewController: UIViewController {
         dateFormatter.locale = Locale(identifier: "RO")
         dateFormatter.formattingContext = Formatter.Context.beginningOfSentence
         title = dateFormatter.string(from: Date())
-    
+        
     }
     
-    //MARK: - Actions
+    // MARK: - Actions
     
     @IBAction func didTapSave(_ sender: UIButton) {
         if textView.text.isEmpty {
@@ -49,6 +55,8 @@ class AddToExpandableListViewController: UIViewController {
     }
     
 }
+
+// MARK: - UITextViewDelegate
 
 extension AddToExpandableListViewController: UITextViewDelegate {
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {

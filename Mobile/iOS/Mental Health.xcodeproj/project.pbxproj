@@ -65,11 +65,15 @@
 		BE193611243CC66C000FE229 /* DailyAdvice.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193610243CC66C000FE229 /* DailyAdvice.swift */; };
 		BE193613243CFB77000FE229 /* InternalUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193612243CFB77000FE229 /* InternalUser.swift */; };
 		BE193615243D173E000FE229 /* Journal.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE193614243D173E000FE229 /* Journal.swift */; };
+		BE5E39A02444F97F0009E56E /* JournalViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE5E399F2444F97F0009E56E /* JournalViewModel.swift */; };
 		BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6BF6F324351D690096B11C /* ExpandableList.storyboard */; };
+		BE7934692444F19E009E4288 /* MessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE7934682444F19E009E4288 /* MessageViewModel.swift */; };
 		BEB6CBB124351F1900DB59D2 /* Journal.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB6CBB024351F1900DB59D2 /* Journal.json */; };
 		BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */; };
 		BEBF414824445DDC0082FED4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBF414A24445DDC0082FED4 /* Localizable.strings */; };
 		BEBF414E244460920082FED4 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF414D244460920082FED4 /* FirebaseError.swift */; };
+		BEBF41502444E1F70082FED4 /* ExpandableListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF414F2444E1F70082FED4 /* ExpandableListViewModel.swift */; };
+		BEBF41522444EB5F0082FED4 /* AdviceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF41512444EB5F0082FED4 /* AdviceViewModel.swift */; };
 		BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */; };
 		BED2B7F6243281A00035C130 /* ExpandableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7F5243281A00035C130 /* ExpandableListCell.swift */; };
 /* End PBXBuildFile section */
@@ -136,12 +140,16 @@
 		BE193610243CC66C000FE229 /* DailyAdvice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyAdvice.swift; sourceTree = "<group>"; };
 		BE193612243CFB77000FE229 /* InternalUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InternalUser.swift; sourceTree = "<group>"; };
 		BE193614243D173E000FE229 /* Journal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Journal.swift; sourceTree = "<group>"; };
+		BE5E399F2444F97F0009E56E /* JournalViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JournalViewModel.swift; sourceTree = "<group>"; };
 		BE6BF6F324351D690096B11C /* ExpandableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandableList.storyboard; sourceTree = "<group>"; };
+		BE7934682444F19E009E4288 /* MessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageViewModel.swift; sourceTree = "<group>"; };
 		BEB6CBB024351F1900DB59D2 /* Journal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Journal.json; sourceTree = "<group>"; };
 		BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToExpandableListViewController.swift; sourceTree = "<group>"; };
 		BEBF414924445DDC0082FED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BEBF414B24445E0C0082FED4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
 		BEBF414D244460920082FED4 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
+		BEBF414F2444E1F70082FED4 /* ExpandableListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewModel.swift; sourceTree = "<group>"; };
+		BEBF41512444EB5F0082FED4 /* AdviceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdviceViewModel.swift; sourceTree = "<group>"; };
 		BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewController.swift; sourceTree = "<group>"; };
 		BED2B7F5243281A00035C130 /* ExpandableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListCell.swift; sourceTree = "<group>"; };
 		D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.release.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.release.xcconfig"; sourceTree = "<group>"; };
@@ -286,6 +294,9 @@
 				278FFF03243E798D00DEBE78 /* Model */,
 				BED2B7ED243278C20035C130 /* ExpandableList */,
 				27A2F0EA242E9BF4009A80D7 /* PersonalViewController.swift */,
+				BEBF414F2444E1F70082FED4 /* ExpandableListViewModel.swift */,
+				BEBF41512444EB5F0082FED4 /* AdviceViewModel.swift */,
+				BE7934682444F19E009E4288 /* MessageViewModel.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -425,6 +436,7 @@
 			children = (
 				278FFF02243E797000DEBE78 /* Model */,
 				6367B75D2433FD4500388A6D /* JournalViewController.swift */,
+				BE5E399F2444F97F0009E56E /* JournalViewModel.swift */,
 			);
 			path = Journal;
 			sourceTree = "<group>";
@@ -605,6 +617,7 @@
 				6367B7632433FD9C00388A6D /* SettingsViewController.swift in Sources */,
 				6367B7612433FD8F00388A6D /* ProfileViewController.swift in Sources */,
 				278FFF01243E643900DEBE78 /* QuestionsAnswers.swift in Sources */,
+				BEBF41522444EB5F0082FED4 /* AdviceViewModel.swift in Sources */,
 				27A05B4824366381008148C6 /* AuthenticationViewController.swift in Sources */,
 				27A05B5224376DD7008148C6 /* FeaturesTabBarViewModel.swift in Sources */,
 				27F703AE24439A08002AB68D /* HistoricalResultTableViewCell.swift in Sources */,
@@ -618,12 +631,14 @@
 				27A05B56243796FE008148C6 /* MHTextField.swift in Sources */,
 				278FFF08243F1C9C00DEBE78 /* StatisticsViewModel.swift in Sources */,
 				27A2F0EB242E9BF4009A80D7 /* PersonalViewController.swift in Sources */,
+				BE5E39A02444F97F0009E56E /* JournalViewModel.swift in Sources */,
 				27A05B4E24376A9E008148C6 /* FeaturesTabBarViewController.swift in Sources */,
 				27A05B4A24366396008148C6 /* AuthenticationViewModel.swift in Sources */,
 				BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */,
 				BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */,
 				27A2F0F2242F92BB009A80D7 /* QuestionTableViewCell.swift in Sources */,
 				27F703B02443CBD6002AB68D /* MHSegmentedControl.swift in Sources */,
+				BEBF41502444E1F70082FED4 /* ExpandableListViewModel.swift in Sources */,
 				279CA56D24396F1F00EB4E52 /* Session.swift in Sources */,
 				27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */,
 				BE193613243CFB77000FE229 /* InternalUser.swift in Sources */,
@@ -634,6 +649,7 @@
 				27A05B582437A8CA008148C6 /* MHLabel.swift in Sources */,
 				27A05B5424377BF1008148C6 /* MHButton.swift in Sources */,
 				BE19360F243CC64D000FE229 /* Message.swift in Sources */,
+				BE7934692444F19E009E4288 /* MessageViewModel.swift in Sources */,
 				279CA571243A32B200EB4E52 /* QuestionnaireResultsViewModel.swift in Sources */,
 				27A2F0C4242E4790009A80D7 /* AppDelegate.swift in Sources */,
 				63D0C25B243E2867007F9742 /* ChangePasswordViewController.swift in Sources */,

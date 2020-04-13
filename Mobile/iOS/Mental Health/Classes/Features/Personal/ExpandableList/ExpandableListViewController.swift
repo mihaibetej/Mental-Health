@@ -14,13 +14,17 @@ class ExpandableListViewController: UIViewController {
     struct Config {
         let allowsAdding: Bool
     }
-    
+
     struct Segues {
         static let addToList = "embedAddToList"
     }
     
     @IBOutlet weak var tableView: UITableView!
+    
     var config: Config?
+    var viewModel: ExpandableListViewModel!
+    
+    // MARK: - Life Cylce
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,11 +33,8 @@ class ExpandableListViewController: UIViewController {
         }
     }
     
-    var items: [ExpandableListItem] = [] {
-        didSet {
-            tableView.reloadData()
-        }
-    }
+    // MARK: - Navigation
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         let destination = segue.destination as? AddToExpandableListViewController
         switch segue.identifier {
@@ -45,10 +46,12 @@ class ExpandableListViewController: UIViewController {
     }
 }
 
+// MARK: - Table View Data Source
+
 extension ExpandableListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return items.count
+        return viewModel.numberOfRows
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -57,7 +60,11 @@ extension ExpandableListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! ExpandableListCell
-        let item = items[indexPath.row]
+        
+        guard let item = viewModel.item(for: indexPath.row) else {
+            preconditionFailure()
+        }
+        
         cell.titleLabel.text = item.title
         cell.detailsLabel.text = item.text
         
@@ -77,27 +84,29 @@ extension ExpandableListViewController: UITableViewDataSource {
     
 }
 
+// MARK: - AddToExpandableListViewControllerDelegate
+
 extension ExpandableListViewController: AddToExpandableListViewControllerDelegate {
     func didAdd(title: String, text: String) {
-        
-        guard let userId = InternalUser.id else {
-            IHProgressHUD.showError(withStatus: "Actiunea nu poate a putut fi executata!")
-            return
-        }
-        
-        Session.shared.dataBase
-            .collection("users")
-            .document(userId)
-            .collection("journals")
-            .addDocument(data: ["date": Date(), "body": text]) { err in
-                if let _ = err {
-                    
-                } else {
-                    DispatchQueue.main.async {
-                        self.items.insert(.init(title: title, text: text), at: 0)
-                        self.tableView.reloadData()
-                    }
-                }
-        }
+        viewModel.addData(title: title, text: text)
+    }
+}
+
+// MARK: - ExpandableListViewModelDelegate
+
+extension ExpandableListViewController: ExpandableListViewModelDelegate {
+    func willUpdate() {
+        IHProgressHUD.show()
+    }
+    
+    func didUpdate() {
+        IHProgressHUD.dismiss()
+        tableView.reloadData()
+    }
+    
+    func didFailToUpdate(with error: Error) {
+        IHProgressHUD.dismiss()
+        IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
+        tableView.reloadData()
     }
 }
