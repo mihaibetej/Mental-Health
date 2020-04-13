@@ -68,6 +68,8 @@
 		BE6BF6F424351D690096B11C /* ExpandableList.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BE6BF6F324351D690096B11C /* ExpandableList.storyboard */; };
 		BEB6CBB124351F1900DB59D2 /* Journal.json in Resources */ = {isa = PBXBuildFile; fileRef = BEB6CBB024351F1900DB59D2 /* Journal.json */; };
 		BEB6CBB32435243300DB59D2 /* AddToExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */; };
+		BEBF414824445DDC0082FED4 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = BEBF414A24445DDC0082FED4 /* Localizable.strings */; };
+		BEBF414E244460920082FED4 /* FirebaseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEBF414D244460920082FED4 /* FirebaseError.swift */; };
 		BED2B7EF243278DD0035C130 /* ExpandableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */; };
 		BED2B7F6243281A00035C130 /* ExpandableListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED2B7F5243281A00035C130 /* ExpandableListCell.swift */; };
 /* End PBXBuildFile section */
@@ -137,6 +139,9 @@
 		BE6BF6F324351D690096B11C /* ExpandableList.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ExpandableList.storyboard; sourceTree = "<group>"; };
 		BEB6CBB024351F1900DB59D2 /* Journal.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = Journal.json; sourceTree = "<group>"; };
 		BEB6CBB22435243300DB59D2 /* AddToExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddToExpandableListViewController.swift; sourceTree = "<group>"; };
+		BEBF414924445DDC0082FED4 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BEBF414B24445E0C0082FED4 /* ro */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ro; path = ro.lproj/Localizable.strings; sourceTree = "<group>"; };
+		BEBF414D244460920082FED4 /* FirebaseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseError.swift; sourceTree = "<group>"; };
 		BED2B7EE243278DD0035C130 /* ExpandableListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListViewController.swift; sourceTree = "<group>"; };
 		BED2B7F5243281A00035C130 /* ExpandableListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandableListCell.swift; sourceTree = "<group>"; };
 		D0F0F1B9A15A8E03CC2E6823 /* Pods-Mental Health.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Mental Health.release.xcconfig"; path = "Target Support Files/Pods-Mental Health/Pods-Mental Health.release.xcconfig"; sourceTree = "<group>"; };
@@ -328,6 +333,7 @@
 				27A2F0CC242E4791009A80D7 /* Assets.xcassets */,
 				27A2F0CE242E4791009A80D7 /* LaunchScreen.storyboard */,
 				BE6BF6F324351D690096B11C /* ExpandableList.storyboard */,
+				BEBF414A24445DDC0082FED4 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -344,6 +350,7 @@
 		27A2F0F3242F989B009A80D7 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				BEBF414C2444604B0082FED4 /* Errors */,
 				27A2F0F9242F994B009A80D7 /* Custon controls */,
 				27A2F0F5242F9903009A80D7 /* CommonExtensions.swift */,
 				279CA56C24396F1F00EB4E52 /* Session.swift */,
@@ -432,6 +439,14 @@
 			path = Profile;
 			sourceTree = "<group>";
 		};
+		BEBF414C2444604B0082FED4 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				BEBF414D244460920082FED4 /* FirebaseError.swift */,
+			);
+			path = Errors;
+			sourceTree = "<group>";
+		};
 		BED2B7ED243278C20035C130 /* ExpandableList */ = {
 			isa = PBXGroup;
 			children = (
@@ -495,6 +510,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ro,
 			);
 			mainGroup = 27A2F0B7242E4790009A80D7;
 			productRefGroup = 27A2F0C1242E4790009A80D7 /* Products */;
@@ -524,6 +540,7 @@
 				27A2F0CD242E4791009A80D7 /* Assets.xcassets in Resources */,
 				27A2F0E1242E5909009A80D7 /* Feed.storyboard in Resources */,
 				27CEDDCE2436167F00BA5DEC /* GoogleService-Info.plist in Resources */,
+				BEBF414824445DDC0082FED4 /* Localizable.strings in Resources */,
 				6367B74D2433FC5900388A6D /* Settings.storyboard in Resources */,
 				279CA573243A8D4B00EB4E52 /* Statistics.storyboard in Resources */,
 				27A2F0CB242E4790009A80D7 /* Main.storyboard in Resources */,
@@ -611,6 +628,7 @@
 				27A2F0ED242E9C0F009A80D7 /* FeedViewController.swift in Sources */,
 				BE193613243CFB77000FE229 /* InternalUser.swift in Sources */,
 				6367B75E2433FD4500388A6D /* JournalViewController.swift in Sources */,
+				BEBF414E244460920082FED4 /* FirebaseError.swift in Sources */,
 				2717C1092432ABEC003C6A29 /* SendAnswersTableViewCell.swift in Sources */,
 				6367B745242F935800388A6D /* FeedDetailViewController.swift in Sources */,
 				27A05B582437A8CA008148C6 /* MHLabel.swift in Sources */,
@@ -647,6 +665,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		BEBF414A24445DDC0082FED4 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BEBF414924445DDC0082FED4 /* en */,
+				BEBF414B24445E0C0082FED4 /* ro */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -654,6 +681,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -714,6 +742,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

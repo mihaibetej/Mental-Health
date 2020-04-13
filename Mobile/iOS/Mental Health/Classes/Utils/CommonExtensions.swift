@@ -105,6 +105,10 @@ extension String {
     mutating func capitalizeFirstLetter() {
         self = self.capitalizingFirstLetter()
     }
+    
+    func localized() -> String {
+        return NSLocalizedString(self, comment: "")
+    }
 }
 
 

@@ -66,6 +66,12 @@ class AuthenticationViewController: UIViewController {
     }
     
     @IBAction func authenticateUser(_ sender: Any) {
+        if passwordTextField.text != passwordConfirmationTextField.text {
+            passwordTextField.text = ""
+            passwordConfirmationTextField.text = ""
+            IHProgressHUD.showError(withStatus: "authentication.errors.passwords_dont_match".localized())
+            return
+        }
         viewModel.authenticateUser(with: usernameTextField.text ?? "", password: passwordTextField.text ?? "")
     }
     
@@ -126,10 +132,10 @@ extension AuthenticationViewController: AuthenticationViewModelDelegate {
         }        
     }
         
-    func failedToAuthenticate(with: Error) {
+    func failedToAuthenticate(with error: Error) {
         IHProgressHUD.dismiss()
         IHProgressHUD.set(defaultMaskType: .none)
-        //IHProgressHUD.showError(withStatus: ((error as NSError).userInfo["message"] as! String))
+        IHProgressHUD.showError(withStatus: FirebaseError(error).errorMessage)
     }
             
 }

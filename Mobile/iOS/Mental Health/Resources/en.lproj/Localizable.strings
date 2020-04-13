@@ -1,0 +1,14 @@
+/* 
+  Localizable.strings
+  Mental Health
+
+  Created by George Muntean on 13/04/2020.
+  Copyright © 2020 Mihai Betej. All rights reserved.
+*/
+
+/* Authentication errors*/
+
+"authentication.errors.invalid_username_or_password" = "Userul sau parola sunt incorecte. Vă rugam reîncercați.";
+"authentication.errors.email_already_in_use" = "Adresa de e-mail a fost deja folosită pentru alt cont.";
+"authentication.errors.generic" = "A aparut o eroare. Vă rugăm să incercați mai târziu.";
+"authentication.errors.passwords_dont_match" = "Parolele introduse nu coincid. Va rugăm să intriduceți din nou parola.";

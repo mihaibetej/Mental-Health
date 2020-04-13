@@ -14,7 +14,7 @@ import FirebaseAuth
 protocol AuthenticationViewModelDelegate: class {
     func willAuthenticate()
     func didAuthenticate()
-    func failedToAuthenticate(with: Error)
+    func failedToAuthenticate(with error: Error)
     // View state change
     func didChangeToSignInViewState()
     func didChangeToSignUpViewState()
