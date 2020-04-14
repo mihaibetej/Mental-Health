@@ -4,17 +4,17 @@ import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
-import com.db.mobile.mental_health.data.Failure
-import com.db.mobile.mental_health.data.Success
-import com.db.mobile.mental_health.data.datasource.NewsDataSource
 import com.db.mobile.mental_health.domain.model.News
+import com.db.mobile.mental_health.domain.usecases.GetNewsUseCase
+import com.db.mobile.mental_health.templates.Failure
+import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
-class NewsViewModel @Inject constructor(private val newsDataSource: NewsDataSource) :
+class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) :
     BaseObservable() {
 
     val news = MutableLiveData<List<News>>()
@@ -32,11 +32,9 @@ class NewsViewModel @Inject constructor(private val newsDataSource: NewsDataSour
 
     init {
         GlobalScope.launch(Dispatchers.IO) {
-            when (val result = newsDataSource.getNews()) {
+            when (val result = getNewsUseCase.execute()) {
                 is Success ->
-                    showNews(result.data.map {
-                        News(it.title, it.image, it.body)
-                    })
+                    showNews(result.data)
 
                 is Failure ->
                     TODO("not handled")

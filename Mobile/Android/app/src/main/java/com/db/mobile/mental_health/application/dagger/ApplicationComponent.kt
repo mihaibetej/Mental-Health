@@ -2,10 +2,11 @@ package com.db.mobile.mental_health.application.dagger
 
 import android.content.Context
 import com.db.mobile.mental_health.application.MentalHealthApplication
-import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
-import com.db.mobile.mental_health.ui.splash.dagger.LoginModule
+import com.db.mobile.mental_health.domain.dagger.DomainComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
+import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
+import com.db.mobile.mental_health.ui.splash.dagger.LoginModule
 import com.db.mobile.mental_health.ui.survey.SurveyComponent
 import com.db.mobile.mental_health.ui.survey.SurveyModule
 import dagger.Component
@@ -20,6 +21,9 @@ fun getApplicationComponent(context: Context?): ApplicationComponent? {
 
 @Singleton
 @Component(
+    dependencies = [
+        DomainComponent::class
+    ],
     modules = [
         ApplicationModule::class,
         LoginModule::class,
