@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.databinding.ItemSurveyFooterBinding
 import com.db.mobile.mental_health.databinding.ItemSurveyQuestionBinding
-import com.db.mobile.mental_health.ui.survey.model.SurveyQuestion
+import com.db.mobile.mental_health.domain.model.SurveyQuestion
 
 private const val TYPE_HEADER = 0
 private const val TYPE_QUESTION = 1

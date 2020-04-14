@@ -1,15 +1,21 @@
 package com.db.mobile.mental_health.ui.survey
 
-import android.os.Handler
 import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
-import com.db.mobile.mental_health.ui.survey.model.SurveyQuestion
+import com.db.mobile.mental_health.domain.model.SurveyQuestion
+import com.db.mobile.mental_health.domain.usecases.GetSurveyQuestionsUseCase
+import com.db.mobile.mental_health.templates.Failure
+import com.db.mobile.mental_health.templates.Success
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SurveyViewModel @Inject constructor() : BaseObservable() {
+class SurveyViewModel @Inject constructor(private val surveyQuestionsUseCase: GetSurveyQuestionsUseCase) :
+    BaseObservable() {
     val questions = MutableLiveData<List<SurveyQuestion>>()
 
     var showSurvey: Boolean? = false
@@ -24,27 +30,17 @@ class SurveyViewModel @Inject constructor() : BaseObservable() {
         }
 
     init {
-        val localQuestions = listOf(
-            SurveyQuestion(0, "1. Question 1"),
-            SurveyQuestion(1, "2. Question 2"),
-            SurveyQuestion(2, "3. Question 2"),
-            SurveyQuestion(3, "4. Question 2"),
-            SurveyQuestion(4, "5. Question 2"),
-            SurveyQuestion(5, "6. Question 2"),
-            SurveyQuestion(6, "7. Question 2"),
-            SurveyQuestion(7, "8. Question 2"),
-            SurveyQuestion(8, "9. Question 2"),
-            SurveyQuestion(9, "10. Question 3")
-        )
-
-        Handler().postDelayed(
-            Runnable {
-                showSurvey = true
-                questions.value = localQuestions
-            }, 800
-        )
-
-
+        GlobalScope.launch(Dispatchers.IO) {
+            when (val questionsResult = surveyQuestionsUseCase.execute()) {
+                is Success -> {
+                    showSurvey = true
+                    questions.postValue(questionsResult.data)
+                }
+                is Failure -> {
+                    TODO("treat exception")
+                }
+            }
+        }
     }
 
     fun onAnswerChanged(question: SurveyQuestion, answer: Int) {
