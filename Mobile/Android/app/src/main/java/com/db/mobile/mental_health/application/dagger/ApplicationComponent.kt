@@ -3,6 +3,8 @@ package com.db.mobile.mental_health.application.dagger
 import android.content.Context
 import com.db.mobile.mental_health.application.MentalHealthApplication
 import com.db.mobile.mental_health.domain.dagger.DomainComponent
+import com.db.mobile.mental_health.ui.advices.AdvicesComponent
+import com.db.mobile.mental_health.ui.advices.AdvicesModule
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
 import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
@@ -28,11 +30,13 @@ fun getApplicationComponent(context: Context?): ApplicationComponent? {
         ApplicationModule::class,
         LoginModule::class,
         NewsFragmentModule::class,
-        SurveyModule::class
+        SurveyModule::class,
+        AdvicesModule::class
     ]
 )
 interface ApplicationComponent {
     fun newsFragmentComponent(): NewsFragmentComponent.Factory
     fun loginComponent(): LoginComponent.Factory
     fun surveyComponent(): SurveyComponent.Factory
+    fun advicesComponent(): AdvicesComponent.Factory
 }
