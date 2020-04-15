@@ -7,11 +7,11 @@ import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.RecyclerView
 import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentAdvicesBinding
 import com.db.mobile.mental_health.ui.utils.DividerItemDecoration
+import kotlinx.android.synthetic.main.fragment_advices.*
 import javax.inject.Inject
 
 class AdvicesFragment : Fragment() {
@@ -42,8 +42,6 @@ class AdvicesFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val dividerItemDecoration = DividerItemDecoration(context, R.drawable.list_divider)
-        val recyclerView = view.findViewById<RecyclerView>(R.id.advices_recycler_view)
-        recyclerView.addItemDecoration(dividerItemDecoration)
+        advices_recycler_view.addItemDecoration(DividerItemDecoration(context, R.drawable.list_divider))
     }
 }

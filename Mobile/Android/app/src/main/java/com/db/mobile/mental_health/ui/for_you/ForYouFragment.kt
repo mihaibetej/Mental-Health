@@ -5,17 +5,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import androidx.viewpager.widget.ViewPager
 import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
-import com.google.android.material.tabs.TabLayout
+import kotlinx.android.synthetic.main.fragment_for_you.*
 import javax.inject.Inject
 
 class ForYouFragment : Fragment() {
     private var forYouComponent: ForYouFragmentComponent? = null
     private lateinit var forYouPagerAdapter: ForYouPagerAdapter
-    private lateinit var viewPager: ViewPager
-    private lateinit var tabLayout: TabLayout
 
     @Inject
     lateinit var viewModel: ForYouViewModel
@@ -31,15 +28,9 @@ class ForYouFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        initViews(view)
-
         forYouPagerAdapter = ForYouPagerAdapter(childFragmentManager, resources)
-        viewPager.adapter = forYouPagerAdapter
-        tabLayout.setupWithViewPager(viewPager)
+        for_you_pager.adapter = forYouPagerAdapter
+        for_you_tab_layout.setupWithViewPager(for_you_pager)
     }
 
-    private fun initViews(view: View) {
-        viewPager = view.findViewById(R.id.for_you_pager)
-        tabLayout = view.findViewById(R.id.for_you_tab_layout)
-    }
 }

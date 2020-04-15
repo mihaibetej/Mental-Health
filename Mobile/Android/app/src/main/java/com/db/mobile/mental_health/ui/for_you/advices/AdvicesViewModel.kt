@@ -11,7 +11,6 @@ import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class AdvicesViewModel @Inject constructor(private val getAdvicesUseCase: GetAdvicesUseCase) :
@@ -33,8 +32,10 @@ class AdvicesViewModel @Inject constructor(private val getAdvicesUseCase: GetAdv
     init {
         GlobalScope.launch(Dispatchers.IO) {
             when (val result = getAdvicesUseCase.execute()) {
-                is Success ->
-                    showAdvices(result.data)
+                is Success -> {
+                    advices.postValue(result.data)
+                    showAdvices = true
+                }
 
                 is Failure ->
                     TODO("not handled")
@@ -43,8 +44,4 @@ class AdvicesViewModel @Inject constructor(private val getAdvicesUseCase: GetAdv
         }
     }
 
-    private suspend fun showAdvices(result: List<Advice>?) = withContext(Dispatchers.Main) {
-        advices.value = result
-        showAdvices = true
-    }
 }

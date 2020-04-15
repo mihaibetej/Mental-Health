@@ -11,7 +11,6 @@ import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) :
@@ -33,19 +32,16 @@ class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCa
     init {
         GlobalScope.launch(Dispatchers.IO) {
             when (val result = getNewsUseCase.execute()) {
-                is Success ->
-                    showNews(result.data)
+                is Success -> {
+                    news.postValue(result.data)
+                    showNews = true
+                }
 
                 is Failure ->
                     TODO("not handled")
 
             }
         }
-    }
-
-    private suspend fun showNews(result: List<News>?) = withContext(Dispatchers.Main) {
-        news.value = result
-        showNews = true
     }
 
 }

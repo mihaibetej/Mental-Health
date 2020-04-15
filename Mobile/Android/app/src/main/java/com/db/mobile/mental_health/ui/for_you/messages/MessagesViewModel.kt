@@ -11,7 +11,6 @@ import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 class MessagesViewModel @Inject constructor(private val getMessagesUseCase: GetMessagesUseCase) :
@@ -32,8 +31,10 @@ class MessagesViewModel @Inject constructor(private val getMessagesUseCase: GetM
     init {
         GlobalScope.launch(Dispatchers.IO) {
             when (val result = getMessagesUseCase.execute()) {
-                is Success ->
-                    showMessages(result.data)
+                is Success -> {
+                    messages.postValue(result.data)
+                    showMessages = true
+                }
 
                 is Failure ->
                     TODO("not handled")
@@ -42,8 +43,4 @@ class MessagesViewModel @Inject constructor(private val getMessagesUseCase: GetM
         }
     }
 
-    private suspend fun showMessages(result: List<Message>?) = withContext(Dispatchers.Main) {
-        messages.value = result
-        showMessages = true
-    }
 }
