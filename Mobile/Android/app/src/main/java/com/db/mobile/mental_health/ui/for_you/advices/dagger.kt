@@ -1,4 +1,4 @@
-package com.db.mobile.mental_health.ui.advices
+package com.db.mobile.mental_health.ui.for_you.advices
 
 import dagger.Module
 import dagger.Subcomponent

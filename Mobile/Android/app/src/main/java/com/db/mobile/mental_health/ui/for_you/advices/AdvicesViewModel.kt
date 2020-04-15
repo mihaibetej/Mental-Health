@@ -1,9 +1,6 @@
-package com.db.mobile.mental_health.ui.advices
+package com.db.mobile.mental_health.ui.for_you.advices
 
 import androidx.databinding.BaseObservable
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.db.mobile.mental_health.domain.usecases.GetAdvicesUseCase
 import javax.inject.Inject
 

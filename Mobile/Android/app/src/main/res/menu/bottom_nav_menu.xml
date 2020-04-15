@@ -7,9 +7,9 @@
         android:title="@string/title_news" />
 
     <item
-        android:id="@+id/navigation_advices"
+        android:id="@+id/navigation_for_you"
         android:icon="@drawable/ic_advices_black_24dp"
-        android:title="@string/title_advices" />
+        android:title="@string/title_for_you" />
 
     <item
         android:id="@+id/navigation_survey"

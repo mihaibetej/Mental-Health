@@ -1,14 +1,18 @@
 <resources>
     <string name="app_name">All4Medics</string>
     <string name="title_news">Noutati</string>
-    <string name="title_advices">Pentru tine</string>
+    <string name="title_for_you">Pentru tine</string>
     <string name="title_survey">Chestionar</string>
     <string name="title_more">Mai mult</string>
+    <string name="title_advices">Sfaturi zilnice</string>
+    <string name="title_messages">Mesaje pentru tine</string>
 
     <!-- Survey -->
     <string name="survey_positive_connotation">Foarte mult</string>
     <string name="survey_negative_connotation">Deloc</string>
     <string name="survey_submit">Trimite raspunsuri</string>
     <string name="survey_description">Vrem sa te ajutam sa iti fie mai bine!\nRaspunde la chestionarul de mai jos si lasa-ne sa o facem!</string>
+
+    <!-- For you -->
 
 </resources>
