@@ -3,12 +3,12 @@ package com.db.mobile.mental_health.application.dagger
 import android.content.Context
 import com.db.mobile.mental_health.application.MentalHealthApplication
 import com.db.mobile.mental_health.domain.dagger.DomainComponent
-import com.db.mobile.mental_health.ui.for_you.ForYouComponent
-import com.db.mobile.mental_health.ui.for_you.ForYouModule
-import com.db.mobile.mental_health.ui.for_you.advices.AdvicesComponent
-import com.db.mobile.mental_health.ui.for_you.advices.AdvicesModule
-import com.db.mobile.mental_health.ui.for_you.messages.MessagesComponent
-import com.db.mobile.mental_health.ui.for_you.messages.MessagesModule
+import com.db.mobile.mental_health.ui.for_you.ForYouFragmentComponent
+import com.db.mobile.mental_health.ui.for_you.ForYouFragmentModule
+import com.db.mobile.mental_health.ui.for_you.advices.AdvicesFragmentComponent
+import com.db.mobile.mental_health.ui.for_you.advices.AdvicesFragmentModule
+import com.db.mobile.mental_health.ui.for_you.messages.MessagesFragmentComponent
+import com.db.mobile.mental_health.ui.for_you.messages.MessagesFragmentModule
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
 import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
@@ -35,16 +35,16 @@ fun getApplicationComponent(context: Context?): ApplicationComponent? {
         LoginModule::class,
         NewsFragmentModule::class,
         SurveyModule::class,
-        ForYouModule::class,
-        AdvicesModule::class,
-        MessagesModule::class
+        ForYouFragmentModule::class,
+        AdvicesFragmentModule::class,
+        MessagesFragmentModule::class
     ]
 )
 interface ApplicationComponent {
     fun newsFragmentComponent(): NewsFragmentComponent.Factory
     fun loginComponent(): LoginComponent.Factory
     fun surveyComponent(): SurveyComponent.Factory
-    fun forYouComponent(): ForYouComponent.Factory
-    fun advicesComponent(): AdvicesComponent.Factory
-    fun messagesComponent(): MessagesComponent.Factory
+    fun forYouFragmentComponent(): ForYouFragmentComponent.Factory
+    fun advicesFragmentComponent(): AdvicesFragmentComponent.Factory
+    fun messagesFragmentComponent(): MessagesFragmentComponent.Factory
 }

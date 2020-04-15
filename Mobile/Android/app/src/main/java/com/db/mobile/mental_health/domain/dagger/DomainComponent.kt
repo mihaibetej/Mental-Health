@@ -2,6 +2,7 @@ package com.db.mobile.mental_health.domain.dagger
 
 import com.db.mobile.mental_health.data.dagger.DataComponent
 import com.db.mobile.mental_health.domain.usecases.GetAdvicesUseCase
+import com.db.mobile.mental_health.domain.usecases.GetMessagesUseCase
 import com.db.mobile.mental_health.domain.usecases.GetNewsUseCase
 import dagger.Component
 
@@ -9,4 +10,5 @@ import dagger.Component
 interface DomainComponent {
     fun provideGetNewsUseCase(): GetNewsUseCase
     fun provideGetAdvicesUseCase(): GetAdvicesUseCase
+    fun provideGetMessagesUseCase(): GetMessagesUseCase
 }

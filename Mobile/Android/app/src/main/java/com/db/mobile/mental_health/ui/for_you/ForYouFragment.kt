@@ -12,7 +12,7 @@ import com.google.android.material.tabs.TabLayout
 import javax.inject.Inject
 
 class ForYouFragment : Fragment() {
-    private var forYouComponent: ForYouComponent? = null
+    private var forYouComponent: ForYouFragmentComponent? = null
     private lateinit var forYouPagerAdapter: ForYouPagerAdapter
     private lateinit var viewPager: ViewPager
     private lateinit var tabLayout: TabLayout
@@ -25,7 +25,7 @@ class ForYouFragment : Fragment() {
             container: ViewGroup?,
             savedInstanceState: Bundle?
     ): View? {
-        forYouComponent = getApplicationComponent(context)?.forYouComponent()?.create()
+        forYouComponent = getApplicationComponent(context)?.forYouFragmentComponent()?.create()
         forYouComponent?.inject(this)
         return inflater.inflate(R.layout.fragment_for_you, container, false)
     }

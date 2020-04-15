@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="item"
+            type="com.db.mobile.mental_health.domain.model.Advice" />
+
+        <variable
+            name="viewModel"
+            type="com.db.mobile.mental_health.ui.for_you.advices.AdvicesAdapterViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{(view) -> viewModel.showAdviceDetails(view, item)}"
+        android:padding="@dimen/activity_horizontal_margin">
+
+        <TextView
+            android:id="@+id/messages_item_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingBottom="@dimen/elements_padding_large"
+            android:text="@{item.body}"
+            android:maxLines="3"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Click here to find out how to make six packs in quarantine. Click here to find out how to make six packs in quarantine. Click here to find out how to make six packs in quarantine" />
+
+        <TextView
+            android:id="@+id/messages_item_more"
+            style="@style/TextAppearance.AppCompat.Button"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/button_more"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/messages_item_title"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

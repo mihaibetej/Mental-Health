@@ -4,14 +4,14 @@ import dagger.Module
 import dagger.Subcomponent
 
 @Subcomponent
-interface ForYouComponent {
+interface ForYouFragmentComponent {
     @Subcomponent.Factory
     interface Factory {
-        fun create(): ForYouComponent
+        fun create(): ForYouFragmentComponent
     }
 
     fun inject(forYouFragment: ForYouFragment)
 }
 
-@Module(subcomponents = [ForYouComponent::class])
-abstract class ForYouModule
+@Module(subcomponents = [ForYouFragmentComponent::class])
+abstract class ForYouFragmentModule

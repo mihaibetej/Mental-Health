@@ -39,7 +39,7 @@ object DataModuleInlineProvider {
 
     @Provides
     @Named("dailyAdvicesTable")
-    fun provideDailyAdvicesTable(): CollectionReference = Firebase.firestore.collection("dailyAdvices")
+    fun provideDailyAdvicesTable(): CollectionReference = Firebase.firestore.collection("daily-advices")
 
     @Provides
     @Named("messagesTable")

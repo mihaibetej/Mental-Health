@@ -7,6 +7,8 @@
     <string name="title_advices">Sfaturi zilnice</string>
     <string name="title_messages">Mesaje pentru tine</string>
 
+    <string name="button_more">Mai mult …</string>
+
     <!-- Survey -->
     <string name="survey_positive_connotation">Foarte mult</string>
     <string name="survey_negative_connotation">Deloc</string>
