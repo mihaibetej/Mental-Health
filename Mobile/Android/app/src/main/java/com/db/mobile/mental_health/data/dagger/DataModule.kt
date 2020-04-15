@@ -1,8 +1,10 @@
 package com.db.mobile.mental_health.data.dagger
 
 import com.db.mobile.mental_health.data.datasource.DailyAdvicesDataSource
+import com.db.mobile.mental_health.data.datasource.MessagesDataSource
 import com.db.mobile.mental_health.data.datasource.NewsDataSource
 import com.db.mobile.mental_health.data.datasource.firebase.DailyAdvicesFirebaseDataSource
+import com.db.mobile.mental_health.data.datasource.firebase.MessagesFirebaseDataSource
 import com.db.mobile.mental_health.data.datasource.firebase.NewsFirebaseDataSource
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
@@ -16,8 +18,12 @@ import javax.inject.Named
 abstract class DataModule {
     @Binds
     abstract fun provideNewsDataSource(dataSource: NewsFirebaseDataSource): NewsDataSource
+
     @Binds
     abstract fun provideDailyAdvicesDataSource(dataSource: DailyAdvicesFirebaseDataSource): DailyAdvicesDataSource
+
+    @Binds
+    abstract fun provideMessagesDataSource(dataSource: MessagesFirebaseDataSource): MessagesDataSource
 }
 
 
@@ -34,4 +40,8 @@ object DataModuleInlineProvider {
     @Provides
     @Named("dailyAdvicesTable")
     fun provideDailyAdvicesTable(): CollectionReference = Firebase.firestore.collection("dailyAdvices")
+
+    @Provides
+    @Named("messagesTable")
+    fun provideMessagesTable(): CollectionReference = Firebase.firestore.collection("messages")
 }

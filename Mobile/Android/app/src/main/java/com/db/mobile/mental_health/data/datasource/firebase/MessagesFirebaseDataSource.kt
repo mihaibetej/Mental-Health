@@ -1,8 +1,8 @@
 package com.db.mobile.mental_health.data.datasource.firebase
 
-import com.db.mobile.mental_health.data.datasource.DailyAdvicesDataSource
-import com.db.mobile.mental_health.data.datasource.NoAdvicesException
-import com.db.mobile.mental_health.data.model.DailyAdvice
+import com.db.mobile.mental_health.data.datasource.MessagesDataSource
+import com.db.mobile.mental_health.data.datasource.NoMessagesException
+import com.db.mobile.mental_health.data.model.Message
 import com.db.mobile.mental_health.templates.Failure
 import com.db.mobile.mental_health.templates.OpResult
 import com.db.mobile.mental_health.templates.Success
@@ -12,16 +12,16 @@ import javax.inject.Named
 import kotlin.coroutines.resume
 import kotlin.coroutines.suspendCoroutine
 
-class DailyAdvicesFirebaseDataSource @Inject constructor(@Named("dailyAdvicesTable") val db: CollectionReference) : DailyAdvicesDataSource {
+class MessagesFirebaseDataSource @Inject constructor(@Named("messagesTable") val db: CollectionReference) : MessagesDataSource {
 
-    override suspend fun getAdvices(): OpResult<List<DailyAdvice>, NoAdvicesException> =
+    override suspend fun getMessages(): OpResult<List<Message>, NoMessagesException> =
         suspendCoroutine { continuation ->
             db.get()
                 .addOnSuccessListener {
-                    continuation.resume(Success(it.toObjects(DailyAdvice::class.java)))
+                    continuation.resume(Success(it.toObjects(Message::class.java)))
                 }
                 .addOnFailureListener {
-                    continuation.resume(Failure(NoAdvicesException()))
+                    continuation.resume(Failure(NoMessagesException()))
                 }
         }
 
