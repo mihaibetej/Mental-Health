@@ -16,10 +16,22 @@
     </fragment>
 
     <fragment
+        android:id="@+id/navigation_for_you"
+        android:name="com.db.mobile.mental_health.ui.for_you.ForYouFragment"
+        android:label="@string/title_for_you"
+        tools:layout="@layout/fragment_for_you" />
+
+    <fragment
         android:id="@+id/navigation_advices"
-        android:name="com.db.mobile.mental_health.ui.advices.AdvicesFragment"
+        android:name="com.db.mobile.mental_health.ui.for_you.advices.AdvicesFragment"
         android:label="@string/title_advices"
         tools:layout="@layout/fragment_advices" />
+
+    <fragment
+        android:id="@+id/navigation_messages"
+        android:name="com.db.mobile.mental_health.ui.for_you.messages.MessagesFragment"
+        android:label="@string/title_messages"
+        tools:layout="@layout/fragment_messages" />
 
     <fragment
         android:id="@+id/navigation_survey"

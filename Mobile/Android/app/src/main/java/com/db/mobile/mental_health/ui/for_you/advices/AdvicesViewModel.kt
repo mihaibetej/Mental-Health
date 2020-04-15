@@ -1,11 +1,11 @@
-package com.db.mobile.mental_health.ui.news
+package com.db.mobile.mental_health.ui.for_you.advices
 
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
-import com.db.mobile.mental_health.domain.model.News
-import com.db.mobile.mental_health.domain.usecases.GetNewsUseCase
+import com.db.mobile.mental_health.domain.model.Advice
+import com.db.mobile.mental_health.domain.usecases.GetAdvicesUseCase
 import com.db.mobile.mental_health.templates.Failure
 import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
@@ -13,28 +13,28 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) :
+class AdvicesViewModel @Inject constructor(private val getAdvicesUseCase: GetAdvicesUseCase) :
     BaseObservable() {
 
-    val news = MutableLiveData<List<News>>()
+    val advices = MutableLiveData<List<Advice>>()
 
-    var showNews: Boolean? = false
+    var showAdvices: Boolean? = false
         @Bindable
         get
         @Bindable
         set(value) {
             if (field != value) {
                 field = value
-                notifyPropertyChanged(BR.showNews)
+                notifyPropertyChanged(BR.showAdvices)
             }
         }
 
     init {
         GlobalScope.launch(Dispatchers.IO) {
-            when (val result = getNewsUseCase.execute()) {
+            when (val result = getAdvicesUseCase.execute()) {
                 is Success -> {
-                    news.postValue(result.data)
-                    showNews = true
+                    advices.postValue(result.data)
+                    showAdvices = true
                 }
 
                 is Failure ->

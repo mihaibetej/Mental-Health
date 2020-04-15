@@ -9,24 +9,24 @@
 
         <variable
             name="adapter"
-            type="com.db.mobile.mental_health.ui.for_you.advices.AdvicesAdapter" />
+            type="com.db.mobile.mental_health.ui.for_you.messages.MessagesAdapter" />
 
         <variable
             name="viewModel"
-            type="com.db.mobile.mental_health.ui.for_you.advices.AdvicesViewModel" />
+            type="com.db.mobile.mental_health.ui.for_you.messages.MessagesViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".ui.for_you.advices.AdvicesFragment">
+        tools:context=".ui.for_you.messages.MessagesFragment">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/advices_recycler_view"
+            android:id="@+id/messages_recycler_view"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:adapter="@{adapter}"
-            android:visibility="@{viewModel.showAdvices ? View.VISIBLE : View.GONE}"
+            android:visibility="@{viewModel.showMessages ? View.VISIBLE : View.GONE}"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -39,7 +39,7 @@
         <ProgressBar
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:visibility="@{viewModel.showAdvices ? View.GONE : View.VISIBLE}"
+            android:visibility="@{viewModel.showMessages ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
