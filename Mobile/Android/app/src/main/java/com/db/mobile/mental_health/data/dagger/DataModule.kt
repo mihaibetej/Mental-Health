@@ -2,8 +2,10 @@ package com.db.mobile.mental_health.data.dagger
 
 import com.db.mobile.mental_health.data.datasource.NewsDataSource
 import com.db.mobile.mental_health.data.datasource.SurveyDataSource
+import com.db.mobile.mental_health.data.datasource.UserInfoDataSource
 import com.db.mobile.mental_health.data.datasource.firebase.NewsFirebaseDataSource
 import com.db.mobile.mental_health.data.datasource.firebase.SurveyFirebaseDataSource
+import com.db.mobile.mental_health.data.datasource.firebase.UserFirebaseDataSource
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
@@ -19,6 +21,9 @@ abstract class DataModule {
 
     @Binds
     abstract fun provideSurveyQuestionsDataSource(dataSource: SurveyFirebaseDataSource): SurveyDataSource
+
+    @Binds
+    abstract fun provideUserInfoDataSource(dataSource: UserFirebaseDataSource): UserInfoDataSource
 }
 
 
@@ -35,5 +40,9 @@ class DataModuleInlineProvider {
     @Provides
     @Named("surveyTable")
     fun provideSurveyTable(): CollectionReference = Firebase.firestore.collection("questions")
+
+    @Provides
+    @Named("usersTable")
+    fun provideUsersTable(): CollectionReference = Firebase.firestore.collection("users")
 
 }

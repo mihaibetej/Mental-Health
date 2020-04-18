@@ -3,12 +3,18 @@ package com.db.mobile.mental_health.ui.splash
 import android.app.Activity
 import android.content.Intent
 import androidx.lifecycle.MutableLiveData
+import com.db.mobile.mental_health.domain.usecases.UpdateUserInfoFromFirebase
 import com.firebase.ui.auth.AuthUI
 import com.firebase.ui.auth.IdpResponse
 import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SplashScreenViewModel @Inject constructor(private var providers: List<AuthUI.IdpConfig>) {
+class SplashScreenViewModel @Inject constructor(
+    private val providers: List<AuthUI.IdpConfig>,
+    private val signUpInfoUpdateUseCase: UpdateUserInfoFromFirebase
+) {
     val sessionStatus = MutableLiveData<UserStatus>()
 
     init {
@@ -32,6 +38,15 @@ class SplashScreenViewModel @Inject constructor(private var providers: List<Auth
         } else {
             UserStatus.SIGN_IN_ERROR
         }
+
+        if (sessionStatus.value == UserStatus.SIGNED_IN) {
+            updateUserInfoOnSignUp()
+        }
+
+    }
+
+    private fun updateUserInfoOnSignUp() = GlobalScope.launch {
+        signUpInfoUpdateUseCase.execute()
     }
 
 }
