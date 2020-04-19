@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
 import com.db.mobile.mental_health.domain.model.SurveyQuestion
 import com.db.mobile.mental_health.domain.usecases.GetSurveyQuestionsUseCase
+import com.db.mobile.mental_health.domain.usecases.PostAnswersUseCase
 import com.db.mobile.mental_health.templates.Failure
 import com.db.mobile.mental_health.templates.Success
 import kotlinx.coroutines.Dispatchers
@@ -14,7 +15,10 @@ import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
-class SurveyViewModel @Inject constructor(private val surveyQuestionsUseCase: GetSurveyQuestionsUseCase) :
+class SurveyViewModel @Inject constructor(
+    private val surveyQuestionsUseCase: GetSurveyQuestionsUseCase,
+    private val postAnswersUseCase: PostAnswersUseCase
+) :
     BaseObservable() {
     val questions = MutableLiveData<List<SurveyQuestion>>()
 
@@ -49,7 +53,12 @@ class SurveyViewModel @Inject constructor(private val surveyQuestionsUseCase: Ge
     }
 
     fun submitSurvey(view: View) {
-        println("submit survey")
+        GlobalScope.launch {
+            if (questions.value != null) {
+                //TODO change
+                postAnswersUseCase.execute(questions.value!!)
+            }
+        }
     }
 
 }

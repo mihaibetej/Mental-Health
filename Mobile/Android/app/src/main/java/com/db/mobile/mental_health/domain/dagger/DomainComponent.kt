@@ -11,4 +11,5 @@ interface DomainComponent {
     fun provideGetMessagesUseCase(): GetMessagesUseCase
     fun provideSurveyQuestionsUseCase(): GetSurveyQuestionsUseCase
     fun provideSignUpUserInfoUpdate(): UpdateUserInfoFromFirebase
+    fun providePostAnswersUseCase(): PostAnswersUseCase
 }
