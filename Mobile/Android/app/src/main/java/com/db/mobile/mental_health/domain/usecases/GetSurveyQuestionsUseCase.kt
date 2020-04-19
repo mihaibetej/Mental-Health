@@ -21,8 +21,8 @@ class GetSurveyQuestionsUseCase @Inject constructor(private val surveyDataSource
             is Success -> {
                 Success(questionsResult.data.map {
                     val answers = SparseArray<String>()
-                    it.answers?.map { answer -> answers[answer.value!!] = answer.title!! }
-                    SurveyQuestion(it.id!!, it.body!!, DEFAULT_ANSWER, answers)
+                    it.answers.map { answer -> answers[answer.value] = answer.title }
+                    SurveyQuestion(it.id, it.body, DEFAULT_ANSWER, answers)
                 })
             }
             is Failure -> {

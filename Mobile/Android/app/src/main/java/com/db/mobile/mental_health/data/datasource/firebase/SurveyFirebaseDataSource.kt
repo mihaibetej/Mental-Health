@@ -1,6 +1,7 @@
 package com.db.mobile.mental_health.data.datasource.firebase
 
 import com.db.mobile.mental_health.data.datasource.NoQuestionsException
+import com.db.mobile.mental_health.data.datasource.PostAnswersError
 import com.db.mobile.mental_health.data.datasource.SurveyDataSource
 import com.db.mobile.mental_health.data.mappers.SurveyAnswerIdMapper
 import com.db.mobile.mental_health.data.model.Question
@@ -37,7 +38,7 @@ class SurveyFirebaseDataSource @Inject constructor(
                 }
         }
 
-    override suspend fun postAnswers(answers: SurveyAnswers): OpResult<Nothing?, NoQuestionsException> =
+    override suspend fun postAnswers(answers: SurveyAnswers): OpResult<Nothing?, PostAnswersError> =
         suspendCoroutine { cont ->
             val key = surveyAnswerKeyMapper.map(answers.created)
             answersTable.document(key).set(answers, SetOptions.merge())
@@ -45,7 +46,7 @@ class SurveyFirebaseDataSource @Inject constructor(
                     cont.resume(Success(null))
                 }
                 .addOnFailureListener {
-                    cont.resume(Failure(NoQuestionsException()))
+                    cont.resume(Failure(PostAnswersError()))
                 }
         }
 

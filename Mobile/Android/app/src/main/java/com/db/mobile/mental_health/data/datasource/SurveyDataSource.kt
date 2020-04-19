@@ -6,7 +6,8 @@ import com.db.mobile.mental_health.templates.OpResult
 
 interface SurveyDataSource {
     suspend fun getQuestions(): OpResult<List<Question>, NoQuestionsException>
-    suspend fun postAnswers(answers: SurveyAnswers): OpResult<Nothing?, NoQuestionsException>
+    suspend fun postAnswers(answers: SurveyAnswers): OpResult<Nothing?, PostAnswersError>
 }
 
 class NoQuestionsException : Throwable()
+class PostAnswersError: Throwable()
