@@ -37,7 +37,11 @@
         android:id="@+id/navigation_survey"
         android:name="com.db.mobile.mental_health.ui.survey.SurveyFragment"
         android:label="@string/title_survey"
-        tools:layout="@layout/fragment_survey" />
+        tools:layout="@layout/fragment_survey">
+        <action
+            android:id="@+id/action_navigation_survey_to_navigation_survey_result"
+            app:destination="@+id/navigation_survey_result" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_more"
@@ -56,6 +60,16 @@
         <argument
             android:name="title"
             app:argType="string" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_survey_result"
+        android:name="com.db.mobile.mental_health.ui.survey.result.SurveyResultFragment"
+        android:label="@string/title_survey"
+        tools:layout="@layout/fragment_survey_result">
+        <argument
+            android:name="questions"
+            app:argType="com.db.mobile.mental_health.domain.model.SurveyQuestion[]" />
     </fragment>
 
 </navigation>

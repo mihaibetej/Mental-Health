@@ -15,6 +15,11 @@
     <string name="survey_submit">Trimite raspunsuri</string>
     <string name="survey_description">Vrem sa te ajutam sa iti fie mai bine!\nRaspunde la chestionarul de mai jos si lasa-ne sa o facem!</string>
 
+    <!-- SurveyResult -->
+    <string name="survey_result_good">Ne bucurăm că starea ta este una bună, suntem aici pentru ține dacă ai nevoie de un specialist în sănătate mintală.</string>
+    <string name="survey_result_neutral">Nivelul tău de echilibru emoțional este unul mediu. Îți recomandăm să reaplici chestionarul în câteva zile pentru o monitorizare mai atentă a stării psihice si să vorbești cu un specialist despre stările tale.</string>
+    <string name="survey_result_bad">Pare că ai trecut prin multe în ultima vreme, considerăm că este necesar să vorbești cu un specialist despre stările tale.</string>
+    <string name="survey_result_none">Suntem mereu alături de tine si avem pe cineva gata să vorbească cu tine!</string>
     <!-- For you -->
 
 </resources>
