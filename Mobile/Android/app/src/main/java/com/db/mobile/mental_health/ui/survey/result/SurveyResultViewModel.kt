@@ -29,7 +29,7 @@ class SurveyResultViewModel @Inject constructor(
             }
         }
 
-    var phoneNumber: String = "0727 986 655"
+    var phoneNumber: String = "0717 987 666"
         @Bindable get
         @Bindable set(value) {
             if (value != field) {
@@ -65,15 +65,6 @@ class SurveyResultViewModel @Inject constructor(
             }
         }
 
-    var surveyResultScoreText: String? = null
-        @Bindable get
-        @Bindable set(value) {
-            if (value != field) {
-                field = value
-                notifyPropertyChanged(BR.surveyResultScoreText)
-            }
-        }
-
     fun onPhoneClicked(view: View) {
         val intent = Intent(Intent.ACTION_DIAL)
         intent.data = Uri.parse("tel:$phoneNumber")
@@ -81,7 +72,7 @@ class SurveyResultViewModel @Inject constructor(
     }
 
     fun onEmailClicked(view: View) {
-        val intent = Intent(Intent.ACTION_SENDTO)
+        val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/html"
         intent.putExtra(Intent.EXTRA_EMAIL, emailAddress)
         view.context.startActivity(Intent.createChooser(intent, "Trimite email"))

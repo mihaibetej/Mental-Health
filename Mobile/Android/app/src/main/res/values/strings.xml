@@ -20,6 +20,12 @@
     <string name="survey_result_neutral">Nivelul tău de echilibru emoțional este unul mediu. Îți recomandăm să reaplici chestionarul în câteva zile pentru o monitorizare mai atentă a stării psihice si să vorbești cu un specialist despre stările tale.</string>
     <string name="survey_result_bad">Pare că ai trecut prin multe în ultima vreme, considerăm că este necesar să vorbești cu un specialist despre stările tale.</string>
     <string name="survey_result_none">Suntem mereu alături de tine si avem pe cineva gata să vorbească cu tine!</string>
+    <string name="survey_result_take_care">Ai grija de tine</string>
+    <string name="survey_result_phone_number_label">Numar telefon:</string>
+    <string name="survey_result_or_mail_label">Sau ne poti scrie la adresa de mai jos</string>
+    <string name="survey_result_email_label">Adresa de email:</string>
+
+
     <!-- For you -->
 
 </resources>
