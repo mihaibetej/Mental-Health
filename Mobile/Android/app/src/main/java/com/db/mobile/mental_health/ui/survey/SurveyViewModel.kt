@@ -4,6 +4,7 @@ import android.view.View
 import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
+import androidx.navigation.findNavController
 import com.db.mobile.mental_health.BR
 import com.db.mobile.mental_health.domain.model.SurveyQuestion
 import com.db.mobile.mental_health.domain.usecases.GetSurveyQuestionsUseCase
@@ -16,8 +17,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class SurveyViewModel @Inject constructor(
-    private val surveyQuestionsUseCase: GetSurveyQuestionsUseCase,
-    private val postAnswersUseCase: PostAnswersUseCase
+    private val surveyQuestionsUseCase: GetSurveyQuestionsUseCase
 ) :
     BaseObservable() {
     val questions = MutableLiveData<List<SurveyQuestion>>()
@@ -53,11 +53,10 @@ class SurveyViewModel @Inject constructor(
     }
 
     fun submitSurvey(view: View) {
-        GlobalScope.launch {
-            if (questions.value != null) {
-                //TODO change
-                postAnswersUseCase.execute(questions.value!!)
-            }
+        val answeredQuestions = questions.value?.toTypedArray()
+        if (answeredQuestions != null) {
+            val action = SurveyFragmentDirections.actionNavigationSurveyToNavigationSurveyResult(answeredQuestions)
+            view.findNavController().navigate(action)
         }
     }
 

@@ -15,6 +15,8 @@ import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
 import com.db.mobile.mental_health.ui.splash.dagger.LoginModule
 import com.db.mobile.mental_health.ui.survey.SurveyComponent
 import com.db.mobile.mental_health.ui.survey.SurveyModule
+import com.db.mobile.mental_health.ui.survey.result.SurveyResultComponent
+import com.db.mobile.mental_health.ui.survey.result.SurveyResultModule
 import dagger.Component
 import javax.inject.Singleton
 
@@ -35,6 +37,7 @@ fun getApplicationComponent(context: Context?): ApplicationComponent? {
         LoginModule::class,
         NewsFragmentModule::class,
         SurveyModule::class,
+        SurveyResultModule::class,
         ForYouFragmentModule::class,
         AdvicesFragmentModule::class,
         MessagesFragmentModule::class
@@ -44,6 +47,7 @@ interface ApplicationComponent {
     fun newsFragmentComponent(): NewsFragmentComponent.Factory
     fun loginComponent(): LoginComponent.Factory
     fun surveyComponent(): SurveyComponent.Factory
+    fun surveyResultComponent(): SurveyResultComponent.Factory
     fun forYouFragmentComponent(): ForYouFragmentComponent.Factory
     fun advicesFragmentComponent(): AdvicesFragmentComponent.Factory
     fun messagesFragmentComponent(): MessagesFragmentComponent.Factory

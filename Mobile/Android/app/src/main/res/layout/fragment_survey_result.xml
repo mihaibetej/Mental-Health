@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.db.mobile.mental_health.ui.survey.result.SurveyResultViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="@dimen/activity_vertical_margin">
+
+
+        <TextView
+            android:id="@+id/survey_result_message"
+            style="@style/Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text='@{viewModel.surveyResultText == 0 ? "" : context.getString(viewModel.surveyResultText)}'
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Pare ca ai trecut prin multe in ultima vreme, consideram ca este necesar sa vorbesti cu un specialist despre starile tale" />
+
+        <TextView
+            android:id="@+id/survey_take_care"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:text="@string/survey_result_take_care"
+            android:textColor="@color/colorAccent"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_result_message" />
+
+        <TextView
+            android:id="@+id/survey_phone_number_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/survey_result_phone_number_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_take_care" />
+
+        <TextView
+            android:id="@+id/survey_phone_number"
+            style="@style/Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:linksClickable="false"
+            android:onClick="@{viewModel.onPhoneClicked}"
+            android:text="@{viewModel.phoneNumber}"
+            android:textColor="@color/colorAccent"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/survey_phone_number_label"
+            tools:text="0727 989 666" />
+
+        <TextView
+            android:id="@+id/survey_result_or_mail_label"
+            style="@style/Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:paddingTop="@dimen/activity_vertical_margin"
+            android:paddingBottom="@dimen/activity_vertical_margin"
+            android:text="@string/survey_result_or_mail_label"
+            android:textSize="20sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_phone_number" />
+
+        <TextView
+            android:id="@+id/survey_result_email_label"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/survey_result_email_label"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/survey_result_or_mail_label" />
+
+        <TextView
+            android:id="@+id/survey_result_email"
+            style="@style/Bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:autoLink="all"
+            android:linksClickable="false"
+            android:onClick="@{viewModel.onEmailClicked}"
+            android:text="@{viewModel.emailAddress}"
+            android:textColor="@color/colorAccent"
+            android:textColorLink="@color/colorAccent"
+            android:textSize="28sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/survey_result_email_label"
+            tools:text="test@contact.com" />
+
+        <androidx.constraintlayout.widget.Group
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.showSurveyResult ? View.VISIBLE : View.GONE }"
+            app:constraint_referenced_ids="survey_result_message,
+            survey_take_care,survey_phone_number_label,survey_phone_number,
+            survey_result_or_mail_label,survey_result_email_label,survey_result_email"
+            tools:visibility="visible" />
+
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.showSurveyResult ? View.GONE : View.VISIBLE }"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
