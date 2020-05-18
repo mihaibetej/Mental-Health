@@ -11,6 +11,7 @@ import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentNewsBinding
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
+import com.db.mobile.mental_health.ui.utils.prepareNetworkingView
 import javax.inject.Inject
 
 class NewsFragment : Fragment() {
@@ -37,6 +38,9 @@ class NewsFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_news, container, false)
         binding.adapter = adapter
         binding.viewModel = viewModel
+
+        binding.root.prepareNetworkingView(viewLifecycleOwner, viewModel)
+
         return binding.root
     }
 }
