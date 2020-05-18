@@ -10,6 +10,7 @@ import androidx.lifecycle.Observer
 import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentSurveyBinding
+import com.db.mobile.mental_health.ui.utils.prepareNetworkingView
 import javax.inject.Inject
 
 class SurveyFragment : Fragment() {
@@ -36,6 +37,7 @@ class SurveyFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_survey, container, false)
         binding.adapter = adapter
         binding.viewModel = viewModel
+        binding.root.prepareNetworkingView(viewLifecycleOwner, viewModel)
         return binding.root
     }
 

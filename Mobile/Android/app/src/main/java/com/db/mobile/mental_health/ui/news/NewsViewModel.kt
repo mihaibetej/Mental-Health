@@ -39,16 +39,16 @@ class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCa
     }
 
     private fun getData() {
-        loadingStatus.postValue(LOADING)
+        overlayState.postValue(LOADING)
         GlobalScope.launch(Dispatchers.IO) {
             showNews = when (val result = getNewsUseCase.execute()) {
                 is Success -> {
                     news.postValue(result.data)
-                    loadingStatus.postValue(DISMISS)
+                    overlayState.postValue(DISMISS)
                     true
                 }
                 is Failure -> {
-                    loadingStatus.postValue(RETRY)
+                    overlayState.postValue(RETRY)
                     false
                 }
             }

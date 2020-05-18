@@ -8,7 +8,7 @@ import androidx.lifecycle.Observer
 import com.db.mobile.mental_health.R
 
 abstract class NetworkingViewModel : BaseObservable() {
-    val loadingStatus = MutableLiveData<LoadingOverlayView.State>()
+    val overlayState = MutableLiveData<LoadingOverlayView.State>()
 
     abstract fun doRetry()
 }
@@ -22,7 +22,7 @@ fun LoadingOverlayView.prepareNetworkingView(lifecycleOwner: LifecycleOwner, net
     retryListener = {
         networkingViewModel.doRetry()
     }
-    networkingViewModel.loadingStatus.observe(lifecycleOwner, Observer {
+    networkingViewModel.overlayState.observe(lifecycleOwner, Observer {
         setState(it)
     })
 }
