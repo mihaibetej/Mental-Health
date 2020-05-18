@@ -9,6 +9,8 @@ import com.db.mobile.mental_health.ui.for_you.advices.AdvicesFragmentComponent
 import com.db.mobile.mental_health.ui.for_you.advices.AdvicesFragmentModule
 import com.db.mobile.mental_health.ui.for_you.messages.MessagesFragmentComponent
 import com.db.mobile.mental_health.ui.for_you.messages.MessagesFragmentModule
+import com.db.mobile.mental_health.ui.more.MoreFragmentComponent
+import com.db.mobile.mental_health.ui.more.MoreFragmentModule
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentComponent
 import com.db.mobile.mental_health.ui.news.dagger.NewsFragmentModule
 import com.db.mobile.mental_health.ui.splash.dagger.LoginComponent
@@ -40,7 +42,8 @@ fun getApplicationComponent(context: Context?): ApplicationComponent? {
         SurveyResultModule::class,
         ForYouFragmentModule::class,
         AdvicesFragmentModule::class,
-        MessagesFragmentModule::class
+        MessagesFragmentModule::class,
+        MoreFragmentModule::class
     ]
 )
 interface ApplicationComponent {
@@ -51,4 +54,5 @@ interface ApplicationComponent {
     fun forYouFragmentComponent(): ForYouFragmentComponent.Factory
     fun advicesFragmentComponent(): AdvicesFragmentComponent.Factory
     fun messagesFragmentComponent(): MessagesFragmentComponent.Factory
+    fun moreFragmentComponent(): MoreFragmentComponent.Factory
 }

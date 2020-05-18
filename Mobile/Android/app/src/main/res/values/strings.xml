@@ -29,4 +29,14 @@
 
     <!-- For you -->
 
+
+    <!-- More -->
+    <string-array name="moreMenuItems">
+        <item>Profil</item>
+        <item>Jurnalul eroului</item>
+        <item>Statistici</item>
+        <item>Setari</item>
+        <item>Contact</item>
+    </string-array>
+
 </resources>

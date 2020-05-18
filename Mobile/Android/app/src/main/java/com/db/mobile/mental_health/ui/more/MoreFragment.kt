@@ -4,28 +4,52 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import com.db.mobile.mental_health.R
+import com.db.mobile.mental_health.application.dagger.getApplicationComponent
+import com.db.mobile.mental_health.databinding.FragmentMoreBinding
+import com.db.mobile.mental_health.ui.utils.DividerItemDecoration
 import kotlinx.android.synthetic.main.fragment_more.*
+import javax.inject.Inject
 
 class MoreFragment : Fragment() {
+    var component: MoreFragmentComponent? = null
 
-    private lateinit var moreViewModel: MoreViewModel
+    @Inject
+    lateinit var moreViewModel: MoreViewModel
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
-        moreViewModel =
-                ViewModelProviders.of(this).get(MoreViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_more, container, false)
-        moreViewModel.text.observe(viewLifecycleOwner, Observer {
-            text_more.text = it
-        })
-        return root
+
+        val binding = DataBindingUtil.inflate<FragmentMoreBinding>(
+            inflater,
+            R.layout.fragment_more,
+            container,
+            false
+        )
+
+        component = getApplicationComponent(context)?.moreFragmentComponent()?.create()
+        component?.inject(this)
+
+        val adapter = MoreMenuAdapter()
+        adapter.items.addAll(resources.getStringArray(R.array.moreMenuItems))
+
+        binding.adapter = adapter
+        return binding.root
     }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        more_recycler_view.addItemDecoration(
+            DividerItemDecoration(
+                context,
+                R.drawable.list_divider
+            )
+        )
+    }
+
 }
