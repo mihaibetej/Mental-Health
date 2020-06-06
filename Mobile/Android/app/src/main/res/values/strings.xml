@@ -39,4 +39,10 @@
         <item>Contact</item>
     </string-array>
 
+    <!-- Profile -->
+    <string name="profileCity">Oras</string>
+    <string name="profileHospital">Spital</string>
+    <string name="profileJob">Profesie</string>
+    <string name="profilePhone">Telefon</string>
+
 </resources>
