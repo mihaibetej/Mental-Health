@@ -1,13 +1,28 @@
 package com.db.mobile.mental_health.ui.more
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import android.view.View
+import javax.inject.Inject
 
-class MoreViewModel : ViewModel() {
+class MoreViewModel @Inject constructor() {
 
-    private val _text = MutableLiveData<String>().apply {
-        value = "This is more Fragment"
+    fun onProfileClick(view: View) {
+
     }
-    val text: LiveData<String> = _text
+
+    fun onJournalClick(view: View) {
+
+    }
+
+    fun onStatisticsClick(view: View) {
+
+    }
+
+    fun onSettingsClicked(view: View) {
+
+    }
+
+    fun onContactClicked(view: View) {
+
+    }
+
 }

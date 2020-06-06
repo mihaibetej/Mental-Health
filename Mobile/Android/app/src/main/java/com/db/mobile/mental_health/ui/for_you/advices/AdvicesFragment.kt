@@ -11,6 +11,7 @@ import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentAdvicesBinding
 import com.db.mobile.mental_health.ui.utils.DividerItemDecoration
+import com.db.mobile.mental_health.ui.utils.prepareNetworkingView
 import kotlinx.android.synthetic.main.fragment_advices.*
 import javax.inject.Inject
 
@@ -38,6 +39,7 @@ class AdvicesFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_advices, container, false)
         binding.adapter = adapter
         binding.viewModel = viewModel
+        binding.root.prepareNetworkingView(viewLifecycleOwner, viewModel)
         return binding.root
     }
 

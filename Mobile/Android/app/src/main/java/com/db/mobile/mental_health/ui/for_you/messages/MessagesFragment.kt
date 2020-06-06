@@ -11,6 +11,7 @@ import com.db.mobile.mental_health.R
 import com.db.mobile.mental_health.application.dagger.getApplicationComponent
 import com.db.mobile.mental_health.databinding.FragmentMessagesBinding
 import com.db.mobile.mental_health.ui.utils.DividerItemDecoration
+import com.db.mobile.mental_health.ui.utils.prepareNetworkingView
 import kotlinx.android.synthetic.main.fragment_messages.*
 import javax.inject.Inject
 
@@ -39,6 +40,7 @@ class MessagesFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_messages, container, false)
         binding.adapter = adapter
         binding.viewModel = viewModel
+        binding.root.prepareNetworkingView(viewLifecycleOwner, viewModel)
         return binding.root
     }
 

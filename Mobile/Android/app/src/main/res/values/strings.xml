@@ -8,6 +8,7 @@
     <string name="title_messages">Mesaje pentru tine</string>
 
     <string name="button_more">Mai mult …</string>
+    <string name="button_retry">Reincearca</string>
 
     <!-- Survey -->
     <string name="survey_positive_connotation">Foarte mult</string>
@@ -27,5 +28,21 @@
 
 
     <!-- For you -->
+
+
+    <!-- More -->
+    <string-array name="moreMenuItems">
+        <item>Profil</item>
+        <item>Jurnalul eroului</item>
+        <item>Statistici</item>
+        <item>Setari</item>
+        <item>Contact</item>
+    </string-array>
+
+    <!-- Profile -->
+    <string name="profileCity">Oras</string>
+    <string name="profileHospital">Spital</string>
+    <string name="profileJob">Profesie</string>
+    <string name="profilePhone">Telefon</string>
 
 </resources>

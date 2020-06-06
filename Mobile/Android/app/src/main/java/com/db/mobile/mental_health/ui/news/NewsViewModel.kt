@@ -1,6 +1,5 @@
 package com.db.mobile.mental_health.ui.news
 
-import androidx.databinding.BaseObservable
 import androidx.databinding.Bindable
 import androidx.lifecycle.MutableLiveData
 import com.db.mobile.mental_health.BR
@@ -8,13 +7,15 @@ import com.db.mobile.mental_health.domain.model.News
 import com.db.mobile.mental_health.domain.usecases.GetNewsUseCase
 import com.db.mobile.mental_health.templates.Failure
 import com.db.mobile.mental_health.templates.Success
+import com.db.mobile.mental_health.ui.utils.LoadingOverlayView.State.*
+import com.db.mobile.mental_health.ui.utils.NetworkingViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCase) :
-    BaseObservable() {
+    NetworkingViewModel() {
 
     val news = MutableLiveData<List<News>>()
 
@@ -30,16 +31,26 @@ class NewsViewModel @Inject constructor(private val getNewsUseCase: GetNewsUseCa
         }
 
     init {
+        getData()
+    }
+
+    override fun doRetry() {
+        getData()
+    }
+
+    private fun getData() {
+        overlayState.postValue(LOADING)
         GlobalScope.launch(Dispatchers.IO) {
-            when (val result = getNewsUseCase.execute()) {
+            showNews = when (val result = getNewsUseCase.execute()) {
                 is Success -> {
                     news.postValue(result.data)
-                    showNews = true
+                    overlayState.postValue(DISMISS)
+                    true
                 }
-
-                is Failure ->
-                    TODO("not handled")
-
+                is Failure -> {
+                    overlayState.postValue(RETRY)
+                    false
+                }
             }
         }
     }
